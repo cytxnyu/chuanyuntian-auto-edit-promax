@@ -1,0 +1,65 @@
+import { emberBurnExampleCode } from "@/components/docs/examples/ember-burn-example";
+import { type ComponentConfig, FPS, H, W } from "@/lib/customizer-config";
+
+export const emberBurnConfig: ComponentConfig = {
+  componentName: "emberBurn",
+  importPath: "@/components/remocn/ember-burn",
+  controls: {
+    patches: {
+      type: "number",
+      min: 2,
+      max: 16,
+      step: 1,
+      default: 5,
+      description: "Patches",
+      hiddenFromList: false,
+    },
+    edgeSoftness: {
+      type: "number",
+      min: 0.005,
+      max: 0.2,
+      step: 0.005,
+      default: 0.07,
+      description: "Edge softness",
+      hiddenFromList: false,
+    },
+    contentBias: {
+      type: "number",
+      min: 0,
+      max: 1,
+      step: 0.05,
+      default: 0.6,
+      description: "Eats bright first",
+      hiddenFromList: false,
+    },
+    heat: {
+      type: "number",
+      min: 0,
+      max: 1.5,
+      step: 0.05,
+      default: 0.5,
+      description: "Heat distortion",
+      hiddenFromList: false,
+    },
+    glowColor: {
+      type: "color",
+      default: "#ff7a2f",
+      description: "Glow",
+    },
+    emberAmount: {
+      type: "number",
+      min: 0,
+      max: 1,
+      step: 0.05,
+      default: 0.5,
+      description: "Embers",
+      hiddenFromList: false,
+    },
+  },
+  durationInFrames: 80,
+  fps: FPS,
+  compositionWidth: W,
+  compositionHeight: H,
+  previewBackdrop: { type: "color", value: "#0a0a0a" },
+  snippet: emberBurnExampleCode,
+};

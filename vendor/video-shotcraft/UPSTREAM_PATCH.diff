@@ -1,0 +1,177 @@
+--- upstream/demos/camera/basic-3d-scene/Basic3DScene.tsx
++++ runtime/demos/camera/basic-3d-scene/Basic3DScene.tsx
+@@ -20,7 +20,8 @@
+ const FLY_AT = [0.22, 0.48, 0.76];
+ const FLY = 0.16;
+ 
+-export const Basic3DScene: React.FC = () => {
++export type Basic3DSceneProps = { steps?: { title?: string; subtitle?: string }[] };
++export const Basic3DScene: React.FC<Basic3DSceneProps> = ({ steps }) => {
+   const t = useT();
+ 
+   // activeFloat = 已完成的飞行进度之和 → 当前相机在哪个 step 之间
+@@ -92,9 +93,9 @@
+                 }}
+               >
+                 <div style={{ fontSize: 11, letterSpacing: 3, color: `hsl(${p.hue},80%,68%)`, fontWeight: 700 }}>
+-                  {p.tt}
++                  {steps?.[i]?.title ?? p.tt}
+                 </div>
+-                <div style={{ fontSize: last ? 26 : 21, fontWeight: 800, marginTop: 8 }}>{p.sub}</div>
++                <div style={{ fontSize: last ? 26 : 21, fontWeight: 800, marginTop: 8 }}>{steps?.[i]?.subtitle ?? p.sub}</div>
+                 <div style={{ marginTop: 12, height: 5, width: '56%', borderRadius: 3, background: `hsl(${p.hue},70%,45%)` }} />
+                 <div style={{ marginTop: 7, height: 5, width: '34%', borderRadius: 3, background: `hsla(${p.hue},50%,60%,.4)` }} />
+               </div>
+--- upstream/demos/camera/terminal-3d/Terminal3D.tsx
++++ runtime/demos/camera/terminal-3d/Terminal3D.tsx
+@@ -54,7 +54,9 @@
+ const TYPE = [0.05, 0.47, 0.81];
+ const PK = ['x', 'y', 'z', 'ry'];
+ 
+-export const Terminal3D: React.FC = () => {
++export type Terminal3DProps = { panels?: { title?: string; command?: string; output?: string[] }[] };
++export const Terminal3D: React.FC<Terminal3DProps> = ({ panels }) => {
++  const data = DATA.map((d, i) => ({ ...d, title: panels?.[i]?.title ?? d.title, cmd: panels?.[i]?.command ?? d.cmd, out: panels?.[i]?.output ?? d.out }));
+   const t = useT();
+ 
+   // 相机姿态 = 关键帧累加（两段飞行，inOutCubic）
+@@ -103,7 +105,7 @@
+               transform: `translateZ(${(300 - pull) * K}px) rotateY(${-v.ry}deg) translate3d(${-v.x * K}px,${-v.y * K}px,${-v.z * K}px)`,
+             }}
+           >
+-            {DATA.map((d, i) => {
++            {data.map((d, i) => {
+               const p = d.pose;
+               // 离焦：与当前相机 x 距离越远越暗越糊
+               const focus = 1 - Math.min(1, Math.abs(v.x - p.x) / 420);
+--- upstream/template/src/aifl/Main.tsx
++++ runtime/template/src/aifl/Main.tsx
+@@ -114,7 +114,9 @@
+   { from: 1005, src: 'sparkle.mp3', volume: 0.3 }, // rule + tagline glint
+ ];
+ 
+-export const AiflMain: React.FC = () => {
++export type AiflMainProps = { muted?: boolean; titleCards?: Record<string, {text: string; sub?: string; subDigits?: string}>; captions?: string[]; sceneProps?: Record<string, any> };
++export const AiflMain: React.FC<AiflMainProps> = ({ muted = true, titleCards, captions, sceneProps = {} }) => {
++  const cards = {...TITLE_CARDS, ...titleCards};
+   const theme = useVisualTheme();
+   const paint = (css: string) => themePaint(theme, css);
+   const asset = (src: string) => themeAsset(theme, src);
+@@ -128,57 +130,57 @@
+           from={s.from}
+           durationInFrames={sfxDuration(s)}
+         >
+-          <Audio src={asset(`audio/${s.src}`)} volume={s.volume} />
++          <Audio src={asset(`audio/${s.src}`)} volume={s.volume} muted={muted} />
+         </Sequence>
+       ))}
+       <Sequence from={AIFL_SHOTS.morning.from} durationInFrames={AIFL_SHOTS.morning.duration}>
+-        <SceneOpen />
++        <SceneOpen {...sceneProps.opening} />
+       </Sequence>
+       <Sequence from={AIFL_SHOTS.card1.from} durationInFrames={AIFL_SHOTS.card1.duration}>
+         <PaperTitleCard
+           duration={AIFL_SHOTS.card1.duration}
+-          words={parseWords(TITLE_CARDS.card1.text)}
++          words={parseWords(cards.card1.text)}
+         />
+       </Sequence>
+       <Sequence from={AIFL_SHOTS.table.from} durationInFrames={AIFL_SHOTS.table.duration}>
+-        <SceneFlyIn />
++        <SceneFlyIn {...sceneProps.flyIn} />
+       </Sequence>
+       <Sequence from={AIFL_SHOTS.macro.from} durationInFrames={AIFL_SHOTS.macro.duration}>
+-        <SceneDetail />
++        <SceneDetail {...sceneProps.detail} />
+       </Sequence>
+       <Sequence from={AIFL_SHOTS.card2.from} durationInFrames={AIFL_SHOTS.card2.duration}>
+         <PaperTitleCard
+           duration={AIFL_SHOTS.card2.duration}
+-          words={parseWords(TITLE_CARDS.card2.text)}
+-          sub={TITLE_CARDS.card2.sub}
+-          subDigits={TITLE_CARDS.card2.subDigits}
++          words={parseWords(cards.card2.text)}
++          sub={cards.card2.sub}
++          subDigits={cards.card2.subDigits}
+         />
+       </Sequence>
+       <Sequence from={AIFL_SHOTS.chart.from} durationInFrames={AIFL_SHOTS.chart.duration}>
+-        <ScenePapers />
++        <ScenePapers {...sceneProps.papers} />
+       </Sequence>
+       <Sequence from={AIFL_SHOTS.cardWbr.from} durationInFrames={AIFL_SHOTS.cardWbr.duration}>
+         <PaperTitleCard
+           duration={AIFL_SHOTS.cardWbr.duration}
+-          words={parseWords(TITLE_CARDS.cardWbr.text)}
++          words={parseWords(cards.cardWbr.text)}
+         />
+       </Sequence>
+       <Sequence from={AIFL_SHOTS.wbr.from} durationInFrames={AIFL_SHOTS.wbr.duration}>
+-        <SceneWbr />
++        <SceneWbr {...sceneProps.weeklyReport} />
+       </Sequence>
+       <Sequence from={AIFL_SHOTS.card3.from} durationInFrames={AIFL_SHOTS.card3.duration}>
+         <PaperTitleCard
+           duration={AIFL_SHOTS.card3.duration}
+-          words={parseWords(TITLE_CARDS.card3.text)}
++          words={parseWords(cards.card3.text)}
+         />
+       </Sequence>
+       <Sequence from={AIFL_SHOTS.outro.from} durationInFrames={AIFL_SHOTS.outro.duration}>
+-        <SceneOutroLive />
++        <SceneOutroLive {...sceneProps.outro} />
+       </Sequence>
+       {/* narration captions over the live shots (under the flash cuts) */}
+-      {CAPTIONS.map((c) => (
++      {CAPTIONS.map((c, i) => (
+         <Sequence key={c.from} from={c.from} durationInFrames={c.duration}>
+-          <Caption text={c.text} duration={c.duration} />
++          <Caption text={captions?.[i] ?? c.text} duration={c.duration} />
+         </Sequence>
+       ))}
+       {/* warm flash cuts straddling scene changes */}
+--- upstream/template/src/themes/ThemedFilm.tsx
++++ runtime/template/src/themes/ThemedFilm.tsx
+@@ -1,7 +1,8 @@
+-import { AiflMain } from '../aifl/Main';
++import { AiflMain, type AiflMainProps } from '../aifl/Main';
+ import { resolveTheme, VisualThemeProvider } from './visual-theme';
+ 
+-export const ThemedFilm: React.FC<{theme?: string; colors?: Record<string,string>}> = ({theme, colors}) => {
++export type ThemedFilmProps = AiflMainProps & {theme?: string; colors?: Record<string,string>; assetBase?: string};
++export const ThemedFilm: React.FC<ThemedFilmProps> = ({theme, colors, assetBase = 'sources/video-shotcraft/ink-press', ...film}) => {
+   const selected = resolveTheme(theme);
+-  return <VisualThemeProvider theme={selected.id} colors={colors}><AiflMain /></VisualThemeProvider>;
++  return <VisualThemeProvider theme={selected.id} colors={colors} assetBase={assetBase}><AiflMain {...film} /></VisualThemeProvider>;
+ };
+--- upstream/template/src/themes/visual-theme.tsx
++++ runtime/template/src/themes/visual-theme.tsx
+@@ -11,7 +11,7 @@
+   shadowRgb: '20,34,56', pageRgb: '244,247,251', lightRgb: '239,245,255',
+   accentRgb: '37,99,235', stage: '#142238', font,
+ };
+-export type VisualTheme = typeof THEME;
++export type VisualTheme = typeof THEME & { assetBase?: string };
+ const rgb = (hex: string) => [1,3,5].map(i => parseInt(hex.slice(i,i+2),16)).join(',');
+ export const VISUAL_THEMES: Record<ThemeId, VisualTheme> = {
+   'ink-press': {...THEME, id:'ink-press', page:'#f2eee6'},
+@@ -26,8 +26,8 @@
+   return {...p,pageRgb:rgb(p.page),accentRgb:rgb(p.accent),shadowRgb:rgb(p.text),lightRgb:rgb(p.surface),stage:p.field};
+ };
+ const ThemeContext = createContext(VISUAL_THEMES['ink-press']);
+-export const VisualThemeProvider: FC<{theme?: string; colors?: Record<string,string>; children: ReactNode}> = ({theme, colors, children}) =>
+-  <ThemeContext.Provider value={resolveTheme(theme, colors)}>{children}</ThemeContext.Provider>;
++export const VisualThemeProvider: FC<{theme?: string; colors?: Record<string,string>; assetBase?: string; children: ReactNode}> = ({theme, colors, assetBase, children}) =>
++  <ThemeContext.Provider value={{...resolveTheme(theme, colors), assetBase}}>{children}</ThemeContext.Provider>;
+ export const useVisualTheme = () => useContext(ThemeContext);
+ export const rgba = (color: string, alpha: number) =>
+   `color-mix(in srgb, ${color} ${Math.max(0, Math.min(1, alpha)) * 100}%, transparent)`;
+@@ -37,7 +37,7 @@
+     if (!asset) throw new Error(`Missing editable texture: ${src}`);
+     return asset;
+   }
+-  return staticFile(src);
++  return staticFile(`${(theme.assetBase ?? 'sources/video-shotcraft/ink-press').replace(/\/$/, '')}/${src}`);
+ };
+ // Roles of the original scene materials. Warm light is illumination, not an
+ // amber UI accent; unknown RGB colors are left alone instead of guessed.

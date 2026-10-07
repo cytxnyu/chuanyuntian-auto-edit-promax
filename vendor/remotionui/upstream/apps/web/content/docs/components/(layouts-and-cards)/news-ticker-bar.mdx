@@ -1,0 +1,22 @@
+---
+title: News Ticker Bar
+description: A broadcast lower bar with a standing flag and a headline crawl.
+---
+
+import { NewsTickerBarPreview } from '@/components/previews/news-ticker-bar';
+
+<ComponentPage name="news-ticker-bar" preview={NewsTickerBarPreview}>
+
+The bar rises from the frame edge, the flag wipes out ahead of the crawl, and the
+headlines run continuously: two copies of the run chase each other so the loop
+never shows a seam. Headlines dissolve into the right edge instead of being
+sliced off against the dateline.
+
+`infinite-marquee` is the generic looping-text primitive. This is the dressed
+news bar built on the same idea, with the flag, strapline and timestamp furniture
+a broadcast frame needs. Drop `strapline` for a single-line bar.
+
+Crawl speed is `pixelsPerSecond` in layout units, so it stays consistent across
+frame sizes.
+
+</ComponentPage>

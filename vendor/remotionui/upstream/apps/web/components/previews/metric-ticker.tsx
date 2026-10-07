@@ -1,0 +1,16 @@
+"use client";
+
+import { MetricTicker } from "../../registry/bases/default/scenes/metric-ticker";
+import { DEMO_METRICS } from "@/lib/demo-assets";
+import { ScenePreviewPlate } from "./scene-preview-plate";
+
+export const MetricTickerPreview: React.FC = () => (
+  <ScenePreviewPlate direct>
+    <MetricTicker
+      eyebrow="Quarter recap"
+      title="Channel momentum"
+      metrics={DEMO_METRICS}
+      holdSeconds={3.28}
+    />
+  </ScenePreviewPlate>
+);

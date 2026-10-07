@@ -1,0 +1,15 @@
+{
+  "command": "node scripts/sources/shotcraft-bulk-verify.mjs",
+  "exitStatus": 0,
+  "preservedOriginalEntries": 4,
+  "mappedExports": 231,
+  "compileReadyNewEntries": 230,
+  "helpersNotCountedAsScenes": 2,
+  "assetMappings": 1133,
+  "dependencyClosureFingerprints": 659,
+  "originalCheckoutFilesUnchanged": 504,
+  "bulkRuntimeFiles": 322,
+  "renderVerified": false,
+  "fullRenderCount": 0,
+  "result": "PASS: original bytes, preserved entries, callable catalog parity, assets, hashes, compile tier"
+}

@@ -1,0 +1,59 @@
+{
+  "name": "remotion-ui-mcp",
+  "version": "0.1.1",
+  "description": "MCP server exposing the RemotionUI component registry as agent tools.",
+  "homepage": "https://remotionui.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/riaz37/remotion-ui.git",
+    "directory": "packages/remotion-ui-mcp"
+  },
+  "bugs": {
+    "url": "https://github.com/riaz37/remotion-ui/issues"
+  },
+  "keywords": [
+    "remotion",
+    "remotion-ui",
+    "mcp",
+    "model-context-protocol",
+    "agent-tools",
+    "registry"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "remotion-ui-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "prepublishOnly": "pnpm build",
+    "dev": "tsup --watch",
+    "lint": "tsc --noEmit",
+    "test": "vitest run",
+    "publish:npm": "npm publish --access public"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "remotion-ui": "^0.9.1",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@remotionui/typescript-config": "workspace:*",
+    "@types/node": "^26.5.1",
+    "tsup": "^8.3.6",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.11"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

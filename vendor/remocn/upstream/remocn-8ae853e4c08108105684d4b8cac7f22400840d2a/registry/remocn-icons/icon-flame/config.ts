@@ -1,0 +1,51 @@
+import { type ComponentConfig, FPS } from "@/lib/customizer-config";
+
+export const iconFlameConfig: ComponentConfig = {
+  componentName: "FlameIcon",
+  importPath: "@/components/remocn/icon-flame",
+  controls: {
+    animation: {
+      type: "enum",
+      default: "both",
+      variants: {
+        draw: {},
+        action: {},
+        both: {},
+      },
+      description: "Animation",
+    },
+    loop: {
+      type: "boolean",
+      default: true,
+      description: "Loop",
+    },
+    size: {
+      type: "number",
+      min: 24,
+      max: 200,
+      step: 4,
+      default: 48,
+      description: "Size",
+      hiddenFromList: false,
+    },
+    color: {
+      type: "color",
+      default: "#171717",
+      description: "Color",
+    },
+    strokeWidth: {
+      type: "number",
+      min: 1,
+      max: 3,
+      step: 0.25,
+      default: 2,
+      description: "Stroke width",
+      hiddenFromList: false,
+    },
+  },
+  dimensions: { width: 48, height: 48 },
+  durationInFrames: 90,
+  fps: FPS,
+  compositionWidth: 48,
+  compositionHeight: 48,
+};

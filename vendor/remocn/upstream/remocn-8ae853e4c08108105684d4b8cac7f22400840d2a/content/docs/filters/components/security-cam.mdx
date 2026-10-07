@@ -1,0 +1,174 @@
+---
+title: Security Cam
+description: Run a scene through a cheap recorder — macroblocks, collapsed colour, crushed blacks, crawling noise
+component: security-cam
+vibe: tech
+length: sustained
+useWhen:
+  - "A beat should play as surveillance footage — a cold open, a 'meanwhile, in production' aside, anything that wants to read as captured rather than presented."
+  - "You want the scene to arrive as a recording and then snap to the real thing — interpolate intensity to 0 on a hard cut."
+  - "The story is about a feed degrading — drive compression up and the picture falls apart into blocks the way a starved stream does."
+avoidWhen:
+  - "The story is the glass a shot was taken through rather than the recorder it was written to — use `camera-lens`."
+  - "The story is a tube being watched — use `crt-screen`, which is a display rather than a codec."
+  - "You want analog wear — tape smears colour sideways along the scanline; this quantizes it into blocks, which is a different century."
+---
+
+<ComponentPreview name="security-cam" />
+
+<CanvasFilterNote />
+
+<InstallBlock name="security-cam" />
+
+## Usage
+
+`SecurityCam` is a wrapper. Put a scene inside it and it comes back as something
+that went through a cheap recorder: the picture flattens into macroblocks where
+the bitrate could not keep up, colour resolution collapses to half the detail of
+brightness, blacks crush, the exposure hunts slightly, and noise crawls in the
+shadows.
+
+```tsx
+import { SecurityCam } from "@/components/remocn/security-cam";
+
+export const MyScene = () => (
+  <SecurityCam>
+    <Scene />
+  </SecurityCam>
+);
+```
+
+## Why there is no fisheye here
+
+The obvious build is a wide bow plus desaturation, and it is a trap: bending the
+frame is what `crt-screen` does, and a filter whose identity is a warp ends up
+reading as a curved display with the scanlines missing. `camera-lens` already
+covers optics, and it has a `distortion` prop if you want a wide-angle bow —
+nest the two and you get a wide lens feeding a cheap recorder.
+
+What makes footage look like surveillance is not the lens, it is the **codec**.
+So that is what this is: macroblocking and chroma subsampling, the two artifacts
+every starved video stream has and no display ever produces.
+
+## What to reach for it for
+
+### Open cold, then cut to the truth
+
+The strongest use. The scene plays as a recording, and on a hard cut the
+surveillance drops away and the real interface is underneath — the same shot,
+suddenly clean.
+
+<ComponentExample name="security-cold-open" />
+
+```tsx
+import { interpolate, useCurrentFrame } from "remotion";
+import { SecurityCam } from "@/components/remocn/security-cam";
+
+export const Opening = () => {
+  const frame = useCurrentFrame();
+  const intensity = interpolate(frame, [0, 40, 44], [1, 1, 0], {
+    extrapolateRight: "clamp",
+  });
+
+  return (
+    <SecurityCam intensity={intensity}>
+      <Scene />
+    </SecurityCam>
+  );
+};
+```
+
+Cut, do not fade. A recording that dissolves into a clean render is a
+crossfade; one that switches in a single frame is an edit.
+
+### Give it an OSD
+
+The wrapper adds nothing of its own — no timestamp, no camera label, no
+recording dot. Those belong to your scene, and putting them **inside** the
+wrapper is what sells it: burned-in overlays get compressed along with
+everything else, exactly as a real recorder writes them.
+
+<ComponentExample name="security-feed" />
+
+```tsx
+<SecurityCam>
+  <AbsoluteFill>
+    <Scene />
+    <CameraOsd />
+  </AbsoluteFill>
+</SecurityCam>
+```
+
+### Starve the bitrate
+
+Drive `compression` and `blockSize` together and the feed collapses: detail
+dissolves into flat squares, colour smears across blocks twice their size, and
+the picture becomes something you can only just read. Good for a moment of
+things going wrong.
+
+<ComponentExample name="security-bitrate" />
+
+```tsx
+const starve = interpolate(frame, [0, 36], [0.15, 1], {
+  extrapolateRight: "clamp",
+});
+const block = interpolate(frame, [0, 36], [6, 26], {
+  extrapolateRight: "clamp",
+});
+```
+
+<PropsTable title="Props"
+  rows={[
+    {
+      name: "compression",
+      type: "number",
+      default: "0.7",
+      description:
+        "How hard the codec is squeezing. Pulls each block toward its own average, coarsens the brightness quantizer, and collapses colour onto blocks twice the size. At 0 the picture keeps its detail and only the tone and noise remain.",
+    },
+    {
+      name: "blockSize",
+      type: "number",
+      default: "10",
+      description:
+        "Macroblock edge in composition units. Colour is always sampled on blocks twice this size, which is what makes the result read as video rather than as a mosaic.",
+    },
+    {
+      name: "noise",
+      type: "number",
+      default: "0.6",
+      description:
+        "Sensor grain, weighted toward the shadows the way a small sensor at high gain behaves. Bright areas stay comparatively clean.",
+    },
+    {
+      name: "intensity",
+      type: "number",
+      default: "1",
+      description:
+        "Master amount. Read every frame, so cutting it to 0 hands the clean scene back in a single frame. At 0 the scene passes through exactly as it was.",
+    },
+    {
+      name: "children",
+      type: "React.ReactNode",
+      description: "The scene the filter wraps and re-reads every frame.",
+    },
+  ]}
+/>
+
+## Notes
+
+Colour is sampled on blocks twice the size of the brightness blocks, which is the
+detail doing most of the work. Real video codecs throw away colour resolution
+first because the eye barely notices — until it does, and a red badge bleeds
+across a square it does not belong to. That mismatch between sharp brightness and
+blocky colour is what the eye reads as "compressed", and it is a genuinely
+different artifact from the sideways chroma smear of `vhs-filter`.
+
+The only motion is a slow exposure pump on a 90-frame cycle and the shadow noise,
+which is reseeded per frame from a 64-frame clock. Both are pure functions of the
+frame number, so parallel renders match and nothing drifts.
+
+In browsers without html-in-canvas the scene keeps the wash and the vignette but
+not the blocking. Quantizing a frame into macroblocks is not something a
+stylesheet can do, and a plain blur pretending to be compression would be a
+different artifact wearing this one's name.

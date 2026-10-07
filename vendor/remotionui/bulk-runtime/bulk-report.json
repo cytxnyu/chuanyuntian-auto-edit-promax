@@ -1,0 +1,1520 @@
+{
+  "provider": "remotionui",
+  "revision": "b7e0e6becc3d22b8b03dfef72c064f72ff9fad1f",
+  "registryEntries": 254,
+  "copiedFiles": 266,
+  "originalPreservedAt": "vendor/remotionui/upstream",
+  "originalGitDirectoryExcluded": true,
+  "existingCallablePreserved": [
+    "remotionui/social-clip",
+    "remotionui/title-card",
+    "remotionui/quote-card"
+  ],
+  "addedCallableExports": 197,
+  "totalCallableExports": 200,
+  "dependencyItems": [
+    {
+      "id": "remotionui/timing",
+      "category": "registry:lib",
+      "source": "vendor/remotionui/bulk-runtime/lib/timing.ts",
+      "exports": [
+        "DEFAULT_FPS",
+        "EASING_ENTER",
+        "EASING_EXIT",
+        "secondsToFrames",
+        "framesToSeconds",
+        "staggerDelay",
+        "enterProgress",
+        "exitProgress"
+      ]
+    },
+    {
+      "id": "remotionui/springs",
+      "category": "registry:lib",
+      "source": "vendor/remotionui/bulk-runtime/lib/springs.ts",
+      "exports": [
+        "springSmooth",
+        "springSnappy",
+        "springBouncy"
+      ]
+    },
+    {
+      "id": "remotionui/transition-timing",
+      "category": "registry:lib",
+      "source": "vendor/remotionui/bulk-runtime/lib/transition-timing.ts",
+      "exports": [
+        "TransitionVariant",
+        "resolveTransitionTiming",
+        "TransitionDirection",
+        "TransitionPhase",
+        "TransitionPhaseOptions",
+        "transitionPhase"
+      ]
+    },
+    {
+      "id": "remotionui/ai-composer-utils",
+      "category": "registry:lib",
+      "source": "vendor/remotionui/bulk-runtime/lib/ai-composer-utils.tsx",
+      "exports": [
+        "AI_TYPING_START",
+        "AI_TYPING_START_TUI",
+        "AI_TYPING_CPS",
+        "stageScale",
+        "TypewriterOptions",
+        "TypewriterState",
+        "useTypewriter",
+        "morphProgressAt",
+        "SendBeat",
+        "sendBeatAt",
+        "replyDotOpacity",
+        "introBounceIn",
+        "fadeUpAt",
+        "caretBlinkOpacity",
+        "CaretProps",
+        "Caret"
+      ]
+    },
+    {
+      "id": "remotionui/code-syntax",
+      "category": "registry:lib",
+      "source": "vendor/remotionui/bulk-runtime/lib/code-syntax.tsx",
+      "exports": [
+        "CodeTokenKind",
+        "CodeToken",
+        "CodeTheme",
+        "MONO_ADVANCE",
+        "CODE_THEMES",
+        "tokenizeLine",
+        "tokenizeCode",
+        "CodeLineProps",
+        "CodeLine",
+        "lineLength"
+      ]
+    },
+    {
+      "id": "remotionui/text-emphasis",
+      "category": "registry:lib",
+      "source": "vendor/remotionui/bulk-runtime/lib/text-emphasis.ts",
+      "exports": [
+        "EmphasisWord",
+        "markEmphasis",
+        "markerEdges"
+      ]
+    },
+    {
+      "id": "remotionui/motion-tokens",
+      "category": "registry:lib",
+      "source": "vendor/remotionui/bulk-runtime/lib/motion-tokens.ts",
+      "exports": [
+        "DURATION",
+        "DELAY",
+        "STAGGER",
+        "EMPHASIS",
+        "EASING"
+      ]
+    },
+    {
+      "id": "remotionui/gpu",
+      "category": "registry:lib",
+      "source": "vendor/remotionui/bulk-runtime/lib/gpu.ts",
+      "exports": [
+        "ShaderEffectState",
+        "ShaderEffectOptions",
+        "makeShaderEffect",
+        "hexToRgb"
+      ]
+    },
+    {
+      "id": "remotionui/layout",
+      "category": "registry:lib",
+      "source": "vendor/remotionui/bulk-runtime/lib/layout.ts",
+      "exports": [
+        "SafePaddingOptions",
+        "SafeAreaPadding",
+        "getSafeAreaPadding",
+        "getSafePadding",
+        "scaleFont",
+        "Rect",
+        "clampRectToSafeArea",
+        "PREVIEW_LANDSCAPE",
+        "PREVIEW_PORTRAIT",
+        "PREVIEW_HD"
+      ]
+    },
+    {
+      "id": "remotionui/motion-wrapper",
+      "category": "registry:lib",
+      "source": "vendor/remotionui/bulk-runtime/lib/motion-wrapper.tsx",
+      "exports": [
+        "MotionWrapperProps",
+        "MotionWrapper"
+      ]
+    },
+    {
+      "id": "remotionui/motion-primitive",
+      "category": "registry:lib",
+      "source": "vendor/remotionui/bulk-runtime/lib/motion-primitive.ts",
+      "exports": [
+        "SpringPreset",
+        "MotionSpring",
+        "resolveSpringConfig",
+        "DEFAULT_ENTER_FRAMES",
+        "defaultExitFrames",
+        "EnterExitOptions",
+        "MotionPrimitiveProps",
+        "MotionState",
+        "useEnterExit",
+        "TransformOrigin",
+        "resolveOrigin"
+      ]
+    },
+    {
+      "id": "remotionui/use-stagger",
+      "category": "registry:hook",
+      "source": "vendor/remotionui/bulk-runtime/hooks/use-stagger.ts",
+      "exports": [
+        "UseStaggerOptions",
+        "useStagger"
+      ]
+    },
+    {
+      "id": "remotionui/transition-fade",
+      "category": "registry:ui",
+      "source": "vendor/remotionui/bulk-runtime/primitives/transition-fade.tsx",
+      "exports": [
+        "FadeProps",
+        "crossfade",
+        "TransitionFadeConfig",
+        "transitionFade",
+        "getTransitionFadeDuration"
+      ]
+    },
+    {
+      "id": "remotionui/transition-slide",
+      "category": "registry:ui",
+      "source": "vendor/remotionui/bulk-runtime/primitives/transition-slide.tsx",
+      "exports": [
+        "SlideDirection",
+        "TransitionSlideConfig",
+        "transitionSlide",
+        "getTransitionSlideDuration"
+      ]
+    },
+    {
+      "id": "remotionui/caption-utils",
+      "category": "registry:lib",
+      "source": "vendor/remotionui/bulk-runtime/lib/caption-utils.ts",
+      "exports": [
+        "DEFAULT_CAPTION_PAGE_MS",
+        "groupCaptionsIntoPages",
+        "getAbsoluteTimeMs",
+        "isTokenActive",
+        "getTokenRelativeFrames",
+        "getTokenEmphasis",
+        "SubtitleCue",
+        "parseSubtitles",
+        "WordTiming",
+        "cuesToCaptions",
+        "parseSubtitlesToCaptions",
+        "getPageSequenceTiming"
+      ]
+    },
+    {
+      "id": "remotionui/audio-viz-utils",
+      "category": "registry:lib",
+      "source": "vendor/remotionui/bulk-runtime/lib/audio-viz-utils.ts",
+      "exports": [
+        "DEFAULT_AUDIO_WINDOW_SECONDS",
+        "SpectrumBandOptions",
+        "SPECTRUM_DEFAULTS",
+        "toSpectrumBands",
+        "EnvelopeOptions",
+        "ENVELOPE_DEFAULTS",
+        "followEnvelope",
+        "followPeaks",
+        "bandEnergy",
+        "idleBands",
+        "UseSpectrumBarsOptions",
+        "useSpectrumBars",
+        "UseAudioBandsOptions",
+        "AudioBands",
+        "useAudioBands",
+        "AudioBandSelector",
+        "UseAudioAmplitudeOptions",
+        "AudioAmplitude",
+        "useAudioAmplitude",
+        "scaleFrequenciesForDisplay",
+        "downsampleSpectrum"
+      ]
+    },
+    {
+      "id": "remotionui/map-utils",
+      "category": "registry:lib",
+      "source": "vendor/remotionui/bulk-runtime/lib/map-utils.ts",
+      "exports": [
+        "LngLat",
+        "DEFAULT_MAP_STYLE",
+        "MAP_THEME",
+        "DEMO_ROUTE",
+        "DEMO_MARKERS",
+        "clampProgress",
+        "distanceAlong",
+        "greatCircleLine",
+        "sliceRouteByProgress",
+        "pointAlongRoute",
+        "createMarkerCollection",
+        "getCameraOptions",
+        "MapInitOptions",
+        "createMapInstance",
+        "isMapStyleReady",
+        "hasMapLayer",
+        "hasMapSource",
+        "removeMapLayer",
+        "removeMapSource",
+        "mapVignetteStyle"
+      ]
+    },
+    {
+      "id": "remotionui/path-utils",
+      "category": "registry:lib",
+      "source": "vendor/remotionui/bulk-runtime/lib/path-utils.ts",
+      "exports": [
+        "PathPoint",
+        "PathSample",
+        "pathLength",
+        "pathBoundingBox",
+        "clampProgress",
+        "getPathDrawStyles",
+        "fitViewBox",
+        "samplePath",
+        "waypointsToPath",
+        "waypointProgress"
+      ]
+    },
+    {
+      "id": "remotionui/transition-wipe",
+      "category": "registry:ui",
+      "source": "vendor/remotionui/bulk-runtime/primitives/transition-wipe.tsx",
+      "exports": [
+        "WipeDirection",
+        "TransitionWipeConfig",
+        "transitionWipe",
+        "getTransitionWipeDuration"
+      ]
+    },
+    {
+      "id": "remotionui/transition-clock-wipe",
+      "category": "registry:ui",
+      "source": "vendor/remotionui/bulk-runtime/primitives/transition-clock-wipe.tsx",
+      "exports": [
+        "ClockWipeProps",
+        "autoClockWipe",
+        "TransitionClockWipeConfig",
+        "transitionClockWipe",
+        "getTransitionClockWipeDuration"
+      ]
+    },
+    {
+      "id": "remotionui/blur-reveal",
+      "category": "registry:ui",
+      "source": "vendor/remotionui/bulk-runtime/primitives/blur-reveal.tsx",
+      "exports": [
+        "BlurRevealProps",
+        "blurReveal",
+        "TransitionBlurRevealConfig",
+        "transitionBlurReveal",
+        "getTransitionBlurRevealDuration"
+      ]
+    },
+    {
+      "id": "remotionui/grid-pixelate-wipe",
+      "category": "registry:ui",
+      "source": "vendor/remotionui/bulk-runtime/primitives/grid-pixelate-wipe.tsx",
+      "exports": [
+        "GridPixelateOrder",
+        "GridPixelateShape",
+        "GridPixelateWipeProps",
+        "gridPixelateWipe",
+        "TransitionGridPixelateWipeConfig",
+        "transitionGridPixelateWipe",
+        "getTransitionGridPixelateWipeDuration"
+      ]
+    },
+    {
+      "id": "remotionui/frosted-glass-wipe",
+      "category": "registry:ui",
+      "source": "vendor/remotionui/bulk-runtime/primitives/frosted-glass-wipe.tsx",
+      "exports": [
+        "FrostedGlassDirection",
+        "FrostedGlassWipeProps",
+        "frostedGlassWipe",
+        "TransitionFrostedGlassWipeConfig",
+        "transitionFrostedGlassWipe",
+        "getTransitionFrostedGlassWipeDuration"
+      ]
+    },
+    {
+      "id": "remotionui/directional-wipe",
+      "category": "registry:ui",
+      "source": "vendor/remotionui/bulk-runtime/primitives/directional-wipe.tsx",
+      "exports": [
+        "DirectionalWipeDirection",
+        "DirectionalWipeProps",
+        "directionalWipe",
+        "TransitionDirectionalWipeConfig",
+        "transitionDirectionalWipe",
+        "getTransitionDirectionalWipeDuration"
+      ]
+    },
+    {
+      "id": "remotionui/spatial-push",
+      "category": "registry:ui",
+      "source": "vendor/remotionui/bulk-runtime/primitives/spatial-push.tsx",
+      "exports": [
+        "SpatialPushDirection",
+        "SpatialPushProps",
+        "spatialPush",
+        "TransitionSpatialPushConfig",
+        "transitionSpatialPush",
+        "getTransitionSpatialPushDuration"
+      ]
+    },
+    {
+      "id": "remotionui/chromatic-aberration-wipe",
+      "category": "registry:ui",
+      "source": "vendor/remotionui/bulk-runtime/primitives/chromatic-aberration-wipe.tsx",
+      "exports": [
+        "ChromaticAberrationAxis",
+        "ChromaticAberrationWipeProps",
+        "chromaticAberrationWipe",
+        "TransitionChromaticAberrationWipeConfig",
+        "transitionChromaticAberrationWipe",
+        "getTransitionChromaticAberrationWipeDuration"
+      ]
+    },
+    {
+      "id": "remotionui/zoom-through",
+      "category": "registry:ui",
+      "source": "vendor/remotionui/bulk-runtime/primitives/zoom-through.tsx",
+      "exports": [
+        "ZoomThroughDirection",
+        "ZoomThroughProps",
+        "zoomThrough",
+        "TransitionZoomThroughConfig",
+        "transitionZoomThrough",
+        "getTransitionZoomThroughDuration"
+      ]
+    },
+    {
+      "id": "remotionui/media-utils",
+      "category": "registry:lib",
+      "source": "vendor/remotionui/bulk-runtime/lib/media-utils.ts",
+      "exports": [
+        "MediaFit",
+        "MediaItem",
+        "MediaWindow",
+        "getMediaObjectFitStyle",
+        "resolveMediaWindows",
+        "getTotalMediaDuration",
+        "isVideoSource"
+      ]
+    },
+    {
+      "id": "remotionui/chart-utils",
+      "category": "registry:lib",
+      "source": "vendor/remotionui/bulk-runtime/lib/chart-utils.ts",
+      "exports": [
+        "ChartDatum",
+        "ChartPoint",
+        "ChartDomain",
+        "PlotArea",
+        "PlotInsets",
+        "PlottedPoint",
+        "getChartDomain",
+        "niceDomain",
+        "scaleValue",
+        "getPlotArea",
+        "plotPoints",
+        "buildLinePath",
+        "buildSmoothPath",
+        "buildAreaPath",
+        "formatCompactNumber",
+        "formatAxisValue",
+        "readDelta"
+      ]
+    },
+    {
+      "id": "remotionui/text-fit-utils",
+      "category": "registry:lib",
+      "source": "vendor/remotionui/bulk-runtime/lib/text-fit-utils.ts",
+      "exports": [
+        "FitHeadlineOptions",
+        "fitHeadline"
+      ]
+    },
+    {
+      "id": "remotionui/text-split",
+      "category": "registry:lib",
+      "source": "vendor/remotionui/bulk-runtime/lib/text-split.ts",
+      "exports": [
+        "SplitMode",
+        "SplitOrder",
+        "SplitUnit",
+        "SplitWord",
+        "SplitLine",
+        "SplitResult",
+        "splitText",
+        "staggerRanks",
+        "SplitTimingOptions",
+        "SPLIT_STAGGER_DEFAULTS",
+        "SPLIT_DURATION_DEFAULTS",
+        "SplitUnitState",
+        "SplitTextState",
+        "useSplitText"
+      ]
+    },
+    {
+      "id": "remotionui/path-morph",
+      "category": "registry:lib",
+      "source": "vendor/remotionui/bulk-runtime/lib/path-morph.ts",
+      "exports": [
+        "MorphPair",
+        "alignForMorph",
+        "FitToBoxOptions",
+        "fitToBox",
+        "MorphOptions",
+        "prepareMorph",
+        "morphPath",
+        "morphBetween",
+        "prepareMorphSequence",
+        "morphSequence",
+        "MORPH_SHAPES",
+        "MorphShapeName"
+      ]
+    },
+    {
+      "id": "remotionui/displacement-transition",
+      "category": "registry:lib",
+      "source": "vendor/remotionui/bulk-runtime/lib/displacement-transition.ts",
+      "exports": [
+        "DisplacementProfile",
+        "DisplacementCoreConfig",
+        "DISPLACEMENT_DEFAULTS",
+        "displacementIntensity",
+        "DisplacementFrameState",
+        "displacementFrame",
+        "overscanFor",
+        "DISPLACEMENT_EPSILON",
+        "DisplacementMaskConfig",
+        "MASK_DEFAULTS",
+        "prepareMaskMorph",
+        "MaskFrameState",
+        "maskFrame"
+      ]
+    },
+    {
+      "id": "remotionui/displacement-presentation",
+      "category": "registry:lib",
+      "source": "vendor/remotionui/bulk-runtime/lib/displacement-presentation.tsx",
+      "exports": [
+        "DisplacementPresentationProps",
+        "displacementPresentation",
+        "TransitionDisplacementConfig",
+        "transitionDisplacement",
+        "getTransitionDisplacementDuration"
+      ]
+    },
+    {
+      "id": "remotionui/sample-media",
+      "category": "registry:lib",
+      "source": "vendor/remotionui/bulk-runtime/lib/sample-media.ts",
+      "exports": [
+        "SAMPLE_AUDIO_SRC",
+        "SAMPLE_STILL_SRC",
+        "SAMPLE_STILL_ALT_SRC",
+        "SAMPLE_STILL_THIRD_SRC",
+        "SAMPLE_CAPTIONS"
+      ]
+    },
+    {
+      "id": "remotionui/transition-circle-reveal",
+      "category": "registry:ui",
+      "source": "vendor/remotionui/bulk-runtime/primitives/transition-circle-reveal.tsx",
+      "exports": [
+        "CircleRevealProps",
+        "circleReveal",
+        "TransitionCircleRevealConfig",
+        "transitionCircleReveal",
+        "getTransitionCircleRevealDuration"
+      ]
+    },
+    {
+      "id": "remotionui/transition-card-flip",
+      "category": "registry:ui",
+      "source": "vendor/remotionui/bulk-runtime/primitives/transition-card-flip.tsx",
+      "exports": [
+        "CardFlipAxis",
+        "CardFlipProps",
+        "cardFlip",
+        "TransitionCardFlipConfig",
+        "transitionCardFlip",
+        "getTransitionCardFlipDuration"
+      ]
+    },
+    {
+      "id": "remotionui/transition-blinds",
+      "category": "registry:ui",
+      "source": "vendor/remotionui/bulk-runtime/primitives/transition-blinds.tsx",
+      "exports": [
+        "BlindsOrientation",
+        "BlindsProps",
+        "blinds",
+        "TransitionBlindsConfig",
+        "transitionBlinds",
+        "getTransitionBlindsDuration"
+      ]
+    },
+    {
+      "id": "remotionui/transition-whip-pan",
+      "category": "registry:ui",
+      "source": "vendor/remotionui/bulk-runtime/primitives/transition-whip-pan.tsx",
+      "exports": [
+        "WhipPanDirection",
+        "WhipPanProps",
+        "whipPan",
+        "TransitionWhipPanConfig",
+        "transitionWhipPan",
+        "getTransitionWhipPanDuration"
+      ]
+    },
+    {
+      "id": "remotionui/transition-morph-shape",
+      "category": "registry:ui",
+      "source": "vendor/remotionui/bulk-runtime/primitives/transition-morph-shape.tsx",
+      "exports": [
+        "MorphShapeProps",
+        "SHAPE_OVERSHOOT",
+        "MORPH_SHAPE_DEFAULTS",
+        "morphShape",
+        "TransitionMorphShapeConfig",
+        "transitionMorphShape",
+        "getTransitionMorphShapeDuration"
+      ]
+    },
+    {
+      "id": "remotionui/transition-liquid-warp",
+      "category": "registry:ui",
+      "source": "vendor/remotionui/bulk-runtime/primitives/transition-liquid-warp.tsx",
+      "exports": [
+        "LiquidWarpProps",
+        "LIQUID_WARP_DEFAULTS",
+        "liquidWarp",
+        "TransitionLiquidWarpConfig",
+        "transitionLiquidWarp",
+        "getTransitionLiquidWarpDuration"
+      ]
+    },
+    {
+      "id": "remotionui/paper-shader",
+      "category": "registry:lib",
+      "source": "vendor/remotionui/bulk-runtime/lib/paper-shader.tsx",
+      "exports": [
+        "PaperShader",
+        "usePaperShader",
+        "PAPER_SHADER_FILL"
+      ]
+    },
+    {
+      "id": "remotionui/ae-motion",
+      "category": "registry:lib",
+      "source": "vendor/remotionui/bulk-runtime/lib/ae-motion.ts",
+      "exports": [
+        "Vec2",
+        "KeyValue",
+        "TemporalEase",
+        "KeyInterpolation",
+        "Keyframe",
+        "KeyframeTrack",
+        "LoopType",
+        "LoopSpec",
+        "TrackOptions",
+        "ExpressionContext",
+        "Animatable",
+        "DEFAULT_FPS",
+        "EASY_EASE",
+        "easyEase",
+        "solveBezierX",
+        "cubicBezierAt",
+        "easeToCubicBezier",
+        "sampleTrack",
+        "valueAtTime",
+        "velocityAtFrame",
+        "orientAtFrame",
+        "resolveAnimatable",
+        "hash01",
+        "noise1",
+        "noise3",
+        "WiggleOptions",
+        "wiggle",
+        "wiggleVec",
+        "Mat2D",
+        "IDENTITY",
+        "multiply",
+        "invert",
+        "translation",
+        "rotation",
+        "scaling",
+        "applyToPoint",
+        "toCssMatrix",
+        "LayerTransform",
+        "layerMatrix",
+        "transformPower",
+        "decompose",
+        "ParentedLayer",
+        "resolveParenting",
+        "toComp"
+      ]
+    },
+    {
+      "id": "remotionui/bezier-path",
+      "category": "registry:lib",
+      "source": "vendor/remotionui/bulk-runtime/lib/bezier-path.ts",
+      "exports": [
+        "Pt",
+        "Segment",
+        "BezierPath",
+        "lineSegment",
+        "parseD",
+        "toD",
+        "pointAt",
+        "tangentAt",
+        "splitSegment",
+        "subSegment",
+        "segmentLength",
+        "pathLength",
+        "uAtLength",
+        "PathSample",
+        "sampleAtLength",
+        "slicePath",
+        "joinPaths",
+        "mapPoints",
+        "vertexCentroid",
+        "signedArea",
+        "smoothThrough",
+        "polylineThrough"
+      ]
+    },
+    {
+      "id": "remotionui/curve-fit",
+      "category": "registry:lib",
+      "source": "vendor/remotionui/bulk-runtime/lib/curve-fit.ts",
+      "exports": [
+        "fitPolyline"
+      ]
+    },
+    {
+      "id": "remotionui/shape-ops",
+      "category": "registry:lib",
+      "source": "vendor/remotionui/bulk-runtime/lib/shape-ops.ts",
+      "exports": [
+        "ShapeSource",
+        "TrimOp",
+        "RepeaterOp",
+        "OffsetOp",
+        "WiggleOp",
+        "ZigZagOp",
+        "PuckerBloatOp",
+        "TransformOp",
+        "ShapeOperator",
+        "ShapeItem",
+        "buildShape",
+        "transformPath",
+        "zigZagPath",
+        "offsetPath",
+        "applyOperator",
+        "evaluateShapeStack",
+        "pointOnItem"
+      ]
+    },
+    {
+      "id": "remotionui/ae-import",
+      "category": "registry:lib",
+      "source": "vendor/remotionui/bulk-runtime/lib/lottie-geometry.ts",
+      "exports": [
+        "Direction",
+        "triplesToBezier",
+        "rectPath",
+        "ellipsePath",
+        "starPath"
+      ]
+    },
+    {
+      "id": "remotionui/text-selectors",
+      "category": "registry:lib",
+      "source": "vendor/remotionui/bulk-runtime/lib/text-selectors.ts",
+      "exports": [
+        "SelectorShape",
+        "SelectorMode",
+        "SelectorBasis",
+        "RangeSelector",
+        "WigglySelector",
+        "TextSelector",
+        "SelectorContext",
+        "easeSelection",
+        "rangeSelectorValues",
+        "wigglySelectorValues",
+        "evaluateSelectors",
+        "TextUnitIndex",
+        "indexGlyphs",
+        "AnimatorProperties",
+        "TextAnimatorLayer",
+        "GlyphState",
+        "computeGlyphStates"
+      ]
+    },
+    {
+      "id": "remotionui/glyph-layout",
+      "category": "registry:lib",
+      "source": "vendor/remotionui/bulk-runtime/lib/glyph-layout.ts",
+      "exports": [
+        "MeasureFn",
+        "GlyphBox",
+        "WordBox",
+        "LineBox",
+        "GlyphLayout",
+        "GlyphLayoutOptions",
+        "layoutGlyphs",
+        "GlyphRun",
+        "plainRuns"
+      ]
+    },
+    {
+      "id": "remotionui/mograph",
+      "category": "registry:lib",
+      "source": "vendor/remotionui/bulk-runtime/lib/mograph.ts",
+      "exports": [
+        "Vec3",
+        "ClonerLayout",
+        "Clone",
+        "layoutClones",
+        "FalloffField",
+        "FieldContext",
+        "sampleFields",
+        "Effector",
+        "Camera",
+        "CloneShape",
+        "cloneOutline",
+        "projectClone",
+        "CloneState",
+        "applyEffectors"
+      ]
+    },
+    {
+      "id": "remotionui/rig",
+      "category": "registry:lib",
+      "source": "vendor/remotionui/bulk-runtime/lib/rig.ts",
+      "exports": [
+        "TwoBoneOptions",
+        "TwoBoneSolution",
+        "softReach",
+        "solveTwoBone",
+        "HoseOptions",
+        "HoseSolution",
+        "rubberHose"
+      ]
+    },
+    {
+      "id": "remotionui/pen-plot",
+      "category": "registry:lib",
+      "source": "vendor/remotionui/bulk-runtime/lib/pen-plot.ts",
+      "exports": [
+        "PlotOptions",
+        "PlotPhase",
+        "PlotPlan",
+        "PenState",
+        "backInOut",
+        "planPlot",
+        "penAt",
+        "inkAt"
+      ]
+    },
+    {
+      "id": "remotionui/follow",
+      "category": "registry:lib",
+      "source": "vendor/remotionui/bulk-runtime/lib/follow.ts",
+      "exports": [
+        "FollowOptions",
+        "FollowState",
+        "followChain"
+      ]
+    },
+    {
+      "id": "remotionui/slit-geometry",
+      "category": "registry:lib",
+      "source": "vendor/remotionui/bulk-runtime/lib/slit-geometry.ts",
+      "exports": [
+        "SlitMode",
+        "SlitOptions",
+        "SlitGroup",
+        "slitGroups"
+      ]
+    }
+  ],
+  "missingEntries": [],
+  "importedUnresolved": [],
+  "packages": [
+    {
+      "name": "remotion",
+      "upstreamRange": "^4.0.524",
+      "usedBy": [
+        "remotionui/ai-composer-showcase",
+        "remotionui/ai-composer-utils",
+        "remotionui/ai-generation-canvas",
+        "remotionui/animated-bar-chart",
+        "remotionui/animated-noise-grain",
+        "remotionui/arrow-annotate",
+        "remotionui/audio-pulse",
+        "remotionui/audio-reactive-scale",
+        "remotionui/audio-scrubber",
+        "remotionui/audio-viz-utils",
+        "remotionui/audiogram-bars",
+        "remotionui/audiogram-scene",
+        "remotionui/aurora-bg",
+        "remotionui/auto-fit-title",
+        "remotionui/b-roll-stack",
+        "remotionui/badge-stamp",
+        "remotionui/bar-chart-race",
+        "remotionui/beat-pulse-grid",
+        "remotionui/bento-pan",
+        "remotionui/blob-morph",
+        "remotionui/blur-focus-in",
+        "remotionui/blur-in",
+        "remotionui/blur-reveal",
+        "remotionui/browser-flow",
+        "remotionui/bubble-chart-pack",
+        "remotionui/calendar-month-fill",
+        "remotionui/callout-spotlight",
+        "remotionui/candlestick-chart",
+        "remotionui/caption-bumper",
+        "remotionui/caption-emoji-beat",
+        "remotionui/caption-highlight",
+        "remotionui/caption-scene",
+        "remotionui/caption-utils",
+        "remotionui/card-stack-3d",
+        "remotionui/caustics-bg",
+        "remotionui/changelog-entry",
+        "remotionui/chat-gpt",
+        "remotionui/chat-to-preview",
+        "remotionui/chromatic-aberration-wipe",
+        "remotionui/claude-chat",
+        "remotionui/claude-code",
+        "remotionui/code-accordion",
+        "remotionui/code-diff-wipe",
+        "remotionui/code-reveal",
+        "remotionui/comment-callout",
+        "remotionui/commit-graph",
+        "remotionui/comparison-bars",
+        "remotionui/comparison-table",
+        "remotionui/confetti-burst",
+        "remotionui/connector-lines",
+        "remotionui/countdown-timer",
+        "remotionui/counter",
+        "remotionui/creator-reel",
+        "remotionui/cursor-path",
+        "remotionui/dashboard-populate",
+        "remotionui/dashed-path-travel",
+        "remotionui/data-flow-pipes",
+        "remotionui/data-story",
+        "remotionui/deploy-reveal",
+        "remotionui/depth-of-field-blur",
+        "remotionui/device-mockup-3d",
+        "remotionui/device-mockup-zoom",
+        "remotionui/directional-wipe",
+        "remotionui/displacement-presentation",
+        "remotionui/dither-field-bg",
+        "remotionui/donut-chart",
+        "remotionui/drag-drop-flow",
+        "remotionui/dynamic-grid",
+        "remotionui/ecosystem-orbit",
+        "remotionui/effector-field",
+        "remotionui/end-card",
+        "remotionui/fade-in",
+        "remotionui/fade-out",
+        "remotionui/faq-accordion",
+        "remotionui/feature-list",
+        "remotionui/file-tree-reveal",
+        "remotionui/follow-through",
+        "remotionui/form-fill-sequence",
+        "remotionui/frosted-glass-wipe",
+        "remotionui/funnel-chart",
+        "remotionui/gantt-timeline",
+        "remotionui/gauge-dial",
+        "remotionui/globe-arc",
+        "remotionui/globe-points-3d",
+        "remotionui/glow-pulse",
+        "remotionui/gpu",
+        "remotionui/grain-gradient-bg",
+        "remotionui/grid-pixelate-wipe",
+        "remotionui/handwriting-text",
+        "remotionui/heatmap-grid",
+        "remotionui/hero-device-assemble",
+        "remotionui/hero-loop",
+        "remotionui/hook-card",
+        "remotionui/ik-rig",
+        "remotionui/image-expand",
+        "remotionui/infinite-marquee",
+        "remotionui/intro",
+        "remotionui/kanban-move",
+        "remotionui/karaoke-captions",
+        "remotionui/landing-code-showcase",
+        "remotionui/light-rays",
+        "remotionui/light-sweep-text",
+        "remotionui/light-tunnel-bg",
+        "remotionui/line-chart-draw",
+        "remotionui/liquid-text-morph",
+        "remotionui/live-code-split",
+        "remotionui/logo-reveal",
+        "remotionui/logo-wall",
+        "remotionui/lower-third",
+        "remotionui/map-canvas",
+        "remotionui/map-flight",
+        "remotionui/map-heat-overlay",
+        "remotionui/map-markers",
+        "remotionui/map-route",
+        "remotionui/marker-highlight",
+        "remotionui/masked-slide-reveal",
+        "remotionui/matrix-decode",
+        "remotionui/media-frame",
+        "remotionui/media-sequence",
+        "remotionui/mesh-gradient-bg",
+        "remotionui/metric-ticker",
+        "remotionui/motion-primitive",
+        "remotionui/motion-tokens",
+        "remotionui/motion-trail",
+        "remotionui/multi-device-lineup",
+        "remotionui/neon-flicker-text",
+        "remotionui/news-ticker-bar",
+        "remotionui/notification-stack",
+        "remotionui/opencode",
+        "remotionui/orbit-motion",
+        "remotionui/org-chart-build",
+        "remotionui/paper-shader",
+        "remotionui/parallax-layers",
+        "remotionui/particle-field",
+        "remotionui/path-draw",
+        "remotionui/perspective-marquee",
+        "remotionui/pie-slice-reveal",
+        "remotionui/podcast-clip",
+        "remotionui/poll-overlay",
+        "remotionui/pricing-card",
+        "remotionui/pricing-focus",
+        "remotionui/product-turntable-3d",
+        "remotionui/progress-bar",
+        "remotionui/quiz-question",
+        "remotionui/quote-card",
+        "remotionui/radar-chart",
+        "remotionui/reaction-burst",
+        "remotionui/rgb-glitch-text",
+        "remotionui/roadmap-lanes",
+        "remotionui/rotate-in",
+        "remotionui/sample-media",
+        "remotionui/scale-in",
+        "remotionui/scanline-crt",
+        "remotionui/scatter-plot-pop",
+        "remotionui/scramble-text",
+        "remotionui/search-results-populate",
+        "remotionui/shake-emphasis",
+        "remotionui/shape-layer",
+        "remotionui/shape-morph",
+        "remotionui/showcase",
+        "remotionui/simulated-cursor",
+        "remotionui/skew-in",
+        "remotionui/slide-left",
+        "remotionui/slide-up",
+        "remotionui/slit-scan",
+        "remotionui/slot-roll",
+        "remotionui/social-clip",
+        "remotionui/sparkline-row",
+        "remotionui/spatial-push",
+        "remotionui/speaker-label-captions",
+        "remotionui/split-screen",
+        "remotionui/split-text-chars",
+        "remotionui/sports-scorebug",
+        "remotionui/spring-in",
+        "remotionui/springs",
+        "remotionui/squash-stretch",
+        "remotionui/srt-caption-track",
+        "remotionui/stacked-area-chart",
+        "remotionui/stagger-children",
+        "remotionui/staggered-fade-up",
+        "remotionui/stat-card",
+        "remotionui/strikethrough-replace",
+        "remotionui/stroke-to-fill-text",
+        "remotionui/subtitle-translate",
+        "remotionui/svg-mask-reveal",
+        "remotionui/tab-switch-panel",
+        "remotionui/talking-head-layout",
+        "remotionui/team-grid",
+        "remotionui/terminal-simulator",
+        "remotionui/text-animator",
+        "remotionui/text-extrude-3d",
+        "remotionui/text-mask-video",
+        "remotionui/text-reveal-shader",
+        "remotionui/text-selectors",
+        "remotionui/text-split",
+        "remotionui/timeline-steps",
+        "remotionui/timing",
+        "remotionui/title-card",
+        "remotionui/tool-menu-slide",
+        "remotionui/topographic-lines-bg",
+        "remotionui/track-matte",
+        "remotionui/tracking-in",
+        "remotionui/transcript-scroll",
+        "remotionui/transition-blinds",
+        "remotionui/transition-card-flip",
+        "remotionui/transition-circle-reveal",
+        "remotionui/transition-clock-wipe",
+        "remotionui/transition-fade",
+        "remotionui/transition-light-leak",
+        "remotionui/transition-liquid-warp",
+        "remotionui/transition-morph-shape",
+        "remotionui/transition-slide",
+        "remotionui/transition-timing",
+        "remotionui/transition-whip-pan",
+        "remotionui/transition-wipe",
+        "remotionui/treemap-blocks",
+        "remotionui/tutorial-clip",
+        "remotionui/typewriter",
+        "remotionui/use-stagger",
+        "remotionui/v0",
+        "remotionui/variable-font-morph",
+        "remotionui/voice-note-bubble",
+        "remotionui/vu-meter",
+        "remotionui/warp-bands-bg",
+        "remotionui/waterfall-chart",
+        "remotionui/wave-text",
+        "remotionui/waveform-bars-radial",
+        "remotionui/waveform-line",
+        "remotionui/weather-card",
+        "remotionui/word-pop-captions",
+        "remotionui/zoom-pan-frame",
+        "remotionui/zoom-through"
+      ],
+      "installed": true
+    },
+    {
+      "name": "@remotion/transitions",
+      "upstreamRange": "^4.0.524",
+      "usedBy": [
+        "remotionui/ai-composer-showcase",
+        "remotionui/blur-reveal",
+        "remotionui/browser-flow",
+        "remotionui/chromatic-aberration-wipe",
+        "remotionui/creator-reel",
+        "remotionui/dashboard-populate",
+        "remotionui/data-story",
+        "remotionui/deploy-reveal",
+        "remotionui/directional-wipe",
+        "remotionui/displacement-presentation",
+        "remotionui/frosted-glass-wipe",
+        "remotionui/grid-pixelate-wipe",
+        "remotionui/hero-device-assemble",
+        "remotionui/landing-code-showcase",
+        "remotionui/media-sequence",
+        "remotionui/podcast-clip",
+        "remotionui/showcase",
+        "remotionui/social-clip",
+        "remotionui/spatial-push",
+        "remotionui/transition-blinds",
+        "remotionui/transition-card-flip",
+        "remotionui/transition-circle-reveal",
+        "remotionui/transition-clock-wipe",
+        "remotionui/transition-fade",
+        "remotionui/transition-liquid-warp",
+        "remotionui/transition-morph-shape",
+        "remotionui/transition-slide",
+        "remotionui/transition-timing",
+        "remotionui/transition-whip-pan",
+        "remotionui/transition-wipe",
+        "remotionui/tutorial-clip",
+        "remotionui/zoom-through"
+      ],
+      "installed": true
+    },
+    {
+      "name": "react",
+      "upstreamRange": "~19.2.7",
+      "usedBy": [
+        "remotionui/ai-composer-showcase",
+        "remotionui/ai-composer-utils",
+        "remotionui/animated-noise-grain",
+        "remotionui/audio-reactive-scale",
+        "remotionui/audiogram-bars",
+        "remotionui/audiogram-scene",
+        "remotionui/aurora-bg",
+        "remotionui/b-roll-stack",
+        "remotionui/blob-morph",
+        "remotionui/blur-in",
+        "remotionui/blur-reveal",
+        "remotionui/bubble-chart-pack",
+        "remotionui/candlestick-chart",
+        "remotionui/caption-highlight",
+        "remotionui/caption-scene",
+        "remotionui/card-stack-3d",
+        "remotionui/caustics-bg",
+        "remotionui/chat-gpt",
+        "remotionui/chromatic-aberration-wipe",
+        "remotionui/claude-chat",
+        "remotionui/claude-code",
+        "remotionui/code-accordion",
+        "remotionui/code-diff-wipe",
+        "remotionui/code-reveal",
+        "remotionui/comment-callout",
+        "remotionui/confetti-burst",
+        "remotionui/counter",
+        "remotionui/creator-reel",
+        "remotionui/dashboard-populate",
+        "remotionui/dashed-path-travel",
+        "remotionui/data-story",
+        "remotionui/deploy-reveal",
+        "remotionui/depth-of-field-blur",
+        "remotionui/device-mockup-3d",
+        "remotionui/directional-wipe",
+        "remotionui/displacement-presentation",
+        "remotionui/dither-field-bg",
+        "remotionui/effector-field",
+        "remotionui/fade-in",
+        "remotionui/fade-out",
+        "remotionui/follow-through",
+        "remotionui/frosted-glass-wipe",
+        "remotionui/globe-points-3d",
+        "remotionui/glow-pulse",
+        "remotionui/grain-gradient-bg",
+        "remotionui/grid-pixelate-wipe",
+        "remotionui/handwriting-text",
+        "remotionui/hero-device-assemble",
+        "remotionui/hero-loop",
+        "remotionui/ik-rig",
+        "remotionui/intro",
+        "remotionui/karaoke-captions",
+        "remotionui/landing-code-showcase",
+        "remotionui/line-chart-draw",
+        "remotionui/liquid-text-morph",
+        "remotionui/live-code-split",
+        "remotionui/map-canvas",
+        "remotionui/map-flight",
+        "remotionui/map-heat-overlay",
+        "remotionui/map-markers",
+        "remotionui/map-route",
+        "remotionui/map-utils",
+        "remotionui/media-frame",
+        "remotionui/media-sequence",
+        "remotionui/media-utils",
+        "remotionui/metric-ticker",
+        "remotionui/motion-primitive",
+        "remotionui/motion-trail",
+        "remotionui/motion-wrapper",
+        "remotionui/multi-device-lineup",
+        "remotionui/neon-flicker-text",
+        "remotionui/opencode",
+        "remotionui/orbit-motion",
+        "remotionui/org-chart-build",
+        "remotionui/paper-shader",
+        "remotionui/parallax-layers",
+        "remotionui/particle-field",
+        "remotionui/perspective-marquee",
+        "remotionui/podcast-clip",
+        "remotionui/product-turntable-3d",
+        "remotionui/progress-bar",
+        "remotionui/rotate-in",
+        "remotionui/scale-in",
+        "remotionui/scanline-crt",
+        "remotionui/scramble-text",
+        "remotionui/shake-emphasis",
+        "remotionui/shape-layer",
+        "remotionui/shape-morph",
+        "remotionui/skew-in",
+        "remotionui/slide-left",
+        "remotionui/slide-up",
+        "remotionui/slit-scan",
+        "remotionui/social-clip",
+        "remotionui/sparkline-row",
+        "remotionui/spatial-push",
+        "remotionui/split-screen",
+        "remotionui/split-text-chars",
+        "remotionui/spring-in",
+        "remotionui/squash-stretch",
+        "remotionui/srt-caption-track",
+        "remotionui/stacked-area-chart",
+        "remotionui/stagger-children",
+        "remotionui/stroke-to-fill-text",
+        "remotionui/svg-mask-reveal",
+        "remotionui/talking-head-layout",
+        "remotionui/terminal-simulator",
+        "remotionui/text-animator",
+        "remotionui/text-extrude-3d",
+        "remotionui/text-mask-video",
+        "remotionui/text-reveal-shader",
+        "remotionui/text-selectors",
+        "remotionui/text-split",
+        "remotionui/track-matte",
+        "remotionui/transition-blinds",
+        "remotionui/transition-circle-reveal",
+        "remotionui/transition-liquid-warp",
+        "remotionui/transition-morph-shape",
+        "remotionui/transition-whip-pan",
+        "remotionui/tutorial-clip",
+        "remotionui/typewriter",
+        "remotionui/v0",
+        "remotionui/variable-font-morph",
+        "remotionui/warp-bands-bg",
+        "remotionui/wave-text",
+        "remotionui/waveform-bars-radial",
+        "remotionui/waveform-line",
+        "remotionui/zoom-pan-frame",
+        "remotionui/zoom-through"
+      ],
+      "installed": true
+    },
+    {
+      "name": "@remotion/google-fonts",
+      "upstreamRange": "^4.0.524",
+      "usedBy": [
+        "remotionui/ai-composer-showcase",
+        "remotionui/claude-code",
+        "remotionui/code-accordion",
+        "remotionui/code-diff-wipe",
+        "remotionui/code-reveal",
+        "remotionui/deploy-reveal",
+        "remotionui/hero-loop",
+        "remotionui/landing-code-showcase",
+        "remotionui/live-code-split",
+        "remotionui/opencode",
+        "remotionui/reaction-burst",
+        "remotionui/terminal-simulator",
+        "remotionui/tutorial-clip"
+      ],
+      "installed": true
+    },
+    {
+      "name": "@remotion/captions",
+      "upstreamRange": "^4.0.524",
+      "usedBy": [
+        "remotionui/caption-highlight",
+        "remotionui/caption-scene",
+        "remotionui/caption-utils",
+        "remotionui/creator-reel",
+        "remotionui/karaoke-captions",
+        "remotionui/podcast-clip",
+        "remotionui/sample-media",
+        "remotionui/social-clip",
+        "remotionui/speaker-label-captions",
+        "remotionui/srt-caption-track",
+        "remotionui/subtitle-translate",
+        "remotionui/transcript-scroll",
+        "remotionui/tutorial-clip",
+        "remotionui/word-pop-captions"
+      ],
+      "installed": true
+    },
+    {
+      "name": "@remotion/media-utils",
+      "upstreamRange": "^4.0.524",
+      "usedBy": [
+        "remotionui/audio-pulse",
+        "remotionui/audio-reactive-scale",
+        "remotionui/audio-viz-utils",
+        "remotionui/audiogram-bars",
+        "remotionui/audiogram-scene",
+        "remotionui/beat-pulse-grid",
+        "remotionui/creator-reel",
+        "remotionui/podcast-clip",
+        "remotionui/social-clip",
+        "remotionui/talking-head-layout",
+        "remotionui/vu-meter",
+        "remotionui/waveform-bars-radial",
+        "remotionui/waveform-line"
+      ],
+      "installed": true
+    },
+    {
+      "name": "@turf/turf",
+      "upstreamRange": "^7.2.0",
+      "usedBy": [
+        "remotionui/map-canvas",
+        "remotionui/map-flight",
+        "remotionui/map-heat-overlay",
+        "remotionui/map-markers",
+        "remotionui/map-route",
+        "remotionui/map-utils"
+      ],
+      "installed": true
+    },
+    {
+      "name": "maplibre-gl",
+      "upstreamRange": "^5.6.0",
+      "usedBy": [
+        "remotionui/map-canvas",
+        "remotionui/map-flight",
+        "remotionui/map-heat-overlay",
+        "remotionui/map-markers",
+        "remotionui/map-route",
+        "remotionui/map-utils"
+      ],
+      "installed": true
+    },
+    {
+      "name": "@types/geojson",
+      "upstreamRange": null,
+      "usedBy": [
+        "remotionui/map-canvas",
+        "remotionui/map-flight",
+        "remotionui/map-heat-overlay",
+        "remotionui/map-markers",
+        "remotionui/map-route",
+        "remotionui/map-utils"
+      ],
+      "installed": true
+    },
+    {
+      "name": "@remotion/paths",
+      "upstreamRange": "^4.0.524",
+      "usedBy": [
+        "remotionui/ae-import",
+        "remotionui/bezier-path",
+        "remotionui/blob-morph",
+        "remotionui/cursor-path",
+        "remotionui/curve-fit",
+        "remotionui/dashboard-populate",
+        "remotionui/dashed-path-travel",
+        "remotionui/data-flow-pipes",
+        "remotionui/data-story",
+        "remotionui/displacement-presentation",
+        "remotionui/displacement-transition",
+        "remotionui/drag-drop-flow",
+        "remotionui/follow-through",
+        "remotionui/ik-rig",
+        "remotionui/line-chart-draw",
+        "remotionui/logo-reveal",
+        "remotionui/metric-ticker",
+        "remotionui/path-draw",
+        "remotionui/path-morph",
+        "remotionui/path-utils",
+        "remotionui/pen-plot",
+        "remotionui/shape-layer",
+        "remotionui/shape-morph",
+        "remotionui/shape-ops",
+        "remotionui/sparkline-row",
+        "remotionui/svg-mask-reveal",
+        "remotionui/transition-liquid-warp",
+        "remotionui/transition-morph-shape"
+      ],
+      "installed": true
+    },
+    {
+      "name": "@remotion/light-leaks",
+      "upstreamRange": "^4.0.524",
+      "usedBy": [
+        "remotionui/transition-light-leak"
+      ],
+      "installed": true
+    },
+    {
+      "name": "@remotion/media",
+      "upstreamRange": "^4.0.524",
+      "usedBy": [
+        "remotionui/b-roll-stack",
+        "remotionui/creator-reel",
+        "remotionui/media-frame",
+        "remotionui/media-sequence",
+        "remotionui/split-screen",
+        "remotionui/talking-head-layout",
+        "remotionui/tutorial-clip",
+        "remotionui/zoom-pan-frame"
+      ],
+      "installed": true
+    },
+    {
+      "name": "@remotion/layout-utils",
+      "upstreamRange": "^4.0.524",
+      "usedBy": [
+        "remotionui/infinite-marquee",
+        "remotionui/perspective-marquee",
+        "remotionui/text-animator"
+      ],
+      "installed": true
+    },
+    {
+      "name": "@react-three/drei",
+      "upstreamRange": "^10.7.8",
+      "usedBy": [
+        "remotionui/card-stack-3d",
+        "remotionui/device-mockup-3d",
+        "remotionui/globe-points-3d",
+        "remotionui/product-turntable-3d",
+        "remotionui/text-extrude-3d"
+      ],
+      "installed": true
+    },
+    {
+      "name": "@react-three/fiber",
+      "upstreamRange": "^9.7.0",
+      "usedBy": [
+        "remotionui/card-stack-3d",
+        "remotionui/device-mockup-3d",
+        "remotionui/globe-points-3d",
+        "remotionui/product-turntable-3d",
+        "remotionui/text-extrude-3d"
+      ],
+      "installed": true
+    },
+    {
+      "name": "@remotion/three",
+      "upstreamRange": "4.0.525",
+      "usedBy": [
+        "remotionui/card-stack-3d",
+        "remotionui/device-mockup-3d",
+        "remotionui/globe-points-3d",
+        "remotionui/product-turntable-3d",
+        "remotionui/text-extrude-3d"
+      ],
+      "installed": true
+    },
+    {
+      "name": "three",
+      "upstreamRange": "^0.186.0",
+      "usedBy": [
+        "remotionui/card-stack-3d",
+        "remotionui/device-mockup-3d",
+        "remotionui/globe-points-3d",
+        "remotionui/product-turntable-3d",
+        "remotionui/text-extrude-3d"
+      ],
+      "installed": true
+    },
+    {
+      "name": "@paper-design/shaders-react",
+      "upstreamRange": "0.0.80",
+      "usedBy": [
+        "remotionui/dither-field-bg",
+        "remotionui/grain-gradient-bg",
+        "remotionui/warp-bands-bg"
+      ],
+      "installed": true
+    },
+    {
+      "name": "react-dom",
+      "upstreamRange": "~19.2.7",
+      "usedBy": [
+        "remotionui/track-matte"
+      ],
+      "installed": true
+    }
+  ],
+  "npmInstallNeeded": [],
+  "verification": {
+    "stage": "source-import-and-dependency-resolution",
+    "renderedItemsClaimed": 0,
+    "note": "Run remotionui-bulk-check.mjs for a complete generated-provider static bundle; no scene is marked renderVerified by this importer."
+  }
+}

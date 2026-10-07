@@ -1,0 +1,117 @@
+---
+title: Bottom-Up Letters
+description: Letters rise from below in a pronounced staircase, one symbol at a time
+component: bottom-up-letters
+vibe: clean
+length: 60
+useWhen:
+  - "A short punchy word or acronym should land with clear, visible per-character energy."
+  - "The scene has a slow reveal cadence where the staircase wave is the hero moment."
+  - "You want a crisp, sharp reveal without any softness or blur at all."
+avoidWhen:
+  - "The text is a full sentence or phrase — the high stagger makes long strings feel sluggish; use `per-character-rise` (faster, more even) or `mask-reveal-up` (line-level) instead."
+  - "You want blur or softness in the reveal — `blur-out-up` or `focus-blur-resolve` add atmosphere that this component deliberately omits."
+  - "The entrance should read as smooth and unified rather than letter-by-letter theatrical; use `micro-scale-fade` for a single calm pop."
+---
+
+<ComponentPreview name="bottom-up-letters" />
+
+<InstallBlock name="bottom-up-letters" />
+
+## Usage
+
+```tsx
+// src/Root.tsx
+import { Composition } from "remotion";
+import { BottomUpLetters } from "@/components/remocn/bottom-up-letters";
+
+const BottomUpLettersScene = () => (
+  <BottomUpLetters text="Shift" staggerDelay={3} distance={46} />
+);
+
+export const RemotionRoot = () => (
+  <Composition
+    id="BottomUpLetters"
+    component={BottomUpLettersScene}
+    durationInFrames={60}
+    fps={30}
+    width={1280}
+    height={720}
+  />
+);
+```
+
+### With Backdrop
+
+The component renders transparent — supply the background via `Backdrop`. It ships single-theme; edit the copied file to re-theme colors.
+
+Pair with `Backdrop` to place the text inside a full-frame fill with a rounded, shadowed content frame:
+
+```tsx
+import { Composition } from "remotion";
+import { BottomUpLetters } from "@/components/remocn/bottom-up-letters";
+import { Backdrop } from "@/components/remocn/backdrop";
+
+const BottomUpLettersScene = () => (
+  <Backdrop fill={{ type: "color", value: "#ffffff" }}>
+    <BottomUpLetters text="Shift" staggerDelay={3} distance={46} />
+  </Backdrop>
+);
+
+export const RemotionRoot = () => (
+  <Composition
+    id="BottomUpLetters"
+    component={BottomUpLettersScene}
+    durationInFrames={60}
+    fps={30}
+    width={1280}
+    height={720}
+  />
+);
+```
+
+<PropsTable title="Props"
+  rows={[
+    {
+      name: "text",
+      type: "string",
+      required: true,
+      description: "The text to reveal",
+    },
+    {
+      name: "staggerDelay",
+      type: "number",
+      default: "3",
+      description: "Per-character delay in frames. Larger values make the staircase more pronounced.",
+    },
+    {
+      name: "distance",
+      type: "number",
+      default: "46",
+      description: "Vertical travel in pixels each letter rises from. Animates to 0.",
+    },
+    {
+      name: "fontSize",
+      type: "number",
+      default: "72",
+      description: "Font size in pixels",
+    },
+    {
+      name: "fontWeight",
+      type: "number",
+      default: "600",
+      description: "CSS font-weight",
+    },
+    {
+      name: "color",
+      type: "string",
+      default: "\"#171717\"",
+      description: "Text color (any valid CSS color)",
+    },
+    {
+      name: "className",
+      type: "string",
+      description: "Optional className passed to the underlying span",
+    },
+  ]}
+/>

@@ -1,0 +1,16 @@
+{
+  "title": "Motion graphics",
+  "pagesIndex": "motion-graphics",
+  "defaultOpen": false,
+  "pages": [
+    "ae-motion",
+    "shape-layer",
+    "text-animator",
+    "effector-field",
+    "slit-scan",
+    "ik-rig",
+    "track-matte",
+    "follow-through",
+    "ae-import"
+  ]
+}

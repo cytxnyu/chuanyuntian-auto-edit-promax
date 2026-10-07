@@ -1,0 +1,41 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  github-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          NOTES=$(awk -v ver="$VERSION" '
+            /^## / { if (found) exit; if ($2 == ver) found=1; next }
+            found { print }
+          ' CHANGELOG.md)
+
+          if [ -z "$NOTES" ]; then
+            NOTES="Release $GITHUB_REF_NAME. See CHANGELOG.md for details."
+          fi
+
+          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
+            gh release edit "$GITHUB_REF_NAME" \
+              --title "RemotionUI $GITHUB_REF_NAME" \
+              --notes "$NOTES"
+          else
+            gh release create "$GITHUB_REF_NAME" \
+              --title "RemotionUI $GITHUB_REF_NAME" \
+              --notes "$NOTES"
+          fi

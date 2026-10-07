@@ -1,0 +1,81 @@
+import { ATLAS_LANES, type AtlasLane } from "./atlas";
+
+export type LaneVisual = {
+  label: string;
+  hue: number;
+  /** SVG path for 24×24 icon */
+  iconPath: string;
+};
+
+export const LANE_VISUALS: Record<AtlasLane, LaneVisual> = {
+  atoms: {
+    label: ATLAS_LANES.atoms.label,
+    hue: 252,
+    iconPath:
+      "M4 12h4M16 12h4M12 4v4M12 16v4M8 8l2.8 2.8M13.2 13.2L16 16M16 8l-2.8 2.8M10.8 13.2L8 16",
+  },
+  signals: {
+    label: ATLAS_LANES.signals.label,
+    hue: 285,
+    iconPath: "M4 14c3-6 5-6 8 0s5 6 8 0",
+  },
+  vectors: {
+    label: ATLAS_LANES.vectors.label,
+    hue: 195,
+    iconPath: "M5 18c6-14 10-14 14 0",
+  },
+  spatial: {
+    label: ATLAS_LANES.spatial.label,
+    hue: 155,
+    iconPath: "M12 4c-4 6-4 10 0 16 4-6 4-10 0-16z",
+  },
+  "3d": {
+    label: ATLAS_LANES["3d"].label,
+    hue: 110,
+    iconPath: "M12 3l8 4.5v9L12 21l-8-4.5v-9zM4 7.5l8 4.5 8-4.5M12 12v9",
+  },
+  shaders: {
+    label: ATLAS_LANES.shaders.label,
+    hue: 282,
+    iconPath: "M4 7h16M4 12h16M4 17h16M8 4v16M16 4v16",
+  },
+  motion: {
+    label: ATLAS_LANES.motion.label,
+    hue: 75,
+    iconPath: "M4 18c4 0 5-12 8-12s4 12 8 12M4 6h3M17 18h3",
+  },
+  blocks: {
+    label: ATLAS_LANES.blocks.label,
+    hue: 48,
+    iconPath: "M5 5h8v8H5zM11 11h8v8h-8z",
+  },
+  cuts: {
+    label: ATLAS_LANES.cuts.label,
+    hue: 25,
+    iconPath: "M6 6l12 12M18 6L6 18",
+  },
+  reels: {
+    label: ATLAS_LANES.reels.label,
+    hue: 330,
+    iconPath: "M6 8h12v8H6zM9 10v4M15 10v4",
+  },
+};
+
+export function laneAccent(lane: AtlasLane): string {
+  const { hue } = LANE_VISUALS[lane];
+  return `oklch(0.55 0.06 ${hue})`;
+}
+
+/**
+ * Low-alpha lane wash. Used where a lane needs to tint a surface that still
+ * carries foreground text, so it has to read in both themes.
+ */
+export function laneTint(lane: AtlasLane, alpha = 0.16): string {
+  const { hue } = LANE_VISUALS[lane];
+  return `oklch(0.62 0.13 ${hue} / ${alpha})`;
+}
+
+export function laneAccentMuted(lane: AtlasLane): string {
+  const { hue } = LANE_VISUALS[lane];
+  return `oklch(0.22 0.03 ${hue})`;
+}

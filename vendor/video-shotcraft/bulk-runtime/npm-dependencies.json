@@ -1,0 +1,20 @@
+{
+  "provider": "video-shotcraft",
+  "npmDependencies": [
+    "@remotion/motion-blur",
+    "react",
+    "remotion"
+  ],
+  "newNpmDependencies": [],
+  "versions": {
+    "@remotion/motion-blur": "4.0.507",
+    "react": "19.2.8",
+    "remotion": "4.0.507"
+  },
+  "resolvedDependencies": [
+    "@remotion/motion-blur",
+    "react",
+    "remotion"
+  ],
+  "installationPerformed": false
+}

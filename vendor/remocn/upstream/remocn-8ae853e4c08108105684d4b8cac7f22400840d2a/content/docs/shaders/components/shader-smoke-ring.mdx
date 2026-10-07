@@ -1,0 +1,46 @@
+---
+title: Smoke Ring
+description: Soft smoke ring curling and dissipating in place
+component: shader-smoke-ring
+vibe: premium
+length: 150
+useWhen:
+  - "You want a single soft, centered smoke ring as a focal atmospheric element."
+  - "A minimal, premium scene benefits from one curling shape on a dark field."
+  - "You want a neutral, near-monochrome look (override `colors` to tint)."
+avoidWhen:
+  - "You need a full-bleed edge-to-edge texture — this is a centered object; use a noise or gradient shader."
+  - "The center sits behind key text — the ring draws the eye inward."
+  - "You want multiple elements or busy motion — smoke-ring is deliberately singular."
+---
+
+<ComponentPreview name="shader-smoke-ring" />
+
+<InstallBlock name="shader-smoke-ring" />
+
+## Usage
+
+```tsx
+// src/Root.tsx
+import { Composition } from "remotion";
+import { ShaderSmokeRing } from "@/components/remocn/shader-smoke-ring";
+
+const ShaderSmokeRingScene = () => (
+  <ShaderSmokeRing speed={1} radius={0.25} thickness={0.65} />
+);
+
+export const RemotionRoot = () => (
+  <Composition
+    id="ShaderSmokeRing"
+    component={ShaderSmokeRingScene}
+    durationInFrames={150}
+    fps={30}
+    width={1280}
+    height={720}
+  />
+);
+```
+
+## Credits
+
+Shader by [paper-design/shaders](https://github.com/paper-design/shaders).

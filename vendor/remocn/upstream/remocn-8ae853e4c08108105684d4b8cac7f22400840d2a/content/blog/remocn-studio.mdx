@@ -1,0 +1,75 @@
+---
+title: Remocn studio — the desktop app where Claude writes your Remotion video
+description: A local macOS app on the Claude Agent SDK. Describe a video in chat, watch real Remotion TSX land in your folder, click the thing that looks wrong, and export an mp4 without touching a terminal.
+date: 2026-08-01
+video: https://cdn.remocn.dev/videos/remocn-studio-v001.mp4
+videoPoster: https://cdn.remocn.dev/posters/remocn-studio-v001.png
+---
+
+Remocn gives you 234 copy-paste components. That solves the parts of a video — the text entrance, the whip pan, the shader background. It doesn’t solve the assembly: what plays when, how long a beat holds, which transition hides which cut. That part still happens in a loop that looks like this — edit TSX, alt-tab to `remotion studio`, scrub, notice the subtitle lands a beat late, alt-tab back, guess a frame number, repeat.
+
+Claude Code already shortens the loop. Point it at a Remotion project, add [the remocn skill](/docs/getting-started/agent-skill), and it writes scenes for you. But the agent lives in a terminal and the video lives in a browser tab, and neither knows about the other. When something looks wrong you have to describe it in words: “the logo in the second scene, the one that fades in around frame 90, it’s too big.” You are the translation layer between two windows.
+
+**Remocn studio** removes that layer. It’s a local macOS app that runs the [Claude Agent SDK](https://docs.claude.com/en/api/agent-sdk/overview) against a folder on your disk, compiles that folder with its own Remotion bundler, and puts the chat and the player side by side. When the logo is too big, you click it.
+
+## Three decisions it’s built on
+
+**Claude produces code, not a spec.** The agent writes real Remotion TSX into your folder — the files you would have written yourself. No project JSON, no timeline document, no proprietary format to export from. Close the app and you still have a normal Remotion project that opens in any editor.
+
+**It opens any folder.** The app owns neither your entry point, nor your Remotion version, nor your build config. It adapts to the project rather than the other way round.
+
+**It uses your Claude subscription.** Auth comes from the Claude Code CLI you’re already logged into — no API key, no separate OAuth. The honest cost: without Claude Code installed and logged in, the app is inert.
+
+## The loop
+
+Point it at a project, or scaffold a new one — a vendored template expands offline and `bun install` streams its output while the chat is already usable. Then the app checks what it depends on but doesn’t own: whether Claude Code is logged in, which bun is running, whether the folder is a Remotion project, whether its dependencies agree with the lockfile, whether an entry point and a composition exist. Everything that passes is silent; the checklist renders nothing at all when there’s nothing to act on.
+
+Then you talk to it. Each session picks a mode — **Auto**, **Accept edits**, or **Plan**, where plan mode ends in a card holding the plan and approving it lets the *same* turn carry on building. Underneath sits a permission gate: reads and writes inside the opened folder run silently, while Bash and any path resolving outside the folder raise an Allow/Deny card. “Resolving” means symlinks and `..` are expanded first, so `../../.ssh/config` is outside your folder whatever the literal argument said.
+
+Every tool call collapses to one line — `Edit src/Scene.tsx`, `Bash bun run build` — that expands into a real diff or the command’s output. Consecutive calls fold into a single row showing the newest of them, which makes it a live ticker of what the agent is doing right now. Turns keep running when you look away, in as many projects as you have open, and a session that needs an answer floats to the top of the sidebar instead of waiting quietly.
+
+## The preview is your project, not a re-render
+
+The right pane runs **your own Remotion bundler**, with our entry mounted in place of the Studio UI.
+
+That turned out to be a small trick. Remotion’s webpack entry is an array whose last element is a parameter, and `@remotion/studio/previewEntry` is only `Internals.waitForRoot((Root) => render(<Studio …/>))` — Studio is a UI on top of the bundler, not part of it. Taking that slot and mounting `<Player>` gives you a pane that’s ours and pixels that are Remotion’s. `staticFile()`, Tailwind, path aliases, `webpackOverride` and everything in your `remotion.config.ts` behave exactly as they do under `remotion studio`, because it *is* the same webpack.
+
+A Vite host was tried first. It built a real project without error and emitted 3 CSS class selectors where Remotion’s bundler emitted 742 — `enableTailwind` is a splice of webpack *loaders*, and Vite silently fell through to the project’s own PostCSS config.
+
+## Pointing instead of describing
+
+Two gestures, deliberately separate because they answer different questions.
+
+**Inspect** answers *change this*. Hover the frame, click the element you mean, and it lands in the composer as an `[Element #N]` token you can point at from your sentence. What Claude receives with it is the path, line and column of the JSX that rendered the node, the component that owns it, a project-only component stack, the composition, the frame you were looking at, and the frame within the enclosing scene with its timing. “Make this bigger” becomes an instruction instead of a riddle.
+
+The hit-testing had to be written for video. It takes the first element that actually *paints* at the point rather than the topmost transparent wrapper, and it climbs out of inline wrappers to the first block-level element — so clicking a word in a line animated word-by-word selects the line, not the word. An SVG is always a drawing: clicking one path selects the whole icon.
+
+**Snapshot** answers *look at this*. The player pauses, and you click the frame to attach the whole thing or drag a rectangle to attach just the part that’s wrong. The pixels come from `renderStill` in **your project’s own renderer** — the path an export takes — so what Claude sees is what would be in the file, not what a webview happened to paint. A capture takes 83–122 ms, because the render page is warmed while you’re still aiming and held open between clicks. It started at 8.4 seconds.
+
+## The export is your renderer
+
+Export renders the playing composition to `out/<Composition>.mp4` through your project’s own `@remotion/renderer`, with progress by frame count, cancellation, and a reveal in Finder.
+
+There’s no second bundle, and that’s the feature: the preview has already compiled this project and is already serving the page it compiled, so the export renders from the same place. A second bundle would cost another ~7 seconds and 1.67 GB of peak memory for an identical result — and it could differ from what’s on screen, which is the one thing an export must never do. Before rendering, the app reads `remotion`, `@remotion/renderer` and `@remotion/bundler` out of your `node_modules` and refuses when they disagree, naming every package that drifted.
+
+## What the agent already knows
+
+What makes this remocn studio and not a generic Claude Code GUI: the app bundle carries a Claude Code plugin with four skills — the remocn skill, two Remotion ones, and `video-lessons`, which is ours.
+
+`video-lessons` is 44 KB of production rules where every entry exists because the opposite was tried and had to be re-rendered. Why text entrances travel on X and never on Y (browsers snap glyph baselines to whole device pixels, so the identical curve that ticks vertically is smooth horizontally). Why a transform on a span silently forces `inline-block` and breaks a two-tone paragraph. Which `TransitionSeries` shapes render an empty frame at a boundary. The system prompt tells the agent to work from it before writing any video code, so those corrections no longer get pasted into prompts by hand.
+
+Nothing is installed into your machine or your project for this, and a project that ships its own copy of a bundled skill keeps it.
+
+## Running it
+
+You need macOS, Claude Code installed and logged in on a Pro or Max plan, bun, and a Remotion project with its dependencies installed. The app updates itself from GitHub releases — it checks once per launch and installs on request. The bundle isn’t Apple code-signed yet, so the first launch needs the usual Gatekeeper override.
+
+This is **v0.0.1**: an early prototype, personal use, not a product release. Commercial use of the Remotion Player and renderer needs a [Remotion Company License](https://remotion.dev/license).
+
+## What’s next
+
+Two known bugs, both in the preview: the pane sizes its stage from a hardcoded 16:9, so a 9:16 composition plays as a narrow strip; and a compile that fails while the agent is mid-write can leave the pane stuck at 100%, where the fix is an always-present Reload plus a pane that heals itself on the next clean compile. Export is deliberately narrow — h264, with every other knob coming from your `remotion.config.ts`, and no queue or Lambda. Search, project sorting and settings are laid out but disabled rather than half-working. Windows and Linux are untested rather than excluded: nothing in the code is macOS-specific, only the testing is.
+
+There’s also a second thing wearing the same name — a hosted, spec-driven editor over one generic composition. Different product, different trade-off, and neither is trying to become the other.
+
+The code is [Remocn/remocn-studio](https://github.com/Remocn/remocn-studio), MIT, with the whole architecture record in its `CLAUDE.md` — including the things that only surfaced in a real render, like why the render page has to declare `NODE_ENV=production`. Without it, the first working export came out blank white.

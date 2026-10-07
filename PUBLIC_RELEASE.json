@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-07",
+  "status": "local-validation-passed",
+  "repository": "https://github.com/cytxnyu/chuanyuntian-auto-edit-promax",
+  "skill": "auto-edit-promax",
+  "skillSHA256": "8EEB7888F524B50A758676F9DB5B2FB5E79653EFBE67143A76E1EA893D89C88E",
+  "selectedSkillBytesPreserved": true,
+  "testsPassed": 25,
+  "typecheckExit": 0,
+  "privateMediaIncluded": false,
+  "sourceStageUnmodified": true,
+  "lineEndings": "original bytes preserved for reproducible hashes",
+  "sourcesCheckExit": 0,
+  "templateStockAudioDistributed": false,
+  "syntheticAudioFixtures": 2,
+  "distributionAssets": "references/public-distribution-assets.json"
+}

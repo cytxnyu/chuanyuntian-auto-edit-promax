@@ -1,0 +1,25 @@
+{
+  "title": "Components",
+  "pagesIndex": "browse",
+  "pages": [
+    "(text-effects)",
+    "(backgrounds)",
+    "(motion)",
+    "(captions)",
+    "(audio)",
+    "(charts)",
+    "(paths-and-shapes)",
+    "(maps-and-devices)",
+    "(3d)",
+    "(shaders)",
+    "(motion-graphics)",
+    "(ai-composers)",
+    "(code-and-terminal)",
+    "(creator)",
+    "(ui-flows)",
+    "(layouts-and-cards)",
+    "(transitions)",
+    "(compositions)",
+    "(helpers)"
+  ]
+}

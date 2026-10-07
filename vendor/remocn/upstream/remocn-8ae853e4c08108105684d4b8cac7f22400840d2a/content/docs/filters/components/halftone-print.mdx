@@ -1,0 +1,180 @@
+---
+title: Halftone Print
+description: Print a scene onto paper — rotated dot screens per colour, slightly out of register
+component: halftone-print
+vibe: paper
+length: sustained
+useWhen:
+  - "A scene should read as something printed rather than displayed — zine-flavoured intros, riso posters, editorial title cards."
+  - "A page should arrive by being printed — interpolate misregistration from wide to tight and the plates pull into register on entry."
+  - "The scene is light and graphic with real midtones, which is where a dot screen has something to render."
+  - "You want the print character on everything in frame at once, including type and photography, for the scene's full duration."
+avoidWhen:
+  - "Only one element should feel papery while the rest of the scene stays clean — use `paper-sticker` or `paper-wobble`."
+  - "The scene is dark, since almost every cell saturates to full ink and the screen disappears into a solid field."
+  - "Small type has to stay readable — a dot screen throws away everything inside a cell but its colour."
+---
+
+<ComponentPreview name="halftone-print" />
+
+<CanvasFilterNote />
+
+<InstallBlock name="halftone-print" />
+
+## Usage
+
+`HalftonePrint` is a wrapper. Put a scene inside it and it comes out as a printed
+page: the picture separates into cyan, magenta and yellow, each screened onto its
+own grid of dots rotated to its own angle, each dot sized by how much of that ink
+belongs under it. The three screens land slightly out of register, and what shows
+between them is paper.
+
+```tsx
+import { HalftonePrint } from "@/components/remocn/halftone-print";
+
+export const MyScene = () => (
+  <HalftonePrint>
+    <Scene />
+  </HalftonePrint>
+);
+```
+
+## What to reach for it for
+
+There is no master switch here, and that is deliberate: fading print back toward
+a clean screen render is not a thing presses do. What print does have is two
+honest arrivals — plates finding register, and a screen getting finer — and both
+are just numbers read every frame.
+
+### Let the press find register
+
+The strongest opening. The plates start badly out of alignment and pull together
+over the first second, so the page arrives by being printed rather than by fading
+in. It is a move with a mechanical reason behind it, which is why it reads as
+craft rather than as an effect.
+
+<ComponentExample name="halftone-register" />
+
+```tsx
+import { interpolate, useCurrentFrame } from "remotion";
+import { HalftonePrint } from "@/components/remocn/halftone-print";
+
+export const Opening = () => {
+  const frame = useCurrentFrame();
+  const misregistration = interpolate(frame, [0, 36], [9, 1.2], {
+    extrapolateRight: "clamp",
+  });
+
+  return (
+    <HalftonePrint misregistration={misregistration}>
+      <Poster />
+    </HalftonePrint>
+  );
+};
+```
+
+The preview drifts back out at the end so that it loops; a real opening would
+settle and stay.
+
+### Resolve from newsprint to offset
+
+The other arrival: start coarse and let the screen get finer. Where the register
+move feels like a press starting up, this one feels like the image itself coming
+into focus, and it survives on scenes with less colour to separate.
+
+<ComponentExample name="halftone-resolve" />
+
+```tsx
+const dotSize = interpolate(frame, [0, 40], [30, 7], {
+  extrapolateRight: "clamp",
+});
+```
+
+### The screen belongs to the frame
+
+Worth knowing before you animate anything underneath: the dot grid is fixed to
+the frame, not to the picture. Move the scene and it travels through a stationary
+screen, re-sampled every frame — the same way a moving subject would be
+re-screened on every printed page of a flipbook, not carried along by its dots.
+
+<ComponentExample name="halftone-live" />
+
+That is what makes it safe to put animation inside the wrapper. It is also why
+pushing a scene around behind a coarse screen shimmers: at `dotSize` above the
+low twenties, cells flip between ink levels as content crosses them. Keep the dots
+fine when the content moves, and save the coarse screens for scenes that hold.
+
+## Feed it a light scene
+
+This is the one filter in the pack with a strong opinion about what it wraps. A
+dot screen renders tone by varying dot size, so it needs tone to render: on a
+light, graphic scene the dots stay small and separate and the paper does the
+work. On a dark scene nearly every cell saturates, the dots merge, and the result
+is a flat field with none of the character.
+
+If the scene you want to print is dark, invert it before wrapping rather than
+turning `dotSize` up.
+
+## Registration
+
+`misregistration` is how far the three screens drift apart, in composition units.
+The default is a fraction of a dot — enough that colour edges fringe the way a
+real press does, not enough to read as a mistake. Push it past a few units and it
+becomes the effect rather than the texture, which is a legitimate riso look but a
+deliberate one.
+
+Setting it to `0` gives a clean digital separation, which reads as a print
+simulation rather than as print.
+
+<PropsTable title="Props"
+  rows={[
+    {
+      name: "dotSize",
+      type: "number",
+      default: "10",
+      description:
+        "Width of one screen cell in composition units, and so the pitch of the dots. Small values read as fine offset, large values as coarse newsprint.",
+    },
+    {
+      name: "angle",
+      type: "number",
+      default: "0",
+      description:
+        "Rotation in degrees applied to all three screens together. The 15/75/0 spread between them is fixed, since that is what produces a rosette instead of a moiré; this turns the whole set.",
+    },
+    {
+      name: "misregistration",
+      type: "number",
+      default: "1.2",
+      description:
+        "How far the colour screens drift out of alignment, in composition units. Each channel samples the scene at its own offset, so edges fringe. 0 prints in perfect register.",
+    },
+    {
+      name: "paperTint",
+      type: "string",
+      default: '"#f4efe4"',
+      description:
+        "The stock being printed on. It shows wherever ink does not cover, so it sets the whole temperature of the result.",
+    },
+    {
+      name: "children",
+      type: "React.ReactNode",
+      description: "The scene the filter wraps and re-reads every frame.",
+    },
+  ]}
+/>
+
+## Notes
+
+Nothing animates. The screen is fixed geometry and the dots re-measure the scene
+every frame, so a still scene is pixel-identical frame to frame and a moving one
+prints as it moves — no shimmer of its own to loop or drift.
+
+Paper is emitted only where the scene is opaque, so wrapping a transparent
+element does not box it into a sheet. Inside opaque areas the output is fully
+covered, so the untouched scene beneath never shows through the gaps between
+dots.
+
+In browsers without html-in-canvas the scene renders untouched. A flat paper tint
+over the frame was the obvious fallback and it was rejected: it would claim the
+scene had been printed when nothing had been screened at all.

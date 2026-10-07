@@ -1,0 +1,303 @@
+/**
+ * Framing metadata for the docs preview wrappers.
+ *
+ * Kept free of component imports so build scripts can read it without pulling
+ * in React. `atlas-mini-preview.tsx` merges it with the component map, and the
+ * still audit renders against the same numbers, otherwise the audit judges a
+ * different composition size than the one users actually see.
+ */
+export type PreviewMeta = {
+  durationInFrames?: number;
+  fps?: number;
+  width?: number;
+  height?: number;
+};
+
+/** Composition size the preview wrappers are laid out against. */
+export const PREVIEW_DEFAULTS = {
+  durationInFrames: 120,
+  fps: 30,
+  width: 960,
+  height: 540,
+} as const;
+
+/** Vertical (9:16) previews. */
+const VERTICAL = { width: 1080, height: 1920 } as const;
+
+/**
+ * Composition previews must run their full length: the scene rebuilds
+ * lengthened several of them, and a short window cuts the clip off before its
+ * end card, which reads as a broken composition rather than a trimmed preview.
+ */
+export const PREVIEW_META: Record<string, PreviewMeta> = {
+  /* Atoms: enter, hold, then leave inside the window: the exit is part of
+   * what the primitive does, so the preview has to be long enough to show it. */
+  "fade-in": { durationInFrames: 96 },
+  "fade-out": { durationInFrames: 96 },
+  "slide-up": { durationInFrames: 96 },
+  "slide-left": { durationInFrames: 96 },
+  "scale-in": { durationInFrames: 96 },
+  "blur-in": { durationInFrames: 96 },
+  "spring-in": { durationInFrames: 105 },
+  "rotate-in": { durationInFrames: 100 },
+  "stagger-children": { durationInFrames: 120 },
+  counter: { durationInFrames: 110 },
+  typewriter: { durationInFrames: 165 },
+  "marker-highlight": { durationInFrames: 110 },
+  /* These three carried their window on the `ComponentPage` prop in MDX rather
+   * than here, so the docs player ran one length and the atlas tile and the
+   * still audit ran the 120-frame default, which put both of their late
+   * samples past the end of the motion and read as a frozen tail. The number
+   * lives here now; the MDX override is gone. Each lands its last beat at
+   * 0.80 x window. */
+  "blur-focus-in": { durationInFrames: 48 },
+  "staggered-fade-up": { durationInFrames: 60 },
+  /* Paired with the explicit 110-frame draw in the wrapper: `EASING.enter` is an
+   * expo-out, so a draw is ~90% done a third of the way through its duration.
+   * On the stock 70-frame draw the line was finished by frame 30 whatever the
+   * window was, and every sample after the first showed the same chart. */
+  "line-chart-draw": { durationInFrames: 60 },
+  /* Enter-only, and `springSmooth` is 90% closed halfway through its own
+   * duration: over the 120-frame default the 50% and 90% samples were the same
+   * settled line. 72 frames puts the samples at 10 / 36 / 64 against a 76-frame
+   * entrance, so all three catch it moving. */
+  "tracking-in": { durationInFrames: 72 },
+  "progress-bar": { durationInFrames: 110 },
+  "audio-pulse": { durationInFrames: 120 },
+  "audio-reactive-scale": { durationInFrames: 120 },
+  /* The demo transcript runs 5.6s. The window covers it end to end so the
+   * 90% sample lands on the last cue rather than on an empty track. */
+  "srt-caption-track": { durationInFrames: 170 },
+  /* Enter staggers in over frames 8-90, then a staggered exit from 90, so the
+   * 15% / 50% / 90% samples catch arrival, hold and departure. */
+  "split-text-chars": { durationInFrames: 120 },
+  "audiogram-bars": { durationInFrames: 120 },
+  "audiogram-scene": { durationInFrames: 150 },
+  /* 120, not 150. The preview loops the caption track every 63 frames, and on a
+   * 150-frame window the 50% and 90% samples are 60 frames apart, very nearly
+   * one whole loop, so the two cells came back at the same phase of the same
+   * sentence (39 dB) while the preview was in fact moving the whole time. */
+  "caption-scene": { durationInFrames: 120 },
+  "auto-fit-title": { durationInFrames: 130 },
+  "b-roll-stack": { durationInFrames: 165 },
+  /* Scenes that now take a `holdSeconds` exit. The window is sized so the exit
+   * straddles the audit's 90% sample rather than finishing before it: an exit
+   * that lands early trades a frozen tail for an empty one, which is worse.
+   * window ≈ (holdSeconds + exitFor / 2) * fps / 0.9 */
+  "callout-spotlight": { durationInFrames: 120 },
+  "caption-bumper": { durationInFrames: 140 },
+  "chat-to-preview": { durationInFrames: 190 },
+  "end-card": { durationInFrames: 150 },
+  "claude-chat": { durationInFrames: 120 },
+  "chat-gpt": { durationInFrames: 120 },
+  v0: { durationInFrames: 120 },
+  "claude-code": { durationInFrames: 120 },
+  opencode: { durationInFrames: 120 },
+  "creator-reel": { durationInFrames: 390, ...VERTICAL },
+  "data-flow-pipes": { durationInFrames: 165 },
+  "feature-list": { durationInFrames: 120 },
+  /* 120, not 150: the plate is fully standing by frame 30, so on a 150-frame
+   * window the 15% sample (frame 22) already showed a settled plate. At 96 it
+   * lands on frame 14, while the plate is still wiping open. */
+  "lower-third": { durationInFrames: 96 },
+  "media-frame": { durationInFrames: 130 },
+  "quote-card": { durationInFrames: 113 },
+  "split-screen": { durationInFrames: 120 },
+  "stat-card": { durationInFrames: 123 },
+  "title-card": { durationInFrames: 90 },
+  "media-sequence": { durationInFrames: 210 },
+  "zoom-pan-frame": { durationInFrames: 140 },
+  "data-story": { durationInFrames: 420 },
+  "drag-drop-flow": { durationInFrames: 150 },
+  "hero-loop": { durationInFrames: 360 },
+  /** 60 title + 88 device + 56 lineup − 2 × 12 fade. */
+  "hero-device-assemble": { durationInFrames: 180 },
+  "ecosystem-orbit": { durationInFrames: 180 },
+  "bento-pan": { durationInFrames: 180 },
+  "browser-flow": { durationInFrames: 168 },
+  "ai-generation-canvas": { durationInFrames: 180 },
+  "ai-composer-showcase": { durationInFrames: 533 },
+  "live-code-split": { durationInFrames: 168 },
+  "deploy-reveal": { durationInFrames: 168 },
+  "dashboard-populate": { durationInFrames: 168 },
+  "pricing-focus": { durationInFrames: 180 },
+  "landing-code-showcase": { durationInFrames: 168 },
+  "tool-menu-slide": { durationInFrames: 120 },
+  "image-expand": { durationInFrames: 120 },
+  intro: { durationInFrames: 150 },
+  "map-flight": { durationInFrames: 150 },
+  "podcast-clip": { durationInFrames: 294, ...VERTICAL },
+  showcase: { durationInFrames: 249 },
+  "social-clip": { durationInFrames: 216, ...VERTICAL },
+  "terminal-simulator": { durationInFrames: 180 },
+  "timeline-steps": { durationInFrames: 165 },
+  "code-reveal": { durationInFrames: 165 },
+  "code-accordion": { durationInFrames: 210 },
+  "code-diff-wipe": { durationInFrames: 135 },
+  "comment-callout": { durationInFrames: 165 },
+  "hook-card": { durationInFrames: 120 },
+  "talking-head-layout": { durationInFrames: 195, ...VERTICAL },
+  "confetti-burst": { durationInFrames: 96 },
+  "device-mockup-zoom": { durationInFrames: 90 },
+  "dynamic-grid": { durationInFrames: 90 },
+  "mesh-gradient-bg": { durationInFrames: 90 },
+  "simulated-cursor": { durationInFrames: 72 },
+  "tutorial-clip": { durationInFrames: 248, ...VERTICAL },
+  /* Transitions. `transition-previews.tsx` sizes its two scenes from this
+   * number and the 18-frame overlap (69 + 69 - 18 = 120), so the pair fills
+   * the window exactly and the cut lands on the audit's 50% sample. Pinned
+   * rather than left to the default because a change to `PREVIEW_DEFAULTS`
+   * would silently move every cut off the sample and read as a dead preview. */
+  /* The light leak is an overlay, not a presentation, so its preview sizes two
+   * 60-frame scenes against this number instead of the 18-frame overlap. */
+  "transition-light-leak": { durationInFrames: 120 },
+  "transition-circle-reveal": { durationInFrames: 120 },
+  "transition-card-flip": { durationInFrames: 120 },
+  "transition-blinds": { durationInFrames: 120 },
+  "transition-whip-pan": { durationInFrames: 120 },
+  "transition-morph-shape": { durationInFrames: 120 },
+  "transition-liquid-warp": { durationInFrames: 120 },
+  "skew-in": { durationInFrames: 120 },
+  "scramble-text": { durationInFrames: 120 },
+  "text-mask-video": { durationInFrames: 120 },
+  "handwriting-text": { durationInFrames: 120 },
+  "stroke-to-fill-text": { durationInFrames: 120 },
+  /* Three staggered corrections; the last starts at delay 70 and runs
+   * strike(18) + hold(5) + depart(14) + replaceDelay(12) + replace(22) = 71
+   * more frames, so it needs 141+ to resolve instead of freezing mid-swap. */
+  "strikethrough-replace": { durationInFrames: 150 },
+  "variable-font-morph": { durationInFrames: 120 },
+  "liquid-text-morph": { durationInFrames: 120 },
+  "wave-text": { durationInFrames: 120 },
+  "neon-flicker-text": { durationInFrames: 120 },
+  "aurora-bg": { durationInFrames: 120 },
+  "particle-field": { durationInFrames: 120 },
+  "topographic-lines-bg": { durationInFrames: 120 },
+  "caustics-bg": { durationInFrames: 120 },
+  "animated-noise-grain": { durationInFrames: 120 },
+  "light-rays": { durationInFrames: 120 },
+  "parallax-layers": { durationInFrames: 120 },
+  "shake-emphasis": { durationInFrames: 120 },
+  "glow-pulse": { durationInFrames: 120 },
+  "motion-trail": { durationInFrames: 120 },
+  "squash-stretch": { durationInFrames: 120 },
+  "orbit-motion": { durationInFrames: 120 },
+  "depth-of-field-blur": { durationInFrames: 120 },
+  "scanline-crt": { durationInFrames: 120 },
+  "bar-chart-race": { durationInFrames: 120 },
+  "donut-chart": { durationInFrames: 120 },
+  "pie-slice-reveal": { durationInFrames: 120 },
+  "scatter-plot-pop": { durationInFrames: 120 },
+  "bubble-chart-pack": { durationInFrames: 120 },
+  "gauge-dial": { durationInFrames: 120 },
+  "sparkline-row": { durationInFrames: 120 },
+  "heatmap-grid": { durationInFrames: 120 },
+  "comparison-bars": { durationInFrames: 120 },
+  "funnel-chart": { durationInFrames: 120 },
+  "radar-chart": { durationInFrames: 120 },
+  "treemap-blocks": { durationInFrames: 120 },
+  "waterfall-chart": { durationInFrames: 120 },
+  "stacked-area-chart": { durationInFrames: 120 },
+  "candlestick-chart": { durationInFrames: 120 },
+  "gantt-timeline": { durationInFrames: 120 },
+  "word-pop-captions": { durationInFrames: 120 },
+  "caption-emoji-beat": { durationInFrames: 120 },
+  "speaker-label-captions": { durationInFrames: 120 },
+  "transcript-scroll": { durationInFrames: 120 },
+  "subtitle-translate": { durationInFrames: 120 },
+  "waveform-bars-radial": { durationInFrames: 120 },
+  /* 100, not 120: over a 120-frame window the 15% and 90% samples sit exactly
+   * 90 frames apart, which is the demo loop's own repeat, the two stills came
+   * back byte-identical. 100 samples frames 15 / 50 / 90, so no pair lands on
+   * the same phase of the track. */
+  "vu-meter": { durationInFrames: 100 },
+  "voice-note-bubble": { durationInFrames: 120 },
+  "beat-pulse-grid": { durationInFrames: 120 },
+  "audio-scrubber": { durationInFrames: 120 },
+  "poll-overlay": { durationInFrames: 120 },
+  "reaction-burst": { durationInFrames: 120 },
+  "countdown-timer": { durationInFrames: 120 },
+  "sports-scorebug": { durationInFrames: 120 },
+  "news-ticker-bar": { durationInFrames: 120 },
+  "form-fill-sequence": { durationInFrames: 120 },
+  "notification-stack": { durationInFrames: 120 },
+  "tab-switch-panel": { durationInFrames: 120 },
+  "search-results-populate": { durationInFrames: 120 },
+  "file-tree-reveal": { durationInFrames: 120 },
+  "kanban-move": { durationInFrames: 120 },
+  "commit-graph": { durationInFrames: 120 },
+  "comparison-table": { durationInFrames: 120 },
+  "pricing-card": { durationInFrames: 120 },
+  "faq-accordion": { durationInFrames: 120 },
+  "team-grid": { durationInFrames: 120 },
+  "logo-wall": { durationInFrames: 120 },
+  "changelog-entry": { durationInFrames: 120 },
+  "roadmap-lanes": { durationInFrames: 120 },
+  "org-chart-build": { durationInFrames: 120 },
+  "quiz-question": { durationInFrames: 120 },
+  "weather-card": { durationInFrames: 120 },
+  "calendar-month-fill": { durationInFrames: 120 },
+  "arrow-annotate": { durationInFrames: 120 },
+  "badge-stamp": { durationInFrames: 120 },
+  "shape-morph": { durationInFrames: 120 },
+  "blob-morph": { durationInFrames: 120 },
+  "dashed-path-travel": { durationInFrames: 120 },
+  "connector-lines": { durationInFrames: 120 },
+  "svg-mask-reveal": { durationInFrames: 120 },
+  "map-heat-overlay": { durationInFrames: 120 },
+  "globe-arc": { durationInFrames: 120 },
+  "multi-device-lineup": { durationInFrames: 120 },
+  /* 3D: set-down + lid open, then turn and push. The shot is paced for 5s. */
+  "device-mockup-3d": { durationInFrames: 150 },
+  /* Shaders: continuous fields with no entrance and no loop point, so the
+   * default window is only a viewing length: the 15/50/90% audit samples land
+   * on three different arrangements whatever it is set to. */
+  "dither-field-bg": { durationInFrames: 120 },
+  "warp-bands-bg": { durationInFrames: 120 },
+  "grain-gradient-bg": { durationInFrames: 120 },
+  "light-tunnel-bg": { durationInFrames: 120 },
+  /* Unlike the other fields in the lane this one has an entrance: the sweep
+   * runs to frame 78, so the window has to outlast it or the audit never sees
+   * the settled interior. */
+  "text-reveal-shader": { durationInFrames: 120 },
+  /* The two marquees scroll continuously and never loop back to their start
+   * inside a short window, so their docs players run unlooped for a full track
+   * period instead of cutting mid-scroll. The number lived on the `ComponentPage`
+   * prop in MDX, which the atlas tile and the still audit do not read: they ran
+   * the 120-frame default while the docs player ran 60s. It lives here now. */
+  "infinite-marquee": { durationInFrames: 1800 },
+  "perspective-marquee": { durationInFrames: 1800 },
+  /* The remaining four transitions, pinned for the same reason as the seven
+   * above: `TransitionSeriesPreview` sizes its two scenes from
+   * `PREVIEW_DEFAULTS`, so a window shorter than 120 truncates the second scene.
+   * Each of these carried a stale `durationInFrames={90}` in MDX. */
+  "transition-fade": { durationInFrames: 120 },
+  "transition-slide": { durationInFrames: 120 },
+  "transition-wipe": { durationInFrames: 120 },
+  "transition-clock-wipe": { durationInFrames: 120 },
+  /* 150 frames, matching device-mockup-3d: a 3D shot needs the longer window for
+     its 15/50/90% audit samples to land on three visibly different camera states. */
+  "product-turntable-3d": { durationInFrames: 150 },
+  "text-extrude-3d": { durationInFrames: 150 },
+  "card-stack-3d": { durationInFrames: 150 },
+  "globe-points-3d": { durationInFrames: 150 },
+  "shape-layer": { durationInFrames: 150 },
+  "text-animator": { durationInFrames: 150 },
+  "effector-field": { durationInFrames: 150 },
+  "slit-scan": { durationInFrames: 150 },
+  /* The plotter plan settles on frame 231; 21 more frames hold the finished word
+     while the camera finishes its push (lib/ik-rig.test.ts pins the gap). */
+  "ik-rig": { durationInFrames: 252 },
+  "track-matte": { durationInFrames: 150 },
+  "follow-through": { durationInFrames: 150 },
+};
+
+export function previewMeta(slug: string): Required<PreviewMeta> {
+  const meta = PREVIEW_META[slug] ?? {};
+  return {
+    durationInFrames: meta.durationInFrames ?? PREVIEW_DEFAULTS.durationInFrames,
+    fps: meta.fps ?? PREVIEW_DEFAULTS.fps,
+    width: meta.width ?? PREVIEW_DEFAULTS.width,
+    height: meta.height ?? PREVIEW_DEFAULTS.height,
+  };
+}

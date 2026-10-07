@@ -1,0 +1,325 @@
+import { createRequire } from "node:module";
+import { Command } from "commander";
+import { addCommand } from "./commands/add.js";
+import { buildCommand } from "./commands/build.js";
+import { diffCommand } from "./commands/diff.js";
+import { doctorCommand } from "./commands/doctor.js";
+import { importAeCommand } from "./commands/import-ae.js";
+import { initCommand } from "./commands/init.js";
+import { listCommand } from "./commands/list.js";
+import { updateCommand } from "./commands/update.js";
+import { searchCommand } from "./commands/search.js";
+import { viewCommand } from "./commands/view.js";
+
+const require = createRequire(import.meta.url);
+const { version } = require("../package.json") as { version: string };
+
+const program = new Command();
+
+program
+  .name("remotion-ui")
+  .description("Add Remotion video components to your project")
+  .version(version);
+
+program
+  .command("init")
+  .description("Initialize a new Remotion project with RemotionUI")
+  .argument("[project-name]", "project directory name", "my-video")
+  .option("-y, --yes", "Skip confirmation prompts")
+  .option(
+    "--existing",
+    "Bootstrap remotion-ui.json in the current Remotion project",
+  )
+  .option("--json", "Output machine-readable JSON")
+  .option(
+    "--agent-skill",
+    "Install the RemotionUI agent skill into .claude/skills/",
+  )
+  .option(
+    "--no-agent-skill",
+    "Skip installing the RemotionUI agent skill",
+  )
+  .action(
+    async (
+      projectName: string,
+      options: {
+        yes?: boolean;
+        existing?: boolean;
+        json?: boolean;
+        agentSkill?: boolean;
+      },
+    ) => {
+    try {
+      await initCommand(projectName, {
+        yes: options.yes,
+        existing: options.existing,
+        json: options.json,
+        agentSkill: options.agentSkill,
+      });
+    } catch (error) {
+      if (options.json) {
+        process.exit(1);
+      }
+      console.error(
+        error instanceof Error ? error.message : "Failed to initialize project",
+      );
+      process.exit(1);
+    }
+    },
+  );
+
+program
+  .command("add")
+  .description("Add a component to your project")
+  .argument("[components...]", "component names to add")
+  .option(
+    "-r, --registry-url <url>",
+    "Registry base URL or local path to public/r/",
+  )
+  .option("--preset <preset>", "Registry preset", "default")
+  .option("-y, --yes", "Skip confirmation prompts")
+  .option("--json", "Output machine-readable JSON")
+  .action(async (components: string[], options) => {
+    try {
+      await addCommand(components, {
+        registryUrl: options.registryUrl,
+        preset: options.preset,
+        yes: options.yes,
+        json: options.json,
+      });
+    } catch (error) {
+      if (options.json) {
+        process.exit(1);
+      }
+      console.error(
+        error instanceof Error ? error.message : "Failed to add components",
+      );
+      process.exit(1);
+    }
+  });
+
+program
+  .command("doctor")
+  .description("Diagnose remotion-ui.json, aliases, and Remotion setup")
+  .option("--json", "Output machine-readable JSON")
+  .action(async (options: { json?: boolean }) => {
+    try {
+      await doctorCommand({ json: options.json });
+    } catch (error) {
+      console.error(
+        error instanceof Error ? error.message : "Doctor failed",
+      );
+      process.exit(1);
+    }
+  });
+
+program
+  .command("list")
+  .description("List registry components and installed status")
+  .option(
+    "-r, --registry-url <url>",
+    "Registry base URL or local path to public/r/",
+  )
+  .option("--json", "Output machine-readable JSON")
+  .action(async (options: { registryUrl?: string; json?: boolean }) => {
+    try {
+      await listCommand({
+        registryUrl: options.registryUrl,
+        json: options.json,
+      });
+    } catch (error) {
+      console.error(
+        error instanceof Error ? error.message : "List failed",
+      );
+      process.exit(1);
+    }
+  });
+
+program
+  .command("search")
+  .description("Search the component registry")
+  .option("-q, --query <query>", "search query")
+  .option("--lane <lane>", "filter by atlas lane (atoms, signals, spatial, …)")
+  .option("--tier <tier>", "filter by tier (core, advanced)")
+  .option(
+    "-r, --registry-url <url>",
+    "Registry base URL or local path to public/r/",
+  )
+  .option("--json", "Output machine-readable JSON")
+  .action(
+    async (options: {
+      query?: string;
+      lane?: string;
+      tier?: string;
+      registryUrl?: string;
+      json?: boolean;
+    }) => {
+    try {
+      await searchCommand({
+        query: options.query,
+        lane: options.lane,
+        tier: options.tier,
+        registryUrl: options.registryUrl,
+        json: options.json,
+      });
+    } catch (error) {
+      console.error(
+        error instanceof Error ? error.message : "Search failed",
+      );
+      process.exit(1);
+    }
+    },
+  );
+
+program
+  .command("view")
+  .description("View registry item details")
+  .argument("<name>", "component name")
+  .option(
+    "-r, --registry-url <url>",
+    "Registry base URL or local path to public/r/",
+  )
+  .option("--preset <preset>", "Registry preset", "default")
+  .option("--json", "Output machine-readable JSON")
+  .action(async (name: string, options) => {
+    try {
+      await viewCommand(name, {
+        registryUrl: options.registryUrl,
+        preset: options.preset,
+        json: options.json,
+      });
+    } catch (error) {
+      console.error(
+        error instanceof Error ? error.message : "View failed",
+      );
+      process.exit(1);
+    }
+  });
+
+program
+  .command("update")
+  .description("Update installed component(s) from registry (overwrites files)")
+  .argument("[components...]", "component names to update")
+  .option(
+    "-r, --registry-url <url>",
+    "Registry base URL or local path to public/r/",
+  )
+  .option("--preset <preset>", "Registry preset", "default")
+  .option("-y, --yes", "Skip confirmation prompts")
+  .option("--json", "Output machine-readable JSON")
+  .action(async (components: string[], options) => {
+    try {
+      await updateCommand(components, {
+        registryUrl: options.registryUrl,
+        preset: options.preset,
+        yes: options.yes,
+        json: options.json,
+      });
+    } catch (error) {
+      if (options.json) {
+        process.exit(1);
+      }
+      console.error(
+        error instanceof Error ? error.message : "Failed to update components",
+      );
+      process.exit(1);
+    }
+  });
+
+program
+  .command("diff")
+  .description("Diff installed component vs registry")
+  .argument("<name>", "component name")
+  .option(
+    "-r, --registry-url <url>",
+    "Registry base URL or local path to public/r/",
+  )
+  .option("--preset <preset>", "Registry preset", "default")
+  .option("--json", "Output machine-readable JSON")
+  .action(async (name: string, options) => {
+    try {
+      await diffCommand(name, {
+        registryUrl: options.registryUrl,
+        preset: options.preset,
+        json: options.json,
+      });
+    } catch (error) {
+      if (options.json) {
+        process.exit(1);
+      }
+      console.error(
+        error instanceof Error ? error.message : "Diff failed",
+      );
+      process.exit(1);
+    }
+  });
+
+program
+  .command("import-ae")
+  .description(
+    "Convert an After Effects Bodymovin/Lottie JSON export into editable Remotion TSX",
+  )
+  .argument("<file>", "Bodymovin / Lottie .json file")
+  .option("-o, --out <dir>", "output directory (default: <compositions>/<name>)")
+  .option("-n, --name <Name>", "component and composition id, PascalCase")
+  .option(
+    "--skip-unsupported",
+    "generate anyway, listing unsupported features in the output header",
+  )
+  .option("-f, --force", "overwrite existing generated files")
+  .option("--no-register", "do not add the composition to Root.tsx")
+  .option("--no-install", "do not install the ae-import runtime")
+  .option(
+    "-r, --registry-url <url>",
+    "Registry base URL or local path to public/r/ (for the runtime install)",
+  )
+  .option("--json", "Output machine-readable JSON")
+  .action(async (file: string, options) => {
+    try {
+      await importAeCommand(file, {
+        out: options.out,
+        name: options.name,
+        skipUnsupported: options.skipUnsupported,
+        force: options.force,
+        register: options.register,
+        install: options.install,
+        registryUrl: options.registryUrl,
+        json: options.json,
+      });
+    } catch (error) {
+      if (options.json) {
+        process.exit(1);
+      }
+      console.error(
+        error instanceof Error ? error.message : "import-ae failed",
+      );
+      process.exit(1);
+    }
+  });
+
+program
+  .command("build")
+  .description("Build a custom registry")
+  .argument("[registry]", "path to registry.json", "registry.json")
+  .option("-o, --output <dir>", "output directory for built registry")
+  .option("--preset <preset>", "registry preset name", "default")
+  .option("--json", "Output machine-readable JSON")
+  .action(async (registry: string, options) => {
+    try {
+      await buildCommand(registry, {
+        outputDir: options.output,
+        preset: options.preset,
+        json: options.json,
+      });
+    } catch (error) {
+      if (options.json) {
+        process.exit(1);
+      }
+      console.error(
+        error instanceof Error ? error.message : "Build failed",
+      );
+      process.exit(1);
+    }
+  });
+
+program.parse();

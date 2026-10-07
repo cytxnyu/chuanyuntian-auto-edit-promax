@@ -1,0 +1,33 @@
+{
+  "extends": "@remotionui/typescript-config/nextjs.json",
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./*"],
+      "@/remotion/primitives/*": ["./registry/bases/default/primitives/*"],
+      "@/remotion/scenes/*": ["./registry/bases/default/scenes/*"],
+      "@/compositions/*": ["./registry/bases/default/compositions/*"],
+      "@/remotion/lib/*": ["./registry/bases/default/lib/*"],
+      "@/remotion/hooks/*": ["./registry/bases/default/hooks/*"],
+      "collections/*": ["./.source/*"]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "allowJs": true,
+    "incremental": true
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "source.config.ts",
+    "remotion.config.js",
+    "showcase/**"
+  ]
+}

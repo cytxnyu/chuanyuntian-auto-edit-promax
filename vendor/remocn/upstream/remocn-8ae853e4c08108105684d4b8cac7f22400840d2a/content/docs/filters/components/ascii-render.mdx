@@ -1,0 +1,209 @@
+---
+title: ASCII Render
+description: Redraw a live scene as ASCII, one character per cell, tracking the picture as it moves
+component: ascii-render
+vibe: tech
+length: sustained
+useWhen:
+  - "A scene should arrive out of text — interpolate intensity from 1 to 0 and the UI resolves out of ASCII instead of just fading in."
+  - "A scene should read as a terminal rendering of itself — developer-facing intros, hacker-flavoured beats, a dashboard reduced to text."
+  - "You want a moving backdrop made of characters, by wrapping a shader or gradient while the content on top stays sharp."
+  - "The scene is high contrast, since the glyph ramp is driven by brightness and flat mid-tones give flat text."
+avoidWhen:
+  - "The ASCII should only cover the cut between two scenes — use `ascii-dissolve`."
+  - "You want cascading code rain as a motif rather than the scene itself turned into characters — use `matrix-decode`."
+  - "The scene carries fine detail or small type that has to stay readable, since a glyph cell throws away everything inside it but its average brightness."
+---
+
+<ComponentPreview name="ascii-render" />
+
+<CanvasFilterNote />
+
+<InstallBlock name="ascii-render" />
+
+## Usage
+
+`AsciiRender` is a wrapper. Put a scene inside it and the frame is divided into
+glyph cells; each cell measures the average brightness of the picture inside it
+and draws the character from `charset` that matches. Because the measurement
+happens every frame, the characters flow with whatever moves underneath.
+
+```tsx
+import { AsciiRender } from "@/components/remocn/ascii-render";
+
+export const MyScene = () => (
+  <AsciiRender>
+    <Scene />
+  </AsciiRender>
+);
+```
+
+## What to reach for it for
+
+On its own, a scene converted to text is a look. What makes it useful in a video
+is `intensity`, which is read every frame: it blends the ASCII back toward the
+untouched scene, so the treatment can arrive, leave, or spike.
+
+### Resolve the scene out of text
+
+The strongest use. The scene enters as characters and sharpens into the real UI
+over the first second — a beginning with more intent than a fade, and one that
+says "this is software" before the viewer can read anything.
+
+<ComponentExample name="ascii-resolve" />
+
+```tsx
+import { interpolate, useCurrentFrame } from "remotion";
+import { AsciiRender } from "@/components/remocn/ascii-render";
+
+export const Opening = () => {
+  const frame = useCurrentFrame();
+  const intensity = interpolate(frame, [0, 30], [1, 0], {
+    extrapolateRight: "clamp",
+  });
+
+  return (
+    <AsciiRender intensity={intensity} glyphSize={22}>
+      <Dashboard />
+    </AsciiRender>
+  );
+};
+```
+
+Animating `glyphSize` alongside it — coarse to fine, as the preview does — makes
+the scene feel like it is being resolved rather than revealed. The preview runs
+the move in reverse at the end so that it loops; a real opening would stop at 0
+and stay there.
+
+### Punch it in on a beat
+
+Hold the scene clean and let it drop into text for a few frames, the way
+`sustained-glitch` is used for damage. Good on a hard cut in the music or the
+moment a command runs.
+
+<ComponentExample name="ascii-beat" />
+
+```tsx
+const intensity = interpolate(frame, [44, 46, 58], [0, 1, 0], {
+  extrapolateLeft: "clamp",
+  extrapolateRight: "clamp",
+});
+```
+
+Two frames of attack and a dozen of release is the shape that reads as a hit.
+Give it a slow ramp and it stops being punctuation.
+
+### Build a backdrop out of characters
+
+The filter wraps anything, not just your main scene. Wrap something that moves
+and you get a field of text to sit content on — and the content stays perfectly
+sharp, because it lives outside the wrapper rather than inside it.
+
+<ComponentExample name="ascii-backdrop" />
+
+```tsx
+import { AbsoluteFill } from "remotion";
+import { AsciiRender } from "@/components/remocn/ascii-render";
+
+export const Scene = () => (
+  <AbsoluteFill>
+    <AsciiRender glyphSize={18} ink="#2f7a52">
+      <YourMovingBackdrop />
+    </AsciiRender>
+    <AbsoluteFill>{/* headline and body stay sharp */}</AbsoluteFill>
+  </AbsoluteFill>
+);
+```
+
+A shader background works here too, but only on Chrome 152+, where a canvas
+nested inside the captured subtree is itself captured. A backdrop built from DOM
+has no such requirement, which is what the preview above uses.
+
+## The charset is a ramp
+
+`charset` is read as a density ramp, darkest first: the leftmost character is
+what a black cell becomes, the rightmost is what a white cell becomes. The
+default `" .:-=+*#%@"` runs from a space to a solid glyph, which is why it reads
+as shading rather than as noise.
+
+Order matters more than length. A ramp whose characters do not grow steadily
+denser left to right will produce texture instead of tone.
+
+```tsx
+<AsciiRender charset=" ░▒▓█" glyphSize={20}>
+  <Scene />
+</AsciiRender>
+```
+
+## Colour
+
+By default the glyphs are drawn in a single `ink` colour on black — a terminal.
+Set `colored` and each glyph takes the colour of the picture in its own cell
+instead, which keeps the scene recognisable while still reducing it to text.
+
+```tsx
+<AsciiRender colored>
+  <Scene />
+</AsciiRender>
+```
+
+<PropsTable title="Props"
+  rows={[
+    {
+      name: "glyphSize",
+      type: "number",
+      default: "26",
+      description:
+        "Height of one glyph cell in composition units. The cell width follows from the monospace aspect, so this alone sets how much of the scene survives.",
+    },
+    {
+      name: "charset",
+      type: "string",
+      default: '" .:-=+*#%@"',
+      description:
+        "Density ramp, darkest character first. Any printable characters work; an empty string falls back to the default ramp.",
+    },
+    {
+      name: "colored",
+      type: "boolean",
+      default: "false",
+      description:
+        "When set, each glyph takes the colour of its own cell. When unset, all glyphs use ink.",
+    },
+    {
+      name: "ink",
+      type: "string",
+      default: '"#9dff9d"',
+      description: "Glyph colour in the monochrome mode. Ignored when colored is set.",
+    },
+    {
+      name: "intensity",
+      type: "number",
+      default: "1",
+      description:
+        "How much of the ASCII survives, from 0 to 1. Read every frame, so interpolating it is how the scene resolves out of text or drops into it. At 0 the scene passes through exactly as it was.",
+    },
+    {
+      name: "children",
+      type: "React.ReactNode",
+      description: "The scene the filter wraps and re-reads every frame.",
+    },
+  ]}
+/>
+
+## Notes
+
+Between the glyphs the filter writes opaque black wherever the scene was opaque,
+so the result reads as a terminal rather than as characters floating over the
+original. Where the scene is transparent it stays transparent, so the filter can
+sit over a backdrop without boxing it in.
+
+The glyph atlas is drawn once per charset with the system monospace face and
+cached for the lifetime of the canvas, so it costs nothing per frame. It uses a
+system font rather than a loaded webfont specifically so that there is no frame
+where the atlas has been built from a fallback face.
+
+In browsers without html-in-canvas the scene renders untouched. There is no
+honest CSS approximation of resampling a live scene into glyphs, and a
+half-measure that only tinted the frame green would misrepresent what the
+component does.

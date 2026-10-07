@@ -1,0 +1,79 @@
+---
+title: Agent Skill
+description: Install the remocn agent skill with skills.sh so your AI generates better Remotion videos
+---
+
+Remocn ships an **agent skill** — a knowledge pack that teaches AI coding agents (Claude Code and
+friends) how to build videos with remocn: how the two component tiers differ, how to budget a
+timeline, how to compose a video out of beats, and where to read the rest.
+
+Once installed, your agent picks the right components, budgets the timeline correctly, and styles
+your additions to match the library — without you pasting context every time.
+
+<Note title="The catalog is not bundled">
+  The skill does not carry a copy of the component reference. It reads these docs live, starting
+  from [`/llms-components.txt`](https://remocn.dev/llms-components.txt) and following the link to
+  each component's page. That way a component added today is visible to an agent whose skill was
+  installed months ago, and a prop that changed cannot go stale in two places at once. Your agent
+  needs network access to remocn.dev; without it, it will tell you rather than guess.
+</Note>
+
+## Install with skills.sh
+
+The skill lives in the [`skills/`](https://github.com/Remocn/remocn/tree/main/skills) folder of
+the remocn repo. Install it with the [`skills`](https://skills.sh) CLI:
+
+```bash
+npx skills add Remocn/remocn
+```
+
+This finds the `remocn` skill and installs it into your agent (for Claude Code:
+`.claude/skills/remocn/`). The CLI is interactive — pick the skill and target agent when prompted.
+
+### Common flags
+
+```bash
+# Install straight to the remocn skill, no prompts
+npx skills add Remocn/remocn --skill remocn --yes
+
+# Install globally (available in every project)
+npx skills add Remocn/remocn --skill remocn -g
+
+# Target a specific agent
+npx skills add Remocn/remocn -a claude-code
+
+# Just list what's available in the repo
+npx skills add Remocn/remocn --list
+```
+
+### Use without installing
+
+To try it for a single session without writing files:
+
+```bash
+npx skills use Remocn/remocn@remocn | claude
+```
+
+## What's inside
+
+| File | Contents |
+|---|---|
+| `SKILL.md` | Install flow, the two tiers and their differing APIs, canvas and timing rules, remocn-specific gotchas, and where to fetch everything else |
+| `references/anatomy.md` | Composing a full video — template vs compose vs build, the product-demo beats, the good-vs-slop bar |
+| `references/archetypes/` | Per-archetype recipes: product demo, changelog, feature announcement, OSS showcase, CLI demo, testimonial reel, year in review, pricing reveal, logo bumper |
+
+What the skill reads from this site instead of bundling:
+
+| URL | Contents |
+|---|---|
+| [`/llms-components.txt`](https://remocn.dev/llms-components.txt) | Every installable component with its use / avoid signal, natural length, vibe, tier and dependencies |
+| `/docs/<section>/<name>.md` | One component's full reference — props, examples, all use / don't-use notes |
+| [`/docs/craft/`](/docs/craft) | Design defaults, motion principles, anti-patterns |
+
+Any docs URL serves raw Markdown when you append `.md`, so you can read the same pages your agent
+does.
+
+## Prerequisites
+
+- An AI agent that loads skills (e.g. Claude Code).
+- A Remotion project with remocn — see [Installation](/docs/getting-started/installation).

@@ -1,0 +1,46 @@
+---
+title: Metaballs
+description: Organic blobs merging and splitting like lava
+component: shader-metaballs
+vibe: playful
+length: 150
+useWhen:
+  - "A playful or organic scene wants lava-lamp blobs merging and splitting."
+  - "You want soft, rounded motion that reads as fun without being childish."
+  - "You want blob count/size tunable via `count`/`size`."
+avoidWhen:
+  - "The brand is strictly serious/corporate — metaballs read playful."
+  - "You want structured or geometric motion — use `shader-dot-orbit` or `shader-voronoi`."
+  - "Blobs would obscure dense foreground content — lower `count`/`size`."
+---
+
+<ComponentPreview name="shader-metaballs" />
+
+<InstallBlock name="shader-metaballs" />
+
+## Usage
+
+```tsx
+// src/Root.tsx
+import { Composition } from "remotion";
+import { ShaderMetaballs } from "@/components/remocn/shader-metaballs";
+
+const ShaderMetaballsScene = () => (
+  <ShaderMetaballs speed={1} count={10} size={0.83} />
+);
+
+export const RemotionRoot = () => (
+  <Composition
+    id="ShaderMetaballs"
+    component={ShaderMetaballsScene}
+    durationInFrames={150}
+    fps={30}
+    width={1280}
+    height={720}
+  />
+);
+```
+
+## Credits
+
+Shader by [paper-design/shaders](https://github.com/paper-design/shaders).

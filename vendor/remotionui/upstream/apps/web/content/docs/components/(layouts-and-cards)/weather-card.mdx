@@ -1,0 +1,31 @@
+---
+title: Weather Card
+description: Conditions with iconography that never stops. Rays turn, clouds drift, drops and flakes fall on their own loops.
+---
+
+import { WeatherCardPreview } from '@/components/previews/weather-card';
+
+<ComponentPage name="weather-card" preview={WeatherCardPreview}>
+
+The temperature counts up, the forecast row arrives day by day, and the
+iconography runs continuously underneath all of it. The motion is real but it is
+small: a forecast glyph is a few pixels tall, so the drift alone will not carry
+a tile. Pass `holdSeconds` when the card stands on its own and it leaves; omit
+it inside a `TransitionSeries`, where the transition covers the tail.
+
+Every moving part is a pure function of the frame: `frame * rate` wrapped into
+its own period, with each ray, drop or flake offset by its own index. Nothing
+accumulates state between frames, so a frame rendered out of order on a render
+farm is identical to the same frame rendered in sequence. That is a hard
+requirement in Remotion, not a stylistic choice: anything driven by a
+`useRef` counter will drift.
+
+Four conditions ship: `sun`, `cloud`, `rain` and `snow`. Each forecast column
+runs its own clock, offset by nine frames per column, so the row never becomes
+five glyphs moving in lockstep.
+
+The degree symbol takes `accentColor` while the glyph takes the condition
+colour. They are deliberately separate: the brand mark should not change hue
+when the weather does.
+
+</ComponentPage>

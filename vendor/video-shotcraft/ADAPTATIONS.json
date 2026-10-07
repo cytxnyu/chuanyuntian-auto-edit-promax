@@ -1,0 +1,30 @@
+{
+  "revision": "5ddbf521038b0a7accfb6dc1e0a9eb29c67277ab",
+  "changedFiles": [
+    {
+      "path": "demos/camera/basic-3d-scene/Basic3DScene.tsx",
+      "originalSha256": "6778ebf2d3265ca84f86e98786ddc2d95fdd674d857aadc35c4f767d88cdecec",
+      "runtimeSha256": "74691be71857874f4ec51c53d2a4ca9e0fedbae44d9561a56cc49aa4f41ebf57"
+    },
+    {
+      "path": "demos/camera/terminal-3d/Terminal3D.tsx",
+      "originalSha256": "93884ca59ef0b48883b3010587b3ba14f301b45cae40f5687fbdb353be6c4b78",
+      "runtimeSha256": "ea3c2e2f9b991c0c253a1cb228dacf125d2a5a8caba5c84e6dacccf137d0e760"
+    },
+    {
+      "path": "template/src/aifl/Main.tsx",
+      "originalSha256": "e74e9694cd4305955725deaf342d463a96a35dcf18508fc4ce213f4bf4e28e6a",
+      "runtimeSha256": "5509f3a956396d47bc5c435d2881800a707e9f0ab3b98268cd076fc2b94e2a2a"
+    },
+    {
+      "path": "template/src/themes/ThemedFilm.tsx",
+      "originalSha256": "fd26ffd60821fd6020ce4934320f3df6c854044738b42f128a6cfe4c94f2eb8e",
+      "runtimeSha256": "2e55ae394bf56cc1b8d282e3e6c76a952d42e63208e0361fec35e065ce894d5e"
+    },
+    {
+      "path": "template/src/themes/visual-theme.tsx",
+      "originalSha256": "9350fe5e6ccb1685c9de997fd5ad1342b81ed2f499c863bbe290aa46355e12c2",
+      "runtimeSha256": "0024edd64198809f8e5e6d2c01214e30e0ef68bc57af0a8c35fbf27d716d4453"
+    }
+  ]
+}

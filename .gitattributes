@@ -1,0 +1,12 @@
+# Preserve vendored source bytes and release SHA256 values across platforms.
+* -text
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.wav binary
+*.ttf binary
+*.woff binary
+*.woff2 binary
+*.zip binary
+*.tgz binary

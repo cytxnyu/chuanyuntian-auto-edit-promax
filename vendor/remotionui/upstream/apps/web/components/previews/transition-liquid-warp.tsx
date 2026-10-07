@@ -1,0 +1,26 @@
+"use client";
+
+import { transitionLiquidWarp } from "../../registry/bases/default/primitives/transition-liquid-warp";
+import {
+  TRANSITION_FRAMES,
+  TransitionSeriesPreview,
+} from "./transition-previews";
+
+/**
+ * Timed at `TRANSITION_FRAMES` so the two scenes still fill the preview
+ * composition exactly (69 + 69 - 18 = 120) and the cut itself straddles the
+ * audit's 50% sample. A transition preview timed any other way samples two
+ * still scenes and reads as dead.
+ */
+export const TransitionLiquidWarpPreview: React.FC = () => (
+  <TransitionSeriesPreview
+    transition={transitionLiquidWarp({
+      durationInFrames: TRANSITION_FRAMES,
+    })}
+    label={{
+      name: "Liquid warp",
+      beforeDetail: "Distorts as if pulled through liquid",
+      afterDetail: "Settles once the warp releases",
+    }}
+  />
+);

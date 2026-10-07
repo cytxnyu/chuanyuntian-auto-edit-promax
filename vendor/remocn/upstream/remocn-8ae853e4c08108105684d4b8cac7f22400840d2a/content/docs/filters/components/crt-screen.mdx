@@ -1,0 +1,106 @@
+---
+title: CRT Screen
+description: Put a scene behind curved glass — barrel distortion, phosphor mask, scanlines and a falling-away rim
+component: crt-screen
+vibe: tech
+length: sustained
+useWhen:
+  - "A scene should read as something displayed on a tube rather than rendered flat — retro terminals, arcade beats, an old dashboard being demoed."
+  - "You are framing a scene as footage of a screen, and the curvature is what sells that it is a physical display."
+  - "The scene is high contrast — bright text on a dark field is what the phosphor mask and bloom were built to render."
+avoidWhen:
+  - "The story is worn tape rather than a monitor — use `vhs-filter`, which degrades the signal instead of the display."
+  - "You want the scene to read as photographed rather than displayed — use `camera-lens`, which loses resolution toward the corners and blooms highlights instead of masking the picture."
+  - "The image should stand in the air as light rather than sit on a physical surface — use `hologram`."
+  - "The tube should die rather than run — use `tv-power-off`, which collapses the picture into a line and a phosphor dot over a set number of frames instead of holding a look."
+  - "Content sits close to the frame edge, since the barrel warp pushes the corners past the picture and they fall into the rim."
+---
+
+<ComponentPreview name="crt-screen" />
+
+<CanvasFilterNote />
+
+<InstallBlock name="crt-screen" />
+
+## Usage
+
+`CrtScreen` is a wrapper. Put a scene inside it and every frame is re-read
+through the geometry of a tube: the picture bulges outward so straight lines bow,
+an RGB phosphor mask breaks the colour into stripes, scanlines follow the same
+curve rather than lying flat across the frame, bright areas flood the mask around
+them, and the corners run off the glass into darkness.
+
+It has no duration of its own — it lasts exactly as long as the scene it wraps.
+
+```tsx
+import { CrtScreen } from "@/components/remocn/crt-screen";
+
+export const MyScene = () => (
+  <CrtScreen>
+    <Scene />
+  </CrtScreen>
+);
+```
+
+## Keeping content on the glass
+
+The warp pushes the corners of the frame outside the picture, which is what
+produces the dark rim — and what will clip anything parked there. Give the scene
+inside a generous margin, or drop `curvature` toward 0 for a flat-panel look that
+keeps the mask and scanlines.
+
+```tsx
+<CrtScreen curvature={0.35}>
+  <Scene />
+</CrtScreen>
+```
+
+<PropsTable title="Props"
+  rows={[
+    {
+      name: "curvature",
+      type: "number",
+      default: "1",
+      description:
+        "How far the tube bulges. Bends the picture more across the vertical than the horizontal, the way a real tube is shaped. At 0 the frame stays flat and nothing is clipped at the corners.",
+    },
+    {
+      name: "scanlines",
+      type: "number",
+      default: "1",
+      description:
+        "Strength of the horizontal line structure. The lines follow the curvature rather than lying flat, so they bow with the picture.",
+    },
+    {
+      name: "maskScale",
+      type: "number",
+      default: "2",
+      description:
+        "Width in device pixels of one phosphor stripe, so a triad is three times this. Low values read as a fine aperture grille, high values as a coarse arcade tube. Measured in output pixels, so the mask gets finer relative to the frame as you render larger.",
+    },
+    {
+      name: "vignette",
+      type: "number",
+      default: "1",
+      description:
+        "How hard the picture falls off toward the rim, where the glass curves away from the viewer.",
+    },
+    {
+      name: "children",
+      type: "React.ReactNode",
+      description: "The scene the filter wraps and re-reads every frame.",
+    },
+  ]}
+/>
+
+## Notes
+
+Outside the tube the filter writes opaque black rather than nothing, so the rim
+is real darkness and not a hole showing the untouched scene through it. Inside
+the tube the scene's own transparency is preserved, so put a background within
+the wrapper rather than behind it.
+
+The only thing that moves is a 1% brightness breath on a 60-frame cycle, which
+closes seamlessly on any loop that is a multiple of it. Everything else is fixed
+geometry, so two renders of the same frame produce the same pixels and the look
+holds for as long as the scene runs.

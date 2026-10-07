@@ -1,0 +1,164 @@
+---
+title: Underwater Ripple
+description: Hold a scene under moving water — layered refraction that closes on a whole number of cycles
+component: underwater-ripple
+vibe: premium
+length: sustained
+useWhen:
+  - "A scene should sit under water for its whole run — calm premium backdrops, ambient hero loops, a title card that needs motion without a direction."
+  - "A scene should surface out of the water on entry — interpolate amplitude down to 0 and the picture settles into stillness."
+  - "The section loops, since the ripple closes exactly on a whole number of cycles across the composition."
+avoidWhen:
+  - "The water should be its own layer rather than something the scene is seen through — use `shader-caustics` behind a crisp scene."
+  - "The scene carries small type that has to stay legible, since refraction bends every edge it touches."
+  - "You want a single travelling wave rather than a field that moves everywhere at once — nothing here sweeps."
+---
+
+<ComponentPreview name="underwater-ripple" />
+
+<CanvasFilterNote />
+
+<InstallBlock name="underwater-ripple" />
+
+## Usage
+
+`UnderwaterRipple` is a wrapper. Put a scene inside it and every pixel is read
+through a moving water surface: the picture bends along the slope of the field,
+and where the water bends hardest the colour channels separate a little, the way
+light does through a real surface.
+
+```tsx
+import { UnderwaterRipple } from "@/components/remocn/underwater-ripple";
+
+export const MyScene = () => (
+  <UnderwaterRipple>
+    <Scene />
+  </UnderwaterRipple>
+);
+```
+
+## The loop closes by construction
+
+`speed` is not a rate, it is a count: how many complete cycles the water goes
+through over the composition. Keep it a whole number and the last frame hands
+back to the first with nothing to hide — put the section on repeat and there is
+no seam to find.
+
+That is also why the filter reads `durationInFrames` rather than seconds. Inside
+a `Sequence` it picks up that sequence's length, so a ten-second ambient hold and
+a two-second beat each close on their own.
+
+A fractional `speed` still renders, it simply will not loop.
+
+## What to reach for it for
+
+### Surface out of the water
+
+The arrival. The scene starts deep under a heavy ripple and settles into
+stillness over a second and a half — motion that resolves rather than motion that
+merely stops.
+
+<ComponentExample name="ripple-surface" />
+
+```tsx
+import { interpolate, useCurrentFrame } from "remotion";
+import { UnderwaterRipple } from "@/components/remocn/underwater-ripple";
+
+export const Opening = () => {
+  const frame = useCurrentFrame();
+  const amplitude = interpolate(frame, [0, 46], [34, 0], {
+    extrapolateRight: "clamp",
+  });
+
+  return (
+    <UnderwaterRipple amplitude={amplitude} speed={3}>
+      <Scene />
+    </UnderwaterRipple>
+  );
+};
+```
+
+The preview sinks back at the end so that it loops; a real opening would settle
+at 0 and stay there. At `amplitude={0}` the scene passes through untouched, so
+there is nothing to tear down afterwards.
+
+### Water behind, type in front
+
+The more useful shape in practice. Wrap only the backdrop and leave the type
+outside the wrapper: the water moves, the words stay perfectly crisp. Refraction
+is the one thing in this pack you almost never want on your own copy.
+
+<ComponentExample name="ripple-backdrop" />
+
+```tsx
+import { AbsoluteFill } from "remotion";
+import { UnderwaterRipple } from "@/components/remocn/underwater-ripple";
+
+export const Scene = () => (
+  <AbsoluteFill>
+    <UnderwaterRipple amplitude={14} scale={0.8} speed={2}>
+      <PoolBackdrop />
+    </UnderwaterRipple>
+    <AbsoluteFill>{/* headline stays sharp out here */}</AbsoluteFill>
+  </AbsoluteFill>
+);
+```
+
+<PropsTable title="Props"
+  rows={[
+    {
+      name: "amplitude",
+      type: "number",
+      default: "7",
+      description:
+        "How far the water pushes the picture, in composition units. Read every frame, so interpolating it is how a scene surfaces. At 0 the scene passes through untouched.",
+    },
+    {
+      name: "scale",
+      type: "number",
+      default: "1",
+      description:
+        "Size of the wave structure. Low values give long swells, high values a tight chop. Changing it does not change how far pixels move — that stays with amplitude.",
+    },
+    {
+      name: "speed",
+      type: "number",
+      default: "2",
+      description:
+        "Complete cycles across the composition, not a rate. Whole numbers loop seamlessly; higher values are faster water on the same length of scene.",
+    },
+    {
+      name: "dispersion",
+      type: "number",
+      default: "1",
+      description:
+        "How far red and blue separate where the water bends hardest. Scales with the local slope, so flat water stays clean and the fringing appears only in the troughs and crests.",
+    },
+    {
+      name: "children",
+      type: "React.ReactNode",
+      description: "The scene the filter wraps and re-reads every frame.",
+    },
+  ]}
+/>
+
+## Notes
+
+The field is a closed-form sum of three travelling waves whose temporal phases
+are whole multiples of the base cycle, and the displacement is its exact
+analytic gradient rather than a sampled difference. Nothing is simulated forward
+from the previous frame, so any frame can be rendered in isolation and parallel
+workers cannot drift apart.
+
+It never sweeps. The whole surface moves at once, so there is no front crossing
+the frame and no direction to the effect — which is what lets it sit on a scene
+for a minute without becoming an event.
+
+The filter expects a full-bleed scene. It reads pixels from a displaced
+coordinate, so where the scene is transparent it has nothing to bend and the
+untouched original shows through underneath — put a background inside the
+wrapper rather than behind it.
+
+In browsers without html-in-canvas the scene renders untouched. CSS cannot read a
+pixel from anywhere but where it is, and a wobbling blur would be a different
+effect wearing this one's name.

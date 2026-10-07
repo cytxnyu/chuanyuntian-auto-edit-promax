@@ -1,0 +1,22 @@
+---
+title: Countdown Timer
+description: A clock that runs down rather than a number that changes.
+---
+
+import { CountdownTimerPreview } from '@/components/previews/countdown-timer';
+
+<ComponentPage name="countdown-timer" preview={CountdownTimerPreview}>
+
+The ring drains continuously while the digit swaps on each whole second, so the
+clock reads as running between ticks instead of sitting still. The last few
+seconds take `urgentColor`, and zero lands with a single pop rather than ticking
+on into negative time.
+
+The digit is what a viewer would read off a wall clock: with 4.2 seconds left it
+shows `5`. Set `zeroLabel` to swap in a word at the end (LIVE, GO, ON AIR),
+otherwise it rests on `0`.
+
+`variant="numeric"` drops the ring and keeps the number, for corners of the frame
+where a 300-unit circle will not fit.
+
+</ComponentPage>

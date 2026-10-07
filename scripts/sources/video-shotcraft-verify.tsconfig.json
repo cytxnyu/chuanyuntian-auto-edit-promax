@@ -1,0 +1,5 @@
+{
+  "extends": "../../tsconfig.json",
+  "include": ["../../packages/remotion-renderer/src/external/providers/video-shotcraft.tsx"],
+  "exclude": ["../../vendor/video-shotcraft/upstream"]
+}

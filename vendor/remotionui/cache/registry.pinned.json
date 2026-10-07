@@ -1,0 +1,4858 @@
+{
+  "$schema": "https://remotionui.com/schema/registry.json",
+  "name": "remotionui",
+  "homepage": "https://remotionui.com",
+  "items": [
+    {
+      "name": "timing",
+      "type": "registry:lib",
+      "description": "Frame timing helpers and enter easing",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/bases/default/lib/timing.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "springs",
+      "type": "registry:lib",
+      "description": "Default spring configurations",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/bases/default/lib/springs.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "transition-timing",
+      "type": "registry:lib",
+      "description": "Shared TransitionSeries timing helpers and layered progress curves",
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "springs"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/lib/transition-timing.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "ai-composer-utils",
+      "type": "registry:lib",
+      "description": "Shared typewriter, caret, morph, and intro helpers for AI composer scenes",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/bases/default/lib/ai-composer-utils.tsx",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "code-syntax",
+      "type": "registry:lib",
+      "description": "Syntax tokenizer, editor palettes, and revealable code line renderer for the code scenes",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/bases/default/lib/code-syntax.tsx",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "text-emphasis",
+      "type": "registry:lib",
+      "description": "Word-level phrase matching and marker geometry for scenes that sweep emphasis across text",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/bases/default/lib/text-emphasis.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "motion-tokens",
+      "type": "registry:lib",
+      "description": "Named motion duration and stagger tokens",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "timing",
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/lib/motion-tokens.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "gpu",
+      "type": "registry:lib",
+      "description": "WebGL2 fragment-shader effect factory for GPU primitives",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/bases/default/lib/gpu.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "layout",
+      "type": "registry:lib",
+      "description": "Format-agnostic layout helpers",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/bases/default/lib/layout.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "motion-wrapper",
+      "type": "registry:lib",
+      "description": "Inline wrapper for enter/exit animations (avoids AbsoluteFill overlap)",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/bases/default/lib/motion-wrapper.tsx",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "motion-primitive",
+      "type": "registry:lib",
+      "description": "Enter/exit motion contract shared by the animation primitives — opacity leads, exits are shorter, and a bounded Sequence times the exit itself",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "springs",
+        "timing"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/lib/motion-primitive.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "use-stagger",
+      "type": "registry:hook",
+      "description": "Hook for staggered child delays",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "timing"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/hooks/use-stagger.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "fade-in",
+      "type": "registry:ui",
+      "description": "Opacity-only entrance, with an exit that lands on the end of its sequence",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "motion-primitive",
+        "motion-wrapper"
+      ],
+      "compat": {
+        "remotion": "^4.0.0"
+      },
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/fade-in.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "fade-out",
+      "type": "registry:ui",
+      "description": "Held exit that accelerates away, timed to the last frame of its sequence by default",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "motion-wrapper",
+        "timing"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/fade-out.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "slide-up",
+      "type": "registry:ui",
+      "description": "Rise into place, with an optional mask reveal and automatic exit",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "motion-primitive",
+        "motion-wrapper",
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/slide-up.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "slide-left",
+      "type": "registry:ui",
+      "description": "Slide in from either side, with an optional mask reveal and automatic exit",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "motion-primitive",
+        "motion-wrapper",
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/slide-left.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "scale-in",
+      "type": "registry:ui",
+      "description": "Grow into place from just under full size, with an optional spring and exit",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "motion-primitive",
+        "motion-wrapper"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/scale-in.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "typewriter",
+      "type": "registry:ui",
+      "description": "Typewriter reveal with rhythm, pauses, looping, and a caret that only blinks at rest",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout",
+        "timing"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/typewriter.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "counter",
+      "type": "registry:ui",
+      "description": "Animated number with grouping, decimals, odometer digit roll and a reserved width",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "motion-primitive",
+        "timing",
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/counter.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "blur-in",
+      "type": "registry:ui",
+      "description": "Resolve out of a defocus — blur clears before the move lands",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "motion-primitive",
+        "motion-wrapper"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/blur-in.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "spring-in",
+      "type": "registry:ui",
+      "description": "Spring-driven scale and rise, with snappy, smooth and bouncy presets",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "motion-primitive",
+        "motion-wrapper",
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/spring-in.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "stagger-children",
+      "type": "registry:ui",
+      "description": "Offset children onto their own sequences, in forward, reverse, centre or edge order, in and out",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "motion-primitive",
+        "timing"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/stagger-children.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "marker-highlight",
+      "type": "registry:ui",
+      "description": "Highlighter stroke swept word by word across a phrase, with marker, knockout, underline and box variants",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout",
+        "motion-tokens",
+        "text-emphasis"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/marker-highlight.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "progress-bar",
+      "type": "registry:ui",
+      "description": "Inline progress bar with determinate and indeterminate modes, segments and a value readout",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "motion-primitive",
+        "motion-tokens",
+        "timing",
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/progress-bar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "rotate-in",
+      "type": "registry:ui",
+      "description": "Swing into place in plane or hinged in depth on the x/y axis",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "motion-primitive",
+        "motion-wrapper"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/rotate-in.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "transition-fade",
+      "type": "registry:ui",
+      "description": "Crossfade between scenes, or dip the cut through a colour",
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "transition-timing"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/transition-fade.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "transition-slide",
+      "type": "registry:ui",
+      "description": "Slide transition helper for TransitionSeries",
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "transition-timing"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/transition-slide.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "lower-third",
+      "type": "registry:block",
+      "description": "Name plate that plays its whole life: wipes out from the frame edge, settles, holds, then retreats the way it came",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts"
+      ],
+      "registryDependencies": [
+        "code-syntax",
+        "layout",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/lower-third/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "title-card",
+      "type": "registry:block",
+      "description": "Opening card where each headline line rises out of its own mask and one sweep of light crosses it as it stands",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts"
+      ],
+      "registryDependencies": [
+        "code-syntax",
+        "layout",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/title-card/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "feature-list",
+      "type": "registry:block",
+      "description": "List being ticked off: each row arrives in turn, its rule draws across, and its check strokes in behind it",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts"
+      ],
+      "registryDependencies": [
+        "code-syntax",
+        "layout",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/feature-list/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "stat-card",
+      "type": "registry:block",
+      "description": "A number landing: the ring fills while the counter rolls, then the label and the change against the last period settle",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts"
+      ],
+      "registryDependencies": [
+        "code-syntax",
+        "layout",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/stat-card/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "quote-card",
+      "type": "registry:block",
+      "description": "Pull quote read aloud: the mark draws, the quote rises line by line, a marker sweeps the phrase, the attribution lands last",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts"
+      ],
+      "registryDependencies": [
+        "code-syntax",
+        "layout",
+        "motion-tokens",
+        "text-emphasis"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/quote-card/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "end-card",
+      "type": "registry:block",
+      "description": "Outro built in the order a viewer acts on it: title, button assembling under its label, address typing, channels, one pulse",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts"
+      ],
+      "registryDependencies": [
+        "code-syntax",
+        "layout",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/end-card/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "intro",
+      "type": "registry:block",
+      "description": "5-second branded intro: chapter marker, headline, topic rail",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "title-card",
+        "fade-out",
+        "motion-tokens"
+      ],
+      "composition": {
+        "id": "Intro",
+        "component": "Intro",
+        "durationInFrames": 150,
+        "fps": 30,
+        "width": 1920,
+        "height": 1080,
+        "importPath": "@/compositions/intro/index"
+      },
+      "compat": {
+        "remotion": "^4.0.0"
+      },
+      "files": [
+        {
+          "path": "registry/bases/default/compositions/intro/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "showcase",
+      "type": "registry:block",
+      "description": "Full demo reel with TransitionSeries",
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "transition-fade",
+        "title-card",
+        "feature-list",
+        "stat-card",
+        "end-card",
+        "motion-tokens"
+      ],
+      "composition": {
+        "id": "Showcase",
+        "component": "Showcase",
+        "durationInFrames": 240,
+        "fps": 30,
+        "width": 1920,
+        "height": 1080,
+        "importPath": "@/compositions/showcase/index"
+      },
+      "files": [
+        {
+          "path": "registry/bases/default/compositions/showcase/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "hero-loop",
+      "type": "registry:block",
+      "description": "12-second seamless brand ident: the RemotionUI logo animated from its own parts over the site's phosphor light, with a transparent variant",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts"
+      ],
+      "registryDependencies": [
+        "gpu"
+      ],
+      "composition": {
+        "id": "HeroLoop",
+        "component": "HeroLoop",
+        "durationInFrames": 360,
+        "fps": 30,
+        "width": 1920,
+        "height": 1080,
+        "importPath": "@/compositions/hero-loop/index"
+      },
+      "files": [
+        {
+          "path": "registry/bases/default/compositions/hero-loop/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "caption-utils",
+      "type": "registry:lib",
+      "description": "Caption page grouping and word-active helpers",
+      "dependencies": [
+        "@remotion/captions"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/bases/default/lib/caption-utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "audio-viz-utils",
+      "type": "registry:lib",
+      "description": "Windowed audio spectrum helpers",
+      "dependencies": [
+        "@remotion/media-utils",
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/bases/default/lib/audio-viz-utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "map-utils",
+      "type": "registry:lib",
+      "description": "MapLibre and Turf geospatial helpers",
+      "dependencies": [
+        "maplibre-gl",
+        "@turf/turf"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/bases/default/lib/map-utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "path-utils",
+      "type": "registry:lib",
+      "description": "SVG path measuring, sampling, auto-fit and waypoint helpers",
+      "dependencies": [
+        "@remotion/paths"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/bases/default/lib/path-utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "caption-highlight",
+      "type": "registry:ui",
+      "description": "TikTok-style word-by-word caption highlight",
+      "dependencies": [
+        "remotion",
+        "@remotion/captions"
+      ],
+      "registryDependencies": [
+        "caption-utils",
+        "layout",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/caption-highlight.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "audiogram-bars",
+      "type": "registry:ui",
+      "description": "Audio-reactive spectrum bar visualization",
+      "dependencies": [
+        "remotion",
+        "@remotion/media-utils"
+      ],
+      "registryDependencies": [
+        "audio-viz-utils"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/audiogram-bars.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "path-draw",
+      "type": "registry:ui",
+      "description": "SVG stroke reveal with auto-fit framing, multi-path stagger and a drawing head",
+      "dependencies": [
+        "remotion",
+        "@remotion/paths"
+      ],
+      "registryDependencies": [
+        "path-utils",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/path-draw.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "map-canvas",
+      "type": "registry:ui",
+      "description": "Deterministic MapLibre map mount",
+      "dependencies": [
+        "remotion",
+        "maplibre-gl"
+      ],
+      "registryDependencies": [
+        "map-utils",
+        "motion-tokens",
+        "timing"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/map-canvas.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "map-route",
+      "type": "registry:ui",
+      "description": "Animated GeoJSON route line on a map",
+      "dependencies": [
+        "remotion",
+        "maplibre-gl",
+        "@turf/turf"
+      ],
+      "registryDependencies": [
+        "map-utils",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/map-route.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "map-markers",
+      "type": "registry:ui",
+      "description": "GeoJSON circle and label markers on a map",
+      "dependencies": [
+        "remotion",
+        "maplibre-gl"
+      ],
+      "registryDependencies": [
+        "map-utils",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/map-markers.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "transition-wipe",
+      "type": "registry:ui",
+      "description": "Wipe transition helper for TransitionSeries",
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "transition-timing"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/transition-wipe.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "transition-clock-wipe",
+      "type": "registry:ui",
+      "description": "Clock sweep that reads the composition size itself",
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "transition-timing"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/transition-clock-wipe.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "transition-light-leak",
+      "type": "registry:ui",
+      "description": "Film flare overlay that peaks on the cut and hides the seam under it",
+      "dependencies": [
+        "remotion",
+        "@remotion/light-leaks"
+      ],
+      "registryDependencies": [
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/transition-light-leak.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "blur-reveal",
+      "type": "registry:ui",
+      "description": "Cut where the outgoing scene softens away and the incoming one resolves out of blur",
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "transition-timing"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/blur-reveal.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "grid-pixelate-wipe",
+      "type": "registry:ui",
+      "description": "Reveal where the next scene arrives one grid cell at a time",
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "transition-timing",
+        "timing"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/grid-pixelate-wipe.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "frosted-glass-wipe",
+      "type": "registry:ui",
+      "description": "A pane of frosted glass crosses the frame and leaves the next scene behind it",
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "transition-timing"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/frosted-glass-wipe.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "directional-wipe",
+      "type": "registry:ui",
+      "description": "Soft-edged wipe that uncovers the next scene without exposing the background",
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "transition-timing"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/directional-wipe.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "spatial-push",
+      "type": "registry:ui",
+      "description": "Push where both scenes travel locked edge to edge across the frame",
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "transition-timing"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/spatial-push.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "chromatic-aberration-wipe",
+      "type": "registry:ui",
+      "description": "Slide that pulls the colour channels apart at its fastest point and recombines them on landing",
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "transition-timing"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/chromatic-aberration-wipe.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "zoom-through",
+      "type": "registry:ui",
+      "description": "Camera push-through: one scene drives past the lens, the next lands out of the same move",
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "transition-timing"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/zoom-through.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "mesh-gradient-bg",
+      "type": "registry:ui",
+      "description": "Living mesh gradient blob background",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "motion-tokens",
+        "gpu"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/mesh-gradient-bg.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dynamic-grid",
+      "type": "registry:ui",
+      "description": "Subtle drifting dot and line grid background",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/dynamic-grid.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "simulated-cursor",
+      "type": "registry:ui",
+      "description": "Frame-timed cursor with press, click ripples, hit targets and labels",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "springs"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/simulated-cursor.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "confetti-burst",
+      "type": "registry:ui",
+      "description": "Frame-driven confetti burst overlay",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/confetti-burst.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "device-mockup-zoom",
+      "type": "registry:block",
+      "description": "Cinematic laptop, phone, or browser mockup with staged UI and slow camera pullback",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts"
+      ],
+      "registryDependencies": [
+        "layout",
+        "motion-tokens",
+        "springs"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/device-mockup-zoom/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "caption-scene",
+      "type": "registry:block",
+      "description": "Lower-third TikTok-style captions synced to audio",
+      "dependencies": [
+        "remotion",
+        "@remotion/captions"
+      ],
+      "registryDependencies": [
+        "caption-highlight",
+        "caption-utils",
+        "layout",
+        "karaoke-captions",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/caption-scene/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "audiogram-scene",
+      "type": "registry:block",
+      "description": "Podcast audiogram layout with spectrum bars",
+      "dependencies": [
+        "remotion",
+        "@remotion/media-utils"
+      ],
+      "registryDependencies": [
+        "audiogram-bars",
+        "fade-in",
+        "layout",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/audiogram-scene/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "logo-reveal",
+      "type": "registry:block",
+      "description": "Logo mark draw-on with wordmark and tagline beats",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts"
+      ],
+      "registryDependencies": [
+        "path-draw",
+        "layout",
+        "motion-tokens",
+        "springs"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/logo-reveal/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "map-flight",
+      "type": "registry:block",
+      "description": "Animated map flyover with route reveal and markers",
+      "dependencies": [
+        "remotion",
+        "maplibre-gl",
+        "@turf/turf"
+      ],
+      "registryDependencies": [
+        "map-route",
+        "map-markers",
+        "map-utils",
+        "layout",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/map-flight/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "auto-fit-title",
+      "type": "registry:block",
+      "description": "Headline sized to the frame it is given, then assembled word by word so any length lands the same way",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts"
+      ],
+      "registryDependencies": [
+        "code-syntax",
+        "layout",
+        "motion-tokens",
+        "text-fit-utils"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/auto-fit-title/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "social-clip",
+      "type": "registry:block",
+      "description": "9:16 social clip with hook, captions, and CTA",
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions",
+        "@remotion/captions",
+        "@remotion/media-utils"
+      ],
+      "registryDependencies": [
+        "transition-fade",
+        "auto-fit-title",
+        "audiogram-scene",
+        "caption-scene",
+        "end-card",
+        "motion-tokens",
+        "sample-media"
+      ],
+      "composition": {
+        "id": "SocialClip",
+        "component": "SocialClip",
+        "durationInFrames": 216,
+        "fps": 30,
+        "width": 1080,
+        "height": 1920,
+        "importPath": "@/compositions/social-clip/index"
+      },
+      "compat": {
+        "remotion": "^4.0.0"
+      },
+      "files": [
+        {
+          "path": "registry/bases/default/compositions/social-clip/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "media-utils",
+      "type": "registry:lib",
+      "description": "Media item timing and fit helpers",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/bases/default/lib/media-utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "chart-utils",
+      "type": "registry:lib",
+      "description": "Chart scaling and SVG path helpers",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/bases/default/lib/chart-utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "text-fit-utils",
+      "type": "registry:lib",
+      "description": "Safe headline fitting helpers",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/bases/default/lib/text-fit-utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "waveform-line",
+      "type": "registry:ui",
+      "description": "Audio waveform line visualization",
+      "dependencies": [
+        "remotion",
+        "@remotion/media-utils"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/waveform-line.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "audio-pulse",
+      "type": "registry:ui",
+      "description": "Audio-reactive pulse rings",
+      "dependencies": [
+        "remotion",
+        "@remotion/media-utils"
+      ],
+      "registryDependencies": [
+        "audio-viz-utils"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/audio-pulse.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "karaoke-captions",
+      "type": "registry:ui",
+      "description": "Active-word karaoke caption styling",
+      "dependencies": [
+        "remotion",
+        "@remotion/captions"
+      ],
+      "registryDependencies": [
+        "caption-utils",
+        "layout",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/karaoke-captions.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "line-chart-draw",
+      "type": "registry:ui",
+      "description": "SVG line chart that draws itself on",
+      "dependencies": [
+        "remotion",
+        "@remotion/paths"
+      ],
+      "registryDependencies": [
+        "chart-utils",
+        "path-utils",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/line-chart-draw.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "cursor-path",
+      "type": "registry:ui",
+      "description": "Cursor travelling a path with drawn trail and click ripples",
+      "dependencies": [
+        "remotion",
+        "@remotion/paths"
+      ],
+      "registryDependencies": [
+        "path-utils",
+        "motion-tokens",
+        "springs"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/cursor-path.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "media-frame",
+      "type": "registry:block",
+      "description": "One piece of media presented: the frame opens like a shutter under a slow push, then the title masks up and the caption settles",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts",
+        "@remotion/media"
+      ],
+      "registryDependencies": [
+        "code-syntax",
+        "layout",
+        "media-utils",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/media-frame/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "media-sequence",
+      "type": "registry:block",
+      "description": "Edited run of shots pushed on one after another, with a chapter strip that fills through the item playing",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "code-syntax",
+        "layout",
+        "media-utils",
+        "motion-tokens",
+        "media-frame",
+        "transition-fade",
+        "transition-slide"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/media-sequence/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "split-screen",
+      "type": "registry:block",
+      "description": "Before/after that is actually made: panels meet at the divider, labels land, and the divider can travel across to leave one side whole",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts",
+        "@remotion/media"
+      ],
+      "registryDependencies": [
+        "code-syntax",
+        "layout",
+        "media-utils",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/split-screen/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "b-roll-stack",
+      "type": "registry:block",
+      "description": "Deck of supporting shots dealt one at a time: each rides to the front with its label while the last slides back into the stack",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts",
+        "@remotion/media"
+      ],
+      "registryDependencies": [
+        "code-syntax",
+        "layout",
+        "media-utils",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/b-roll-stack/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "caption-bumper",
+      "type": "registry:block",
+      "description": "Between-beats card that punches its line in word by word, draws a rule under it, and wipes out when its hold is over",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts"
+      ],
+      "registryDependencies": [
+        "code-syntax",
+        "layout",
+        "motion-tokens",
+        "text-fit-utils"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/caption-bumper/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "animated-bar-chart",
+      "type": "registry:block",
+      "description": "Ranked bar chart scene with a value axis",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts"
+      ],
+      "registryDependencies": [
+        "chart-utils",
+        "layout",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/animated-bar-chart/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "metric-ticker",
+      "type": "registry:block",
+      "description": "KPI cards that count themselves in",
+      "dependencies": [
+        "remotion",
+        "@remotion/paths",
+        "@remotion/google-fonts"
+      ],
+      "registryDependencies": [
+        "line-chart-draw",
+        "chart-utils",
+        "layout",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/metric-ticker/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "timeline-steps",
+      "type": "registry:block",
+      "description": "Process walked step by step: the rail draws ahead of a travelling head that lands on each step, works it through a closing ring, then checks it off",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts"
+      ],
+      "registryDependencies": [
+        "code-syntax",
+        "layout",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/timeline-steps/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "callout-spotlight",
+      "type": "registry:block",
+      "description": "Spotlight that is aimed: the mask closes from the whole frame onto the target, a ring pings it, then a connector draws out to the callout",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts"
+      ],
+      "registryDependencies": [
+        "code-syntax",
+        "layout",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/callout-spotlight/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "zoom-pan-frame",
+      "type": "registry:block",
+      "description": "Camera move on a still driven by focal points, settling before the cut, with an optional label chip",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts",
+        "@remotion/media"
+      ],
+      "registryDependencies": [
+        "code-syntax",
+        "layout",
+        "media-utils",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/zoom-pan-frame/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "code-reveal",
+      "type": "registry:block",
+      "description": "Editor window that writes a syntax-highlighted file character by character, then focuses the lines that matter",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts"
+      ],
+      "registryDependencies": [
+        "ai-composer-utils",
+        "code-syntax",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/code-reveal/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "hook-card",
+      "type": "registry:block",
+      "description": "Short-form opener where the hook rises line by line out of its mask and an underline draws under the promise",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts"
+      ],
+      "registryDependencies": [
+        "code-syntax",
+        "layout",
+        "motion-tokens",
+        "text-emphasis"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/hook-card/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "talking-head-layout",
+      "type": "registry:block",
+      "description": "Talking-head clip frame that opens on the speaker, slides a name plate out from behind it, and plays the spoken lines in a reserved caption zone with the waveform reacting",
+      "dependencies": [
+        "remotion",
+        "@remotion/media",
+        "@remotion/google-fonts"
+      ],
+      "registryDependencies": [
+        "code-syntax",
+        "layout",
+        "media-utils",
+        "motion-tokens",
+        "waveform-line"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/talking-head-layout/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "comment-callout",
+      "type": "registry:block",
+      "description": "Viewer comment answered on screen: it lands from the feed, the ask is marked up, the creator hearts it, and the reply is typed and sent",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts"
+      ],
+      "registryDependencies": [
+        "ai-composer-utils",
+        "code-syntax",
+        "motion-tokens",
+        "text-emphasis"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/comment-callout/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "tutorial-clip",
+      "type": "registry:block",
+      "description": "Tutorial clip composition for demos and explainers",
+      "dependencies": [
+        "remotion",
+        "@remotion/media",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "auto-fit-title",
+        "media-frame",
+        "callout-spotlight",
+        "code-reveal",
+        "end-card",
+        "transition-fade",
+        "motion-tokens",
+        "sample-media"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/compositions/tutorial-clip/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "data-story",
+      "type": "registry:block",
+      "description": "Data storytelling composition template",
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions",
+        "@remotion/layout-utils"
+      ],
+      "registryDependencies": [
+        "auto-fit-title",
+        "animated-bar-chart",
+        "metric-ticker",
+        "timeline-steps",
+        "caption-bumper",
+        "end-card",
+        "transition-fade",
+        "chart-utils",
+        "motion-tokens"
+      ],
+      "composition": {
+        "id": "DataStory",
+        "component": "DataStory",
+        "durationInFrames": 420,
+        "fps": 30,
+        "width": 1920,
+        "height": 1080,
+        "importPath": "@/compositions/data-story/index"
+      },
+      "files": [
+        {
+          "path": "registry/bases/default/compositions/data-story/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "creator-reel",
+      "type": "registry:block",
+      "description": "Vertical creator media composition template",
+      "dependencies": [
+        "remotion",
+        "@remotion/captions",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "auto-fit-title",
+        "talking-head-layout",
+        "comment-callout",
+        "caption-scene",
+        "b-roll-stack",
+        "end-card",
+        "transition-fade",
+        "motion-tokens",
+        "sample-media"
+      ],
+      "composition": {
+        "id": "CreatorReel",
+        "component": "CreatorReel",
+        "durationInFrames": 390,
+        "fps": 30,
+        "width": 1080,
+        "height": 1920,
+        "importPath": "@/compositions/creator-reel/index"
+      },
+      "files": [
+        {
+          "path": "registry/bases/default/compositions/creator-reel/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "podcast-clip",
+      "type": "registry:block",
+      "description": "Podcast clip composition with audio visuals and captions",
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions",
+        "@remotion/media-utils",
+        "@remotion/captions"
+      ],
+      "registryDependencies": [
+        "audio-pulse",
+        "waveform-line",
+        "audiogram-scene",
+        "auto-fit-title",
+        "caption-scene",
+        "end-card",
+        "transition-fade",
+        "fade-in",
+        "layout",
+        "motion-tokens"
+      ],
+      "composition": {
+        "id": "PodcastClip",
+        "component": "PodcastClip",
+        "durationInFrames": 294,
+        "fps": 30,
+        "width": 1080,
+        "height": 1920,
+        "importPath": "@/compositions/podcast-clip/index"
+      },
+      "files": [
+        {
+          "path": "registry/bases/default/compositions/podcast-clip/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "blur-focus-in",
+      "type": "registry:ui",
+      "description": "Text fades from heavy blur into sharp focus",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout",
+        "timing"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/blur-focus-in.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "staggered-fade-up",
+      "type": "registry:ui",
+      "description": "Words rise with cascading fade-up stagger",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout",
+        "timing"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/staggered-fade-up.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "masked-slide-reveal",
+      "type": "registry:ui",
+      "description": "Words slide up through a horizontal mask",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout",
+        "timing"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/masked-slide-reveal.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tracking-in",
+      "type": "registry:ui",
+      "description": "Letter-spacing collapses with spring snap",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout",
+        "springs"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/tracking-in.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "light-sweep-text",
+      "type": "registry:ui",
+      "description": "Light gradient sweeps across dim text",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/light-sweep-text.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "slot-roll",
+      "type": "registry:ui",
+      "description": "Characters roll like a slot reel into place",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout",
+        "timing"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/slot-roll.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "matrix-decode",
+      "type": "registry:ui",
+      "description": "Scramble resolves left-to-right into target text",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/matrix-decode.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "rgb-glitch-text",
+      "type": "registry:ui",
+      "description": "Signal-lock RGB glitch text with channel splits, slices, and scanlines",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/rgb-glitch-text.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "infinite-marquee",
+      "type": "registry:ui",
+      "description": "Endlessly scrolling horizontal text band",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/infinite-marquee.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "perspective-marquee",
+      "type": "registry:ui",
+      "description": "Marquee tilted in 3D with depth fade",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/perspective-marquee.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "strikethrough-replace",
+      "type": "registry:ui",
+      "description": "Strikes out one phrase and puts another in its place, on a three-beat correction timeline",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/strikethrough-replace.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "terminal-simulator",
+      "type": "registry:block",
+      "description": "Terminal window that types a command, streams spinner-to-check build steps with timings, then returns the prompt",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts"
+      ],
+      "registryDependencies": [
+        "ai-composer-utils",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/terminal-simulator/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "code-accordion",
+      "type": "registry:block",
+      "description": "Stepped walkthrough where each section opens, writes its code, is checked off, and closes behind the next",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts"
+      ],
+      "registryDependencies": [
+        "ai-composer-utils",
+        "code-syntax",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/code-accordion/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "code-diff-wipe",
+      "type": "registry:block",
+      "description": "Diff patch landing line by line: an apply front travels the file, removals collapse, additions open and write in",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts"
+      ],
+      "registryDependencies": [
+        "ai-composer-utils",
+        "code-syntax",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/code-diff-wipe/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "data-flow-pipes",
+      "type": "registry:block",
+      "description": "Pipeline running end to end: stages come up in order, pipes draw between them, and a stream of payloads hops through, lighting each stage and ticking its tally",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts"
+      ],
+      "registryDependencies": [
+        "code-syntax",
+        "layout",
+        "motion-tokens",
+        "path-utils"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/data-flow-pipes/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "drag-drop-flow",
+      "type": "registry:block",
+      "description": "Cursor drags a file out of a media library into a drop zone that arms, catches it, and uploads it to completion",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts"
+      ],
+      "registryDependencies": [
+        "code-syntax",
+        "layout",
+        "motion-tokens",
+        "path-utils"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/drag-drop-flow/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "chat-to-preview",
+      "type": "registry:block",
+      "description": "Prompt-to-render loop: the ask types into the composer and sends into the thread, the answer streams back, and the preview assembles from wireframe to rendered scene",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts"
+      ],
+      "registryDependencies": [
+        "code-syntax",
+        "layout",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/chat-to-preview/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "hero-device-assemble",
+      "type": "registry:block",
+      "description": "Device layers assemble hero",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "title-card",
+        "device-mockup-zoom",
+        "multi-device-lineup",
+        "transition-fade",
+        "layout",
+        "motion-tokens"
+      ],
+      "composition": {
+        "id": "HeroDeviceAssemble",
+        "component": "HeroDeviceAssemble",
+        "durationInFrames": 180,
+        "fps": 30,
+        "width": 1920,
+        "height": 1080,
+        "importPath": "@/compositions/hero-device-assemble/index"
+      },
+      "files": [
+        {
+          "path": "registry/bases/default/compositions/hero-device-assemble/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "ecosystem-orbit",
+      "type": "registry:block",
+      "description": "Logo with orbiting satellites",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout",
+        "timing",
+        "motion-tokens"
+      ],
+      "composition": {
+        "id": "EcosystemOrbit",
+        "component": "EcosystemOrbit",
+        "durationInFrames": 180,
+        "fps": 30,
+        "width": 1920,
+        "height": 1080,
+        "importPath": "@/compositions/ecosystem-orbit/index"
+      },
+      "files": [
+        {
+          "path": "registry/bases/default/compositions/ecosystem-orbit/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "bento-pan",
+      "type": "registry:block",
+      "description": "Camera pan across a bento grid of metric cards",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "timing"
+      ],
+      "composition": {
+        "id": "BentoPan",
+        "component": "BentoPan",
+        "durationInFrames": 180,
+        "fps": 30,
+        "width": 1920,
+        "height": 1080,
+        "importPath": "@/compositions/bento-pan/index"
+      },
+      "files": [
+        {
+          "path": "registry/bases/default/compositions/bento-pan/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "browser-flow",
+      "type": "registry:block",
+      "description": "URL to browser preview flow",
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "title-card",
+        "chat-to-preview",
+        "transition-fade",
+        "motion-tokens"
+      ],
+      "composition": {
+        "id": "BrowserFlow",
+        "component": "BrowserFlow",
+        "durationInFrames": 168,
+        "fps": 30,
+        "width": 1920,
+        "height": 1080,
+        "importPath": "@/compositions/browser-flow/index"
+      },
+      "files": [
+        {
+          "path": "registry/bases/default/compositions/browser-flow/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "ai-generation-canvas",
+      "type": "registry:block",
+      "description": "Prompt-to-dashboard generation with morphing input, skeleton shimmer, and card flips",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts"
+      ],
+      "registryDependencies": [
+        "layout",
+        "motion-tokens"
+      ],
+      "composition": {
+        "id": "AiGenerationCanvas",
+        "component": "AiGenerationCanvas",
+        "durationInFrames": 180,
+        "fps": 30,
+        "width": 1920,
+        "height": 1080,
+        "importPath": "@/compositions/ai-generation-canvas/index"
+      },
+      "files": [
+        {
+          "path": "registry/bases/default/compositions/ai-generation-canvas/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "ai-composer-showcase",
+      "type": "registry:block",
+      "description": "Showcase reel cutting through five AI composer interfaces with title and end cards",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "layout",
+        "transition-fade",
+        "chat-gpt",
+        "claude-chat",
+        "v0",
+        "claude-code",
+        "opencode"
+      ],
+      "composition": {
+        "id": "AiComposerShowcase",
+        "component": "AiComposerShowcase",
+        "durationInFrames": 533,
+        "fps": 30,
+        "width": 1920,
+        "height": 1080,
+        "importPath": "@/compositions/ai-composer-showcase/index"
+      },
+      "files": [
+        {
+          "path": "registry/bases/default/compositions/ai-composer-showcase/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "live-code-split",
+      "type": "registry:block",
+      "description": "Editor on the left, its rendered output live on the right",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "code-reveal",
+        "title-card",
+        "motion-tokens"
+      ],
+      "composition": {
+        "id": "LiveCodeSplit",
+        "component": "LiveCodeSplit",
+        "durationInFrames": 168,
+        "fps": 30,
+        "width": 1920,
+        "height": 1080,
+        "importPath": "@/compositions/live-code-split/index"
+      },
+      "files": [
+        {
+          "path": "registry/bases/default/compositions/live-code-split/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "deploy-reveal",
+      "type": "registry:block",
+      "description": "Terminal deploy to browser",
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "terminal-simulator",
+        "device-mockup-zoom",
+        "transition-fade",
+        "motion-tokens",
+        "layout"
+      ],
+      "composition": {
+        "id": "DeployReveal",
+        "component": "DeployReveal",
+        "durationInFrames": 168,
+        "fps": 30,
+        "width": 1920,
+        "height": 1080,
+        "importPath": "@/compositions/deploy-reveal/index"
+      },
+      "files": [
+        {
+          "path": "registry/bases/default/compositions/deploy-reveal/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "dashboard-populate",
+      "type": "registry:block",
+      "description": "Dashboard metrics populate",
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "metric-ticker",
+        "animated-bar-chart",
+        "chart-utils",
+        "motion-tokens",
+        "directional-wipe"
+      ],
+      "composition": {
+        "id": "DashboardPopulate",
+        "component": "DashboardPopulate",
+        "durationInFrames": 168,
+        "fps": 30,
+        "width": 1920,
+        "height": 1080,
+        "importPath": "@/compositions/dashboard-populate/index"
+      },
+      "files": [
+        {
+          "path": "registry/bases/default/compositions/dashboard-populate/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "pricing-focus",
+      "type": "registry:block",
+      "description": "Pricing tier focus animation",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout",
+        "timing"
+      ],
+      "composition": {
+        "id": "PricingFocus",
+        "component": "PricingFocus",
+        "durationInFrames": 180,
+        "fps": 30,
+        "width": 1920,
+        "height": 1080,
+        "importPath": "@/compositions/pricing-focus/index"
+      },
+      "files": [
+        {
+          "path": "registry/bases/default/compositions/pricing-focus/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "landing-code-showcase",
+      "type": "registry:block",
+      "description": "Landing with install commands",
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "title-card",
+        "code-reveal",
+        "motion-tokens",
+        "transition-fade"
+      ],
+      "composition": {
+        "id": "LandingCodeShowcase",
+        "component": "LandingCodeShowcase",
+        "durationInFrames": 180,
+        "fps": 30,
+        "width": 1920,
+        "height": 1080,
+        "importPath": "@/compositions/landing-code-showcase/index"
+      },
+      "files": [
+        {
+          "path": "registry/bases/default/compositions/landing-code-showcase/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "tool-menu-slide",
+      "type": "registry:block",
+      "description": "Tool menu slide-in",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout",
+        "timing"
+      ],
+      "composition": {
+        "id": "ToolMenuSlide",
+        "component": "ToolMenuSlide",
+        "durationInFrames": 120,
+        "fps": 30,
+        "width": 1920,
+        "height": 1080,
+        "importPath": "@/compositions/tool-menu-slide/index"
+      },
+      "files": [
+        {
+          "path": "registry/bases/default/compositions/tool-menu-slide/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "image-expand",
+      "type": "registry:block",
+      "description": "A still opens from a card to full frame, then takes its caption",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "timing"
+      ],
+      "composition": {
+        "id": "ImageExpand",
+        "component": "ImageExpand",
+        "durationInFrames": 120,
+        "fps": 30,
+        "width": 1920,
+        "height": 1080,
+        "importPath": "@/compositions/image-expand/index"
+      },
+      "files": [
+        {
+          "path": "registry/bases/default/compositions/image-expand/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "claude-chat",
+      "type": "registry:block",
+      "description": "Claude composer card with typed prompt and waveform-to-send morph",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts"
+      ],
+      "registryDependencies": [
+        "ai-composer-utils"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/claude-chat/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "chat-gpt",
+      "type": "registry:block",
+      "description": "ChatGPT composer pill with greeting, suggestion chips, and voice-to-send morph",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts"
+      ],
+      "registryDependencies": [
+        "ai-composer-utils"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/chat-gpt/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "v0",
+      "type": "registry:block",
+      "description": "v0 composer with greeting, model chip, project selector, and mic-to-send morph",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts"
+      ],
+      "registryDependencies": [
+        "ai-composer-utils"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/v0/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "claude-code",
+      "type": "registry:block",
+      "description": "Claude Code terminal welcome screen with CLI prompt typing",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts"
+      ],
+      "registryDependencies": [
+        "ai-composer-utils"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/claude-code/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "opencode",
+      "type": "registry:block",
+      "description": "OpenCode TUI composer with agent and model status",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts"
+      ],
+      "registryDependencies": [
+        "ai-composer-utils"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/opencode/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "text-split",
+      "type": "registry:lib",
+      "description": "Split a string into chars, words or lines with staggered per-unit timing",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "motion-primitive",
+        "timing"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/lib/text-split.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "path-morph",
+      "type": "registry:lib",
+      "description": "Cached SVG path morphing with winding alignment and box fitting",
+      "dependencies": [
+        "@remotion/paths"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/bases/default/lib/path-morph.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "displacement-transition",
+      "type": "registry:lib",
+      "description": "Frame maths for displacement-map and shape-mask transitions",
+      "dependencies": [],
+      "registryDependencies": [
+        "path-morph"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/lib/displacement-transition.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "displacement-presentation",
+      "type": "registry:lib",
+      "description": "Shared TransitionSeries presentation for warp and shape-mask cuts",
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "displacement-transition",
+        "path-morph",
+        "transition-timing"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/lib/displacement-presentation.tsx",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "sample-media",
+      "type": "registry:lib",
+      "description": "Placeholder stills, captions, and audio for composition defaults",
+      "dependencies": [
+        "@remotion/captions"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/bases/default/lib/sample-media.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "split-text-chars",
+      "type": "registry:ui",
+      "description": "Split text into chars, words or lines and stagger them in",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "text-split",
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/split-text-chars.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "audio-reactive-scale",
+      "type": "registry:ui",
+      "description": "Scales any child by per-frame audio amplitude",
+      "dependencies": [
+        "remotion",
+        "@remotion/media-utils"
+      ],
+      "registryDependencies": [
+        "audio-viz-utils"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/audio-reactive-scale.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "srt-caption-track",
+      "type": "registry:ui",
+      "description": "Renders a caption track straight from an SRT or WebVTT file",
+      "dependencies": [
+        "remotion",
+        "@remotion/captions"
+      ],
+      "registryDependencies": [
+        "caption-utils",
+        "caption-highlight"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/srt-caption-track.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "transition-circle-reveal",
+      "type": "registry:ui",
+      "description": "Circular mask that opens from any point onto the next scene",
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "transition-timing"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/transition-circle-reveal.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "transition-card-flip",
+      "type": "registry:ui",
+      "description": "Whole-frame 3D flip that hands off on backface culling",
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "transition-timing"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/transition-card-flip.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "transition-blinds",
+      "type": "registry:ui",
+      "description": "Staggered slats sweeping open to reveal the next scene",
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "transition-timing"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/transition-blinds.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "transition-whip-pan",
+      "type": "registry:ui",
+      "description": "Fast pan with directional motion blur along the travel axis",
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "transition-timing"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/transition-whip-pan.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "transition-morph-shape",
+      "type": "registry:ui",
+      "description": "Reveal through a shape that morphs as it grows across the frame",
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "displacement-presentation",
+        "displacement-transition",
+        "path-morph",
+        "transition-timing"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/transition-morph-shape.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "transition-liquid-warp",
+      "type": "registry:ui",
+      "description": "Liquid displacement warp that stirs one scene into the next",
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "displacement-presentation",
+        "displacement-transition",
+        "transition-timing"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/transition-liquid-warp.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "skew-in",
+      "type": "registry:ui",
+      "description": "Skew + translate, editorial feel",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "motion-primitive",
+        "motion-wrapper"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/skew-in.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "scramble-text",
+      "type": "registry:ui",
+      "description": "Random-glyph scramble resolving per character",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "split-text-chars",
+        "text-split"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/scramble-text.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "text-mask-video",
+      "type": "registry:ui",
+      "description": "Video or gradient showing through letterforms",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "layout",
+        "motion-primitive"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/text-mask-video.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "handwriting-text",
+      "type": "registry:ui",
+      "description": "Takes a string and strokes it on",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "split-text-chars",
+        "text-split"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/handwriting-text.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "stroke-to-fill-text",
+      "type": "registry:ui",
+      "description": "Outline text filling solid",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "split-text-chars",
+        "text-split",
+        "timing"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/stroke-to-fill-text.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "variable-font-morph",
+      "type": "registry:ui",
+      "description": "Animates weight/width axes of a variable font",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "split-text-chars",
+        "text-split"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/variable-font-morph.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "liquid-text-morph",
+      "type": "registry:ui",
+      "description": "Letterforms morphing between two words",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "split-text-chars",
+        "text-split",
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/liquid-text-morph.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "wave-text",
+      "type": "registry:ui",
+      "description": "Per-character sine displacement",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "split-text-chars",
+        "text-split"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/wave-text.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "neon-flicker-text",
+      "type": "registry:ui",
+      "description": "Neon sign flicker and settle",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "split-text-chars",
+        "text-split"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/neon-flicker-text.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "aurora-bg",
+      "type": "registry:ui",
+      "description": "Drifting light ribbons",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/aurora-bg.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "particle-field",
+      "type": "registry:ui",
+      "description": "Ambient drifting particles with depth",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/particle-field.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "topographic-lines-bg",
+      "type": "registry:ui",
+      "description": "Contour lines drifting",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/topographic-lines-bg.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "caustics-bg",
+      "type": "registry:ui",
+      "description": "Underwater light caustics",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/caustics-bg.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "animated-noise-grain",
+      "type": "registry:ui",
+      "description": "Film grain overlay",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/animated-noise-grain.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "light-rays",
+      "type": "registry:ui",
+      "description": "Volumetric god rays drifting across the stage",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "gpu"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/light-rays.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "parallax-layers",
+      "type": "registry:ui",
+      "description": "Depth-offset layers on one driver",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/parallax-layers.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "shake-emphasis",
+      "type": "registry:ui",
+      "description": "Short impact shake",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "motion-wrapper"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/shake-emphasis.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "glow-pulse",
+      "type": "registry:ui",
+      "description": "Rhythmic glow for CTAs and live indicators",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/glow-pulse.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "motion-trail",
+      "type": "registry:ui",
+      "description": "Echo trails behind a moving element",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/motion-trail.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "squash-stretch",
+      "type": "registry:ui",
+      "description": "The animation principle as a primitive",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "motion-wrapper"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/squash-stretch.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "orbit-motion",
+      "type": "registry:ui",
+      "description": "Element orbiting a center point",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/orbit-motion.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "depth-of-field-blur",
+      "type": "registry:ui",
+      "description": "Rack focus between layers",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/depth-of-field-blur.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "scanline-crt",
+      "type": "registry:ui",
+      "description": "CRT scanlines and curvature overlay",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/scanline-crt.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "bar-chart-race",
+      "type": "registry:ui",
+      "description": "Ranked bars reorder over time",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "chart-utils",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/bar-chart-race.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "donut-chart",
+      "type": "registry:ui",
+      "description": "Multi-segment donut with labels",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "chart-utils",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/donut-chart.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pie-slice-reveal",
+      "type": "registry:ui",
+      "description": "Slices sweep in sequentially",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "chart-utils",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/pie-slice-reveal.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "scatter-plot-pop",
+      "type": "registry:ui",
+      "description": "Points pop in on stagger, optional trend line",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "chart-utils",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/scatter-plot-pop.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "bubble-chart-pack",
+      "type": "registry:ui",
+      "description": "Circle-packed values settling into place",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "chart-utils",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/bubble-chart-pack.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "gauge-dial",
+      "type": "registry:ui",
+      "description": "Needle sweeps to target",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/gauge-dial.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sparkline-row",
+      "type": "registry:ui",
+      "description": "Compact trend lines that read at small sizes",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "chart-utils",
+        "motion-tokens",
+        "path-utils"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/sparkline-row.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "heatmap-grid",
+      "type": "registry:ui",
+      "description": "Cell grid filling by intensity, contribution-graph style",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/heatmap-grid.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "comparison-bars",
+      "type": "registry:ui",
+      "description": "Two-series before/after with delta callout",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "chart-utils",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/comparison-bars.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "funnel-chart",
+      "type": "registry:ui",
+      "description": "Stage bars narrowing with drop-off percentages",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "chart-utils",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/funnel-chart.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "radar-chart",
+      "type": "registry:ui",
+      "description": "Multi-axis spider chart drawing its polygon",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/radar-chart.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "treemap-blocks",
+      "type": "registry:ui",
+      "description": "Nested rectangles sized by value",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "chart-utils",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/treemap-blocks.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "waterfall-chart",
+      "type": "registry:ui",
+      "description": "Cumulative bridge with positive/negative steps",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "chart-utils",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/waterfall-chart.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "stacked-area-chart",
+      "type": "registry:ui",
+      "description": "Multiple series stacking as they draw on",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "chart-utils",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/stacked-area-chart.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "candlestick-chart",
+      "type": "registry:ui",
+      "description": "OHLC financial series",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "chart-utils",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/candlestick-chart.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "gantt-timeline",
+      "type": "registry:ui",
+      "description": "Date-scaled schedule bars",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/gantt-timeline.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "word-pop-captions",
+      "type": "registry:ui",
+      "description": "Narrowed: one word at a time, alone on frame",
+      "dependencies": [
+        "remotion",
+        "@remotion/captions"
+      ],
+      "registryDependencies": [
+        "caption-utils",
+        "layout",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/word-pop-captions.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "caption-emoji-beat",
+      "type": "registry:ui",
+      "description": "Emoji punctuation landing on beats",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/caption-emoji-beat.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "speaker-label-captions",
+      "type": "registry:ui",
+      "description": "Narrowed: multi-speaker caption track with name tags and color coding",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "caption-utils",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/speaker-label-captions.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "transcript-scroll",
+      "type": "registry:ui",
+      "description": "Full readable transcript scrolling with the active line marked",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "caption-utils",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/transcript-scroll.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "subtitle-translate",
+      "type": "registry:ui",
+      "description": "Dual-language stacked subtitles",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "caption-utils",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/subtitle-translate.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "waveform-bars-radial",
+      "type": "registry:ui",
+      "description": "Circular bars around a center element",
+      "dependencies": [
+        "remotion",
+        "@remotion/media-utils"
+      ],
+      "registryDependencies": [
+        "audio-viz-utils"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/waveform-bars-radial.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "vu-meter",
+      "type": "registry:ui",
+      "description": "Segmented level meter with peak hold",
+      "dependencies": [
+        "remotion",
+        "@remotion/media-utils"
+      ],
+      "registryDependencies": [
+        "audio-viz-utils"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/vu-meter.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "voice-note-bubble",
+      "type": "registry:ui",
+      "description": "Chat-style audio message with waveform and playhead",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/voice-note-bubble.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "beat-pulse-grid",
+      "type": "registry:ui",
+      "description": "Grid cells pulsing on detected beats",
+      "dependencies": [
+        "remotion",
+        "@remotion/media-utils"
+      ],
+      "registryDependencies": [
+        "audio-viz-utils"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/beat-pulse-grid.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "audio-scrubber",
+      "type": "registry:ui",
+      "description": "Waveform with traveling playhead and time labels",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/audio-scrubber.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "poll-overlay",
+      "type": "registry:block",
+      "description": "Question with bars filling to results",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "code-syntax",
+        "layout",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/poll-overlay/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "reaction-burst",
+      "type": "registry:block",
+      "description": "Narrowed: hearts/likes rising continuously",
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts"
+      ],
+      "registryDependencies": [
+        "layout",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/reaction-burst/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "countdown-timer",
+      "type": "registry:block",
+      "description": "Numeric or ring countdown to zero",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "code-syntax",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/countdown-timer/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "sports-scorebug",
+      "type": "registry:block",
+      "description": "Broadcast score furniture with clock",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "code-syntax",
+        "layout",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/sports-scorebug/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "news-ticker-bar",
+      "type": "registry:block",
+      "description": "Broadcast lower ticker with headlines",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "code-syntax",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/news-ticker-bar/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "form-fill-sequence",
+      "type": "registry:block",
+      "description": "Fields typing and validating in order",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "code-syntax",
+        "layout",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/form-fill-sequence/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "notification-stack",
+      "type": "registry:block",
+      "description": "Toasts stacking and dismissing",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "code-syntax",
+        "layout",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/notification-stack/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "tab-switch-panel",
+      "type": "registry:block",
+      "description": "Tab bar with cross-fading panels",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "code-syntax",
+        "layout",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/tab-switch-panel/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "search-results-populate",
+      "type": "registry:block",
+      "description": "Query typed, results streaming in and ranking",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "code-syntax",
+        "layout",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/search-results-populate/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "file-tree-reveal",
+      "type": "registry:block",
+      "description": "Directory tree expanding node by node",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "code-syntax",
+        "layout",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/file-tree-reveal/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "kanban-move",
+      "type": "registry:block",
+      "description": "Cards moving across columns",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "code-syntax",
+        "layout",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/kanban-move/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "commit-graph",
+      "type": "registry:block",
+      "description": "Branch/merge graph drawing itself",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "code-syntax",
+        "layout",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/commit-graph/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "comparison-table",
+      "type": "registry:block",
+      "description": "Multi-column feature matrix",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "code-syntax",
+        "layout",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/comparison-table/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "pricing-card",
+      "type": "registry:block",
+      "description": "Tier card with price roll and features",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "code-syntax",
+        "layout",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/pricing-card/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "faq-accordion",
+      "type": "registry:block",
+      "description": "Narrowed: Q/A text rows expanding",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "code-syntax",
+        "layout",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/faq-accordion/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "team-grid",
+      "type": "registry:block",
+      "description": "Avatar grid with role labels on stagger",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "code-syntax",
+        "layout",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/team-grid/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "logo-wall",
+      "type": "registry:block",
+      "description": "Client logo grid, grayscale to color",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "code-syntax",
+        "layout",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/logo-wall/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "changelog-entry",
+      "type": "registry:block",
+      "description": "Version header with categorized change rows",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "code-syntax",
+        "layout",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/changelog-entry/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "roadmap-lanes",
+      "type": "registry:block",
+      "description": "Swimlanes of shipped/building/planned",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "code-syntax",
+        "layout",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/roadmap-lanes/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "org-chart-build",
+      "type": "registry:block",
+      "description": "Hierarchy assembling top-down",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "code-syntax",
+        "layout",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/org-chart-build/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "quiz-question",
+      "type": "registry:block",
+      "description": "Question, options, correct-answer reveal",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "code-syntax",
+        "layout",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/quiz-question/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "weather-card",
+      "type": "registry:block",
+      "description": "Conditions with animated iconography",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "code-syntax",
+        "layout",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/weather-card/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "calendar-month-fill",
+      "type": "registry:block",
+      "description": "Month grid populating with events",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "code-syntax",
+        "layout",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/calendar-month-fill/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "arrow-annotate",
+      "type": "registry:ui",
+      "description": "Hand-drawn arrow pointing at a target",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/arrow-annotate.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "badge-stamp",
+      "type": "registry:ui",
+      "description": "Stamp/seal impact with rotation settle",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/badge-stamp.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "shape-morph",
+      "type": "registry:ui",
+      "description": "Path interpolation between two shapes",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "motion-tokens",
+        "path-morph"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/shape-morph.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "blob-morph",
+      "type": "registry:ui",
+      "description": "Organic blob continuously morphing",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "path-morph"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/blob-morph.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dashed-path-travel",
+      "type": "registry:ui",
+      "description": "Narrowed: any element traveling any path with a dashed trail",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "motion-tokens",
+        "path-utils"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/dashed-path-travel.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "connector-lines",
+      "type": "registry:ui",
+      "description": "Narrowed: primitive that draws edges between anchored elements",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/connector-lines.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "svg-mask-reveal",
+      "type": "registry:ui",
+      "description": "Arbitrary SVG shape as a reveal mask",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "motion-tokens",
+        "path-morph"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/svg-mask-reveal.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "map-heat-overlay",
+      "type": "registry:ui",
+      "description": "Density overlay fading in over the basemap",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "map-utils",
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/map-heat-overlay.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "globe-arc",
+      "type": "registry:ui",
+      "description": "Arcs between points on a globe",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/globe-arc.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "multi-device-lineup",
+      "type": "registry:ui",
+      "description": "Phone + tablet + laptop showing one responsive design",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "motion-tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/multi-device-lineup.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "device-mockup-3d",
+      "type": "registry:block",
+      "description": "Laptop product shot in real 3D: lid opens, then a turn and push-in over a lit floor",
+      "dependencies": [
+        "remotion",
+        "@remotion/three",
+        "three",
+        "@react-three/fiber",
+        "@react-three/drei"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/device-mockup-3d/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "paper-shader",
+      "type": "registry:lib",
+      "description": "Deterministic frame driver and first-draw gate for Paper shader fields",
+      "dependencies": [
+        "remotion",
+        "@paper-design/shaders-react"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/bases/default/lib/paper-shader.tsx",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "light-tunnel-bg",
+      "type": "registry:ui",
+      "description": "Flight down a twisting barrel of light with a defocused vanishing point",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "gpu"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/light-tunnel-bg.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "text-reveal-shader",
+      "type": "registry:ui",
+      "description": "Words condensing out of light into liquid chrome",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "gpu"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/text-reveal-shader.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dither-field-bg",
+      "type": "registry:ui",
+      "description": "Two-colour ordered-dither field quantised to a pixel grid",
+      "dependencies": [
+        "remotion",
+        "@paper-design/shaders-react"
+      ],
+      "registryDependencies": [
+        "paper-shader"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/dither-field-bg.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "warp-bands-bg",
+      "type": "registry:ui",
+      "description": "Colour bands folded through noise and a swirl",
+      "dependencies": [
+        "remotion",
+        "@paper-design/shaders-react"
+      ],
+      "registryDependencies": [
+        "paper-shader"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/warp-bands-bg.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "grain-gradient-bg",
+      "type": "registry:ui",
+      "description": "Multi-colour gradient with grain worked through it",
+      "dependencies": [
+        "remotion",
+        "@paper-design/shaders-react"
+      ],
+      "registryDependencies": [
+        "paper-shader"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/grain-gradient-bg.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "product-turntable-3d",
+      "type": "registry:block",
+      "description": "A product on a studio turntable: the model turns a full revolution under a soft key and rim while the camera holds, with a contact shadow anchoring it to the floor",
+      "dependencies": [
+        "remotion",
+        "@remotion/three",
+        "three",
+        "@react-three/fiber",
+        "@react-three/drei"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/product-turntable-3d/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "text-extrude-3d",
+      "type": "registry:block",
+      "description": "Extruded 3D headline with a lit bevel: the letters rise and settle as the camera pulls back across them",
+      "dependencies": [
+        "remotion",
+        "@remotion/three",
+        "three",
+        "@react-three/fiber",
+        "@react-three/drei"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/text-extrude-3d/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "card-stack-3d",
+      "type": "registry:block",
+      "description": "A stack of physical cards fanning out in depth, each with real thickness and an edge highlight, turning to face the camera",
+      "dependencies": [
+        "remotion",
+        "@remotion/three",
+        "three",
+        "@react-three/fiber",
+        "@react-three/drei"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/card-stack-3d/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "globe-points-3d",
+      "type": "registry:block",
+      "description": "Lit sphere with instanced city markers and arcs rising between them, turning slowly under a rim light",
+      "dependencies": [
+        "remotion",
+        "@remotion/three",
+        "three",
+        "@react-three/fiber",
+        "@react-three/drei"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/bases/default/scenes/globe-points-3d/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "ae-motion",
+      "type": "registry:lib",
+      "description": "After Effects mechanics as pure functions: graph-editor keyframe easing, loopIn/loopOut, deterministic wiggle and noise, repeater powers and parented transforms",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/bases/default/lib/ae-motion.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "bezier-path",
+      "type": "registry:lib",
+      "description": "Paths as cubic segments: parse any SVG d, measure, slice by arc length, resample and rebuild",
+      "dependencies": [
+        "@remotion/paths"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/bases/default/lib/bezier-path.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "curve-fit",
+      "type": "registry:lib",
+      "description": "Fit cubic béziers through a polyline (Schneider) with corner detection, so dense-point operators emit real curves",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/bases/default/lib/curve-fit.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "shape-ops",
+      "type": "registry:lib",
+      "description": "AE shape-layer operators — trim, repeater, offset, wiggle, zig-zag, pucker & bloat — run as an ordered stack",
+      "dependencies": [],
+      "registryDependencies": [
+        "ae-motion",
+        "bezier-path",
+        "curve-fit"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/lib/shape-ops.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "ae-import",
+      "type": "registry:lib",
+      "description": "Runtime for `remotion-ui import-ae`: After Effects shape, solid, null and precomp layers with parenting, time remap and lottie-web's stacking rules, drawn as SVG from ae-motion data",
+      "dependencies": [
+        "remotion",
+        "@remotion/paths"
+      ],
+      "registryDependencies": [
+        "ae-motion",
+        "bezier-path",
+        "shape-ops"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/lib/lottie-geometry.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "registry/bases/default/lib/lottie-offset.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "registry/bases/default/lib/lottie-paint.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "registry/bases/default/lib/lottie-shapes.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "registry/bases/default/lib/ae-import.tsx",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "text-selectors",
+      "type": "registry:lib",
+      "description": "AE text range and wiggly selectors: per-unit selection with shapes, ease high/low, random order and combine modes",
+      "dependencies": [],
+      "registryDependencies": [
+        "ae-motion",
+        "text-split"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/lib/text-selectors.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "glyph-layout",
+      "type": "registry:lib",
+      "description": "Measured per-glyph layout with kerning-preserving prefixes, word-safe wrapping and fit-to-width",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/bases/default/lib/glyph-layout.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "mograph",
+      "type": "registry:lib",
+      "description": "Cinema 4D MoGraph maths: cloner layouts, spherical/linear/noise falloff fields and stacked effectors",
+      "dependencies": [],
+      "registryDependencies": [
+        "ae-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/lib/mograph.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "shape-layer",
+      "type": "registry:ui",
+      "description": "After Effects shape layer with an ordered operator stack — trim paths, repeater, offset paths, wiggle paths, zig-zag and pucker & bloat — evaluated per frame as pure geometry",
+      "dependencies": [
+        "remotion",
+        "@remotion/paths"
+      ],
+      "registryDependencies": [
+        "ae-motion",
+        "bezier-path",
+        "shape-ops"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/shape-layer.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "text-animator",
+      "type": "registry:ui",
+      "description": "After Effects text animator: range and wiggly selectors drive per-character, per-word or per-line position, scale, rotation, opacity, blur, tracking and fill over measured layout",
+      "dependencies": [
+        "remotion",
+        "@remotion/layout-utils"
+      ],
+      "registryDependencies": [
+        "ae-motion",
+        "glyph-layout",
+        "text-selectors"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/text-animator.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "effector-field",
+      "type": "registry:ui",
+      "description": "Cinema 4D MoGraph cloner and effectors: clone any element into a grid, radial or linear arrangement and let animatable spherical, linear or noise falloff fields drive each clone",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "ae-motion",
+        "mograph"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/effector-field.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "rig",
+      "type": "registry:lib",
+      "description": "Rig maths: law-of-cosines two-bone IK with bend, stretch and soft IK (no knee pop at full reach), and constant-length rubber-hose arcs",
+      "dependencies": [],
+      "registryDependencies": [
+        "ae-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/lib/rig.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "pen-plot",
+      "type": "registry:lib",
+      "description": "Pen-plotter motion planning: SVG strokes to a pen position per frame, with cosine-ramped speed, full stops in cusps, lifts, and anticipating pen-up moves",
+      "dependencies": [],
+      "registryDependencies": [
+        "ae-motion",
+        "bezier-path"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/lib/pen-plot.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "follow",
+      "type": "registry:lib",
+      "description": "Overlapping action: a chain of damped springs following a leader track, simulated deterministically from frame 0 and memoised",
+      "dependencies": [],
+      "registryDependencies": [
+        "ae-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/lib/follow.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "slit-geometry",
+      "type": "registry:lib",
+      "description": "Slit-scan strips (bands at any angle or radial rings) with per-strip delays grouped into a bounded number of child renders",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/bases/default/lib/slit-geometry.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "slit-scan",
+      "type": "registry:ui",
+      "description": "Slit-scan time displacement: each strip of any child — rows, columns, rings or a gradient map — shows that child at a different moment, deterministically",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "slit-geometry"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/slit-scan.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "ik-rig",
+      "type": "registry:ui",
+      "description": "A lit, shadowed two-bone IK arm that reaches for any target or plots SVG strokes with a pen, laying ink exactly where the solved hand is; soft IK, fixed bend, animatable base",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "ae-motion",
+        "rig",
+        "pen-plot"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/ik-rig.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "track-matte",
+      "type": "registry:ui",
+      "description": "After Effects track mattes: reveal any child through any other with alpha, inverted alpha, luma or inverted luma",
+      "dependencies": [
+        "remotion",
+        "react-dom"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/track-matte.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "follow-through",
+      "type": "registry:ui",
+      "description": "Overlapping action along a chain: every element follows one leader track with its own delay, drag, overshoot and settle",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "ae-motion",
+        "bezier-path",
+        "follow"
+      ],
+      "files": [
+        {
+          "path": "registry/bases/default/primitives/follow-through.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+import type * as PageTree from "fumadocs-core/page-tree";
+import { ATLAS_LANES, getAtlasMeta, getItemsByLane, type AtlasLane } from "./atlas";
+import { getComponentDocPath } from "./component-doc-path";
+import { source } from "./source";
+
+export type ComponentLink = {
+  name: string;
+  slug: string;
+  url: string;
+  description?: string;
+  tier?: "core" | "advanced";
+  lane?: AtlasLane;
+  tags?: string[];
+};
+
+export type ComponentSection = {
+  title: string;
+  basePath: string;
+  items: ComponentLink[];
+  lane?: AtlasLane;
+};
+
+function isFolder(node: PageTree.Node): node is PageTree.Folder {
+  return node.type === "folder";
+}
+
+function folderChildren(folder: PageTree.Folder): ComponentLink[] {
+  return folder.children
+    .filter((node): node is PageTree.Item => node.type === "page")
+    .map((page) => ({
+      name: typeof page.name === "string" ? page.name : String(page.name),
+      slug: page.url.split("/").pop() ?? page.url,
+      url: page.url,
+      description:
+        typeof page.description === "string" ? page.description : undefined,
+    }));
+}
+
+export function getComponentSections(): ComponentSection[] {
+  for (const child of source.pageTree.children) {
+    if (!isFolder(child)) continue;
+    const folderLabel =
+      typeof child.name === "string" ? child.name : String(child.index ?? "");
+    if (folderLabel.toLowerCase() !== "components") continue;
+
+    return [
+      {
+        title: "Components",
+        basePath: "/docs/components",
+        items: folderChildren(child),
+      },
+    ];
+  }
+
+  return [];
+}
+
+export function getAtlasSections(): ComponentSection[] {
+  const lanes = Object.keys(ATLAS_LANES) as AtlasLane[];
+  const sections: ComponentSection[] = [];
+
+  for (const lane of lanes) {
+    const items = getItemsByLane(lane);
+    if (items.length === 0) continue;
+
+    const meta = ATLAS_LANES[lane];
+    sections.push({
+      title: meta.label,
+      basePath: "/docs/components",
+      lane,
+      items: items
+        .sort()
+        .map((name) => {
+          const atlas = getAtlasMeta(name);
+          // Card label uses the MDX page title, the same source as the sidebar.
+          const title = source.getPage(["components", name])?.data.title;
+          return {
+            name: title ?? name,
+            slug: name,
+            url: getComponentDocPath(name),
+            lane,
+            tier: atlas?.tier,
+            tags: atlas?.tags,
+          };
+        }),
+    });
+  }
+
+  return sections;
+}

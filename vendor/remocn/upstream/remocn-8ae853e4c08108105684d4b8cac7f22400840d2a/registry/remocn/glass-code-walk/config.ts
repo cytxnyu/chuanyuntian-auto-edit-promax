@@ -1,0 +1,63 @@
+import { type ComponentConfig, FPS, H, W } from "@/lib/customizer-config";
+
+export const glassCodeWalkConfig: ComponentConfig = {
+  componentName: "GlassCodeWalk",
+  importPath: "@/components/remocn/glass-code-walk",
+  controls: {
+    title: {
+      type: "text-content",
+      default: "scene.tsx",
+      description: "Title",
+    },
+    zoom: {
+      type: "number",
+      min: 1,
+      max: 4,
+      step: 0.1,
+      default: 2.6,
+      description: "Zoom",
+      hiddenFromList: false,
+    },
+    fontSize: {
+      type: "number",
+      min: 10,
+      max: 28,
+      step: 1,
+      default: 18,
+      description: "Font size",
+      hiddenFromList: false,
+    },
+    staggerFrames: {
+      type: "number",
+      min: 1,
+      max: 30,
+      step: 1,
+      default: 10,
+      description: "Stagger frames",
+      hiddenFromList: false,
+    },
+    width: {
+      type: "number",
+      min: 300,
+      max: 1100,
+      step: 10,
+      default: 880,
+      description: "Width",
+      hiddenFromList: false,
+    },
+    height: {
+      type: "number",
+      min: 200,
+      max: 700,
+      step: 10,
+      default: 420,
+      description: "Height",
+      hiddenFromList: false,
+    },
+  },
+  durationInFrames: 150,
+  fps: FPS,
+  compositionWidth: W,
+  compositionHeight: H,
+  previewBackdrop: { type: "image", src: "/bg.jpg" },
+};

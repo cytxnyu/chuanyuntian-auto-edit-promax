@@ -1,0 +1,64 @@
+import Link from "next/link";
+import { cliAddCommand } from "@/lib/docs-cli";
+import { ClipCard } from "@/components/studio/clip-card";
+import { getAtlasMeta } from "@/lib/atlas";
+import { AtlasMiniPreview } from "@/components/atlas-mini-preview";
+
+type ComponentCardProps = {
+  name: string;
+  slug: string;
+  url: string;
+  description?: string;
+  lane?: import("@/lib/atlas").AtlasLane;
+  durationFrames?: number;
+  className?: string;
+};
+
+export function ComponentCard({
+  name,
+  slug,
+  url,
+  description,
+  lane,
+  durationFrames,
+  className,
+}: ComponentCardProps) {
+  const meta = getAtlasMeta(slug);
+  const resolvedLane = lane ?? meta?.lane;
+  const isNew = meta?.tags?.includes("new") ?? false;
+
+  if (!resolvedLane) {
+    return (
+      <Link
+        href={url}
+        prefetch={false}
+        className="motion-border block rounded-md border border-[var(--bay-border)] bg-[var(--bay-surface)] p-4 transition-[box-shadow,transform,border-color] duration-200 ease-out [box-shadow:var(--bay-shadow-raised)] hover:border-[var(--bay-border-strong)] hover:[box-shadow:var(--bay-shadow-raised-hover)] motion-safe:hover:-translate-y-0.5"
+      >
+        <p className="text-sm font-semibold capitalize">{name.replace(/-/g, " ")}</p>
+        {description ? (
+          <p className="mt-1 text-sm text-fd-muted-foreground">{description}</p>
+        ) : null}
+      </Link>
+    );
+  }
+
+  return (
+    <ClipCard
+      name={name}
+      url={url}
+      lane={resolvedLane}
+      durationFrames={durationFrames}
+      isNew={isNew}
+      command={cliAddCommand(slug)}
+      className={className}
+      thumbnail={
+        <AtlasMiniPreview
+          slug={slug}
+          lane={resolvedLane}
+          scrubOnHover
+          mountOn="hover"
+        />
+      }
+    />
+  );
+}

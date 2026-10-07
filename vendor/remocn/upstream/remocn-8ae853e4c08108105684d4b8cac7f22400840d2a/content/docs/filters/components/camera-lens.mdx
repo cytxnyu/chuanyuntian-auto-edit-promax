@@ -1,0 +1,159 @@
+---
+title: Camera Lens
+description: Put a scene behind real glass — resolution falling toward the corners, blooming highlights, edge fringing
+component: camera-lens
+vibe: premium
+length: sustained
+useWhen:
+  - "A screencast looks sterile and you want it to read as filmed — this is the cheapest way to stop a recording looking like a render."
+  - "You want a treatment subtle enough to leave running under a whole demo rather than an effect that announces itself."
+  - "A camera move lives inside it — the scene travels behind stationary glass, so different parts of the picture take their turn in the soft corners."
+avoidWhen:
+  - "The story is a tube being watched — use `crt-screen`, which is uniformly sharp behind a phosphor mask and scanlines."
+  - "The story is a worn signal rather than the optics carrying it — use `vhs-filter`."
+  - "The story is the recorder the shot was written to rather than the glass it came through — use `security-cam`."
+  - "You want a band of the frame sharp and the rest thrown out — that is depth of field, not lens character."
+---
+
+<ComponentPreview name="camera-lens" />
+
+<CanvasFilterNote />
+
+<InstallBlock name="camera-lens" />
+
+## Usage
+
+`CameraLens` is a wrapper. Put a scene inside it and it comes back as something
+that was photographed: sharp in the middle and softening toward the corners,
+highlights blooming out through the glass, colour fringing where the channels
+stop agreeing at the edges, and light falling off gently at the rim.
+
+```tsx
+import { CameraLens } from "@/components/remocn/camera-lens";
+
+export const MyScene = () => (
+  <CameraLens>
+    <Scene />
+  </CameraLens>
+);
+```
+
+## Why this is not a curved screen
+
+The obvious way to build a lens is to bend the frame, but bending is what a tube
+does — reach for that and you get `crt-screen` with the scanlines missing. What
+separates glass from a display is **light**, not geometry.
+
+A CRT is uniformly sharp across its whole surface and puts a mask over it. A lens
+is sharp in one place and loses resolution everywhere else, and it scatters
+bright light into the area around it. Those two things are what the defaults here
+are made of; `distortion` exists but starts near zero, because modern glass barely
+bends anything and leaning on it is exactly what makes a lens read as a monitor.
+
+## What to reach for it for
+
+### The pass that stops it looking rendered
+
+The defaults are quiet on purpose — quiet enough to leave on for a whole demo.
+The preview ramps the whole lens on and back off, because the honest way to judge
+it is to see what disappears when you turn it off rather than what appears when
+you turn it on.
+
+<ComponentExample name="lens-contribution" />
+
+```tsx
+<CameraLens>
+  <Screencast />
+</CameraLens>
+```
+
+### Hand it a camera move
+
+The lens is optics, not motion — it never moves on its own. Put a slow push
+inside it and the two together read as a shot: the scene travels, and the
+travelling content passes through stationary glass, so different parts of the
+picture take their turn in the soft corners.
+
+<ComponentExample name="lens-handheld" />
+
+```tsx
+import { CameraLens } from "@/components/remocn/camera-lens";
+import { Drift } from "@/components/remocn/drift";
+
+export const MyScene = () => (
+  <CameraLens>
+    <Drift grow={0.06}>
+      <Scene />
+    </Drift>
+  </CameraLens>
+);
+```
+
+Order matters. `Drift` goes inside so the scene moves behind stationary glass. Put
+the lens inside the drift instead and you would be scaling the optics themselves,
+which is a lens breathing rather than a camera pushing in.
+
+<PropsTable title="Props"
+  rows={[
+    {
+      name: "softness",
+      type: "number",
+      default: "0.5",
+      description:
+        "How much resolution the corners lose. The blur radius grows with distance from centre, so the middle of the frame stays fully sharp — this is the single strongest signal that a picture came through glass.",
+    },
+    {
+      name: "bloom",
+      type: "number",
+      default: "0.5",
+      description:
+        "How far bright areas scatter into what surrounds them. Only the highlights bloom, so dark UI stays clean and a white panel glows at its edges.",
+    },
+    {
+      name: "aberration",
+      type: "number",
+      default: "0.5",
+      description:
+        "How far the colour channels stop agreeing. Scales with radius, so the centre stays neutral and the fringing lives at the edges where a real lens puts it.",
+    },
+    {
+      name: "vignette",
+      type: "number",
+      default: "0.5",
+      description:
+        "Light falloff toward the rim, on the cos⁴ curve real optics follow. Smooth rather than drawn, so it reads as the lens rather than as a dark ring.",
+    },
+    {
+      name: "distortion",
+      type: "number",
+      default: "0.05",
+      description:
+        "Barrel bend. Near zero by default because modern glass barely bends anything, and because leaning on it is what makes a lens start reading as a CRT. Raise it for a wide-angle look or during a punch.",
+    },
+    {
+      name: "children",
+      type: "React.ReactNode",
+      description: "The scene the filter wraps and re-reads every frame.",
+    },
+  ]}
+/>
+
+## Notes
+
+Nothing animates. The lens is fixed optics re-reading the scene every frame, so a
+still scene is pixel-identical frame to frame and any movement belongs to what you
+put inside the wrapper.
+
+This is the heaviest shader in the pack so far — the corner blur and the bloom
+are both multi-tap gathers, and the aberration runs the blur three times. It is
+comfortable on a GPU; on a software renderer (`--gl=swangle`) expect it to be
+noticeably slower than the rest of the category.
+
+The filter expects a full-bleed scene. It reads pixels from displaced
+coordinates, so where the scene is transparent it has nothing to gather — put a
+background inside the wrapper rather than behind it.
+
+In browsers without html-in-canvas the scene keeps a bloom approximation and the
+vignette but not the per-pixel corner softness. CSS has one blur radius for a
+whole element, and a radius that varies across the frame is precisely the part
+that cannot be faked.

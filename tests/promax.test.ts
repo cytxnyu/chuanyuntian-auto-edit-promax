@@ -1,0 +1,26 @@
+import {describe,it,expect} from 'vitest';
+import {StoryboardSchema} from '../packages/core/src/schema';
+import {SOURCE_CATALOG,installedSources,requireInstalledSource} from '../packages/core/src/source-catalog';
+import {withSourcePlan,bindSourceText} from '../packages/core/src/source-planner';
+import {existsSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {selectRepresentativeBeats} from '../scripts/lib/artifact-qa';
+const entry=requireInstalledSource('remotionui/title-card');
+const base:any={version:'3.0',sourceMode:'source-only',presentation:'original-sources',id:'test',title:'test',duration:10,width:960,height:540,fps:30,captionsMode:'none',source:{video:'input.mp4'},theme:{background:'#000',foreground:'#fff',accent:'#fff'},beats:[],sourceScenes:[]};
+const scene={id:'source-1',sourceId:entry.id,revision:entry.revision,start:0,end:3,props:{title:'原版场景'},reason:'test'};
+describe('ProMax source-only contract',()=>{
+ it('accepts original sources',()=>expect(withSourcePlan(base,[scene]).version).toBe('3.0'));
+ it('rejects old board',()=>expect(StoryboardSchema.safeParse({...base,version:'2.1',sourceMode:'source-first',sourceScenes:[scene]}).success).toBe(false));
+ it('rejects local beats',()=>expect(StoryboardSchema.safeParse({...base,beats:[{id:'local'}],sourceScenes:[scene]}).success).toBe(false));
+ it('rejects mixed plan',()=>expect(()=>withSourcePlan(base,[scene],['local'])).toThrow());
+ it('rejects wrong revision',()=>expect(()=>requireInstalledSource(entry.id,'0'.repeat(40))).toThrow());
+ it('rejects helpers as visual scenes',()=>expect(()=>requireInstalledSource('remotionui/timing')).toThrow());
+ it('has unique source identifiers',()=>expect(new Set(SOURCE_CATALOG.map(e=>e.id)).size).toBe(SOURCE_CATALOG.length));
+ it('registers all three providers',()=>expect(new Set(installedSources().map(e=>e.provider)).size).toBe(3));
+ it('has every callable actual runtime',()=>expect(installedSources().filter(e=>!e.entry||!existsSync(resolve(process.cwd(),e.entry!.split('#')[0]))).map(e=>e.id)).toEqual([]));
+ it('keeps actual metadata',()=>expect(installedSources().filter(e=>![e.width,e.height,e.fps,e.durationInFrames].every(n=>typeof n==='number'&&n>0)).map(e=>e.id)).toEqual([]));
+ it('samples eight selected frames',()=>expect(selectRepresentativeBeats(withSourcePlan(base,[scene]))).toHaveLength(8));
+ it('preserves supplied Chinese text',()=>expect(bindSourceText(entry.id,['这是原始中文文本'],'标题').title).toBe('这是原始中文文本'));
+ it('binds native Remocn text fields',()=>expect(bindSourceText('remocn/soft-blur-in',['原始文本'],'').text).toBe('原始文本'));
+ it('retains inherited required child props',()=>expect(requireInstalledSource('remotionui/fade-in').requiredProps).toContain('children'));
+});

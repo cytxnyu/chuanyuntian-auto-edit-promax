@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main, staging]
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - run: bun install --frozen-lockfile
+      - run: bun run lint
+      - run: bun run typecheck
+      # TODO: make blocking once the 14 pre-existing failures documented in
+      # PR #61 (12 remocn-ui suites + 2 real source bugs) are fixed.
+      - run: bun run test
+        continue-on-error: true
+      # Blocking on its own, because the suite above is not. Guards the
+      # registry <-> docs contract the remocn skill reads at runtime.
+      - run: bun test lib/docs-meta.test.ts
+      - run: bun run registry:check
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - run: bun install --frozen-lockfile
+      - run: bun run build
+        env:
+          SHOWCASES_API_URL: ${{ vars.SHOWCASES_API_URL || 'https://manager.remocn.dev' }}

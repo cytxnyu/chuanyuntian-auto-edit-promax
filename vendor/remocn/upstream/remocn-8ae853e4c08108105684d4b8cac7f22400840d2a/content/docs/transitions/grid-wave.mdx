@@ -1,0 +1,153 @@
+---
+title: Grid Wave
+description: Send a wave across the frame that raises the picture into a grid of solid blocks and sets them back down carrying the next scene
+component: grid-wave
+vibe: tech
+length: 36
+useWhen:
+  - "A product or interface demo needs a cut with craft — the frame is handled as a surface rather than blended away."
+  - "The moment can afford well over a second; the wave has to travel far enough to read as a wave."
+  - "The two scenes are both structured and graphic, so the grid reads as a deliberate device rather than as noise over busy footage."
+avoidWhen:
+  - "The cut needs to be quick or invisible — this one asks to be watched; use `zoom-blur`."
+  - "You want the frame to come apart into matter rather than be handled as tiles — use `particle-dissolve`."
+---
+
+<ComponentPreview name="grid-wave" />
+
+<CanvasTransitionNote />
+
+<InstallBlock name="grid-wave" />
+
+## Usage
+
+`gridWave()` is a Remotion transition presentation. Pass it to a
+`TransitionSeries.Transition` between two sequences. A wave travels across the
+frame; wherever it passes, the picture divides into cells and each one rises off
+the surface as a solid block — a lit top face carrying its piece of the picture,
+a shaded side below it where the block has come away, and a highlight around the
+top edge. The block sets back down as the wave leaves, carrying the next scene.
+
+Each block rises from its own footprint. The frame as a whole never moves: only
+the ring of blocks under the wave is off the surface at any moment, so the
+picture stays anchored while the wave travels through it.
+
+```tsx
+import { TransitionSeries, linearTiming } from "@remotion/transitions";
+import { gridWave } from "@/components/remocn/grid-wave";
+
+export const MyVideo = () => (
+  <TransitionSeries>
+    <TransitionSeries.Sequence durationInFrames={60}>
+      <SceneA />
+    </TransitionSeries.Sequence>
+    <TransitionSeries.Transition
+      timing={linearTiming({ durationInFrames: 36 })}
+      presentation={gridWave()}
+    />
+    <TransitionSeries.Sequence durationInFrames={60}>
+      <SceneB />
+    </TransitionSeries.Sequence>
+  </TransitionSeries>
+);
+```
+
+`direction` decides how the wave travels. `"ripple"` spreads outward from the
+centre like a drop landing on the surface; an axis sweeps it straight across.
+
+## Why this one needs the canvas
+
+A grid-shaped mask over a crossfade is something CSS can do. A raised solid is
+not. Each block is projected rather than masked:
+
+- **The top face is re-projected.** It is offset upward, leaned slightly away
+  from the frame's centre for perspective, and magnified — so the pixel being
+  written samples the scene somewhere else entirely, and the amount depends on
+  how high that particular block has risen.
+- **The side face is extruded.** The strip of footprint the block has vacated
+  samples the top face's own bottom edge and repeats it downward under shading,
+  which is what gives the block visible thickness instead of reading as a
+  floating rectangle.
+- **Blocks occlude each other.** A pixel is resolved against the neighbouring
+  blocks and the highest one wins, so a raised block correctly covers the gap
+  and the shoulder of the one behind it.
+
+All three are reads at coordinates other than the pixel being written, which is
+exactly what a mask or a blend mode cannot express.
+
+## The entrance mirrors the exit
+
+There is no separate treatment for the incoming scene, because it is the same
+block. A block goes up carrying the outgoing scene and comes down carrying the
+incoming one, and the hand-over sits at the crest — the moment the block is
+highest, largest and most lit, and the eye is least on its contents. Play the
+transition backwards and it is the same wave carrying the other scene, exactly.
+
+Both ends are exact. The wave starts and finishes outside the frame, and every
+lift is scaled by the wave's own pulse, so at progress 0 nothing is raised and
+the outgoing frame is untouched; at progress 1 the same is true of the incoming
+one. Nothing fades at any point.
+
+## Determinism
+
+The wave position and every block's lift, lean, magnification, shading and
+hand-over are closed-form functions of the transition's progress and the block's
+own coordinate — no simulation, no wall-clock time, nothing carried between
+frames. The same frame renders identically in every chunk of a parallel render.
+
+## Fallback
+
+Where html-in-canvas is unavailable the incoming scene resolves through a short
+scale-and-fade settle. It keeps the timing; the tiles need the outgoing scene's
+pixels, so none of the props apply there.
+
+## Props
+
+`gridWave(props)` accepts:
+
+<PropsTable
+  rows={[
+    {
+      name: "tileSize",
+      type: "number",
+      default: "90",
+      description:
+        "Size of one cell in pixels. Large cells read as panels, small ones as a fine mosaic.",
+    },
+    {
+      name: "waveWidth",
+      type: "number",
+      default: "0.16",
+      description:
+        "Thickness of the wave as a fraction of its travel. This is the pacing knob: a narrow wave is a sharp crest that snaps past each cell, a wide one has half the frame divided at once.",
+    },
+    {
+      name: "lift",
+      type: "number",
+      default: "2",
+      description:
+        "How high a block rises at the crest, which also sets how deep its side face reads. 0 keeps the frame flat, so the wave degrades to a grid-shaped wipe.",
+    },
+    {
+      name: "gap",
+      type: "number",
+      default: "0.12",
+      description:
+        "Space between blocks as a fraction of one cell. Some gap is what lets a raised block's side face be seen against its neighbours; 0 closes the grid into a continuous surface and the depth stops reading.",
+    },
+    {
+      name: "tint",
+      type: "string",
+      default: '"#8fb4ff"',
+      description:
+        "Colour that cells blend toward at the crest, as a hex string. Set it to a brand accent to carry colour through the cut.",
+    },
+    {
+      name: "direction",
+      type: '"ripple" | "left" | "right" | "up" | "down"',
+      default: '"ripple"',
+      description:
+        "How the wave travels. \"ripple\" spreads outward from the centre; an axis sweeps it straight across from that edge.",
+    },
+  ]}
+/>

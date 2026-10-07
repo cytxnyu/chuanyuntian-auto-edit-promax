@@ -1,0 +1,88 @@
+---
+title: Slot Machine Roll
+description: Vertical reel scrolls each character from an old value to a new value
+component: slot-machine-roll
+vibe: playful
+length: 90
+useWhen:
+  - "Revealing a price change, plan upgrade, or before/after value where the string includes symbols (`$`, `%`, `×`)."
+  - "You want a playful, casino-reel feel on a pricing or comparison slide."
+  - "The values are short (1–6 characters) and the character-by-character drum motion will be legible."
+avoidWhen:
+  - "The value is a large pure integer like `1,240,000` — use `rolling-number` which animates each decimal place independently and reads as a serious data metric."
+  - "The text is more than ~6 characters — long strings become hard to read while the reel spins; use `staggered-fade-up` to reveal a longer phrase."
+  - "The brand tone is formal or data-driven — the slot machine metaphor is inherently playful; use `rolling-number` for a composed odometer feel."
+---
+
+<ComponentPreview name="slot-machine-roll" />
+
+<InstallBlock name="slot-machine-roll" />
+
+## Usage
+
+```tsx
+// src/Root.tsx
+import { Composition } from "remotion";
+import { SlotMachineRoll } from "@/components/remocn/slot-machine-roll";
+
+const SlotMachineRollScene = () => (
+  <SlotMachineRoll from="$99" to="$199" fontSize={120} />
+);
+
+export const RemotionRoot = () => (
+  <Composition
+    id="SlotMachineRoll"
+    component={SlotMachineRollScene}
+    durationInFrames={90}
+    fps={30}
+    width={1280}
+    height={720}
+  />
+);
+```
+
+<PropsTable title="Props"
+  rows={[
+    {
+      name: "from",
+      type: "string",
+      default: "\"$99\"",
+      description: "Starting value shown before the reel rolls",
+    },
+    {
+      name: "to",
+      type: "string",
+      default: "\"$199\"",
+      description: "Target value the reel settles on",
+    },
+    {
+      name: "fontSize",
+      type: "number",
+      default: "120",
+      description: "Font size in pixels. Used to compute reel travel distance.",
+    },
+    {
+      name: "color",
+      type: "string",
+      default: "\"#171717\"",
+      description: "Text color",
+    },
+    {
+      name: "fontWeight",
+      type: "number",
+      default: "700",
+      description: "CSS font-weight",
+    },
+    {
+      name: "speed",
+      type: "number",
+      default: "1",
+      description: "Multiplier for animation speed",
+    },
+    {
+      name: "className",
+      type: "string",
+      description: "Optional className passed to the outer text span",
+    },
+  ]}
+/>

@@ -1,0 +1,60 @@
+import { cameraLensExampleCode } from "@/components/docs/examples/camera-lens-example";
+import { type ComponentConfig, FPS, H, W } from "@/lib/customizer-config";
+
+export const cameraLensConfig: ComponentConfig = {
+  componentName: "CameraLens",
+  importPath: "@/components/remocn/camera-lens",
+  controls: {
+    softness: {
+      type: "number",
+      min: 0,
+      max: 2,
+      step: 0.05,
+      default: 0.5,
+      description: "Corner softness",
+      hiddenFromList: false,
+    },
+    bloom: {
+      type: "number",
+      min: 0,
+      max: 2,
+      step: 0.05,
+      default: 0.5,
+      description: "Bloom",
+      hiddenFromList: false,
+    },
+    aberration: {
+      type: "number",
+      min: 0,
+      max: 3,
+      step: 0.1,
+      default: 0.5,
+      description: "Aberration",
+      hiddenFromList: false,
+    },
+    vignette: {
+      type: "number",
+      min: 0,
+      max: 1.5,
+      step: 0.05,
+      default: 0.5,
+      description: "Vignette",
+      hiddenFromList: false,
+    },
+    distortion: {
+      type: "number",
+      min: 0,
+      max: 0.6,
+      step: 0.01,
+      default: 0.05,
+      description: "Distortion",
+      hiddenFromList: false,
+    },
+  },
+  durationInFrames: 90,
+  fps: FPS,
+  compositionWidth: W,
+  compositionHeight: H,
+  previewBackdrop: { type: "color", value: "#0a0a0a" },
+  snippet: cameraLensExampleCode,
+};

@@ -1,0 +1,30 @@
+import {afterEach, describe, expect, it} from 'vitest';
+import {createHash} from 'node:crypto';
+import {existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync} from 'node:fs';
+import {dirname, join, resolve} from 'node:path';
+import {tmpdir} from 'node:os';
+import {installedSources, requireInstalledSource} from '../packages/core/src/source-catalog';
+import {withSourcePlan} from '../packages/core/src/source-planner';
+import {prepareSourceAssets, unusedShotcraftTemplateAudio} from '../scripts/lib/source-inputs';
+const roots:string[]=[];
+const film=requireInstalledSource('video-shotcraft/ink-press');
+const sfx=film.assets!.find(a=>a.source.endsWith('/click-camera.mp3'))!;
+const base:any={version:'3.0',sourceMode:'source-only',presentation:'original-sources',id:'publication-test',title:'test',duration:10,width:960,height:540,fps:30,captionsMode:'none',source:{video:'input.mp4'},theme:{background:'#000',foreground:'#fff',accent:'#fff'},beats:[],sourceScenes:[]};
+const board=(props:Record<string,unknown>={})=>withSourcePlan(base,[{id:'native',sourceId:film.id,revision:film.revision,start:0,end:3,props,reason:'public distribution regression'}]);
+const repo=()=>{const root=mkdtempSync(join(tmpdir(),'promax-public-'));roots.push(root);for(const asset of film.assets??[]){if(asset.source.endsWith('.mp3'))continue;const file=join(root,asset.source);mkdirSync(dirname(file),{recursive:true});writeFileSync(file,'test visual asset');}return root;};
+afterEach(()=>{for(const root of roots.splice(0)){if(!resolve(root).startsWith(resolve(tmpdir()) + requireSeparator()) || !root.split(/[\\/]/).at(-1)?.startsWith('promax-public-'))throw new Error('Unexpected temporary test path');rmSync(root,{recursive:true,force:true});}});
+const requireSeparator=()=>process.platform==='win32'?'\\':'/';
+describe('public-source asset packaging',()=>{
+ it('omits only unused original template SFX for the default muted film',()=>expect(unusedShotcraftTemplateAudio(film,{},sfx.source)).toBe(true));
+ it('keeps explicitly unmuted film audio required',()=>expect(unusedShotcraftTemplateAudio(film,{muted:false},sfx.source)).toBe(false));
+ it('does not confuse a visual subscene color named muted with audio playback',()=>expect(unusedShotcraftTemplateAudio(requireInstalledSource('video-shotcraft/bulk/template/morning'),{muted:'#65635f'},sfx.source)).toBe(true));
+ it('never skips an unrelated waveform or user asset',()=>{expect(unusedShotcraftTemplateAudio(film,{},'user/source.mp3')).toBe(false);expect(unusedShotcraftTemplateAudio(requireInstalledSource('remotionui/social-clip'),{},'vendor/remotionui/assets/demo-loop.wav')).toBe(false);});
+ it('prepares every visual file without stock audio and records each skipped SFX',()=>{const root=repo();const pub=join(root,'public');prepareSourceAssets(board(),root,pub);const manifest=JSON.parse(readFileSync(join(pub,'source-assets-manifest.json'),'utf8'));expect(manifest.filter((a:any)=>a.skipped)).toHaveLength(11);expect(manifest.filter((a:any)=>!a.skipped)).toHaveLength(film.assets!.length-11);for(const asset of film.assets!.filter(a=>!a.source.endsWith('.mp3')))expect(readFileSync(join(pub,asset.target),'utf8')).toBe('test visual asset');});
+ it('still fails if the selected unmuted film audio is missing',()=>{const root=repo();expect(()=>prepareSourceAssets(board({muted:false}),root,join(root,'public'))).toThrow('Source asset missing:');});
+ it('still fails for a missing required visual',()=>{const root=repo();const visual=film.assets!.find(a=>!a.source.endsWith('.mp3'))!;rmSync(join(root,visual.source));expect(()=>prepareSourceAssets(board(),root,join(root,'public'))).toThrow('Source asset missing:');});
+ it('copies explicitly supplied user audio unchanged on the muted packaging path',()=>{const root=repo();const supplied=join(root,'my-source.wav');const bytes=Buffer.from('user-owned original audio fixture');writeFileSync(supplied,bytes);const b=board();b.sourceScenes[0].assets.push({file:supplied,target:'user/source.wav'});prepareSourceAssets(b,root,join(root,'public'));expect(readFileSync(join(root,'public/user/source.wav'))).toEqual(bytes);});
+ it('retains both pinned synthetic waveform files byte-for-byte',()=>{const a=readFileSync(resolve('vendor/remotionui/assets/demo-loop.wav'));const b=readFileSync(resolve('vendor/remotionui/upstream/apps/web/public/media/demo-loop.wav'));expect(createHash('sha256').update(a).digest('hex')).toBe(createHash('sha256').update(b).digest('hex'));expect(a.length).toBe(384044);});
+ it('retains every installed source required asset except documented muted template SFX',()=>{const missing=installedSources().flatMap(entry=>(entry.assets??[]).filter(a=>!unusedShotcraftTemplateAudio(entry,{},a.source)&&!existsSync(resolve(a.source))).map(a=>`${entry.id}: ${a.source}`));expect(missing).toEqual([]);});
+ it('mounts no stock sound when either adapted film is muted and retains the upstream original',()=>{for(const runtime of ['runtime','bulk-runtime'])expect(readFileSync(resolve(`vendor/video-shotcraft/${runtime}/template/src/aifl/Main.tsx`),'utf8')).toContain('{!muted && SFX.map(');expect(readFileSync(resolve('vendor/video-shotcraft/upstream/template/src/aifl/Main.tsx'),'utf8')).not.toContain('{!muted && SFX.map(');});
+});
+

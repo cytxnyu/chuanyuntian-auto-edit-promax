@@ -1,0 +1,132 @@
+---
+title: Sustained Glitch
+description: Hold a scene under scheduled bursts of broadcast corruption, resting clean in between
+component: sustained-glitch
+vibe: tech
+length: sustained
+useWhen:
+  - "A tech or developer-facing scene should feel unstable for its whole run without the corruption ever settling into a constant texture."
+  - "You want a recurring accent between cuts rather than an effect that lives at one — something breaks up every second or so and the frame recovers."
+  - "The scene is a screen recording, terminal, or dashboard where a signal fault is a believable thing to happen to it."
+avoidWhen:
+  - "The tearing should happen only at the cut between two scenes — use `glitch-cut`."
+  - "Only a headline should break up while the scene behind it stays intact — use `rgb-glitch-text`."
+  - "You want continuous analog wear rather than intermittent digital faults — use `vhs-filter`."
+  - "The instability should read as a projection struggling to hold rather than as damage — use `hologram`."
+---
+
+<ComponentPreview name="sustained-glitch" />
+
+<CanvasFilterNote />
+
+<InstallBlock name="sustained-glitch" />
+
+## Usage
+
+`SustainedGlitch` is a wrapper. Put a scene inside it and the frame stays clean
+until a burst fires: slices tear sideways on their own beats, the colour channels
+pull apart, and blocks fill with picture dragged in from somewhere else in the
+frame. The burst decays over a few frames and the scene goes back to untouched
+until the next one.
+
+This is the one filter in the pack that is not a steady texture. That is the
+point — a constant glitch stops reading as a fault and starts reading as a
+material.
+
+```tsx
+import { SustainedGlitch } from "@/components/remocn/sustained-glitch";
+
+export const MyScene = () => (
+  <SustainedGlitch>
+    <Scene />
+  </SustainedGlitch>
+);
+```
+
+## How the bursts are scheduled
+
+Time is cut into slots — one per second at `frequency={1}`, shorter as you raise
+it. Most slots fire a burst, at a position and length seeded inside the slot, and
+the whole schedule is a function of the frame number, so it is identical on every
+render.
+
+Two knobs shape it. `frequency` sets how often the frame can break; `intensity`
+scales how hard it breaks when it does, and at `0` nothing fires at all.
+
+## Landing a hit on a beat
+
+`intensity` is a plain number read every frame, so interpolate it. To put damage
+on a specific beat, raise `frequency` until bursts are effectively continuous and
+let the envelope decide when they are visible.
+
+```tsx
+import { interpolate, useCurrentFrame } from "remotion";
+import { SustainedGlitch } from "@/components/remocn/sustained-glitch";
+
+export const MyScene = () => {
+  const frame = useCurrentFrame();
+  const intensity = interpolate(
+    frame,
+    [40, 44, 52],
+    [0, 1.6, 0],
+    { extrapolateLeft: "clamp", extrapolateRight: "clamp" },
+  );
+
+  return (
+    <SustainedGlitch intensity={intensity} frequency={6}>
+      <Scene />
+    </SustainedGlitch>
+  );
+};
+```
+
+<PropsTable title="Props"
+  rows={[
+    {
+      name: "intensity",
+      type: "number",
+      default: "1",
+      description:
+        "How hard a burst hits. Read every frame, so it can be interpolated to script the damage. At 0 no burst is visible and the scene passes through untouched.",
+    },
+    {
+      name: "frequency",
+      type: "number",
+      default: "1",
+      description:
+        "How often the frame can break, in bursts per second at 30fps. Around 6 the slots are short enough that the tearing is effectively continuous, which is what you want when intensity is driving the timing instead.",
+    },
+    {
+      name: "slices",
+      type: "number",
+      default: "24",
+      description:
+        "How many horizontal slices the frame tears into. Low counts read as chunky tape damage, high counts as fine scanline tearing.",
+    },
+    {
+      name: "seed",
+      type: "number",
+      default: "1",
+      description:
+        "Shifts the whole schedule and the per-slice pattern. Change it when two scenes in one video should not break up in the same rhythm.",
+    },
+    {
+      name: "children",
+      type: "React.ReactNode",
+      description: "The scene the filter wraps and re-reads every frame.",
+    },
+  ]}
+/>
+
+## Notes
+
+Between bursts the filter writes the scene through unchanged, so a scene wrapped
+at `intensity={0}` costs a texture read and nothing else visually.
+
+The CSS fallback keeps the same shape — clean, then a burst of shifted bands, then
+clean — but its schedule is its own. If you have timed something against a
+specific burst in Chrome, check it once on the fallback path before shipping.
+
+The corrupted blocks pull picture from a displaced coordinate, which is why this
+needs the canvas: the block does not tint or mask what was already under it, it
+shows a piece of somewhere else in the frame.

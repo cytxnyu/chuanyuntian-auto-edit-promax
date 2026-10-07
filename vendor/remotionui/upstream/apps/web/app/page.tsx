@@ -1,0 +1,62 @@
+import { HomeLayout } from "fumadocs-ui/layouts/home";
+import type { Metadata } from "next";
+import { InstallStrip } from "@/components/landing/install-strip";
+import { EndSlateCta } from "@/components/landing/end-slate-cta";
+import { EarlyAccessSection } from "@/components/early-access/early-access-section";
+import { KineBanner } from "@/components/early-access/kine-banner";
+import { ComponentContactSheet } from "@/components/landing/component-contact-sheet";
+import { StudioHero } from "@/components/landing/studio-hero";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteLogo } from "@/components/site-logo";
+import { kineNavLink } from "@/components/early-access/kine-nav-link";
+import { githubStarNavLink, xNavLink } from "@/lib/github-nav-link";
+import { navLinks, siteConfig } from "@/lib/site-config";
+
+const title = `RemotionUI – ${siteConfig.tagline.replace(/\.$/, "")}`;
+const description = `${siteConfig.tagline} ${siteConfig.description}`;
+
+export const metadata: Metadata = {
+  title,
+  description,
+  openGraph: {
+    title,
+    description,
+    type: "website",
+    url: siteConfig.url,
+  },
+  alternates: {
+    canonical: siteConfig.url,
+  },
+};
+
+export default function HomePage() {
+  return (
+    <>
+      <KineBanner />
+      <HomeLayout
+      nav={{
+        title: <SiteLogo />,
+        url: "/",
+      }}
+      links={[
+        ...navLinks.map((link) => ({
+          text: link.text,
+          url: link.url,
+          active: link.active,
+        })),
+        kineNavLink,
+        xNavLink,
+        githubStarNavLink,
+      ]}
+      className="flex flex-1 flex-col"
+    >
+      <StudioHero />
+      <ComponentContactSheet />
+      <InstallStrip />
+      <EarlyAccessSection />
+      <EndSlateCta />
+      <SiteFooter />
+      </HomeLayout>
+    </>
+  );
+}

@@ -1,0 +1,46 @@
+---
+title: Voronoi
+description: Animated Voronoi cells shifting and re-tessellating
+component: shader-voronoi
+vibe: tech
+length: 150
+useWhen:
+  - "You want a cellular, crystalline backdrop that shifts and re-tessellates."
+  - "A tech scene benefits from clear cell structure with dark gaps between cells."
+  - "You want the gap thickness tunable via `gap`."
+avoidWhen:
+  - "You want soft, structureless fog — use `shader-perlin-noise` or `shader-simplex-noise`."
+  - "You want a glow-heavy look — `glow` defaults to `0` on purpose; keep it low to avoid decorative bloom."
+  - "Busy cells would clutter dense foreground content — lower `distortion` or use a solid `backdrop`."
+---
+
+<ComponentPreview name="shader-voronoi" />
+
+<InstallBlock name="shader-voronoi" />
+
+## Usage
+
+```tsx
+// src/Root.tsx
+import { Composition } from "remotion";
+import { ShaderVoronoi } from "@/components/remocn/shader-voronoi";
+
+const ShaderVoronoiScene = () => (
+  <ShaderVoronoi speed={1} distortion={0.4} gap={0.04} />
+);
+
+export const RemotionRoot = () => (
+  <Composition
+    id="ShaderVoronoi"
+    component={ShaderVoronoiScene}
+    durationInFrames={150}
+    fps={30}
+    width={1280}
+    height={720}
+  />
+);
+```
+
+## Credits
+
+Shader by [paper-design/shaders](https://github.com/paper-design/shaders).

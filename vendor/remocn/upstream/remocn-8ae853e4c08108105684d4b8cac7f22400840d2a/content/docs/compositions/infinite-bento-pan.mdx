@@ -1,0 +1,83 @@
+---
+title: Infinite Bento Pan
+description: A hypnotic diagonal camera glide over an oversized grid of bento cards
+component: infinite-bento-pan
+vibe: data
+length: 300
+useWhen:
+  - "You need an ambient establishing shot that says \"a lot is happening here\" without asking anyone to read a single number."
+  - "The shot should be one uninterrupted camera move — the diagonal traversal is interpolated across the composition's whole `durationInFrames`, so a longer duration slows the glide rather than changing its path."
+  - "A background layer is wanted behind a title or logo, with dozens of dashboard cards drifting past and a built-in vignette darkening the frame edges."
+avoidWhen:
+  - "The figures on screen have to mean something — every counter, stat and chart here is sine-driven filler, so use `animated-line-chart` or `animated-bar-chart` for a number the viewer should actually read."
+  - "You need the camera to slow down, hold, or land on one specific card; the pan is a single linear diagonal with no easing and no dwell."
+  - "You want a horizontal loop rather than a camera over a grid; `infinite-marquee` and `perspective-marquee` scroll a strip seamlessly instead."
+---
+
+<ComponentPreview name="infinite-bento-pan" />
+
+<InstallBlock name="infinite-bento-pan" />
+
+## Usage
+
+```tsx
+// src/Root.tsx
+import { Composition } from "remotion";
+import { InfiniteBentoPan } from "@/components/remocn/infinite-bento-pan";
+
+const InfiniteBentoPanScene = () => (
+  <InfiniteBentoPan panSpeed={1} accentColor="#7c3aed" />
+);
+
+export const RemotionRoot = () => (
+  <Composition
+    id="InfiniteBentoPan"
+    component={InfiniteBentoPanScene}
+    durationInFrames={300}
+    fps={30}
+    width={1280}
+    height={720}
+  />
+);
+```
+
+### With Backdrop
+
+Renders its scene transparent — supply the background via `Backdrop`:
+
+```tsx
+import { Backdrop } from "@/components/remocn/backdrop";
+import { InfiniteBentoPan } from "@/components/remocn/infinite-bento-pan";
+
+<Backdrop fill={{ type: "color", value: "#050505" }}>
+  <InfiniteBentoPan panSpeed={1} accentColor="#7c3aed" />
+</Backdrop>
+```
+
+<PropsTable title="Props"
+  rows={[
+    {
+      name: "panSpeed",
+      type: "number",
+      default: "1",
+      description: "Multiplier for the diagonal camera distance traveled across the duration. Clamped to a single full traversal at 1.",
+    },
+    {
+      name: "accentColor",
+      type: "string",
+      default: '"#7c3aed"',
+      description: "Color used by chart strokes, bar fills, counters, and logo gradients",
+    },
+    {
+      name: "speed",
+      type: "number",
+      default: "1",
+      description: "Multiplier applied to the current frame for global timing control",
+    },
+    {
+      name: "className",
+      type: "string",
+      description: "Optional className for the outer container",
+    },
+  ]}
+/>

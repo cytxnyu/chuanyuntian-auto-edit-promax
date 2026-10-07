@@ -1,0 +1,165 @@
+---
+title: Ember Burn
+description: Set the outgoing frame on fire so it boils, chars, and blows away as sparks that carry its own colour
+component: ember-burn
+vibe: premium
+length: 40
+useWhen:
+  - "A scene change should feel cinematic and physical — the frame is destroyed rather than blended away."
+  - "The moment can afford well over a second; the burn is meant to be watched, not blinked through."
+  - "The outgoing scene has real content worth consuming — the fire takes the bright parts first, so text and highlights go before the background."
+avoidWhen:
+  - "The cut has to be quick — a burn compressed under 24 frames reads as a smear; use `zoom-blur`."
+  - "The scenes are cool-toned or clinical and a warm flare would fight the palette — use `grain-dissolve`."
+---
+
+<ComponentPreview name="ember-burn" />
+
+<CanvasTransitionNote />
+
+<InstallBlock name="ember-burn" />
+
+## Usage
+
+`emberBurn()` is a Remotion transition presentation. Pass it to a
+`TransitionSeries.Transition` between two sequences. The outgoing frame catches
+fire where it is brightest, boils in the heat just ahead of the flame, chars to
+black at the rim, and blows away as sparks that carry the colour of the pixels
+they destroyed. The burn accelerates as it spreads, so it starts as a few small
+holes and finishes in a rush.
+
+Give it room. `linearTiming({ durationInFrames: 40 })` is the recommended
+default — this is a transition you are meant to watch, and the detail that
+makes it work (the boil, the rim, the sparks) only registers if each part of
+the frame spends real time in the fire. Under about 24 frames it stops reading
+as fire and turns into a smear.
+
+```tsx
+import { TransitionSeries, linearTiming } from "@remotion/transitions";
+import { emberBurn } from "@/components/remocn/ember-burn";
+
+export const MyVideo = () => (
+  <TransitionSeries>
+    <TransitionSeries.Sequence durationInFrames={60}>
+      <SceneA />
+    </TransitionSeries.Sequence>
+    <TransitionSeries.Transition
+      timing={linearTiming({ durationInFrames: 40 })}
+      presentation={emberBurn()}
+    />
+    <TransitionSeries.Sequence durationInFrames={60}>
+      <SceneB />
+    </TransitionSeries.Sequence>
+  </TransitionSeries>
+);
+```
+
+## Why this one needs the canvas
+
+Three of its behaviours read the outgoing scene's actual pixels, and none of
+them can be approximated by masking a layer:
+
+- **The fire eats content, not a pattern.** The burn threshold is biased by the
+  luminance of the outgoing frame, so bright areas ignite first. A headline
+  burns away before the background it sits on. The mask is a function of the
+  scene, which is why it cannot be authored ahead of time.
+- **Heat refracts what has not burned yet.** Just ahead of the flame the
+  outgoing scene is sampled at a displaced coordinate, so the image boils and
+  swims before it goes.
+- **Sparks carry the colour they destroyed.** Each ember samples the frame from
+  the point it rose out of, so the frame comes apart into its own colours
+  instead of into generic orange dots.
+
+## The entrance mirrors the exit
+
+The incoming scene is not simply uncovered underneath the hole. It gets the
+same treatment as the outgoing one, with the sign flipped, so both halves of
+the cut carry the same event:
+
+| Outgoing scene | Incoming scene |
+| --- | --- |
+| Boils ahead of the rim | Boils just behind it, displaced the opposite way |
+| Chars to black as it leaves | Arrives incandescent and cools as it settles |
+
+Play the transition backwards and it reads as the same effect applied to the
+other scene. That symmetry is the whole point: without it the outgoing frame
+does all the work while the incoming one lies flat underneath, which reads as a
+hole punched in a picture rather than as one frame becoming another.
+
+`patches` is the knob that changes the character most: low values give a few
+large holes that swallow the frame in one gesture, high values a fine even burn.
+`contentBias` at 0 ignores the content and burns the frame as an abstract
+pattern; at 1 the fire is fully led by the picture.
+
+Remotion ships its own `filmBurn()` presentation in `@remotion/transitions`.
+That one is a full-frame warm flash — a light leak over a blurred crossfade,
+which never consumes the frame and never looks at what is in it. The two do not
+overlap, and both can live in one project.
+
+## Determinism
+
+The burn field, the heat shimmer, the char, the rims, and the ember drift are
+all pure functions of the transition's progress. The field is a value-noise fBm
+seeded on position and on the scene's own luminance; the shimmer and the spark
+drift advance with progress rather than with a clock — no wall-clock time, no
+state between frames. The same frame renders identically in every chunk of a
+parallel render.
+
+## Fallback
+
+Where html-in-canvas is unavailable the presentation renders a warm-flash
+crossfade: the incoming scene resolves through a flare of the glow colour that
+peaks at the middle of the cut. It keeps the timing and the colour, which is as
+close as CSS gets — every other part of this transition is defined by the
+outgoing scene's pixels. `glowColor` still applies there; the rest do not.
+
+## Props
+
+`emberBurn(props)` accepts:
+
+<PropsTable
+  rows={[
+    {
+      name: "patches",
+      type: "number",
+      default: "5",
+      description:
+        "How finely the burn breaks up across the frame. Low values open a few large holes, high values a fine even burn closer to a textured dissolve.",
+    },
+    {
+      name: "edgeSoftness",
+      type: "number",
+      default: "0.07",
+      description:
+        "Width of the burning rim as a fraction of the frame. This is the second pacing knob: a wider band keeps each part of the frame in the fire for longer, so raise it if the burn reads as too quick even at a generous duration.",
+    },
+    {
+      name: "contentBias",
+      type: "number",
+      default: "0.6",
+      description:
+        "How strongly the fire follows the outgoing scene's brightness. 0 burns the frame as an abstract pattern; 1 lets the picture lead entirely, so highlights go first.",
+    },
+    {
+      name: "heat",
+      type: "number",
+      default: "0.5",
+      description:
+        "Strength of the refraction ahead of the flame. 0 keeps the unburnt image sharp right up to the rim.",
+    },
+    {
+      name: "glowColor",
+      type: "string",
+      default: '"#ff7a2f"',
+      description:
+        "Colour of the rims, the afterglow, and the light the sparks add on top of the colour they carry. Set it to a brand accent to tint the whole burn.",
+    },
+    {
+      name: "emberAmount",
+      type: "number",
+      default: "0.5",
+      description:
+        "Density of the sparks rising out of the burn. 0 leaves a clean burn with only the glowing edges.",
+    },
+  ]}
+/>

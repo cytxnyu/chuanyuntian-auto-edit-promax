@@ -1,0 +1,113 @@
+---
+title: TV Power Off
+description: End a scene the way a tube does — the picture collapses into a glowing line, pinches to a phosphor dot, and the frame is left dead black
+component: tv-power-off
+vibe: tech
+length: 18
+useWhen:
+  - "A scene should end like a device being switched off rather than fading out — the picture collapses, a dot lingers, and the frame is dead."
+  - "The video is about something that lives on a screen — a terminal, a dashboard, a retro build — and powering it down is the punctuation the story already implies."
+  - "A beat needs a hard, unambiguous end: everything after the collapse is black, so whatever you cut to next starts from nothing."
+avoidWhen:
+  - "The tube look should hold for the whole scene instead of ending it — use `crt-screen`, which is a sustained filter with no duration of its own."
+  - "Both scenes should be visible while the change happens — this plays over one scene at a time, so reach for a transition such as `glitch-cut`."
+  - "The frame has to stay transparent over a backdrop once the scene is gone, since what this leaves behind is opaque black."
+---
+
+<ComponentPreview name="tv-power-off" />
+
+<CanvasFilterNote />
+
+<InstallBlock name="tv-power-off" />
+
+## Usage
+
+Wrap a scene and, on the frame you point it at, its power is cut. The picture
+squashes toward the centre line while the light it loses is pushed into what is
+left, so the last few rows are a blown-out band rather than a squashed
+thumbnail. The band pinches to a dot, the dot decays, and the frame is black.
+
+```tsx
+import { TvPowerOff } from "@/components/remocn/tv-power-off";
+
+export const MyScene = () => (
+  <TvPowerOff delay={25}>
+    <Outro />
+  </TvPowerOff>
+);
+```
+
+## Timing it
+
+`delay` is counted from the start of the enclosing `Sequence`, so the scene
+plays untouched for `delay` frames and the collapse runs for the next
+`durationInFrames`. Budget both: a `Sequence` that ends before
+`delay + durationInFrames` cuts away mid-collapse.
+
+The default 18 frames is a hard power cut. Stretch it toward 30 and the line
+hangs long enough to read as a tube giving up rather than being switched.
+
+```tsx
+<TvPowerOff delay={60} durationInFrames={26}>
+  <Scene />
+</TvPowerOff>
+```
+
+<PropsTable title="Props"
+  rows={[
+    {
+      name: "durationInFrames",
+      type: "number",
+      default: "18",
+      description:
+        "How long the whole collapse takes. The first 60% is the vertical squash, the next 22% pinches the line to a dot, and the rest is the dot decaying.",
+    },
+    {
+      name: "delay",
+      type: "number",
+      default: "0",
+      description:
+        "Frames of untouched scene before the collapse starts, counted from the enclosing Sequence.",
+    },
+    {
+      name: "gain",
+      type: "number",
+      default: "1",
+      description:
+        "How hard the picture brightens as it is squashed. At 1 the light lost to the collapse is pushed back into the remaining rows, which is what blows the line out to white. At 0 the picture simply shrinks.",
+    },
+    {
+      name: "afterglow",
+      type: "number",
+      default: "1",
+      description:
+        "Reach of the phosphor bleed — the glow that spills above and below the line, and the halo around the dot. At 0 the collapse is geometry only.",
+    },
+    {
+      name: "phosphor",
+      type: "string",
+      default: '"#d8ecff"',
+      description:
+        "Colour of that glow. The cool white of a monochrome tube by default; warm it toward amber for an older terminal.",
+    },
+    {
+      name: "children",
+      type: "React.ReactNode",
+      description: "The scene being switched off.",
+    },
+  ]}
+/>
+
+## Notes
+
+The squash is an integral, not a scale. Every output row averages the source
+rows that collapse into it, so text does not alias into stripes on the way down
+and the line keeps the horizontal colour of the columns above it — that is why
+the last frames of the band still carry the scene rather than a grey smear.
+
+Once the collapse begins the frame behind the picture is opaque black, and it
+stays black after the dot is gone. That is a dead screen rather than a hole, so
+do not expect a backdrop to show through afterwards.
+
+Nothing is carried between frames: progress is a pure function of the current
+frame, so parallel and server-side renders produce identical pixels.

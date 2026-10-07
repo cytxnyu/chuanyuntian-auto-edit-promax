@@ -1,0 +1,22 @@
+---
+title: Canvas transitions, a new category
+date: 2026-08-02
+---
+
+Every transition in the catalog so far animates a scene from the outside — opacity, transform, filter, or a layer drawn over the cut. None of them could touch the pixels of the scenes being blended, which is why the effects real video editors are known for — tearing, burning, shattering — were missing. Canvas transitions sample both scenes as textures through the experimental html-in-canvas browser API and post-process them per frame, and this is the first one.
+
+<ChangelogPreview name="glitch-cut" />
+
+### New components
+
+- [Glitch Cut](/docs/transitions/glitch-cut) — the frame breaks into horizontal slices that slide apart, the colour channels separate, and blocks of the picture corrupt into the wrong scene. Each slice hands over to the incoming scene on its own beat around the midpoint, so the cut is torn rather than flat. Built for short timings — 12 frames is the recommended default.
+- [Ember Burn](/docs/transitions/ember-burn) — the outgoing frame catches fire where it is brightest, so a headline burns away before the background it sits on. Ahead of the flame the picture boils in the heat; at the rim it chars to black; behind it the frame blows away as sparks that carry the colour of the pixels they destroyed. Remotion's own `filmBurn()` is a different thing — a full-frame warm flash that never consumes the frame and never looks at what is in it — and the two can live in one project.
+- [Particle Dissolve](/docs/transitions/particle-dissolve) — the frame is ground into fine dust. Each speck wanders away from the pixel it came from, and how far it gets is set by that pixel's brightness, so highlights and text disintegrate before flat background does. Colour drains out of the grain as it flies, red and blue fringe apart, and then the whole motion reverses and the next scene gathers out of the same dust.
+- [Grid Wave](/docs/transitions/grid-wave) — a wave travels across the frame and wherever it passes the picture divides into cells that rise off the surface as solid blocks: a lit top face carrying its piece of the picture, a shaded side extruded below it, blocks occluding each other by height. Each block goes up with the outgoing scene and comes down with the incoming one, the hand-over hidden at the crest. Blocks rise from their own footprint, so the frame stays anchored while the wave travels through it, and nothing fades.
+- [Displacement](/docs/transitions/displacement) — the frame divides into a grid and every cell shears out of place at once, each on its own beat: the picture inside a cell slides away from where it belongs, its red and blue channels separate along the direction of travel, and film grain settles over the distortion. At the peak the cells hand over and slide back into register on the next scene.
+- Canvas Presentation — the shared scaffolding behind the category, installed alongside any canvas transition. It owns the support check, a full-screen WebGL2 scene shader that receives both sides of the cut as textures, and the routing that swaps in a CSS fallback where the browser has no html-in-canvas.
+
+### Improvements
+
+- Canvas transitions never present a broken demo. In Chrome 149+ with `chrome://flags/#canvas-draw-element` enabled you get the real pixel effect; in Safari, Firefox, and Chrome without the flag the presentation degrades to a CSS approximation of the same edit, so docs previews stay live and your video still renders. Rendering runs through the CLI, Studio, Lambda, and SSR with `--gl=angle`, or `--gl=swangle` without a GPU.
+- Output is deterministic by construction. Displacement, corruption, and the per-slice handover all come from a hash seeded on the slice index and on a clock derived from the transition's progress — no wall-clock time, no state between frames — so parallel and server-side renders come out seam-free.

@@ -1,0 +1,22 @@
+自动剪辑promax
+Copyright 2026 Nana AI
+
+This repository contains original orchestration, planning, validation, and
+integration code released under the MIT License.
+
+Remotion is used as a dependency and has its own license and commercial-use
+terms. Review https://www.remotion.dev/license before commercial use.
+
+Vendored Remocn and RemotionUI source retain their upstream MIT licenses.
+Vendored video-shotcraft source retains its Apache-2.0 license and notices.
+Asset and font license files are preserved alongside their source caches.
+
+Names, portraits, logos, trademarks, and third-party media are not granted by
+the MIT License unless a file explicitly states otherwise.
+
+Public distribution maintained by 川云添 (cytxnyu).
+Project: https://github.com/cytxnyu/chuanyuntian-auto-edit-promax
+Original orchestration copyright and all upstream notices are preserved.
+Standalone Shotcraft template SFX are omitted from this public distribution.
+The original attribution ledger is retained; its asset licenses are not MIT.
+The composite workflow preserves the user source audio, with template SFX muted.

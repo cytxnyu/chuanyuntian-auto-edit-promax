@@ -1,0 +1,72 @@
+import { particleDissolveExampleCode } from "@/components/docs/examples/particle-dissolve-example";
+import { type ComponentConfig, FPS, H, W } from "@/lib/customizer-config";
+
+export const particleDissolveConfig: ComponentConfig = {
+  componentName: "particleDissolve",
+  importPath: "@/components/remocn/particle-dissolve",
+  controls: {
+    particleSize: {
+      type: "number",
+      min: 1,
+      max: 16,
+      step: 1,
+      default: 4,
+      description: "Grain size",
+      hiddenFromList: false,
+    },
+    scatter: {
+      type: "number",
+      min: 0.01,
+      max: 0.4,
+      step: 0.01,
+      default: 0.08,
+      description: "Scatter",
+      hiddenFromList: false,
+    },
+    shimmer: {
+      type: "number",
+      min: 0,
+      max: 1.5,
+      step: 0.05,
+      default: 0.6,
+      description: "Shimmer",
+      hiddenFromList: false,
+    },
+    aberration: {
+      type: "number",
+      min: 0,
+      max: 1.5,
+      step: 0.05,
+      default: 0.5,
+      description: "Aberration",
+      hiddenFromList: false,
+    },
+    direction: {
+      type: "enum",
+      default: "reveal",
+      variants: {
+        reveal: {},
+        up: {},
+        down: {},
+        left: {},
+        right: {},
+      },
+      description: "Direction",
+    },
+    stagger: {
+      type: "number",
+      min: 0,
+      max: 0.9,
+      step: 0.05,
+      default: 0.55,
+      description: "Stagger",
+      hiddenFromList: false,
+    },
+  },
+  durationInFrames: 84,
+  fps: FPS,
+  compositionWidth: W,
+  compositionHeight: H,
+  previewBackdrop: { type: "color", value: "#0a0a0a" },
+  snippet: particleDissolveExampleCode,
+};

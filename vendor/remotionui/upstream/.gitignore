@@ -1,0 +1,112 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+.pnp.*
+
+# Package managers
+pnpm-debug.log*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Build outputs
+dist/
+build/
+out/
+.next/
+.swc/
+*.tsbuildinfo
+
+# Turborepo
+.turbo/
+
+# Vercel
+.vercel/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Registry (built at deploy via `pnpm registry:build`)
+apps/web/public/r/**/*.json
+apps/web/public/ai/
+
+# Fumadocs (generated on postinstall)
+apps/web/.source/
+/docs/
+
+# Browser QA artifacts
+.qa-screenshots/
+reports/
+
+# Marketing workspace (local playbooks + rendered demo videos)
+marketing/
+scripts/render-marketing-demo.sh
+
+# Local component exports (social posts, demos — not shipped)
+exports/
+apps/web/public/showcases/*.mp4
+
+# Showcase film build inputs (captures, synthesized audio, tiles): local only,
+# never pushed or deployed. They stay in public/ because Remotion reads one
+# public dir and the films also load shared assets from it.
+apps/web/public/remotionui-launch/
+apps/web/public/supabase-demo/
+
+
+# Testing
+coverage/
+.nyc_output/
+**/node_modules/.vite/
+
+# Test fixture installs (keep fixture source, ignore local installs)
+packages/remotion-ui/test/fixtures/**/node_modules/
+
+# Logs & debug
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# IDE / editors
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+*.sublime-project
+*.sublime-workspace
+
+# Cursor (commit mcp.json; ignore generated skill symlinks)
+.cursor/skills/
+
+# Local agent config
+.agents/
+.codex/
+
+# Local design playbooks (not for public repo)
+IDENTITY.md
+STUDIO-DESIGN.md
+
+# Local marketing/launch assets
+launch-screenshots/
+scripts/render-social-assets.mjs
+
+# Internal handoff notes, specs, and audits (not for public repo)
+docs-internal/
+
+# Misc
+*.tgz
+.cache/
+tmp/
+temp/
+var/
+
+.gstack/

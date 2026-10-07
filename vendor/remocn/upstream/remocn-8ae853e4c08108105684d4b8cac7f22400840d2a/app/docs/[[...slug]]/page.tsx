@@ -1,0 +1,81 @@
+import { DocsDescription, DocsPage, DocsTitle } from "fumadocs-ui/page";
+import { notFound } from "next/navigation";
+import { CopyMarkdownButton } from "@/components/docs/copy-markdown-button";
+import { DocsAdRail } from "@/components/docs/docs-ad-rail";
+import { getMDXComponents } from "@/mdx-components";
+import { source } from "@/source";
+
+export default async function Page(props: {
+  params: Promise<{ slug?: string[] }>;
+}) {
+  const params = await props.params;
+  const page = source.getPage(params.slug);
+  if (!page) notFound();
+
+  const data = page.data;
+  const MDX = data.body;
+  const isIcons = params.slug?.[0] === "icons";
+
+  return (
+    <DocsPage
+      breadcrumb={{ enabled: false }}
+      tableOfContent={{ enabled: true, component: <DocsAdRail /> }}
+      tableOfContentPopover={{ enabled: false }}
+      footer={{ enabled: !isIcons }}
+      className={isIcons ? "max-w-none" : undefined}
+    >
+      <div className="flex items-center justify-between gap-4">
+        <DocsTitle className="text-3xl font-semibold tracking-tight text-balance md:text-4xl">
+          {data.title}
+        </DocsTitle>
+        {params.slug?.length ? (
+          <CopyMarkdownButton url={`${page.url}.md`} className="shrink-0" />
+        ) : null}
+      </div>
+      <DocsDescription className="mb-0 max-w-xl text-pretty text-base text-muted-foreground md:text-lg">
+        {data.description}
+      </DocsDescription>
+      <div className="typeset typeset-docs mt-8 flex-1">
+        <MDX components={getMDXComponents()} />
+      </div>
+    </DocsPage>
+  );
+}
+
+export function generateStaticParams() {
+  return source.generateParams();
+}
+
+export async function generateMetadata(props: {
+  params: Promise<{ slug?: string[] }>;
+}) {
+  const params = await props.params;
+  const page = source.getPage(params.slug);
+  if (!page) notFound();
+  const data = page.data;
+  const slug = params.slug ?? [];
+  if (slug.length === 0) {
+    return {
+      title: data.title,
+      description: data.description,
+      alternates: { canonical: page.url },
+    };
+  }
+  const ogUrl = `/og/docs/${slug.join("/")}`;
+  return {
+    title: data.title,
+    description: data.description,
+    alternates: { canonical: page.url },
+    openGraph: {
+      title: data.title,
+      description: data.description,
+      images: [{ url: ogUrl, width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: data.title,
+      description: data.description,
+      images: [ogUrl],
+    },
+  };
+}

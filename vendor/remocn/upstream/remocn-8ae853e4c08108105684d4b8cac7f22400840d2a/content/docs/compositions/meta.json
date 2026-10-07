@@ -1,0 +1,11 @@
+{
+  "title": "Compositions",
+  "defaultOpen": false,
+  "pages": [
+    "index",
+    "ecosystem-constellation",
+    "infinite-bento-pan",
+    "live-code-compilation"
+  ],
+  "icon": "Layers01Icon"
+}

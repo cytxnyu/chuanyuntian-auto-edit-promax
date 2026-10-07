@@ -1,0 +1,16 @@
+---
+title: Cutting the power
+date: 2026-08-02
+---
+
+Two shapes have been built on html-in-canvas so far, and neither of them can end a scene. A transition needs a second scene to hand over to. A filter is a look that lasts as long as what it wraps, with no progress of its own. What was missing is the shape in between — one scene, one duration, and nothing left afterwards. This is the first of those.
+
+<ChangelogPreview name="tv-power-off" />
+
+### New components
+
+- [TV Power Off](/docs/effects/tv-power-off) — a scene switched off the way a tube is. The picture squashes toward the centre line, the line pinches to a phosphor dot, the dot decays and the frame is dead. The tempting build is a `scaleY` down to nothing, and it produces a shrunken thumbnail rather than a collapse: a real vertical collapse *integrates*, so every output row here averages the many source rows folding into it and the light they lose is pushed back into what is left. That is what blows the band out to white on the way down, keeps text from aliasing into stripes, and leaves the line carrying the horizontal colour of the columns that fell into it. `gain`, `afterglow` and `phosphor` control the surge, the bleed above and below the line, and the colour of both.
+
+### Improvements
+
+- `crt-screen` now names it in `avoidWhen`. The two answer different questions about the same object — one is a tube you watch for a whole scene, the other is that tube giving up — and an agent reaching for a CRT should land on the right one.

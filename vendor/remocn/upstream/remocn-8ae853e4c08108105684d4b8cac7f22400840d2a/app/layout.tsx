@@ -1,0 +1,99 @@
+import type { Metadata } from "next";
+import { Geist, Geist_Mono, Manrope } from "next/font/google";
+import { ThemeProvider } from "next-themes";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
+import "./globals.css";
+import { OpenPanelComponent } from "@openpanel/nextjs";
+import { cn } from "@/lib/utils";
+import { ThemeShortcut } from "./theme-shortcut";
+
+const inter = Manrope({ subsets: ["latin"], variable: "--font-sans" });
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const SITE_URL = "https://remocn.dev";
+const SITE_TITLE = "Remocn - Make a product demo video with your AI agent";
+const SITE_DESCRIPTION =
+  "Describe your product, get a demo video. Ready-made animations, transitions and app-screen sims your coding agent can use. No video editor, no motion designer.";
+
+export const metadata: Metadata = {
+  // Resolves the relative `/hero.png` below into an absolute URL for crawlers.
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: SITE_TITLE,
+    template: "%s · Remocn",
+  },
+  description: SITE_DESCRIPTION,
+  openGraph: {
+    type: "website",
+    url: SITE_URL,
+    siteName: "Remocn",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    locale: "en_US",
+    images: [
+      {
+        url: "/hero.png",
+        width: 1200,
+        height: 675,
+        alt: SITE_TITLE,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    images: ["/hero.png"],
+  },
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={cn(
+        "h-full",
+        "antialiased",
+        geistSans.variable,
+        geistMono.variable,
+        "font-sans",
+        inter.variable,
+      )}
+    >
+      <body className="min-h-full flex flex-col">
+        <NuqsAdapter>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <ThemeShortcut />
+            {children}
+          </ThemeProvider>
+        </NuqsAdapter>
+        <OpenPanelComponent
+          clientId={process.env.NEXT_PUBLIC_OPENPANEL_CLIENT_ID as string}
+          apiUrl={process.env.NEXT_PUBLIC_OPENPANEL_API_URL}
+          trackScreenViews
+          trackAttributes
+          trackOutgoingLinks
+        />
+      </body>
+    </html>
+  );
+}

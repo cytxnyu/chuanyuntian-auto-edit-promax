@@ -1,0 +1,46 @@
+---
+title: Spiral
+description: Rotating spiral arms radiating from the center
+component: shader-spiral
+vibe: premium
+length: 150
+useWhen:
+  - "You want a hypnotic, rotating radial background with visible arm structure."
+  - "A transition or intro benefits from a strong \"pulling in toward the center\" motion."
+  - "You want a two-tone, minimal look — `colorFront` on `colorBack`."
+avoidWhen:
+  - "You want closed concentric rings rather than open arms — use `shader-swirl`."
+  - "The center sits behind key text — the convergence point competes for attention."
+  - "You need multi-color richness — spiral is duotone by default; use `shader-warp`."
+---
+
+<ComponentPreview name="shader-spiral" />
+
+<InstallBlock name="shader-spiral" />
+
+## Usage
+
+```tsx
+// src/Root.tsx
+import { Composition } from "remotion";
+import { ShaderSpiral } from "@/components/remocn/shader-spiral";
+
+const ShaderSpiralScene = () => (
+  <ShaderSpiral speed={1} density={1} strokeWidth={0.5} />
+);
+
+export const RemotionRoot = () => (
+  <Composition
+    id="ShaderSpiral"
+    component={ShaderSpiralScene}
+    durationInFrames={150}
+    fps={30}
+    width={1280}
+    height={720}
+  />
+);
+```
+
+## Credits
+
+Shader by [paper-design/shaders](https://github.com/paper-design/shaders).

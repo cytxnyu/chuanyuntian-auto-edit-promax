@@ -1,0 +1,393 @@
+{
+  "provider": "remotionui",
+  "repository": "https://github.com/riaz37/remotion-ui",
+  "revision": "b7e0e6becc3d22b8b03dfef72c064f72ff9fad1f",
+  "installed": [
+    "social-clip",
+    "title-card",
+    "quote-card"
+  ],
+  "dependencyClosure": [
+    "audio-viz-utils",
+    "audiogram-bars",
+    "audiogram-scene",
+    "auto-fit-title",
+    "caption-highlight",
+    "caption-scene",
+    "caption-utils",
+    "code-syntax",
+    "end-card",
+    "fade-in",
+    "karaoke-captions",
+    "layout",
+    "motion-primitive",
+    "motion-tokens",
+    "motion-wrapper",
+    "quote-card",
+    "sample-media",
+    "social-clip",
+    "springs",
+    "text-emphasis",
+    "text-fit-utils",
+    "timing",
+    "title-card",
+    "transition-fade",
+    "transition-timing"
+  ],
+  "runtimeDependencies": [
+    "remotion",
+    "@remotion/transitions",
+    "@remotion/captions",
+    "@remotion/media-utils"
+  ],
+  "fontSourceRevision": "24ecb0bbdc3a52d6fddef160b769c61463f455d9",
+  "records": [
+    {
+      "registryId": "audio-viz-utils",
+      "upstreamPath": "apps/web/registry/bases/default/lib/audio-viz-utils.ts",
+      "upstreamUrl": "https://github.com/riaz37/remotion-ui/blob/b7e0e6becc3d22b8b03dfef72c064f72ff9fad1f/apps/web/registry/bases/default/lib/audio-viz-utils.ts",
+      "original": "vendor/remotionui/original/lib/audio-viz-utils.ts",
+      "originalSha256": "82cef42b6b8a9d0d5f575125a5458c9ec9e6347fbbe590711f80c7accd77f9a4",
+      "runtime": "vendor/remotionui/runtime/lib/audio-viz-utils.ts",
+      "runtimeSha256": "82cef42b6b8a9d0d5f575125a5458c9ec9e6347fbbe590711f80c7accd77f9a4",
+      "adaptations": []
+    },
+    {
+      "registryId": "audiogram-bars",
+      "upstreamPath": "apps/web/registry/bases/default/primitives/audiogram-bars.tsx",
+      "upstreamUrl": "https://github.com/riaz37/remotion-ui/blob/b7e0e6becc3d22b8b03dfef72c064f72ff9fad1f/apps/web/registry/bases/default/primitives/audiogram-bars.tsx",
+      "original": "vendor/remotionui/original/primitives/audiogram-bars.tsx",
+      "originalSha256": "6cec59d89666da1a51ca5fcf92f14730b13194632db5707d694534ea46f31abc",
+      "runtime": "vendor/remotionui/runtime/primitives/audiogram-bars.tsx",
+      "runtimeSha256": "633b6b9a4e25103f8fe07112e339a080206053202455f19b1fad45988ec77a7a",
+      "adaptations": [
+        "Resolved upstream @/remotion aliases to relative imports; implementation retained."
+      ]
+    },
+    {
+      "registryId": "audiogram-scene",
+      "upstreamPath": "apps/web/registry/bases/default/scenes/audiogram-scene/index.tsx",
+      "upstreamUrl": "https://github.com/riaz37/remotion-ui/blob/b7e0e6becc3d22b8b03dfef72c064f72ff9fad1f/apps/web/registry/bases/default/scenes/audiogram-scene/index.tsx",
+      "original": "vendor/remotionui/original/scenes/audiogram-scene/index.tsx",
+      "originalSha256": "505dd7b7ed890aa0996abb791b88b6bcedfd5d13032c8ad5f845ce6ce52d90e9",
+      "runtime": "vendor/remotionui/runtime/scenes/audiogram-scene/index.tsx",
+      "runtimeSha256": "f68a7637edc873ca3cf79d8a41cb7a794ba37973928e69e83c0caca85a95cc62",
+      "adaptations": [
+        "Resolved upstream @/remotion aliases to relative imports; implementation retained.",
+        "Replaced network Inter loader with a scoped font-family variable; wrapper waits for pinned local Inter and Noto Sans SC fonts."
+      ]
+    },
+    {
+      "registryId": "auto-fit-title",
+      "upstreamPath": "apps/web/registry/bases/default/scenes/auto-fit-title/index.tsx",
+      "upstreamUrl": "https://github.com/riaz37/remotion-ui/blob/b7e0e6becc3d22b8b03dfef72c064f72ff9fad1f/apps/web/registry/bases/default/scenes/auto-fit-title/index.tsx",
+      "original": "vendor/remotionui/original/scenes/auto-fit-title/index.tsx",
+      "originalSha256": "a7da36683042156836a77ebc2255eaff01fe3f56d2cb31cf6a3f8e50080aac77",
+      "runtime": "vendor/remotionui/runtime/scenes/auto-fit-title/index.tsx",
+      "runtimeSha256": "c35490a7daff42cd7f56bd3278472c38f9ba4d85c005494dcdea45af9cb48ad0",
+      "adaptations": [
+        "Resolved upstream @/remotion aliases to relative imports; implementation retained.",
+        "Replaced network Inter loader with a scoped font-family variable; wrapper waits for pinned local Inter and Noto Sans SC fonts."
+      ]
+    },
+    {
+      "registryId": "caption-highlight",
+      "upstreamPath": "apps/web/registry/bases/default/primitives/caption-highlight.tsx",
+      "upstreamUrl": "https://github.com/riaz37/remotion-ui/blob/b7e0e6becc3d22b8b03dfef72c064f72ff9fad1f/apps/web/registry/bases/default/primitives/caption-highlight.tsx",
+      "original": "vendor/remotionui/original/primitives/caption-highlight.tsx",
+      "originalSha256": "51b0f819152fb6584f94e173750be2e2b3d24a9ce7d6e2317e03c3baef4283a4",
+      "runtime": "vendor/remotionui/runtime/primitives/caption-highlight.tsx",
+      "runtimeSha256": "60a28e887c3cf0da9652d3dbd7463352691437bae2a7d5903443d4fbb3a3c4d9",
+      "adaptations": [
+        "Resolved upstream @/remotion aliases to relative imports; implementation retained."
+      ]
+    },
+    {
+      "registryId": "caption-scene",
+      "upstreamPath": "apps/web/registry/bases/default/scenes/caption-scene/index.tsx",
+      "upstreamUrl": "https://github.com/riaz37/remotion-ui/blob/b7e0e6becc3d22b8b03dfef72c064f72ff9fad1f/apps/web/registry/bases/default/scenes/caption-scene/index.tsx",
+      "original": "vendor/remotionui/original/scenes/caption-scene/index.tsx",
+      "originalSha256": "a81384de0f0dc70a9966bb1058519f964e6bdb6cb7a83bf337057d658880b685",
+      "runtime": "vendor/remotionui/runtime/scenes/caption-scene/index.tsx",
+      "runtimeSha256": "2c7dca73c9711f70f0a1c2ea4c531277b58bb8290682a4dfcacdcdd0fd52ef08",
+      "adaptations": [
+        "Resolved upstream @/remotion aliases to relative imports; implementation retained.",
+        "Replaced network Inter loader with a scoped font-family variable; wrapper waits for pinned local Inter and Noto Sans SC fonts."
+      ]
+    },
+    {
+      "registryId": "caption-utils",
+      "upstreamPath": "apps/web/registry/bases/default/lib/caption-utils.ts",
+      "upstreamUrl": "https://github.com/riaz37/remotion-ui/blob/b7e0e6becc3d22b8b03dfef72c064f72ff9fad1f/apps/web/registry/bases/default/lib/caption-utils.ts",
+      "original": "vendor/remotionui/original/lib/caption-utils.ts",
+      "originalSha256": "fb6a4223f5d5b8edfeeccdccf6ff423d125d446ff8e976546f24ceac9f0edc8a",
+      "runtime": "vendor/remotionui/runtime/lib/caption-utils.ts",
+      "runtimeSha256": "fb6a4223f5d5b8edfeeccdccf6ff423d125d446ff8e976546f24ceac9f0edc8a",
+      "adaptations": []
+    },
+    {
+      "registryId": "code-syntax",
+      "upstreamPath": "apps/web/registry/bases/default/lib/code-syntax.tsx",
+      "upstreamUrl": "https://github.com/riaz37/remotion-ui/blob/b7e0e6becc3d22b8b03dfef72c064f72ff9fad1f/apps/web/registry/bases/default/lib/code-syntax.tsx",
+      "original": "vendor/remotionui/original/lib/code-syntax.tsx",
+      "originalSha256": "78b8e973d606d0c147d13ac432c66fddb73720c029f101eab6210923c2c52ca8",
+      "runtime": "vendor/remotionui/runtime/lib/code-syntax.tsx",
+      "runtimeSha256": "78b8e973d606d0c147d13ac432c66fddb73720c029f101eab6210923c2c52ca8",
+      "adaptations": []
+    },
+    {
+      "registryId": "end-card",
+      "upstreamPath": "apps/web/registry/bases/default/scenes/end-card/index.tsx",
+      "upstreamUrl": "https://github.com/riaz37/remotion-ui/blob/b7e0e6becc3d22b8b03dfef72c064f72ff9fad1f/apps/web/registry/bases/default/scenes/end-card/index.tsx",
+      "original": "vendor/remotionui/original/scenes/end-card/index.tsx",
+      "originalSha256": "24bc403ac4b019d3267fbe5a7135e247200d112dc9779ecd0cbd41b1467dfd55",
+      "runtime": "vendor/remotionui/runtime/scenes/end-card/index.tsx",
+      "runtimeSha256": "22aba9f3fda10ba2958b391d3a14b804757030c76a6bbf169af8b01d9f8fd23e",
+      "adaptations": [
+        "Resolved upstream @/remotion aliases to relative imports; implementation retained.",
+        "Replaced network Inter loader with a scoped font-family variable; wrapper waits for pinned local Inter and Noto Sans SC fonts."
+      ]
+    },
+    {
+      "registryId": "fade-in",
+      "upstreamPath": "apps/web/registry/bases/default/primitives/fade-in.tsx",
+      "upstreamUrl": "https://github.com/riaz37/remotion-ui/blob/b7e0e6becc3d22b8b03dfef72c064f72ff9fad1f/apps/web/registry/bases/default/primitives/fade-in.tsx",
+      "original": "vendor/remotionui/original/primitives/fade-in.tsx",
+      "originalSha256": "2054c9e85af61b58e993e3a1fd864e6512aacad46387338e889c5d6dd8dc6e38",
+      "runtime": "vendor/remotionui/runtime/primitives/fade-in.tsx",
+      "runtimeSha256": "a536f61280256fd467a074dfe81fc50f96983b053f2d133fce3e6ae908f2879b",
+      "adaptations": [
+        "Resolved upstream @/remotion aliases to relative imports; implementation retained."
+      ]
+    },
+    {
+      "registryId": "karaoke-captions",
+      "upstreamPath": "apps/web/registry/bases/default/primitives/karaoke-captions.tsx",
+      "upstreamUrl": "https://github.com/riaz37/remotion-ui/blob/b7e0e6becc3d22b8b03dfef72c064f72ff9fad1f/apps/web/registry/bases/default/primitives/karaoke-captions.tsx",
+      "original": "vendor/remotionui/original/primitives/karaoke-captions.tsx",
+      "originalSha256": "8ab465f81c007dad8e5eaf6fdc19cfe8b16cd522c55fb0e5b52281668550af06",
+      "runtime": "vendor/remotionui/runtime/primitives/karaoke-captions.tsx",
+      "runtimeSha256": "d323e369c060c9d5816b383164eb79769e57ee51630b4ebc711ce75796ae25f4",
+      "adaptations": [
+        "Resolved upstream @/remotion aliases to relative imports; implementation retained."
+      ]
+    },
+    {
+      "registryId": "layout",
+      "upstreamPath": "apps/web/registry/bases/default/lib/layout.ts",
+      "upstreamUrl": "https://github.com/riaz37/remotion-ui/blob/b7e0e6becc3d22b8b03dfef72c064f72ff9fad1f/apps/web/registry/bases/default/lib/layout.ts",
+      "original": "vendor/remotionui/original/lib/layout.ts",
+      "originalSha256": "344c03c20506938f69d914e76e177e439066f73c6342c35d0b844c5b4406baae",
+      "runtime": "vendor/remotionui/runtime/lib/layout.ts",
+      "runtimeSha256": "344c03c20506938f69d914e76e177e439066f73c6342c35d0b844c5b4406baae",
+      "adaptations": []
+    },
+    {
+      "registryId": "motion-primitive",
+      "upstreamPath": "apps/web/registry/bases/default/lib/motion-primitive.ts",
+      "upstreamUrl": "https://github.com/riaz37/remotion-ui/blob/b7e0e6becc3d22b8b03dfef72c064f72ff9fad1f/apps/web/registry/bases/default/lib/motion-primitive.ts",
+      "original": "vendor/remotionui/original/lib/motion-primitive.ts",
+      "originalSha256": "3fe78a20aab67028db42d256c8713c8f3d25b322404876461e37002154233bff",
+      "runtime": "vendor/remotionui/runtime/lib/motion-primitive.ts",
+      "runtimeSha256": "3fe78a20aab67028db42d256c8713c8f3d25b322404876461e37002154233bff",
+      "adaptations": []
+    },
+    {
+      "registryId": "motion-tokens",
+      "upstreamPath": "apps/web/registry/bases/default/lib/motion-tokens.ts",
+      "upstreamUrl": "https://github.com/riaz37/remotion-ui/blob/b7e0e6becc3d22b8b03dfef72c064f72ff9fad1f/apps/web/registry/bases/default/lib/motion-tokens.ts",
+      "original": "vendor/remotionui/original/lib/motion-tokens.ts",
+      "originalSha256": "3d7f6f57a50006183aebdb62b923f5e4411a2327a60dcc653eb6c0f1047cb6af",
+      "runtime": "vendor/remotionui/runtime/lib/motion-tokens.ts",
+      "runtimeSha256": "3d7f6f57a50006183aebdb62b923f5e4411a2327a60dcc653eb6c0f1047cb6af",
+      "adaptations": []
+    },
+    {
+      "registryId": "motion-wrapper",
+      "upstreamPath": "apps/web/registry/bases/default/lib/motion-wrapper.tsx",
+      "upstreamUrl": "https://github.com/riaz37/remotion-ui/blob/b7e0e6becc3d22b8b03dfef72c064f72ff9fad1f/apps/web/registry/bases/default/lib/motion-wrapper.tsx",
+      "original": "vendor/remotionui/original/lib/motion-wrapper.tsx",
+      "originalSha256": "59e5ce054d682214c25696e7b66c4615073c9e53a345353d45de51e4a9760cc6",
+      "runtime": "vendor/remotionui/runtime/lib/motion-wrapper.tsx",
+      "runtimeSha256": "59e5ce054d682214c25696e7b66c4615073c9e53a345353d45de51e4a9760cc6",
+      "adaptations": []
+    },
+    {
+      "registryId": "quote-card",
+      "upstreamPath": "apps/web/registry/bases/default/scenes/quote-card/index.tsx",
+      "upstreamUrl": "https://github.com/riaz37/remotion-ui/blob/b7e0e6becc3d22b8b03dfef72c064f72ff9fad1f/apps/web/registry/bases/default/scenes/quote-card/index.tsx",
+      "original": "vendor/remotionui/original/scenes/quote-card/index.tsx",
+      "originalSha256": "0210f374d60e66788f295d4fc39d4c1d1277e87c4b54c4cda38e29518829deb3",
+      "runtime": "vendor/remotionui/runtime/scenes/quote-card/index.tsx",
+      "runtimeSha256": "721d1bfee5cbbe34784948538bb1deede9ea65ffe37c6a1f5336f7c9a8f6f041",
+      "adaptations": [
+        "Resolved upstream @/remotion aliases to relative imports; implementation retained.",
+        "Replaced network Inter loader with a scoped font-family variable; wrapper waits for pinned local Inter and Noto Sans SC fonts."
+      ]
+    },
+    {
+      "registryId": "sample-media",
+      "upstreamPath": "apps/web/registry/bases/default/lib/sample-media.ts",
+      "upstreamUrl": "https://github.com/riaz37/remotion-ui/blob/b7e0e6becc3d22b8b03dfef72c064f72ff9fad1f/apps/web/registry/bases/default/lib/sample-media.ts",
+      "original": "vendor/remotionui/original/lib/sample-media.ts",
+      "originalSha256": "adae17993654943f309c2b6e91f4daf0312f3ea7e5c08ed26f1e41bcf842dbc5",
+      "runtime": "vendor/remotionui/runtime/lib/sample-media.ts",
+      "runtimeSha256": "adae17993654943f309c2b6e91f4daf0312f3ea7e5c08ed26f1e41bcf842dbc5",
+      "adaptations": []
+    },
+    {
+      "registryId": "social-clip",
+      "upstreamPath": "apps/web/registry/bases/default/compositions/social-clip/index.tsx",
+      "upstreamUrl": "https://github.com/riaz37/remotion-ui/blob/b7e0e6becc3d22b8b03dfef72c064f72ff9fad1f/apps/web/registry/bases/default/compositions/social-clip/index.tsx",
+      "original": "vendor/remotionui/original/compositions/social-clip/index.tsx",
+      "originalSha256": "bc498137cda1c3097d9db676b8018a9c330c1c2fcf3b76f814d5f061e7e9b62f",
+      "runtime": "vendor/remotionui/runtime/compositions/social-clip/index.tsx",
+      "runtimeSha256": "0ec1c1b3a7c9bb2704598198c7fae1128349bc418f166cbbf674faf0fc327fbc",
+      "adaptations": [
+        "Resolved upstream @/remotion aliases to relative imports; implementation retained."
+      ]
+    },
+    {
+      "registryId": "springs",
+      "upstreamPath": "apps/web/registry/bases/default/lib/springs.ts",
+      "upstreamUrl": "https://github.com/riaz37/remotion-ui/blob/b7e0e6becc3d22b8b03dfef72c064f72ff9fad1f/apps/web/registry/bases/default/lib/springs.ts",
+      "original": "vendor/remotionui/original/lib/springs.ts",
+      "originalSha256": "1649db23e929abdf505b98d90c09d862bb3be82d401401ee586351bf82ae38bc",
+      "runtime": "vendor/remotionui/runtime/lib/springs.ts",
+      "runtimeSha256": "1649db23e929abdf505b98d90c09d862bb3be82d401401ee586351bf82ae38bc",
+      "adaptations": []
+    },
+    {
+      "registryId": "text-emphasis",
+      "upstreamPath": "apps/web/registry/bases/default/lib/text-emphasis.ts",
+      "upstreamUrl": "https://github.com/riaz37/remotion-ui/blob/b7e0e6becc3d22b8b03dfef72c064f72ff9fad1f/apps/web/registry/bases/default/lib/text-emphasis.ts",
+      "original": "vendor/remotionui/original/lib/text-emphasis.ts",
+      "originalSha256": "25bb162e85d1af969b6180b44086b27d7d9b9ada065a97ea364305fae364e633",
+      "runtime": "vendor/remotionui/runtime/lib/text-emphasis.ts",
+      "runtimeSha256": "25bb162e85d1af969b6180b44086b27d7d9b9ada065a97ea364305fae364e633",
+      "adaptations": []
+    },
+    {
+      "registryId": "text-fit-utils",
+      "upstreamPath": "apps/web/registry/bases/default/lib/text-fit-utils.ts",
+      "upstreamUrl": "https://github.com/riaz37/remotion-ui/blob/b7e0e6becc3d22b8b03dfef72c064f72ff9fad1f/apps/web/registry/bases/default/lib/text-fit-utils.ts",
+      "original": "vendor/remotionui/original/lib/text-fit-utils.ts",
+      "originalSha256": "6a3a94566ed28278e3a099d128bc6415c1e7355db326c34ecfde72527cf75a43",
+      "runtime": "vendor/remotionui/runtime/lib/text-fit-utils.ts",
+      "runtimeSha256": "6a3a94566ed28278e3a099d128bc6415c1e7355db326c34ecfde72527cf75a43",
+      "adaptations": []
+    },
+    {
+      "registryId": "timing",
+      "upstreamPath": "apps/web/registry/bases/default/lib/timing.ts",
+      "upstreamUrl": "https://github.com/riaz37/remotion-ui/blob/b7e0e6becc3d22b8b03dfef72c064f72ff9fad1f/apps/web/registry/bases/default/lib/timing.ts",
+      "original": "vendor/remotionui/original/lib/timing.ts",
+      "originalSha256": "54b974faf4eafe45cd9195e362e602c81044286791815e0554b50bf15f2c6ae2",
+      "runtime": "vendor/remotionui/runtime/lib/timing.ts",
+      "runtimeSha256": "54b974faf4eafe45cd9195e362e602c81044286791815e0554b50bf15f2c6ae2",
+      "adaptations": []
+    },
+    {
+      "registryId": "title-card",
+      "upstreamPath": "apps/web/registry/bases/default/scenes/title-card/index.tsx",
+      "upstreamUrl": "https://github.com/riaz37/remotion-ui/blob/b7e0e6becc3d22b8b03dfef72c064f72ff9fad1f/apps/web/registry/bases/default/scenes/title-card/index.tsx",
+      "original": "vendor/remotionui/original/scenes/title-card/index.tsx",
+      "originalSha256": "ba063c927290492e4c0dcb4d877147c8bae1fb0c94b638696c783ffba7e5b3b5",
+      "runtime": "vendor/remotionui/runtime/scenes/title-card/index.tsx",
+      "runtimeSha256": "15d0cf37a9971a5f4ffd30a70f716b7000134e76ea32632834044b16a46e1716",
+      "adaptations": [
+        "Resolved upstream @/remotion aliases to relative imports; implementation retained.",
+        "Replaced network Inter loader with a scoped font-family variable; wrapper waits for pinned local Inter and Noto Sans SC fonts."
+      ]
+    },
+    {
+      "registryId": "transition-fade",
+      "upstreamPath": "apps/web/registry/bases/default/primitives/transition-fade.tsx",
+      "upstreamUrl": "https://github.com/riaz37/remotion-ui/blob/b7e0e6becc3d22b8b03dfef72c064f72ff9fad1f/apps/web/registry/bases/default/primitives/transition-fade.tsx",
+      "original": "vendor/remotionui/original/primitives/transition-fade.tsx",
+      "originalSha256": "e082c0c848c8e55c202b73a73d807b06c8bd4d908bc762c3243520900ce4c3fa",
+      "runtime": "vendor/remotionui/runtime/primitives/transition-fade.tsx",
+      "runtimeSha256": "9d7226438a51b3f9457feb2251dac1db0abdd4784436d61e4730209dab8b02e2",
+      "adaptations": [
+        "Resolved upstream @/remotion aliases to relative imports; implementation retained."
+      ]
+    },
+    {
+      "registryId": "transition-timing",
+      "upstreamPath": "apps/web/registry/bases/default/lib/transition-timing.ts",
+      "upstreamUrl": "https://github.com/riaz37/remotion-ui/blob/b7e0e6becc3d22b8b03dfef72c064f72ff9fad1f/apps/web/registry/bases/default/lib/transition-timing.ts",
+      "original": "vendor/remotionui/original/lib/transition-timing.ts",
+      "originalSha256": "313e31740e3298b54ded29ca8808b428daadba5492cf9f9a8ea73ca557247110",
+      "runtime": "vendor/remotionui/runtime/lib/transition-timing.ts",
+      "runtimeSha256": "313e31740e3298b54ded29ca8808b428daadba5492cf9f9a8ea73ca557247110",
+      "adaptations": []
+    }
+  ],
+  "fonts": [
+    {
+      "name": "Inter-Variable.ttf",
+      "sourceUrl": "https://raw.githubusercontent.com/google/fonts/24ecb0bbdc3a52d6fddef160b769c61463f455d9/ofl/inter/Inter%5Bopsz,wght%5D.ttf",
+      "license": "OFL-1.1",
+      "sha256": "29160a80ff49ddcab2c97711247e08b1fab27a484a329ce8b813d820dc559031"
+    },
+    {
+      "name": "Inter-OFL.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/google/fonts/24ecb0bbdc3a52d6fddef160b769c61463f455d9/ofl/inter/OFL.txt",
+      "license": "OFL-1.1",
+      "sha256": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57"
+    },
+    {
+      "name": "NotoSansSC-Variable.ttf",
+      "sourceUrl": "https://raw.githubusercontent.com/google/fonts/24ecb0bbdc3a52d6fddef160b769c61463f455d9/ofl/notosanssc/NotoSansSC%5Bwght%5D.ttf",
+      "license": "OFL-1.1",
+      "sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da"
+    },
+    {
+      "name": "NotoSansSC-OFL.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/google/fonts/24ecb0bbdc3a52d6fddef160b769c61463f455d9/ofl/notosanssc/OFL.txt",
+      "license": "OFL-1.1",
+      "sha256": "1c05c68c34f9708415aada51f17e1b0092d2cea709bf4a94cd38114f9e73d7d9"
+    }
+  ],
+  "assets": [
+    {
+      "path": "vendor/remotionui/assets/demo-loop.wav",
+      "upstreamPath": "apps/web/public/media/demo-loop.wav",
+      "sourceUrl": "https://github.com/riaz37/remotion-ui/blob/b7e0e6becc3d22b8b03dfef72c064f72ff9fad1f/apps/web/public/media/demo-loop.wav",
+      "sha256": "8cbe6fc8797a15baed6eeaf0d857c7a1e2ec744741bc3a7609e93a8f415b019f",
+      "usage": "Upstream synthetic demo waveform only; replace for real source media."
+    }
+  ],
+  "caches": [
+    {
+      "path": "vendor/remotionui/cache/registry.pinned.json",
+      "sha256": "4640dd3f021116c8db13ac7a1e8cc7d6d717002d994e04bfda321722403c2c6a",
+      "provenance": "Pinned revision b7e0e6becc3d22b8b03dfef72c064f72ff9fad1f"
+    },
+    {
+      "path": "vendor/remotionui/cache/ai-components.live.json",
+      "sha256": "23420f600a273993b6889431d60cd8b5189a68f11a09cc2382ae26b3624ef194",
+      "provenance": "Live published informational catalog snapshot; source authority remains pinned registry."
+    },
+    {
+      "path": "vendor/remotionui/cache/llms.live.txt",
+      "sha256": "d5592678937c638dbd0297420c65441b336168bac78a3590c8b79f4019741ddf",
+      "provenance": "Live published informational catalog snapshot; source authority remains pinned registry."
+    },
+    {
+      "path": "vendor/remotionui/cache/preview-config.ts",
+      "sha256": "ff97954d371d97400190196535574219941a1cae73788a6e35fe4348ef62c933",
+      "provenance": "Pinned revision b7e0e6becc3d22b8b03dfef72c064f72ff9fad1f"
+    },
+    {
+      "path": "vendor/remotionui/cache/component-reference.ts",
+      "sha256": "c57488f955b6f63d80346fbe44c13d545c3fffb429cb24a04f7ae889937b7c18",
+      "provenance": "Pinned revision b7e0e6becc3d22b8b03dfef72c064f72ff9fad1f"
+    },
+    {
+      "path": "vendor/remotionui/LICENSE",
+      "sha256": "97d885d1d43e787f2855b1084625fce1480d9789792bc209e8b2b2c08464ec9a",
+      "provenance": "Pinned revision b7e0e6becc3d22b8b03dfef72c064f72ff9fad1f"
+    }
+  ]
+}

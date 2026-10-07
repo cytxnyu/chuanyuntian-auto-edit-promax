@@ -1,0 +1,17 @@
+{
+  "title": "Filters",
+  "collapsible": false,
+  "pages": [
+    "camera-lens",
+    "security-cam",
+    "hologram",
+    "vhs-filter",
+    "crt-screen",
+    "sustained-glitch",
+    "pixelate-region",
+    "ascii-render",
+    "halftone-print",
+    "underwater-ripple"
+  ],
+  "icon": "BlurIcon"
+}

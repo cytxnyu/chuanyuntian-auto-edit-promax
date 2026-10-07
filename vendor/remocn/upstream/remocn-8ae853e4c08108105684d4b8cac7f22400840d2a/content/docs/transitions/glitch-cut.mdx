@@ -1,0 +1,115 @@
+---
+title: Glitch Cut
+description: Tear a hard cut into displaced slices with channel split and corrupted blocks
+component: glitch-cut
+vibe: tech
+length: 12
+useWhen:
+  - "The cut lands in a tech or developer-facing demo and should read as a deliberate broadcast artifact instead of a smooth blend."
+  - "The rhythm is fast — it holds up at 8 to 14 frames, where softer presentations read as sluggish."
+  - "The two scenes are visually unrelated and the hard cut between them needs an excuse."
+avoidWhen:
+  - "Only a headline should glitch while the scene around it stays intact — use `rgb-glitch-text`."
+  - "The demo needs a calm, general-purpose cut — use `zoom-blur`."
+---
+
+<ComponentPreview name="glitch-cut" />
+
+<CanvasTransitionNote />
+
+<InstallBlock name="glitch-cut" />
+
+## Usage
+
+`glitchCut()` is a Remotion transition presentation. Pass it to a
+`TransitionSeries.Transition` between two sequences. The frame breaks into
+horizontal slices that slide apart, the colour channels separate, and blocks of
+the frame corrupt into the wrong scene — then each slice hands over to the
+incoming scene on its own beat around the midpoint, so the cut itself is torn
+rather than flat. Both ends of the transition settle to untouched pixels, so
+nothing bleeds into the scenes on either side.
+
+It is built for short timings. `linearTiming({ durationInFrames: 12 })` is the
+recommended default; past roughly 20 frames the tearing stops reading as an
+artifact and starts reading as an effect.
+
+```tsx
+import { TransitionSeries, linearTiming } from "@remotion/transitions";
+import { glitchCut } from "@/components/remocn/glitch-cut";
+
+export const MyVideo = () => (
+  <TransitionSeries>
+    <TransitionSeries.Sequence durationInFrames={45}>
+      <SceneA />
+    </TransitionSeries.Sequence>
+    <TransitionSeries.Transition
+      timing={linearTiming({ durationInFrames: 12 })}
+      presentation={glitchCut()}
+    />
+    <TransitionSeries.Sequence durationInFrames={45}>
+      <SceneB />
+    </TransitionSeries.Sequence>
+  </TransitionSeries>
+);
+```
+
+Installing it also installs `lib/remocn/canvas-presentation.tsx`, the shared
+scaffolding behind every canvas transition. It owns the support check, the
+WebGL2 scene shader that receives both sides of the cut as textures, and the
+routing that swaps in the CSS fallback where the browser has no html-in-canvas.
+
+## Determinism
+
+Every pixel is a pure function of the transition's progress. The slice
+displacement, the block corruption and the per-slice handover all come from a
+hash seeded on the slice index and on a 22-step clock derived from progress —
+no wall-clock time, no state carried between frames. The same frame renders
+identically on every machine and in every chunk, so parallel and server-side
+renders come out seam-free.
+
+## Fallback
+
+Where html-in-canvas is unavailable the presentation renders a CSS
+approximation instead: the frame is clipped into bands that shift horizontally
+on the same seeded clock, each band tinted alternately red and cyan to stand in
+for the channel split, and each band hands over to the incoming scene at its own
+staggered cut point. It reads as the same edit — a torn hard cut — without
+touching pixels. `slices` still drives how many bands there are; `blockNoise`
+has no effect there.
+
+## Props
+
+`glitchCut(props)` accepts:
+
+<PropsTable
+  rows={[
+    {
+      name: "intensity",
+      type: "number",
+      default: "1",
+      description:
+        "Overall displacement. Scales how far slices and corrupted blocks slide sideways. 0 leaves the geometry intact and keeps only the channel split.",
+    },
+    {
+      name: "slices",
+      type: "number",
+      default: "24",
+      description:
+        "How many horizontal slices the frame is cut into. Low counts read as chunky tape damage, high counts as fine scanline tearing.",
+    },
+    {
+      name: "rgbSplit",
+      type: "number",
+      default: "1",
+      description:
+        "Chromatic separation of the red and blue channels at the peak of the glitch. 0 keeps the colour clean.",
+    },
+    {
+      name: "blockNoise",
+      type: "number",
+      default: "0.6",
+      description:
+        "How much of the frame corrupts into displaced blocks that leak the other scene. 0 keeps the tearing purely horizontal.",
+    },
+  ]}
+/>

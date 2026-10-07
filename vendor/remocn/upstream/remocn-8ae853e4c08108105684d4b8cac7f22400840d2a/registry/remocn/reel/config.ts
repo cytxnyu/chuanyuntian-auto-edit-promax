@@ -1,0 +1,61 @@
+import { reelExampleCode } from "@/components/docs/examples/reel-example";
+import { type ComponentConfig, FPS, H, W } from "@/lib/customizer-config";
+
+export const reelConfig: ComponentConfig = {
+  componentName: "Reel",
+  importPath: "@/components/remocn/reel",
+  controls: {
+    width: {
+      type: "number",
+      min: 600,
+      max: 1280,
+      step: 20,
+      default: 1180,
+      description: "Card width",
+      hiddenFromList: false,
+    },
+    height: {
+      type: "number",
+      min: 360,
+      max: 720,
+      step: 4,
+      default: 676,
+      description: "Card height",
+      hiddenFromList: false,
+    },
+    radius: {
+      type: "number",
+      min: 0,
+      max: 40,
+      step: 1,
+      default: 16,
+      description: "Corner radius",
+      hiddenFromList: false,
+    },
+    step: {
+      type: "number",
+      min: 6,
+      max: 40,
+      step: 1,
+      default: 20,
+      description: "Frames / image",
+      hiddenFromList: false,
+    },
+    reveal: {
+      type: "number",
+      min: 4,
+      max: 30,
+      step: 1,
+      default: 13,
+      description: "Reveal frames",
+      hiddenFromList: false,
+    },
+  },
+  dimensions: { width: 1180, height: 676 },
+  durationInFrames: 160,
+  fps: FPS,
+  compositionWidth: W,
+  compositionHeight: H,
+  previewBackdrop: { type: "color", value: "#0b0b0c" },
+  snippet: reelExampleCode,
+};

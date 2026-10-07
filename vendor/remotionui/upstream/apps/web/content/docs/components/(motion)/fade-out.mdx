@@ -1,0 +1,14 @@
+---
+title: Fade Out
+description: Held exit that accelerates away, timed to the last frame of its sequence.
+---
+
+import { FadeOutPreview } from '@/components/previews/fade-out';
+
+<ComponentPage name="fade-out" preview={FadeOutPreview}>
+
+Holds, then leaves on an ease-in curve.
+
+Leave `delayInFrames` out and the fade lands on the last frame of the surrounding `<Sequence>`, one less number to keep in sync when the window changes.
+
+</ComponentPage>

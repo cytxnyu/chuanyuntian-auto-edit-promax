@@ -1,0 +1,106 @@
+---
+title: Pixelate Region
+description: Cover rectangles of a scene with an opaque mosaic and leave the rest untouched
+component: pixelate-region
+vibe: clean
+length: sustained
+useWhen:
+  - "A product demo shows real data — API keys, tokens, email addresses, account numbers — that must not leave the building."
+  - "You are recording a real dashboard or inbox and only part of the frame is sensitive, so the rest should stay perfectly sharp."
+  - "The reveal is the point — something is deliberately hidden and the viewer should see that it was hidden."
+avoidWhen:
+  - "The whole frame wants a treatment rather than a covered rectangle — `vhs-filter` and `crt-screen` work edge to edge."
+  - "What you are covering moves around the frame, since a region is a fixed rectangle and will slide off whatever it was over."
+  - "You only want to de-emphasise something — a mosaic dense enough to redact is not a soft focus, and a soft focus is not a redaction."
+---
+
+<ComponentPreview name="pixelate-region" />
+
+<CanvasFilterNote />
+
+<InstallBlock name="pixelate-region" />
+
+## Usage
+
+`PixelateRegion` is a wrapper. Give it rectangles in composition coordinates and
+everything inside them is resampled into an opaque mosaic — each cell takes the
+average of the picture under it — while the rest of the scene passes through
+untouched.
+
+```tsx
+import { PixelateRegion } from "@/components/remocn/pixelate-region";
+
+export const MyScene = () => (
+  <PixelateRegion
+    regions={[
+      { x: 504, y: 332, width: 600, height: 72 },
+      { x: 504, y: 444, width: 600, height: 72 },
+    ]}
+  >
+    <Scene />
+  </PixelateRegion>
+);
+```
+
+Coordinates are in the same units as your composition — the `width` and `height`
+you gave `<Composition>` — with the origin at the top left. Read them straight
+off the frame you are covering.
+
+## The redaction guarantee
+
+This component is a utility, not an effect, and it is built so that failing open
+is impossible.
+
+Inside a region the output is always opaque. The untouched scene sits on a layer
+directly beneath the filter's output, so anything less than full coverage would
+show the original through — which for a mosaic over an API key is not a visual
+glitch, it is a leak. The mosaic is therefore composited over black and written at
+full alpha, every frame, on every path.
+
+That includes the browsers that have no html-in-canvas at all. Where every other
+filter in the pack degrades to an approximation of its look, this one degrades to
+a plain opaque block over each region: less interesting, exactly as covering.
+
+Passing more regions than can be covered at once throws rather than dropping the
+extras, for the same reason — a silently ignored region is a visible secret.
+Nest a second `PixelateRegion` if you need more than eight.
+
+## Choosing a cell size
+
+`cellSize` is the width of one mosaic square in composition units. Text stops
+being readable well before it stops being recognisable, so err coarse: a cell
+around a third of the cap height of the text you are covering leaves nothing to
+reconstruct.
+
+<PropsTable title="Props"
+  rows={[
+    {
+      name: "regions",
+      type: "PixelateRect[]",
+      description:
+        "Rectangles to cover, as { x, y, width, height } in composition coordinates from the top-left origin. Up to eight; more throws rather than silently dropping any.",
+    },
+    {
+      name: "cellSize",
+      type: "number",
+      default: "24",
+      description:
+        "Width of one mosaic square in composition units. Cells are square, and each one is the average of the picture under it rather than a single sample.",
+    },
+    {
+      name: "children",
+      type: "React.ReactNode",
+      description: "The scene the filter wraps and re-reads every frame.",
+    },
+  ]}
+/>
+
+## Notes
+
+Nothing here animates. The mosaic changes only when the scene under it does, so a
+region over static content is pixel-identical from frame to frame and a region
+over a moving dashboard tracks it.
+
+The cell grid is anchored to each region's own top-left corner, so the mosaic
+starts cleanly at the edge of what you are covering instead of inheriting a grid
+from the frame.

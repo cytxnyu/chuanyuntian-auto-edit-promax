@@ -1,0 +1,256 @@
+import { execFileSync } from "node:child_process";
+import fs from "fs-extra";
+import os from "node:os";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { addCommand } from "./add.js";
+
+vi.mock("node:child_process", () => ({
+  execFileSync: vi.fn(),
+}));
+
+const fixtureDir = path.resolve(
+  path.dirname(fileURLToPath(import.meta.url)),
+  "../../test/fixtures/remotion-app",
+);
+const registryDir = path.resolve(
+  path.dirname(fileURLToPath(import.meta.url)),
+  "../../test/fixtures/registry",
+);
+
+describe("addCommand", () => {
+  let tempDir: string;
+
+  beforeEach(async () => {
+    tempDir = await fs.mkdtemp(path.join(os.tmpdir(), "remotion-ui-add-"));
+    await fs.copy(fixtureDir, tempDir, {
+      filter: (src) => !src.includes("node_modules"),
+    });
+    vi.mocked(execFileSync).mockReset();
+  });
+
+  afterEach(async () => {
+    await fs.remove(tempDir);
+  });
+
+  it("writes primitive files to the correct path", async () => {
+    await addCommand(["fade-in"], {
+      cwd: tempDir,
+      registryUrl: registryDir,
+    });
+
+    const target = path.join(tempDir, "src/remotion/primitives/fade-in.tsx");
+    expect(await fs.pathExists(target)).toBe(true);
+    const content = await fs.readFile(target, "utf-8");
+    expect(content).toContain("FadeIn");
+  });
+
+  it("installs registry dependencies in order", async () => {
+    await addCommand(["lower-third"], {
+      cwd: tempDir,
+      registryUrl: registryDir,
+    });
+
+    expect(
+      await fs.pathExists(
+        path.join(tempDir, "src/remotion/primitives/fade-in.tsx"),
+      ),
+    ).toBe(true);
+    expect(
+      await fs.pathExists(
+        path.join(tempDir, "src/remotion/primitives/slide-left.tsx"),
+      ),
+    ).toBe(true);
+    expect(
+      await fs.pathExists(
+        path.join(tempDir, "src/remotion/scenes/lower-third/index.tsx"),
+      ),
+    ).toBe(true);
+  });
+
+  it("skips a file with local edits instead of overwriting it", async () => {
+    const target = path.join(tempDir, "src/remotion/primitives/fade-in.tsx");
+    const localEdit = "// my local edit\n" + (await fs.readFile(target, "utf-8"));
+    await fs.writeFile(target, localEdit);
+
+    await addCommand(["fade-in"], {
+      cwd: tempDir,
+      registryUrl: registryDir,
+    });
+
+    expect(await fs.readFile(target, "utf-8")).toBe(localEdit);
+  });
+
+  it("--yes overwrites a file with local edits", async () => {
+    const target = path.join(tempDir, "src/remotion/primitives/fade-in.tsx");
+    await fs.writeFile(target, "// my local edit\nexport const FadeIn = 1;\n");
+
+    await addCommand(["fade-in"], {
+      cwd: tempDir,
+      registryUrl: registryDir,
+      yes: true,
+    });
+
+    const content = await fs.readFile(target, "utf-8");
+    expect(content).not.toContain("my local edit");
+  });
+
+  it("rejects registry dependency specs with shell metacharacters", async () => {
+    const maliciousRegistry = path.join(tempDir, "malicious-registry");
+    await fs.ensureDir(path.join(maliciousRegistry, "presets", "default"));
+    await fs.writeJson(
+      path.join(maliciousRegistry, "presets", "default", "bad.json"),
+      {
+        name: "bad",
+        type: "registry:ui",
+        dependencies: ["remotion; touch pwned"],
+        files: [
+          {
+            path: "registry/bases/default/primitives/bad.tsx",
+            type: "registry:ui",
+            content: "export const Bad = () => null;\n",
+          },
+        ],
+      },
+    );
+
+    await expect(
+      addCommand(["bad"], {
+        cwd: tempDir,
+        registryUrl: maliciousRegistry,
+      }),
+    ).rejects.toThrow("Invalid dependency spec");
+    expect(execFileSync).not.toHaveBeenCalled();
+  });
+
+  it("patches Root.tsx when adding a composition", async () => {
+    await addCommand(["intro"], {
+      cwd: tempDir,
+      registryUrl: registryDir,
+    });
+
+    const root = await fs.readFile(path.join(tempDir, "src/Root.tsx"), "utf-8");
+    expect(root).toContain('id="Intro"');
+    expect(
+      await fs.pathExists(
+        path.join(tempDir, "src/compositions/intro/index.tsx"),
+      ),
+    ).toBe(true);
+  });
+
+  it("prints a star prompt after a successful add", async () => {
+    const logSpy = vi.spyOn(console, "log").mockImplementation(() => {});
+
+    await addCommand(["fade-in"], {
+      cwd: tempDir,
+      registryUrl: registryDir,
+    });
+
+    expect(logSpy.mock.calls.flat().join("\n")).toContain(
+      "Enjoying RemotionUI? Star us on GitHub",
+    );
+
+    logSpy.mockRestore();
+  });
+
+  it("non-json error text is unchanged when the component is missing", async () => {
+    await expect(
+      addCommand(["does-not-exist"], {
+        cwd: tempDir,
+        registryUrl: registryDir,
+      }),
+    ).rejects.toThrow(/Registry item "does-not-exist" not found at/);
+  });
+
+  it("--json + a missing component produces a valid {ok:false} JSON blob on stdout", async () => {
+    const logSpy = vi.spyOn(console, "log").mockImplementation(() => {});
+
+    await expect(
+      addCommand(["does-not-exist"], {
+        cwd: tempDir,
+        registryUrl: registryDir,
+        json: true,
+      }),
+    ).rejects.toThrow(/Registry item "does-not-exist" not found at/);
+
+    const stdout = logSpy.mock.calls.map((call) => call.join(" ")).join("\n");
+    const parsed = JSON.parse(stdout);
+    expect(parsed.ok).toBe(false);
+    expect(parsed.error.code).toBe("REGISTRY_ITEM_NOT_FOUND");
+    expect(parsed.error.message).toMatch(/does-not-exist/);
+
+    logSpy.mockRestore();
+  });
+
+  it("--json + a successful add produces a single valid JSON object on stdout", async () => {
+    const logSpy = vi.spyOn(console, "log").mockImplementation(() => {});
+
+    await addCommand(["fade-in"], {
+      cwd: tempDir,
+      registryUrl: registryDir,
+      json: true,
+    });
+
+    expect(logSpy).toHaveBeenCalledTimes(1);
+    const stdout = logSpy.mock.calls[0]?.join(" ") ?? "";
+    const parsed = JSON.parse(stdout);
+    expect(parsed).toEqual({
+      ok: true,
+      installed: ["fade-in"],
+      dependencies: ["remotion"],
+      skipped: ["src/remotion/primitives/fade-in.tsx"],
+    });
+
+    logSpy.mockRestore();
+  });
+
+  it("warns when an item's compat.remotion range does not satisfy the installed remotion version", async () => {
+    const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
+
+    await addCommand(["compat-warn"], {
+      cwd: tempDir,
+      registryUrl: registryDir,
+    });
+
+    expect(warnSpy.mock.calls.flat().join("\n")).toContain(
+      '"compat-warn" expects remotion ^5.0.0, but ^4.0.505 is installed.',
+    );
+
+    warnSpy.mockRestore();
+  });
+
+  it("does not warn when an item's compat.remotion range satisfies the installed remotion version", async () => {
+    const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
+
+    await addCommand(["compat-ok"], {
+      cwd: tempDir,
+      registryUrl: registryDir,
+    });
+
+    expect(
+      warnSpy.mock.calls
+        .flat()
+        .some((line) => typeof line === "string" && line.includes("compat-ok")),
+    ).toBe(false);
+
+    warnSpy.mockRestore();
+  });
+
+  it("does not warn when an item has no compat field", async () => {
+    const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
+
+    await addCommand(["fade-in"], {
+      cwd: tempDir,
+      registryUrl: registryDir,
+    });
+
+    expect(
+      warnSpy.mock.calls
+        .flat()
+        .some((line) => typeof line === "string" && line.includes("fade-in")),
+    ).toBe(false);
+
+    warnSpy.mockRestore();
+  });
+});

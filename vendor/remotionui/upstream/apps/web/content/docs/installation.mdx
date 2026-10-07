@@ -1,0 +1,84 @@
+---
+title: Installation
+description: Initialize a Remotion project with RemotionUI.
+---
+
+## New project
+
+<InstallationSteps />
+
+<CommandRail label="Dev server" command="cd my-video && npm run dev" />
+
+Open the Remotion Studio URL from your terminal, then add your first component:
+
+<InstallCommand name="fade-in" />
+
+## Existing project
+
+Run `init --existing` from the root of an existing Remotion project. It writes `remotion-ui.json`, checks your path aliases, and installs the agent skill:
+
+<CommandRail label="Bootstrap" command="npx remotion-ui@latest init --existing" />
+
+That generates this config, which you can edit afterwards:
+
+<CodeSnippet label="remotion-ui.json" code={`{
+  "preset": "default",
+  "aliases": {
+    "primitives": "@/remotion/primitives",
+    "scenes": "@/remotion/scenes",
+    "compositions": "@/compositions",
+    "lib": "@/remotion/lib",
+    "hooks": "@/remotion/hooks"
+  }
+}`} />
+
+Then add components:
+
+<InstallCommand name="fade-in" />
+
+<InstallCommand name="lower-third" label="Add another" />
+
+<Callout type="warn">
+  Run `npx remotion-ui@latest add` from your project root so the CLI can read `remotion-ui.json` and resolve aliases.
+</Callout>
+
+Verify the setup at any time:
+
+<CommandRail label="Doctor" command="npx remotion-ui@latest doctor" />
+
+## With the shadcn CLI
+
+Every RemotionUI component is also published to the shadcn registry under the `@remotionui` namespace, so you can install without the RemotionUI CLI:
+
+<CommandRail label="shadcn" command="npx shadcn@latest add @remotionui/fade-in" />
+
+The shadcn CLI resolves registry dependencies recursively and writes files using the aliases in your `components.json`. Where a component declares a `target` path, your own alias configuration takes priority.
+
+<Callout type="warn">
+  The shadcn path does not register compositions in `Root.tsx`. That is a `remotion-ui add` feature. Add the `<Composition />` entry yourself when installing a full composition this way.
+</Callout>
+
+## What `add` does for you
+
+- Installs the component source plus every registry dependency it pulls in, recursively.
+- Installs npm dependencies with your detected package manager.
+- Registers compositions in `Root.tsx` automatically. Components that ship composition metadata get their `<Composition />` entry and import added for you. Already-registered ids are left alone, so re-running `add` is safe.
+- Warns when a component declares a Remotion range your project does not satisfy.
+
+## Agent skill
+
+`init --existing` installs a Claude Code skill at `.claude/skills/remotionui-agent/SKILL.md` by default, so agents working in the repo know the install-before-import workflow and the animation rules.
+
+<CodeSnippet label="Control the skill" code={`npx remotion-ui@latest init --existing --no-agent-skill  # skip it
+npx remotion-ui@latest init my-video --agent-skill        # opt in for a new project`} />
+
+New projects do **not** install the skill unless you pass `--agent-skill`.
+
+## Next steps
+
+- [CLI Reference](/docs/cli): flags, `--json` output, error codes, and version compatibility
+- [MCP Server](/docs/mcp): expose the registry as agent tools
+- [Authoring scenes](/docs/guides/authoring-scenes): layout patterns for multi-element scenes
+- [Components](/docs/components): browse all motion building blocks
+
+If RemotionUI saves you time, [star the repo on GitHub](https://github.com/riaz37/remotion-ui). It helps a lot.

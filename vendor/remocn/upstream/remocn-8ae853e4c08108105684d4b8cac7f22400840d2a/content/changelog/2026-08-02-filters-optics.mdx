@@ -1,0 +1,20 @@
+---
+title: Filters gain optics
+date: 2026-08-02
+---
+
+The first seven filters were looks you put on a scene deliberately — tape, a tube, print, water. This next run is quieter and aimed at the thing most demos actually need: making a recording stop looking like a render. It starts with the lens.
+
+<ChangelogPreview name="camera-lens" />
+
+### New components
+
+- [Camera Lens](/docs/filters/components/camera-lens) — a scene put behind real glass. Resolution falls off toward the corners while the middle stays fully sharp, highlights bloom out into what surrounds them, colour fringes where the channels stop agreeing at the edges, and light drops away on the cos⁴ curve real optics follow. The obvious way to build a lens is to bend the frame, but bending is what a tube does — what separates glass from a display is light, not geometry, so `distortion` starts near zero and the defaults are made of softness and bloom. Quiet enough to leave running under a whole demo; you notice it by switching it off.
+
+- [Security Cam](/docs/filters/components/security-cam) — a scene run through a cheap recorder. Macroblocks flatten where the bitrate could not keep up, colour collapses onto blocks twice the size of the brightness blocks, blacks crush, the exposure hunts and noise crawls in the shadows. The obvious build was a fisheye plus desaturation and it was a trap: bending the frame is what a tube does, and a filter whose identity is a warp reads as `crt-screen` with the scanlines missing. What makes footage look like surveillance is the codec, not the lens — so that is what this is, and `camera-lens` still has a `distortion` prop if you want the wide-angle bow feeding it.
+
+- [Hologram](/docs/filters/components/hologram) — a scene played as projected light. Edges of shapes emit, bright areas throw a halo into what surrounds them, a doubled image shimmers off the original and individual scanlines slip sideways. Tinting a frame and adding lines gets you nowhere near it — three of the four signatures need to read what is *next to* a pixel, which is the whole reason it lives in this category. Build the console it projects from as ordinary DOM, put your scene inside it, and wrap the lot: the thin lines of a HUD are exactly what the edge emission has to work with.
+
+### Improvements
+
+- The filters that could be mistaken for each other are now split by what they are, not by how they look. `crt-screen` is a tube you watch — uniformly sharp behind a mask. `camera-lens` is glass you shoot through — sharp in one place and losing resolution everywhere else. `vhs-filter` is the signal arriving. Each one's `avoidWhen` names the others, so an agent picking a treatment cannot stack two that tell the same story.

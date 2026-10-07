@@ -1,0 +1,116 @@
+---
+title: VHS Filter
+description: Hold a scene under analog tape — chroma bleed, tape wobble, a head-switch tear and luma noise
+component: vhs-filter
+vibe: tech
+length: sustained
+useWhen:
+  - "A scene should read as recovered tape footage rather than a clean render — retro product spots, 'here is what we shipped in 2003' beats, lo-fi title cards."
+  - "You want the whole scene degraded for its full duration, not a one-frame artifact at a cut."
+  - "The scene is full-bleed and opaque, so the treatment has real pixels to work on edge to edge."
+avoidWhen:
+  - "The artifact should live only at the cut between two scenes — use `glitch-cut`."
+  - "Only a headline should break up while the scene behind it stays clean — use `rgb-glitch-text`."
+  - "The story is the display the scene sits on or the glass it was shot through, rather than the signal reaching it — use `crt-screen` or `camera-lens`."
+  - "You want intermittent digital faults rather than continuous analog wear — use `sustained-glitch`."
+---
+
+<ComponentPreview name="vhs-filter" />
+
+<CanvasFilterNote />
+
+<InstallBlock name="vhs-filter" />
+
+## Usage
+
+`VhsFilter` is a wrapper. Put a scene inside it and every frame of that scene is
+sampled and repainted as tape: the colour bleeds sideways off every edge while
+the brightness stays sharp, rows slide out of line on a slow wander, the bottom
+of the frame tears where a real deck switches heads, and noise settles over all
+of it.
+
+It has no duration of its own — it lasts exactly as long as the scene it wraps,
+so there is nothing to time and no `Sequence` to budget.
+
+```tsx
+import { VhsFilter } from "@/components/remocn/vhs-filter";
+
+export const MyScene = () => (
+  <VhsFilter>
+    <Scene />
+  </VhsFilter>
+);
+```
+
+## Driving it per frame
+
+Every knob is a plain number, so the tape can get worse on a beat and recover
+after it. `intensity` scales all four behaviours at once, which makes it the one
+to interpolate when you want the scene to surface out of the noise.
+
+```tsx
+import { interpolate, useCurrentFrame } from "remotion";
+import { VhsFilter } from "@/components/remocn/vhs-filter";
+
+export const MyScene = () => {
+  const frame = useCurrentFrame();
+  const intensity = interpolate(frame, [0, 24], [1, 0.15], {
+    extrapolateRight: "clamp",
+  });
+
+  return (
+    <VhsFilter intensity={intensity}>
+      <Scene />
+    </VhsFilter>
+  );
+};
+```
+
+<PropsTable title="Props"
+  rows={[
+    {
+      name: "bleed",
+      type: "number",
+      default: "1",
+      description:
+        "How far colour smears sideways from where it belongs. Brightness never smears with it, which is what makes the picture read as tape rather than as a blur.",
+    },
+    {
+      name: "wobble",
+      type: "number",
+      default: "1",
+      description:
+        "How far rows wander out of line. A slow drift across the frame plus per-line jitter, so edges never sit quite straight.",
+    },
+    {
+      name: "noise",
+      type: "number",
+      default: "1",
+      description: "Strength of the luma grain laid over the whole frame.",
+    },
+    {
+      name: "intensity",
+      type: "number",
+      default: "1",
+      description:
+        "Master amount, 0 to 1. Scales bleed, wobble, noise, scanlines and the head-switch tear together. At 0 the scene comes through untouched.",
+    },
+    {
+      name: "children",
+      type: "React.ReactNode",
+      description: "The scene the filter wraps and re-reads every frame.",
+    },
+  ]}
+/>
+
+## Notes
+
+The filter expects a full-bleed, opaque scene. It reads pixels from a displaced
+coordinate, so where the scene is transparent it has nothing to move and the
+untouched scene shows through underneath — put a background inside the wrapper
+rather than behind it.
+
+The wobble and the head-switch tear are functions of the current frame, not of a
+running clock, and they oscillate rather than accumulate. Two renders of the same
+frame produce the same pixels, and a filter left on for a minute looks the same
+at the end as at the start.

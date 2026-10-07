@@ -1,0 +1,13 @@
+{
+  "title": "Social",
+  "defaultOpen": false,
+  "pages": [
+    "index",
+    "github-stars",
+    "github-sponsors",
+    "x-follow-card",
+    "x-followers-overview",
+    "logo-enter"
+  ],
+  "icon": "Share01Icon"
+}

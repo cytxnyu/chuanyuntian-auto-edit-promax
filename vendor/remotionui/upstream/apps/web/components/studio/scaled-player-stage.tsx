@@ -1,0 +1,72 @@
+"use client";
+
+import { Player, type PlayerRef } from "@remotion/player";
+import type { ComponentType, RefObject } from "react";
+import { useRef } from "react";
+
+type ScaledPlayerStageProps = {
+  playerRef: RefObject<PlayerRef | null>;
+  component: ComponentType<Record<string, unknown>>;
+  durationInFrames: number;
+  fps?: number;
+  width: number;
+  height: number;
+  inputProps: Record<string, unknown>;
+  loop?: boolean;
+};
+
+export function ScaledPlayerStage({
+  playerRef,
+  component,
+  durationInFrames,
+  fps = 30,
+  width,
+  height,
+  inputProps,
+  loop = true,
+}: ScaledPlayerStageProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isPortrait = height > width;
+
+  return (
+    // Deliberately bare: every caller mats this stage itself
+    // (`scene-monitor-preview` with a card + ring, `program-monitor-workspace`
+    // flush between its header and timecode bars). Adding a frame here
+    // double-mats the doc page and breaks the monitor strip.
+    <div
+      ref={containerRef}
+      className={
+        isPortrait
+          ? "mx-auto flex h-[min(65svh,680px)] max-h-[680px] w-full max-w-[380px] items-center justify-center overflow-hidden bg-[var(--bay-stage)]"
+          : "relative w-full overflow-hidden bg-[var(--bay-stage)]"
+      }
+      style={
+        isPortrait
+          ? undefined
+          : { aspectRatio: `${width} / ${height}` }
+      }
+    >
+      <Player
+        ref={playerRef}
+        component={component}
+        durationInFrames={durationInFrames}
+        fps={fps}
+        compositionWidth={width}
+        compositionHeight={height}
+        style={{
+          width: "100%",
+          height: "100%",
+          display: "block",
+        }}
+        inputProps={inputProps}
+        controls={false}
+        loop={loop}
+        autoPlay
+        clickToPlay={false}
+        initiallyMuted
+        showPosterWhenUnplayed={false}
+        acknowledgeRemotionLicense
+      />
+    </div>
+  );
+}

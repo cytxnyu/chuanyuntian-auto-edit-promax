@@ -1,0 +1,334 @@
+# RemotionUI
+
+> Production-ready motion for Remotion. Source you own. The npm package is a CLI; components install as editable source in the user's project.
+
+Every docs page is available as Markdown: append `.md` to its URL (for example https://remotionui.com/docs/components/typewriter.md). The full docs in one file: https://remotionui.com/llms-full.txt. Component index as JSON: https://remotionui.com/ai/components.json.
+
+Install a component with `npx remotion-ui@latest add <name>`, then import it from local source (`@/remotion/...`, `@/compositions/...`), never from the `remotion-ui` package.
+
+## Documentation: Getting Started
+
+- [Introduction](https://remotionui.com/docs.md): Production-ready motion for Remotion. Install with the CLI, edit source in your repo.
+- [Installation](https://remotionui.com/docs/installation.md): Initialize a Remotion project with RemotionUI.
+- [CLI Reference](https://remotionui.com/docs/cli.md): remotion-ui commands for init, add, doctor, and custom registries.
+
+## Guides
+
+- [Motion Tokens](https://remotionui.com/docs/guides/motion-tokens.md): Shared durations, delays, stagger steps, and Bézier curves.
+- [Transitions](https://remotionui.com/docs/guides/transitions.md): Scene-to-scene fades with TransitionSeries.
+- [Authoring Scenes](https://remotionui.com/docs/guides/authoring-scenes.md): Patterns for stagger, sequencing, and responsive layout.
+- [Captions](https://remotionui.com/docs/guides/captions.md): Build captioned Remotion videos with CaptionScene, karaoke modes, and social clip templates.
+- [Maps](https://remotionui.com/docs/guides/maps.md): MapLibre determinism, render flags, and Turf patterns.
+- [Audio Visualization](https://remotionui.com/docs/guides/audio-viz.md): Audiogram setup with media-utils.
+
+## Documentation: Components
+
+- [All components](https://remotionui.com/docs/components/browse.md): Browse and install Remotion compositions, scenes, and primitives.
+
+## Text effects
+
+- [Text effects](https://remotionui.com/docs/components/text-effects.md): Animated type for titles, callouts, and captions. Each one is a single primitive you drop into a scene.
+- [Blur Focus In](https://remotionui.com/docs/components/blur-focus-in.md): Blur Focus In text animation for Remotion.
+- [Counter](https://remotionui.com/docs/components/counter.md): Animated number with grouping, decimals, an odometer roll and a reserved width.
+- [Handwriting Text](https://remotionui.com/docs/components/handwriting-text.md): Write a string on, character by character, with a nib riding the wet edge. Install with npx remotion-ui@latest add handwriting-text.
+- [Infinite Marquee](https://remotionui.com/docs/components/infinite-marquee.md): Infinite Marquee text animation for Remotion.
+- [Light Sweep Text](https://remotionui.com/docs/components/light-sweep-text.md): Light Sweep Text text animation for Remotion.
+- [Liquid Text Morph](https://remotionui.com/docs/components/liquid-text-morph.md): Melt one word into the next through a gooey threshold filter. Install with npx remotion-ui@latest add liquid-text-morph.
+- [Marker Highlight](https://remotionui.com/docs/components/marker-highlight.md): Highlighter stroke swept word by word, with marker, knockout, underline and box variants.
+- [Masked Slide Reveal](https://remotionui.com/docs/components/masked-slide-reveal.md): Masked Slide Reveal text animation for Remotion.
+- [Matrix Decode](https://remotionui.com/docs/components/matrix-decode.md): Matrix Decode text animation for Remotion.
+- [Neon Flicker Text](https://remotionui.com/docs/components/neon-flicker-text.md): Light a word tube by tube, with a mains hum that never quite settles. Install with npx remotion-ui@latest add neon-flicker-text.
+- [Perspective Marquee](https://remotionui.com/docs/components/perspective-marquee.md): Perspective Marquee text animation for Remotion.
+- [RGB Glitch Text](https://remotionui.com/docs/components/rgb-glitch-text.md): Signal-lock RGB glitch text primitive for Remotion.
+- [Scramble Text](https://remotionui.com/docs/components/scramble-text.md): Resolve each character out of random glyph noise, in any stagger order. Install with npx remotion-ui@latest add scramble-text.
+- [Slot Roll](https://remotionui.com/docs/components/slot-roll.md): Slot Roll text animation for Remotion.
+- [Split Text Chars](https://remotionui.com/docs/components/split-text-chars.md): Split a string into characters, words, or lines and stagger them in. Install with npx remotion-ui@latest add split-text-chars.
+- [Staggered Fade Up](https://remotionui.com/docs/components/staggered-fade-up.md): Staggered Fade Up text animation for Remotion.
+- [Strikethrough Replace](https://remotionui.com/docs/components/strikethrough-replace.md): Strikes out one phrase and puts another in its place, on a three-beat correction timeline.
+- [Stroke to Fill Text](https://remotionui.com/docs/components/stroke-to-fill-text.md): Draw type as an outline, then flood each letter solid. Install with npx remotion-ui@latest add stroke-to-fill-text.
+- [Text Mask Video](https://remotionui.com/docs/components/text-mask-video.md): Play video, a still, or a gradient inside letterforms, with a wipe reveal. Install with npx remotion-ui@latest add text-mask-video.
+- [Tracking In](https://remotionui.com/docs/components/tracking-in.md): Tracking In text animation for Remotion.
+- [Typewriter](https://remotionui.com/docs/components/typewriter.md): Typewriter reveal with rhythm, pauses, looping, and a caret that only blinks at rest.
+- [Variable Font Morph](https://remotionui.com/docs/components/variable-font-morph.md): Sweep a variable font's weight and width axes across a line, one character at a time. Install with npx remotion-ui@latest add variable-font-morph.
+- [Wave Text](https://remotionui.com/docs/components/wave-text.md): Run a sine along a line of type, one character at a time. Install with npx remotion-ui@latest add wave-text.
+
+## Backgrounds
+
+- [Backgrounds](https://remotionui.com/docs/components/backgrounds.md): Full-frame stage layers: gradients, grain, light, and particles that sit behind a scene.
+- [Animated Noise Grain](https://remotionui.com/docs/components/animated-noise-grain.md): Film grain that boils, without generating noise per frame. Install with npx remotion-ui@latest add animated-noise-grain.
+- [Aurora Background](https://remotionui.com/docs/components/aurora-bg.md): Drifting aurora curtains. Install with npx remotion-ui@latest add aurora-bg.
+- [Caustics Background](https://remotionui.com/docs/components/caustics-bg.md): Underwater light caustics, with no shader and no per-frame noise. Install with npx remotion-ui@latest add caustics-bg.
+- [Dynamic Grid](https://remotionui.com/docs/components/dynamic-grid.md): Subtle drifting dot and line grid background.
+- [Light Rays](https://remotionui.com/docs/components/light-rays.md): Volumetric shafts fanning out of a point and drifting. Install with npx remotion-ui@latest add light-rays.
+- [Mesh Gradient Background](https://remotionui.com/docs/components/mesh-gradient-bg.md): Living gradient blobs on a dark stage.
+- [Particle Field](https://remotionui.com/docs/components/particle-field.md): Ambient particles drifting with depth. Install with npx remotion-ui@latest add particle-field.
+- [Topographic Lines Background](https://remotionui.com/docs/components/topographic-lines-bg.md): Contour lines drifting outward, like elevation rising. Install with npx remotion-ui@latest add topographic-lines-bg.
+
+## Motion
+
+- [Motion](https://remotionui.com/docs/components/motion.md): Entrances, exits, and emphasis primitives that wrap any element and animate it on the timeline.
+- [Blur In](https://remotionui.com/docs/components/blur-in.md): Resolve out of a defocus, the blur clears before the move lands.
+- [Confetti Burst](https://remotionui.com/docs/components/confetti-burst.md): Frame-driven confetti burst overlay.
+- [Depth of Field Blur](https://remotionui.com/docs/components/depth-of-field-blur.md): A rack focus across depth planes. Install with npx remotion-ui@latest add depth-of-field-blur.
+- [Fade In](https://remotionui.com/docs/components/fade-in.md): Opacity-only entrance for Remotion, with an exit that times itself to the end of its sequence.
+- [Fade Out](https://remotionui.com/docs/components/fade-out.md): Held exit that accelerates away, timed to the last frame of its sequence.
+- [Glow Pulse](https://remotionui.com/docs/components/glow-pulse.md): A rhythmic glow for CTAs and live indicators. Install with npx remotion-ui@latest add glow-pulse.
+- [Motion Trail](https://remotionui.com/docs/components/motion-trail.md): Echo trails behind a moving element, rendered from earlier frames. Install with npx remotion-ui@latest add motion-trail.
+- [Orbit Motion](https://remotionui.com/docs/components/orbit-motion.md): Elements orbiting a centre point, with depth. Install with npx remotion-ui@latest add orbit-motion.
+- [Parallax Layers](https://remotionui.com/docs/components/parallax-layers.md): Depth-offset planes driven by one camera move. Install with npx remotion-ui@latest add parallax-layers.
+- [Progress Bar](https://remotionui.com/docs/components/progress-bar.md): Inline progress bar with determinate and indeterminate modes, segments and a value readout.
+- [Rotate In](https://remotionui.com/docs/components/rotate-in.md): Swing into place in plane, or hinged in depth on the x or y axis.
+- [Scale In](https://remotionui.com/docs/components/scale-in.md): Grow into place from just under full size, with an optional spring and exit.
+- [Scanline CRT](https://remotionui.com/docs/components/scanline-crt.md): CRT scanlines, aperture grille and tube curvature. Install with npx remotion-ui@latest add scanline-crt.
+- [Shake Emphasis](https://remotionui.com/docs/components/shake-emphasis.md): A short impact shake with a decaying envelope. Install with npx remotion-ui@latest add shake-emphasis.
+- [Skew In](https://remotionui.com/docs/components/skew-in.md): Lean in and straighten up, an editorial entrance built from shear plus travel. Install with npx remotion-ui@latest add skew-in.
+- [Slide Left](https://remotionui.com/docs/components/slide-left.md): Slide in from either side, with an optional mask reveal and an automatic exit.
+- [Slide Up](https://remotionui.com/docs/components/slide-up.md): Rise into place, with an optional mask reveal and an automatic exit.
+- [Spring In](https://remotionui.com/docs/components/spring-in.md): Spring-driven scale and rise, with snappy, smooth and bouncy presets.
+- [Squash Stretch](https://remotionui.com/docs/components/squash-stretch.md): The animation principle, as a primitive. Install with npx remotion-ui@latest add squash-stretch.
+- [Stagger Children](https://remotionui.com/docs/components/stagger-children.md): Offset children onto their own sequences, forward, reverse, centre or edge order, in and out.
+
+## Captions
+
+- [Captions](https://remotionui.com/docs/components/captions.md): Word-timed captions, karaoke highlights, and subtitle tracks driven by transcript data.
+- [Caption Emoji Beat](https://remotionui.com/docs/components/caption-emoji-beat.md): Emoji punctuation landing on beats. Install with npx remotion-ui@latest add caption-emoji-beat.
+- [Caption Highlight](https://remotionui.com/docs/components/caption-highlight.md): TikTok-style word highlight captions for Remotion. Install with npx remotion-ui@latest add caption-highlight.
+- [Caption Scene](https://remotionui.com/docs/components/caption-scene.md): Lower-third captions synced to audio.
+- [Karaoke Captions](https://remotionui.com/docs/components/karaoke-captions.md): Active-word caption styling for social clips.
+- [Speaker Label Captions](https://remotionui.com/docs/components/speaker-label-captions.md): Multi-speaker caption track with name tags and colour coding. Install with npx remotion-ui@latest add speaker-label-captions.
+- [SRT Caption Track](https://remotionui.com/docs/components/srt-caption-track.md): Render Remotion captions straight from an SRT or WebVTT file. Install with npx remotion-ui@latest add srt-caption-track.
+- [Subtitle Translate](https://remotionui.com/docs/components/subtitle-translate.md): Dual-language stacked subtitles. Install with npx remotion-ui@latest add subtitle-translate.
+- [Transcript Scroll](https://remotionui.com/docs/components/transcript-scroll.md): Full transcript scrolling with the active line marked. Install with npx remotion-ui@latest add transcript-scroll.
+- [Word Pop Captions](https://remotionui.com/docs/components/word-pop-captions.md): One word at a time, alone on frame. Install with npx remotion-ui@latest add word-pop-captions.
+
+## Audio
+
+- [Audio](https://remotionui.com/docs/components/audio.md): Waveforms, meters, and beat-reactive visuals that read an audio file on every frame.
+- [Audio Pulse](https://remotionui.com/docs/components/audio-pulse.md): Audio-reactive pulse rings.
+- [Audio Reactive Scale](https://remotionui.com/docs/components/audio-reactive-scale.md): Scale any child by per-frame audio amplitude in Remotion. Install with npx remotion-ui@latest add audio-reactive-scale.
+- [Audio Scrubber](https://remotionui.com/docs/components/audio-scrubber.md): Waveform with travelling playhead and time labels. Install with npx remotion-ui@latest add audio-scrubber.
+- [Audiogram Bars](https://remotionui.com/docs/components/audiogram-bars.md): Audio-reactive spectrum bar visualization.
+- [Audiogram Scene](https://remotionui.com/docs/components/audiogram-scene.md): Podcast audiogram layout with spectrum bars.
+- [Beat Pulse Grid](https://remotionui.com/docs/components/beat-pulse-grid.md): Grid cells pulsing with the track. Install with npx remotion-ui@latest add beat-pulse-grid.
+- [Voice Note Bubble](https://remotionui.com/docs/components/voice-note-bubble.md): Chat-style audio message with waveform and playhead. Install with npx remotion-ui@latest add voice-note-bubble.
+- [VU Meter](https://remotionui.com/docs/components/vu-meter.md): Segmented level meter with peak hold. Install with npx remotion-ui@latest add vu-meter.
+- [Waveform Bars Radial](https://remotionui.com/docs/components/waveform-bars-radial.md): Circular bars around a centre element. Install with npx remotion-ui@latest add waveform-bars-radial.
+- [Waveform Line](https://remotionui.com/docs/components/waveform-line.md): Audio waveform line visualization.
+
+## Charts & metrics
+
+- [Charts & metrics](https://remotionui.com/docs/components/charts.md): Animated charts and live numbers that build from your data.
+- [Animated Bar Chart](https://remotionui.com/docs/components/animated-bar-chart.md): Ranked bar chart scene with a real value axis.
+- [Bar Chart Race](https://remotionui.com/docs/components/bar-chart-race.md): Ranked bars reorder over time. Install with npx remotion-ui@latest add bar-chart-race.
+- [Bubble Chart Pack](https://remotionui.com/docs/components/bubble-chart-pack.md): Circle-packed values settling into place. Install with npx remotion-ui@latest add bubble-chart-pack.
+- [Candlestick Chart](https://remotionui.com/docs/components/candlestick-chart.md): OHLC candles printing left to right with a moving average. Install with npx remotion-ui@latest add candlestick-chart.
+- [Comparison Bars](https://remotionui.com/docs/components/comparison-bars.md): Two-series before/after with delta callout. Install with npx remotion-ui@latest add comparison-bars.
+- [Donut Chart](https://remotionui.com/docs/components/donut-chart.md): Multi-segment donut with labels. Install with npx remotion-ui@latest add donut-chart.
+- [Funnel Chart](https://remotionui.com/docs/components/funnel-chart.md): Stage bars narrowing with drop-off percentages. Install with npx remotion-ui@latest add funnel-chart.
+- [Gantt Timeline](https://remotionui.com/docs/components/gantt-timeline.md): Task bars laid across a shared column grid. Install with npx remotion-ui@latest add gantt-timeline.
+- [Gauge Dial](https://remotionui.com/docs/components/gauge-dial.md): Needle sweeps to target. Install with npx remotion-ui@latest add gauge-dial.
+- [Heatmap Grid](https://remotionui.com/docs/components/heatmap-grid.md): Cell grid filling by intensity, contribution-graph style. Install with npx remotion-ui@latest add heatmap-grid.
+- [Line Chart Draw](https://remotionui.com/docs/components/line-chart-draw.md): SVG line chart that draws itself on.
+- [Metric Ticker](https://remotionui.com/docs/components/metric-ticker.md): KPI cards that count themselves in.
+- [Pie Slice Reveal](https://remotionui.com/docs/components/pie-slice-reveal.md): Slices sweep in sequentially. Install with npx remotion-ui@latest add pie-slice-reveal.
+- [Radar Chart](https://remotionui.com/docs/components/radar-chart.md): Multi-axis spider chart drawing its polygon. Install with npx remotion-ui@latest add radar-chart.
+- [Scatter Plot Pop](https://remotionui.com/docs/components/scatter-plot-pop.md): Points pop in on stagger, optional trend line. Install with npx remotion-ui@latest add scatter-plot-pop.
+- [Sparkline Row](https://remotionui.com/docs/components/sparkline-row.md): Compact trend lines that read at small sizes. Install with npx remotion-ui@latest add sparkline-row.
+- [Stacked Area Chart](https://remotionui.com/docs/components/stacked-area-chart.md): Bands stacked on a shared baseline, wiping in from the left. Install with npx remotion-ui@latest add stacked-area-chart.
+- [Treemap Blocks](https://remotionui.com/docs/components/treemap-blocks.md): Nested rectangles sized by value. Install with npx remotion-ui@latest add treemap-blocks.
+- [Waterfall Chart](https://remotionui.com/docs/components/waterfall-chart.md): Bridge chart carrying a running total through signed steps. Install with npx remotion-ui@latest add waterfall-chart.
+
+## Paths & shapes
+
+- [Paths & shapes](https://remotionui.com/docs/components/paths-and-shapes.md): SVG draw-on, shape morphs, logo reveals, and cursor paths.
+- [Arrow Annotate](https://remotionui.com/docs/components/arrow-annotate.md): A hand-drawn arrow that draws itself, with the head landing on the curve's own tangent.
+- [Badge Stamp](https://remotionui.com/docs/components/badge-stamp.md): A seal that lands like a stamp, oversized and over-rotated, settling with the rotation still unwinding after the scale has stopped.
+- [Blob Morph](https://remotionui.com/docs/components/blob-morph.md): An organic blob that never settles, travelling a ring of generated shapes and coming back to where it started.
+- [Connector Lines](https://remotionui.com/docs/components/connector-lines.md): The edges between anchored elements, and nothing else, the primitive under a diagram.
+- [Cursor Path](https://remotionui.com/docs/components/cursor-path.md): Cursor travelling a route, with drawn trail and click ripples.
+- [Dashed Path Travel](https://remotionui.com/docs/components/dashed-path-travel.md): Anything travelling any route, laying a dashed trail behind it.
+- [Logo Reveal](https://remotionui.com/docs/components/logo-reveal.md): Logo mark draw-on with wordmark and tagline beats.
+- [Path Draw](https://remotionui.com/docs/components/path-draw.md): SVG stroke reveal with auto-fit framing and multi-path stagger.
+- [Shape Morph](https://remotionui.com/docs/components/shape-morph.md): One shape becoming another, and another, on a single progress ramp.
+- [Simulated Cursor](https://remotionui.com/docs/components/simulated-cursor.md): Frame-timed cursor with press, ripples, hit targets and labels.
+- [SVG Mask Reveal](https://remotionui.com/docs/components/svg-mask-reveal.md): An arbitrary SVG shape used as a reveal mask over anything.
+
+## Maps & devices
+
+- [Maps & devices](https://remotionui.com/docs/components/maps-and-devices.md): Map flights, routes, markers, and device mockups for product shots.
+- [Device Mockup Zoom](https://remotionui.com/docs/components/device-mockup-zoom.md): Cinematic laptop, phone, or browser mockup with staged UI and slow camera pullback.
+- [Globe Arc](https://remotionui.com/docs/components/globe-arc.md): Great-circle arcs drawing between cities on a slowly spinning globe.
+- [Map Canvas](https://remotionui.com/docs/components/map-canvas.md): Deterministic MapLibre map mount.
+- [Map Flight](https://remotionui.com/docs/components/map-flight.md): Animated map flyover with route reveal and markers.
+- [Map Heat Overlay](https://remotionui.com/docs/components/map-heat-overlay.md): A density overlay fading in over the basemap, with the hot cores arriving last.
+- [Map Markers](https://remotionui.com/docs/components/map-markers.md): GeoJSON circle and label markers on a map.
+- [Map Route](https://remotionui.com/docs/components/map-route.md): Animated GeoJSON route line on a map.
+- [Multi-Device Lineup](https://remotionui.com/docs/components/multi-device-lineup.md): Phone, tablet and laptop showing one responsive design, arriving in order.
+
+## 3D
+
+- [3D](https://remotionui.com/docs/components/3d.md): Lit WebGL scenes built on @remotion/three, rendered deterministically frame by frame.
+- [Device Mockup 3D](https://remotionui.com/docs/components/device-mockup-3d.md): Laptop product shot in real 3D. The lid opens, then the camera turns and pushes in over a lit floor.
+- [Product Turntable 3d](https://remotionui.com/docs/components/product-turntable-3d.md): A product on a studio turntable: the model turns a full revolution under a soft key and rim while the camera holds, with a contact shadow anchoring it to the floor. Install with npx remotion-ui@latest add product-turntable-3d.
+- [Text Extrude 3d](https://remotionui.com/docs/components/text-extrude-3d.md): Extruded 3D headline with a lit bevel: the letters rise and settle as the camera pulls back across them. Install with npx remotion-ui@latest add text-extrude-3d.
+- [Card Stack 3d](https://remotionui.com/docs/components/card-stack-3d.md): A stack of physical cards fanning out in depth, each with real thickness and an edge highlight, turning to face the camera. Install with npx remotion-ui@latest add card-stack-3d.
+- [Globe Points 3d](https://remotionui.com/docs/components/globe-points-3d.md): Lit sphere with instanced city markers and arcs rising between them, turning slowly under a rim light. Install with npx remotion-ui@latest add globe-points-3d.
+
+## Shaders
+
+- [Shaders](https://remotionui.com/docs/components/shaders.md): Full-frame GPU fields, evaluated per pixel and driven by the frame number.
+- [Dither Field Background](https://remotionui.com/docs/components/dither-field-bg.md): A two-colour ordered-dither field, quantised to a pixel grid.
+- [Warp Bands Background](https://remotionui.com/docs/components/warp-bands-bg.md): Colour bands folded through noise and a swirl, smoke, ink, or marble.
+- [Grain Gradient Background](https://remotionui.com/docs/components/grain-gradient-bg.md): A multi-colour gradient with grain worked through it.
+- [Light Tunnel Background](https://remotionui.com/docs/components/light-tunnel-bg.md): Flight down a twisting barrel of light, with a defocused vanishing point.
+- [Text Reveal Shader](https://remotionui.com/docs/components/text-reveal-shader.md): Words condensing out of light into liquid chrome.
+
+## Motion graphics
+
+- [Motion graphics](https://remotionui.com/docs/components/motion-graphics.md): After Effects and Cinema 4D mechanics — keyframe easing, shape operators, text animators, MoGraph effectors — as composable, frame-driven primitives.
+- [AE Motion](https://remotionui.com/docs/components/ae-motion.md): Keyframe tracks with After Effects graph-editor easing, loopOut/loopIn, deterministic wiggle, valueAtTime and parented transforms, as pure functions.
+- [Shape Layer](https://remotionui.com/docs/components/shape-layer.md): After Effects shape layer with an ordered operator stack — trim paths, repeater, offset paths, wiggle paths, zig-zag and pucker & bloat — evaluated per frame as pure geometry. Install with npx remotion-ui@latest add shape-layer.
+- [Text Animator](https://remotionui.com/docs/components/text-animator.md): After Effects text animator: range and wiggly selectors drive per-character, per-word or per-line position, scale, rotation, opacity, blur, tracking and fill over measured layout. Install with npx remotion-ui@latest add text-animator.
+- [Effector Field](https://remotionui.com/docs/components/effector-field.md): Cinema 4D MoGraph cloner and effectors: clone any element into a grid, radial or linear arrangement and let animatable spherical, linear or noise falloff fields drive each clone. Install with npx remotion-ui@latest add effector-field.
+- [Slit Scan](https://remotionui.com/docs/components/slit-scan.md): Slit-scan time displacement: each strip of any child — rows, columns, rings or a gradient map — shows that child at a different moment, deterministically. Install with npx remotion-ui@latest add slit-scan.
+- [IK Rig](https://remotionui.com/docs/components/ik-rig.md): A lit, shadowed two-bone IK arm that reaches for any target or plots SVG strokes with a pen, laying ink exactly where the solved hand is. Install with npx remotion-ui@latest add ik-rig.
+- [Track Matte](https://remotionui.com/docs/components/track-matte.md): After Effects track mattes: reveal any child through any other with alpha, inverted alpha, luma or inverted luma. Install with npx remotion-ui@latest add track-matte.
+- [Follow Through](https://remotionui.com/docs/components/follow-through.md): Overlapping action along a chain: every element follows one leader track with its own delay, drag, overshoot and settle. Install with npx remotion-ui@latest add follow-through.
+- [Import from After Effects](https://remotionui.com/docs/components/ae-import.md): remotion-ui import-ae converts a Bodymovin / Lottie JSON export into editable Remotion TSX built on ae-motion: named layer components, keyframes as data, and a composition with the right size, fps and length.
+
+## AI composers
+
+- [AI composers](https://remotionui.com/docs/components/ai-composers.md): Scenes that recreate AI chat and coding tools, with messages that type out on cue.
+- [ChatGPT](https://remotionui.com/docs/components/chat-gpt.md): ChatGPT composer scene for Remotion.
+- [Claude Chat](https://remotionui.com/docs/components/claude-chat.md): Claude chat composer scene for Remotion.
+- [Claude Code](https://remotionui.com/docs/components/claude-code.md): Claude Code terminal scene for Remotion.
+- [OpenCode](https://remotionui.com/docs/components/opencode.md): OpenCode TUI composer scene for Remotion.
+- [v0](https://remotionui.com/docs/components/v0.md): v0 builder composer scene for Remotion.
+
+## Code & terminal
+
+- [Code & terminal](https://remotionui.com/docs/components/code-and-terminal.md): Code reveals, diffs, file trees, and terminal sessions.
+- [Code Accordion](https://remotionui.com/docs/components/code-accordion.md): Stepped walkthrough where each section opens, writes its code, and is checked off.
+- [Code Diff Wipe](https://remotionui.com/docs/components/code-diff-wipe.md): A patch landing line by line, removals collapse, additions open and write themselves in.
+- [Code Reveal](https://remotionui.com/docs/components/code-reveal.md): Editor window that writes a syntax-highlighted file, then focuses the lines that matter.
+- [Commit Graph](https://remotionui.com/docs/components/commit-graph.md): A branch graph that draws itself, every edge grows from its parent, and each commit pops the moment its line arrives.
+- [File Tree Reveal](https://remotionui.com/docs/components/file-tree-reveal.md): A project tree opening itself node by node, folders turning as their contents arrive.
+- [Terminal Simulator](https://remotionui.com/docs/components/terminal-simulator.md): A terminal window that types a command, streams build steps, and hands the prompt back.
+
+## Creator
+
+- [Creator](https://remotionui.com/docs/components/creator.md): Social-video layouts: hooks, polls, reactions, countdowns, and talking-head frames.
+- [Comment Callout](https://remotionui.com/docs/components/comment-callout.md): A viewer comment answered on screen, marked up, hearted, and replied to.
+- [Countdown Timer](https://remotionui.com/docs/components/countdown-timer.md): A clock that runs down rather than a number that changes.
+- [Hook Card](https://remotionui.com/docs/components/hook-card.md): Short-form opener where the hook lands line by line and the promise gets underlined.
+- [Poll Overlay](https://remotionui.com/docs/components/poll-overlay.md): An audience poll whose bars travel out to their real shares.
+- [Reaction Burst](https://remotionui.com/docs/components/reaction-burst.md): A continuous side-channel of hearts and likes climbing the frame.
+- [Talking Head Layout](https://remotionui.com/docs/components/talking-head-layout.md): Speaker frame that opens, names the speaker, and plays the spoken lines.
+
+## UI flows
+
+- [UI flows](https://remotionui.com/docs/components/ui-flows.md): Simulated product interactions: forms, drag and drop, tabs, and notifications.
+- [Chat to Preview](https://remotionui.com/docs/components/chat-to-preview.md): The prompt-to-render loop: ask typed and sent, answer streamed, preview assembled.
+- [Drag-and-Drop Flow](https://remotionui.com/docs/components/drag-drop-flow.md): Cursor drags a file out of a media library into a drop zone that arms, catches it, and uploads it.
+- [FAQ Accordion](https://remotionui.com/docs/components/faq-accordion.md): Question rows that open one at a time, each answer's panel growing as the row above it gives the height back.
+- [Form Fill Sequence](https://remotionui.com/docs/components/form-fill-sequence.md): A sign-up form filling itself out field by field, each one validating before the next takes focus.
+- [Kanban Move](https://remotionui.com/docs/components/kanban-move.md): A board where work moves, cards lift off one column, arc across the gutter, and drop into the next while the list they left closes up.
+- [Notification Stack](https://remotionui.com/docs/components/notification-stack.md): Toasts arriving, stacking, and clearing themselves in a screen corner.
+- [Search Results Populate](https://remotionui.com/docs/components/search-results-populate.md): A query typing itself, results streaming back, and the list re-ranking to put the best match on top.
+- [Tab Switch Panel](https://remotionui.com/docs/components/tab-switch-panel.md): An app window whose tabs switch on their own, the pill gliding while panels slide through.
+
+## Layouts & cards
+
+- [Layouts & cards](https://remotionui.com/docs/components/layouts-and-cards.md): Composed scenes for titles, stats, quotes, pricing, timelines, and split layouts.
+- [Auto-Fit Title](https://remotionui.com/docs/components/auto-fit-title.md): A headline sized to the frame it is given, then assembled word by word.
+- [B-Roll Stack](https://remotionui.com/docs/components/b-roll-stack.md): A deck of supporting shots dealt one at a time behind the narration.
+- [Calendar Month Fill](https://remotionui.com/docs/components/calendar-month-fill.md): A month grid sweeping up on a diagonal, then events dropping onto their days one at a time.
+- [Callout Spotlight](https://remotionui.com/docs/components/callout-spotlight.md): A spotlight that is aimed. Mask, ping, connector, then the callout.
+- [Caption Bumper](https://remotionui.com/docs/components/caption-bumper.md): A between-beats card that punches its line in word by word.
+- [Changelog Entry](https://remotionui.com/docs/components/changelog-entry.md): A release note reading itself out. Version, a rule drawing under it, then each change behind its own coloured tag.
+- [Comparison Table](https://remotionui.com/docs/components/comparison-table.md): A feature matrix that fills in the way you read it. Row by row, label first, each column's verdict a fraction behind the last.
+- [Data Flow Pipes](https://remotionui.com/docs/components/data-flow-pipes.md): A pipeline running end to end, with payloads hopping stage to stage.
+- [End Card](https://remotionui.com/docs/components/end-card.md): The outro, built in the order a viewer acts on it.
+- [Feature List](https://remotionui.com/docs/components/feature-list.md): A list being ticked off, row by row.
+- [Logo Wall](https://remotionui.com/docs/components/logo-wall.md): A client wall that comes up to colour. Tiles land grey, then warm to their brand colours on a diagonal sweep.
+- [Lower Third](https://remotionui.com/docs/components/lower-third.md): A name plate that wipes on, holds, and retreats the way it came.
+- [Media Frame](https://remotionui.com/docs/components/media-frame.md): One piece of media presented. The frame opens on it under a slow push.
+- [Media Sequence](https://remotionui.com/docs/components/media-sequence.md): An edited run of shots with a chapter strip showing where you are.
+- [News Ticker Bar](https://remotionui.com/docs/components/news-ticker-bar.md): A broadcast lower bar with a standing flag and a headline crawl.
+- [Org Chart Build](https://remotionui.com/docs/components/org-chart-build.md): A hierarchy assembling top-down. Connectors draw down from the parents already standing, and nodes land on the ends of the lines.
+- [Pricing Card](https://remotionui.com/docs/components/pricing-card.md): A tier card that earns its price. The number rolls up, the features tick in beneath it, and the call to action arrives last.
+- [Quiz Question](https://remotionui.com/docs/components/quiz-question.md): A question that resolves. Options arrive, one is picked, then the right answer lights while the rest step back.
+- [Quote Card](https://remotionui.com/docs/components/quote-card.md): A pull quote read aloud. Mark, lines, marker sweep, attribution.
+- [Roadmap Lanes](https://remotionui.com/docs/components/roadmap-lanes.md): Swimlanes of shipped, building and planned work, each lane filling in turn and in-flight items growing to their real progress.
+- [Split Screen](https://remotionui.com/docs/components/split-screen.md): A before/after that is actually made, not just placed side by side.
+- [Sports Scorebug](https://remotionui.com/docs/components/sports-scorebug.md): Broadcast score furniture with a live clock and scores that land.
+- [Stat Card](https://remotionui.com/docs/components/stat-card.md): A number landing. Ring, counter, label, and the change behind it.
+- [Team Grid](https://remotionui.com/docs/components/team-grid.md): A team arriving person by person. The avatar springs up first, the name and role follow it into place.
+- [Timeline Steps](https://remotionui.com/docs/components/timeline-steps.md): A process walked step by step, each one worked and checked off.
+- [Title Card](https://remotionui.com/docs/components/title-card.md): An opening card where the headline stands up line by line.
+- [Weather Card](https://remotionui.com/docs/components/weather-card.md): Conditions with iconography that never stops. Rays turn, clouds drift, drops and flakes fall on their own loops.
+- [Zoom Pan Frame](https://remotionui.com/docs/components/zoom-pan-frame.md): A camera move on a still, driven by focal points rather than pixel offsets.
+
+## Transitions
+
+- [Transitions](https://remotionui.com/docs/components/transitions.md): Scene cuts for TransitionSeries: wipes, pushes, flips, and shader effects.
+- [Blur Reveal](https://remotionui.com/docs/components/blur-reveal.md): The outgoing scene softens away while the incoming one resolves out of blur.
+- [Chromatic Aberration Wipe](https://remotionui.com/docs/components/chromatic-aberration-wipe.md): A slide hard enough to pull the colour channels apart.
+- [Directional Wipe](https://remotionui.com/docs/components/directional-wipe.md): A soft-edged wipe that uncovers the next scene without ever showing the background.
+- [Frosted Glass Wipe](https://remotionui.com/docs/components/frosted-glass-wipe.md): A pane of frosted glass crosses the frame and leaves the next scene behind it.
+- [Grid Pixelate Wipe](https://remotionui.com/docs/components/grid-pixelate-wipe.md): The next scene arrives one grid cell at a time.
+- [Spatial Push](https://remotionui.com/docs/components/spatial-push.md): Two scenes locked edge to edge, shoved across the frame as one move.
+- [Blinds](https://remotionui.com/docs/components/transition-blinds.md): Staggered slats sweeping open to reveal the next scene.
+- [Card Flip](https://remotionui.com/docs/components/transition-card-flip.md): A whole-frame 3D flip that hands one scene off to the next on backface culling.
+- [Circle Reveal](https://remotionui.com/docs/components/transition-circle-reveal.md): A circular mask that opens from any point in the frame onto the next scene.
+- [Transition Clock Wipe](https://remotionui.com/docs/components/transition-clock-wipe.md): A sweep hand travels the frame and leaves the next scene behind it.
+- [Transition Fade](https://remotionui.com/docs/components/transition-fade.md): Crossfade between scenes, or dip through a colour on the way.
+- [Transition Light Leak](https://remotionui.com/docs/components/transition-light-leak.md): A film flare that peaks on the cut and hides the seam under it.
+- [Liquid Warp](https://remotionui.com/docs/components/transition-liquid-warp.md): A liquid displacement warp that stirs one scene into the next.
+- [Morph Shape](https://remotionui.com/docs/components/transition-morph-shape.md): A reveal through a shape that changes form as it grows across the frame.
+- [Transition Slide](https://remotionui.com/docs/components/transition-slide.md): Slide transition helper for TransitionSeries.
+- [Whip Pan](https://remotionui.com/docs/components/transition-whip-pan.md): A fast pan between scenes with directional motion blur along the travel axis.
+- [Transition Wipe](https://remotionui.com/docs/components/transition-wipe.md): Wipe transition helper for TransitionSeries.
+- [Zoom Through](https://remotionui.com/docs/components/zoom-through.md): The camera pushes through one scene and lands in the next.
+
+## Compositions
+
+- [Compositions](https://remotionui.com/docs/components/compositions.md): Full video templates that combine scenes, transitions, and audio.
+- [AI Composer Showcase](https://remotionui.com/docs/components/ai-composer-showcase.md): Reel cutting through five AI composer interfaces (ChatGPT, Claude, v0, Claude Code, and OpenCode), with title and end cards.
+- [AI Generation Canvas](https://remotionui.com/docs/components/ai-generation-canvas.md): Prompt-to-dashboard generation composition with morphing input, skeleton shimmer, and card reveals.
+- [Bento Pan](https://remotionui.com/docs/components/bento-pan.md): A camera pan across a bento grid of metric cards.
+- [Browser Flow](https://remotionui.com/docs/components/browser-flow.md): Browser Flow for Remotion.
+- [Creator Reel](https://remotionui.com/docs/components/creator-reel.md): Vertical creator media composition template.
+- [Dashboard Populate](https://remotionui.com/docs/components/dashboard-populate.md): Dashboard Populate for Remotion.
+- [Data Story](https://remotionui.com/docs/components/data-story.md): Data storytelling composition template.
+- [Deploy Reveal](https://remotionui.com/docs/components/deploy-reveal.md): Deploy Reveal for Remotion.
+- [Ecosystem Orbit](https://remotionui.com/docs/components/ecosystem-orbit.md): Ecosystem Orbit for Remotion.
+- [Hero Device Assemble](https://remotionui.com/docs/components/hero-device-assemble.md): Hero Device Assemble for Remotion.
+- [Hero Loop](https://remotionui.com/docs/components/hero-loop.md): 12-second seamless brand ident, the RemotionUI logo animated from its own parts over the site's phosphor light.
+- [Image Expand](https://remotionui.com/docs/components/image-expand.md): A still opens from a card to full frame, then takes its caption.
+- [Intro](https://remotionui.com/docs/components/intro.md): 5-second branded intro composition.
+- [Landing Code Showcase](https://remotionui.com/docs/components/landing-code-showcase.md): Landing Code Showcase for Remotion.
+- [Live Code Split](https://remotionui.com/docs/components/live-code-split.md): An editor and its rendered output side by side.
+- [Podcast Clip](https://remotionui.com/docs/components/podcast-clip.md): Podcast composition with audio visuals and captions.
+- [Pricing Focus](https://remotionui.com/docs/components/pricing-focus.md): Pricing Focus for Remotion.
+- [Showcase](https://remotionui.com/docs/components/showcase.md): Full demo reel chaining scenes with TransitionSeries fades.
+- [Social Clip](https://remotionui.com/docs/components/social-clip.md): 9:16 Remotion social clip template with hook, captions, and CTA. Install with npx remotion-ui@latest add social-clip.
+- [Tool Menu Slide](https://remotionui.com/docs/components/tool-menu-slide.md): Tool Menu Slide for Remotion.
+- [Tutorial Clip](https://remotionui.com/docs/components/tutorial-clip.md): Tutorial composition for demos and explainers.
+
+## Helpers
+
+- [Helpers](https://remotionui.com/docs/components/helpers.md): Layout, spring, timing, and stagger utilities the components are built on.
+- [Layout](https://remotionui.com/docs/components/layout.md): Video-safe padding and responsive font scaling.
+- [Springs](https://remotionui.com/docs/components/springs.md): Shared spring configs for physics-based motion.
+- [Timing](https://remotionui.com/docs/components/timing.md): Frame helpers, stagger delays, and Bézier enter/exit progress.
+- [useStagger](https://remotionui.com/docs/components/use-stagger.md): Hook for per-child delayInFrames in custom components.
+
+## Documentation: AI
+
+- [AI Usage](https://remotionui.com/docs/ai.md): How coding agents should use RemotionUI with Remotion.
+- [MCP Server](https://remotionui.com/docs/mcp.md): Expose the RemotionUI registry to agents as MCP tools.
+
+## Documentation: Reference
+
+- [Registry](https://remotionui.com/docs/registry.md): Author and build custom RemotionUI registries.

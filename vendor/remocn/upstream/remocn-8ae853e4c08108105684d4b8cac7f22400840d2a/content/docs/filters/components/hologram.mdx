@@ -1,0 +1,154 @@
+---
+title: Hologram
+description: Play a scene as a projection — ghost double, emission lines, only the bright parts carrying
+component: hologram
+vibe: tech
+length: sustained
+useWhen:
+  - "A feature should present as a projection rather than as a screen — a sci-fi flavoured reveal, a 'here is what is coming' beat."
+  - "The scene is high contrast, since only what is bright enough carries through the volume the projection hangs in."
+  - "You want the projection to materialize on entry — interpolate intensity from 0 and the scene resolves into light."
+avoidWhen:
+  - "The story is a physical display being watched rather than light standing in the air — use `crt-screen`."
+  - "You want damage rather than projection — use `sustained-glitch`."
+---
+
+<ComponentPreview name="hologram" />
+
+<CanvasFilterNote />
+
+<InstallBlock name="hologram" />
+
+## Usage
+
+`Hologram` is a wrapper. Put a scene inside it and it plays as projected light: a
+ghost double shimmers off the image, emission lines structure it, a travelling
+crest runs up the frame, and the whole thing leans toward its tint. Only what is
+bright enough in the scene carries; the rest sinks into the dark volume the
+projection hangs in.
+
+```tsx
+import { Hologram } from "@/components/remocn/hologram";
+
+export const MyScene = () => (
+  <Hologram>
+    <Scene />
+  </Hologram>
+);
+```
+
+## What to reach for it for
+
+### Put it in a console
+
+The filter is only the light. What makes a shot read as a projection is what the
+light is coming out of — so build the chrome as ordinary DOM, put your scene
+inside it, and wrap the whole thing. The frame's thin lines are exactly what the
+edge emission has to work with, which is why a HUD gains far more from this
+filter than a flat panel does.
+
+<ComponentExample name="hologram-console" />
+
+```tsx
+<Hologram>
+  <HudFrame>
+    <Scene />
+  </HudFrame>
+</Hologram>
+```
+
+### Boot the projection
+
+A projector that snaps on perfectly is a screen. Let the doubling and the flicker
+start wide and settle over the first second and it reads as something being
+established rather than switched on.
+
+<ComponentExample name="hologram-boot" />
+
+```tsx
+import { interpolate, useCurrentFrame } from "remotion";
+import { Hologram } from "@/components/remocn/hologram";
+
+export const Opening = () => {
+  const frame = useCurrentFrame();
+  const unstable = interpolate(frame, [0, 34], [1, 0], {
+    extrapolateRight: "clamp",
+  });
+
+  return (
+    <Hologram ghost={1 + unstable * 3.6} flicker={1 + unstable * 2.6}>
+      <Scene />
+    </Hologram>
+  );
+};
+```
+
+To hand the shot back to reality afterwards, cut `intensity` to 0 — the scene
+returns exactly as it was, in one frame.
+
+<PropsTable title="Props"
+  rows={[
+    {
+      name: "tint",
+      type: "string",
+      default: '"#63e8ff"',
+      description:
+        "Colour of the projected light. Almost everything you see is this colour driven by the scene's brightness, so it sets the whole character.",
+    },
+    {
+      name: "glow",
+      type: "number",
+      default: "1",
+      description:
+        "Emission strength — both the light that comes off the edges of shapes and the halo bright areas throw into what surrounds them. This is what makes it read as light rather than as a tint.",
+    },
+    {
+      name: "ghost",
+      type: "number",
+      default: "1",
+      description:
+        "How unstable the projection is: how far the doubled image sits from the original, and how far individual scanlines slip sideways. Raise it and the projection struggles to hold.",
+    },
+    {
+      name: "flicker",
+      type: "number",
+      default: "1",
+      description:
+        "Depth of the brightness pulse, on a 15-frame cycle with a per-frame jitter on top.",
+    },
+    {
+      name: "intensity",
+      type: "number",
+      default: "1",
+      description:
+        "Master amount. Read every frame, so cutting it to 0 hands the untouched scene back in a single frame.",
+    },
+    {
+      name: "children",
+      type: "React.ReactNode",
+      description: "The scene the filter wraps and re-reads every frame.",
+    },
+  ]}
+/>
+
+## Notes
+
+Put your backdrop **inside** the wrapper. A hologram wants to be translucent
+light, but this filter cannot be transparent: the untouched scene sits on a layer
+directly beneath the output, so anywhere the projection thinned to nothing the
+original interface would show through at full strength — which reads as a bug,
+not as light. Instead the projection hangs in a dark tinted volume that the filter
+paints itself, and what is too dim in the scene sinks into it. Visually it is the
+same picture; structurally it means the wrapper owns the background.
+
+That also makes contrast the thing to design for. Only what is bright enough
+carries, so a scene of thin bright lines on black — a HUD, a wireframe, mono type
+— comes through far better than large filled panels.
+
+The only motion is the flicker and the per-line slip, both on fixed frame cycles
+of 15 and one frame respectively, so nothing drifts and parallel renders match.
+
+In browsers without html-in-canvas the scene keeps the tint and the line
+structure but loses the edge emission, the halo and the doubling. CSS can colour
+a frame; it cannot read what is next to a pixel, which is where three of the four
+signatures here come from.

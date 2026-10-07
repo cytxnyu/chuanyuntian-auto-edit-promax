@@ -1,0 +1,78 @@
+import Link from "next/link";
+import { GitHubIcon, XIcon } from "@/components/brand-icons";
+import { siteConfig } from "@/lib/site-config";
+
+export function SiteFooter() {
+  return (
+    <footer className="mt-auto border-t border-fd-border bg-fd-card/40">
+      <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-10 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <p className="font-[family-name:var(--font-display)] text-sm font-semibold">
+            {siteConfig.name}
+          </p>
+          <p className="mt-1 max-w-sm text-sm text-fd-muted-foreground">
+            {siteConfig.tagline}
+          </p>
+        </div>
+        <div className="flex flex-wrap items-center gap-4 text-sm text-fd-muted-foreground">
+          <Link href="/docs" className="transition-colors hover:text-fd-foreground">
+            Docs
+          </Link>
+          <Link href="/docs/components" className="transition-colors hover:text-fd-foreground">
+            Components
+          </Link>
+          <Link href="/docs/cli" className="transition-colors hover:text-fd-foreground">
+            CLI
+          </Link>
+          <Link href="/blog" className="transition-colors hover:text-fd-foreground">
+            Blog
+          </Link>
+          <Link href="/sponsor" className="transition-colors hover:text-fd-foreground">
+            Sponsor
+          </Link>
+          <a
+            href={siteConfig.githubUrl}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="RemotionUI on GitHub"
+            className="transition-colors hover:text-fd-foreground"
+          >
+            <GitHubIcon className="size-4" />
+          </a>
+          <a
+            href={siteConfig.xUrl}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="RemotionUI on X"
+            className="transition-colors hover:text-fd-foreground"
+          >
+            <XIcon className="size-4" />
+          </a>
+          <a
+            href={siteConfig.npmUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="rounded-md border border-fd-border px-2 py-0.5 font-[family-name:var(--font-mono)] text-xs transition-colors hover:bg-fd-muted"
+          >
+            remotion-ui
+          </a>
+          <a
+            href="https://tools.launchllama.co?utm_source=badge&utm_medium=referral"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-opacity hover:opacity-80"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://tools.launchllama.co/featured-badge.png?v=2"
+              alt="As seen on Launch Llama Newsletter"
+              width={200}
+              height={50}
+              className="h-8 w-auto"
+            />
+          </a>
+        </div>
+      </div>
+    </footer>
+  );
+}

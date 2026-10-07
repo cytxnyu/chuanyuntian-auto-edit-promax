@@ -1,0 +1,27 @@
+name: shadscan
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # Pinned to the v0.6.0 tag commit; `@main` is a moving ref.
+      - uses: TheOrcDev/shadscan@be690038a6edace1ab63c5185bd0ab80957da947
+        with:
+          path: .
+          version: 0.6.1
+          # Ratchet floor: today's score. Raise it as findings get fixed,
+          # never lower it.
+          fail-under: "60"
+          # The issue tracks the standing audit on main; PRs only get the
+          # job summary and the score gate.
+          create-issue: ${{ github.event_name == 'push' }}

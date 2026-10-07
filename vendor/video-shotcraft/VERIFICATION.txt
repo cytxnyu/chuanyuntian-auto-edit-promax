@@ -1,0 +1,66 @@
+Historical upstream-integration record (not a fresh public-release test).
+Local workstation paths replaced with <project-root>. Original assets counts describe the original integration, before public audio exclusions.
+
+Video Shotcraft source integration verification
+Working directory: <project-root>
+Repository: https://github.com/Vincentwei1021/video-shotcraft
+Revision: 5ddbf521038b0a7accfb6dc1e0a9eb29c67277ab
+
+MODIFIED_FILE: <project-root>\vendor\video-shotcraft\runtime\template\src\aifl\Main.tsx
+DIFF_FILE: <project-root>\vendor\video-shotcraft\UPSTREAM_PATCH.diff
+VERIFICATION.txt: <project-root>\vendor\video-shotcraft\VERIFICATION.txt
+ROLLBACK.sh: <project-root>\vendor\video-shotcraft\ROLLBACK.sh
+SOURCE_HASHES.json: <project-root>\vendor\video-shotcraft\SOURCE_HASHES.json
+
+Changed branches/fields:
+- Basic3DScene: steps[i].title/subtitle -> original p.tt/p.sub label placements.
+- Terminal3D: panels[i].title/command/output -> original d.title/d.cmd/d.out label placements.
+- AiflMain: muted=true, titleCards, captions, sceneProps; original 10 sequences, durations, SFX positions, volumes, cameras and transitions remain.
+- VisualThemeProvider/themeAsset: overrideable assetBase prefix.
+- ThemedFilm: pass the above props into original AiflMain and VisualThemeProvider.
+No geometry, pose, easing, palette, camera keys or shot code was reconstructed or simplified.
+Only five runtime source files differ. Seventy runtime files match the retained checkout byte-for-byte.
+The verifier reverses only the documented adapter tokens and compares all five resulting sources to the upstream text exactly (normalizing only line endings/outer whitespace).
+
+BASELINE
+Command: python scripts/sources/video-shotcraft-verify.py --mode baseline
+Input: immutable pinned Git revision and SOURCE_HASHES.json (504 original files; canonical Git blob SHA256 and Windows checkout SHA256 recorded separately).
+Literal output: {"mode": "baseline", "revision": "5ddbf521038b0a7accfb6dc1e0a9eb29c67277ab", "originalFilesVerified": 504, "upstreamGitClean": true}
+Exit status: 0
+
+MODIFIED
+Command: python scripts/sources/video-shotcraft-verify.py --mode modified
+Input: retained originals, 75 runtime files, provider, catalog, patch, 38 asset mappings.
+Literal output: {"mode": "modified", "revision": "5ddbf521038b0a7accfb6dc1e0a9eb29c67277ab", "originalFilesVerified": 504, "upstreamGitClean": true, "installed": 4, "indexed": 217, "changedFiles": 5, "unchangedRuntimeFiles": 70, "assets": 38}
+Exit status: 0
+
+ROLLBACK
+Setup: The five adapted files were copied from runtime into vendor/video-shotcraft/verification/rollback-copy (a second copy); original upstream and installed runtime were untouched.
+Command: & 'bash' 'vendor/video-shotcraft/ROLLBACK.sh' 'vendor/video-shotcraft/verification/rollback-copy'
+Input: vendor/video-shotcraft/verification/rollback-copy
+Literal output: {"restoredFiles": 5, "restoredOriginalBytes": true, "installedRuntimeStillChanged": true}
+Exit status: 0
+Restored status: all five second-copy files match the retained original checkout byte-for-byte; the installed runtime remains parameterized/muted/prefixed.
+
+ADDITIONAL ROLLBACK INTEGRITY
+Command: python scripts/sources/video-shotcraft-verify.py --mode rollback
+Literal output: {"mode": "rollback", "revision": "5ddbf521038b0a7accfb6dc1e0a9eb29c67277ab", "originalFilesVerified": 504, "upstreamGitClean": true, "installed": 4, "indexed": 217, "changedFiles": 5, "unchangedRuntimeFiles": 70, "assets": 38, "restoredFiles": 5, "restoredOriginalBytes": true, "installedRuntimeStillChanged": true}
+Exit status: 0
+
+ISOLATED TYPECHECK
+Command: node node_modules/typescript/bin/tsc -p scripts/sources/video-shotcraft-verify.tsconfig.json
+Input: only this provider and its referenced Shotcraft runtime sources.
+Literal output: (empty; no diagnostics)
+Exit status: 0
+
+IDEMPOTENT INSTALL
+Command: python scripts/sources/video-shotcraft-install.py
+Literal output: {"revision": "5ddbf521038b0a7accfb6dc1e0a9eb29c67277ab", "installed": 4, "indexed": 217, "assets": 38, "changedSourceFiles": 5}
+Exit status: 0
+Result: SOURCE_HASHES.json SHA256 before/after identical (IDEMPOTENT_HASH_MANIFEST=True).
+
+Installed: video-shotcraft/basic-3d-scene (180 frames), video-shotcraft/terminal-3d (180), video-shotcraft/ink-press (1085), video-shotcraft/ink-press-outro (145). Native 30 fps, 1920x1080.
+Indexed only: 217 additional original exported demo scenes. Complete upstream demos/template/lib/reference source remains cached for later adaptation.
+Code license: original Apache-2.0 LICENSE retained. SFX provenance: original AUDIO_ATTRIBUTION.md retained separately, including upstream unresolved-origin notes. Default audio is muted.
+Assets: 38 real paired template public files, 7803511 bytes; no gallery preview MP4 downloaded.
+Render status: this verification covers sources/assets/catalog/isolated types only. Native-clock equivalence and full MP4 rendering are handled by the parent integration task.

@@ -1,0 +1,291 @@
+{
+  "schemaVersion": 1,
+  "distribution": "public source skill",
+  "licenseReviewDate": "2026-10-07",
+  "licenseUrl": "https://mixkit.co/license/modal/sfxFree/",
+  "policy": "Stock audio is omitted from public tool/source distribution. No license is inferred from code licensing.",
+  "omittedShotcraftAudio": [
+    {
+      "path": "vendor/video-shotcraft/bulk-runtime/template/public/audio/click-camera.mp3",
+      "bytes": 14406,
+      "sha256": "042D01DB7A4A0C492C580C0D3D64460C0CEB8638F0C6419D0E4B7A9BA2AC8EED",
+      "sourceUrl": "https://assets.mixkit.co/active_storage/sfx/1133/1133-preview.mp3",
+      "sourceEvidence": "Exact URL in attribution table"
+    },
+    {
+      "path": "vendor/video-shotcraft/bulk-runtime/template/public/audio/impact-cine.mp3",
+      "bytes": 115904,
+      "sha256": "9854BFF8A78FCEBEF95350FF0EC72A41BA449AB372BBD601B55D84DE13BD626D",
+      "sourceUrl": "https://assets.mixkit.co/active_storage/sfx/1143/1143-preview.mp3",
+      "sourceEvidence": "Attribution narrative claims byte-identical to impact-deep-whoosh.mp3; this audit did not fetch remote bytes"
+    },
+    {
+      "path": "vendor/video-shotcraft/bulk-runtime/template/public/audio/keyboard.mp3",
+      "bytes": 513831,
+      "sha256": "152F78C3BFF50CF018654A66E5DE0260BDBAD45D87AF6051725FA479C517BDF9",
+      "sourceUrl": null,
+      "sourceEvidence": "Upstream attribution has no exact per-file origin"
+    },
+    {
+      "path": "vendor/video-shotcraft/bulk-runtime/template/public/audio/pop.mp3",
+      "bytes": 15239,
+      "sha256": "14AAD47518786EA2556B45F050FED2A301D521FF9DEDD46B73701B3CC3D54A2E",
+      "sourceUrl": null,
+      "sourceEvidence": "Upstream attribution has no exact per-file origin"
+    },
+    {
+      "path": "vendor/video-shotcraft/bulk-runtime/template/public/audio/riser-cine.mp3",
+      "bytes": 145112,
+      "sha256": "385340DF21A87DA878C23FA6BA1FDBE4059A4FD15D160BD45D20C9ECF7FAECFC",
+      "sourceUrl": null,
+      "sourceEvidence": "Upstream attribution has no exact per-file origin"
+    },
+    {
+      "path": "vendor/video-shotcraft/bulk-runtime/template/public/audio/sparkle.mp3",
+      "bytes": 143743,
+      "sha256": "C4EE1A64554BD413082173CD2045AACD5A65189A43C9D8F309530744E86098AD",
+      "sourceUrl": null,
+      "sourceEvidence": "Upstream attribution has no exact per-file origin"
+    },
+    {
+      "path": "vendor/video-shotcraft/bulk-runtime/template/public/audio/swoosh-quick.mp3",
+      "bytes": 27247,
+      "sha256": "5D8153579CFBD4EC23738494DFF8DEC95B3737981578222B793EFF9E3FDD4CA8",
+      "sourceUrl": "https://assets.mixkit.co/active_storage/sfx/166/166-preview.mp3",
+      "sourceEvidence": "Exact URL in attribution table"
+    },
+    {
+      "path": "vendor/video-shotcraft/bulk-runtime/template/public/audio/transition-snap.mp3",
+      "bytes": 19051,
+      "sha256": "9F7E4EDB094569F9CB40E8DBB987A5FC20926B30326A1A9D827236960980F070",
+      "sourceUrl": "https://assets.mixkit.co/active_storage/sfx/3115/3115-preview.mp3",
+      "sourceEvidence": "Exact URL in attribution table"
+    },
+    {
+      "path": "vendor/video-shotcraft/bulk-runtime/template/public/audio/transition-soft.mp3",
+      "bytes": 41082,
+      "sha256": "0E25921648C66E30924892EE17110AE621243DE770B2944496526845A15A9998",
+      "sourceUrl": "https://assets.mixkit.co/active_storage/sfx/2608/2608-preview.mp3",
+      "sourceEvidence": "Exact URL in attribution table"
+    },
+    {
+      "path": "vendor/video-shotcraft/bulk-runtime/template/public/audio/whoosh-big.mp3",
+      "bytes": 71724,
+      "sha256": "8AF9843A636D3B4961F0C8B3545A21E674BD43D59F97D5C38D3F9A3F04674FD2",
+      "sourceUrl": null,
+      "sourceEvidence": "Upstream attribution has no exact per-file origin"
+    },
+    {
+      "path": "vendor/video-shotcraft/bulk-runtime/template/public/audio/whoosh-fast.mp3",
+      "bytes": 57624,
+      "sha256": "B88FD5D484251930EFD6ECA78C4340339908EA29D1E69BD24FB5191A10DA4F78",
+      "sourceUrl": "https://assets.mixkit.co/active_storage/sfx/1490/1490-preview.mp3",
+      "sourceEvidence": "Exact URL in attribution table"
+    },
+    {
+      "path": "vendor/video-shotcraft/runtime/template/public/audio/click-camera.mp3",
+      "bytes": 14406,
+      "sha256": "042D01DB7A4A0C492C580C0D3D64460C0CEB8638F0C6419D0E4B7A9BA2AC8EED",
+      "sourceUrl": "https://assets.mixkit.co/active_storage/sfx/1133/1133-preview.mp3",
+      "sourceEvidence": "Exact URL in attribution table"
+    },
+    {
+      "path": "vendor/video-shotcraft/runtime/template/public/audio/impact-cine.mp3",
+      "bytes": 115904,
+      "sha256": "9854BFF8A78FCEBEF95350FF0EC72A41BA449AB372BBD601B55D84DE13BD626D",
+      "sourceUrl": "https://assets.mixkit.co/active_storage/sfx/1143/1143-preview.mp3",
+      "sourceEvidence": "Attribution narrative claims byte-identical to impact-deep-whoosh.mp3; this audit did not fetch remote bytes"
+    },
+    {
+      "path": "vendor/video-shotcraft/runtime/template/public/audio/keyboard.mp3",
+      "bytes": 513831,
+      "sha256": "152F78C3BFF50CF018654A66E5DE0260BDBAD45D87AF6051725FA479C517BDF9",
+      "sourceUrl": null,
+      "sourceEvidence": "Upstream attribution has no exact per-file origin"
+    },
+    {
+      "path": "vendor/video-shotcraft/runtime/template/public/audio/pop.mp3",
+      "bytes": 15239,
+      "sha256": "14AAD47518786EA2556B45F050FED2A301D521FF9DEDD46B73701B3CC3D54A2E",
+      "sourceUrl": null,
+      "sourceEvidence": "Upstream attribution has no exact per-file origin"
+    },
+    {
+      "path": "vendor/video-shotcraft/runtime/template/public/audio/riser-cine.mp3",
+      "bytes": 145112,
+      "sha256": "385340DF21A87DA878C23FA6BA1FDBE4059A4FD15D160BD45D20C9ECF7FAECFC",
+      "sourceUrl": null,
+      "sourceEvidence": "Upstream attribution has no exact per-file origin"
+    },
+    {
+      "path": "vendor/video-shotcraft/runtime/template/public/audio/sparkle.mp3",
+      "bytes": 143743,
+      "sha256": "C4EE1A64554BD413082173CD2045AACD5A65189A43C9D8F309530744E86098AD",
+      "sourceUrl": null,
+      "sourceEvidence": "Upstream attribution has no exact per-file origin"
+    },
+    {
+      "path": "vendor/video-shotcraft/runtime/template/public/audio/swoosh-quick.mp3",
+      "bytes": 27247,
+      "sha256": "5D8153579CFBD4EC23738494DFF8DEC95B3737981578222B793EFF9E3FDD4CA8",
+      "sourceUrl": "https://assets.mixkit.co/active_storage/sfx/166/166-preview.mp3",
+      "sourceEvidence": "Exact URL in attribution table"
+    },
+    {
+      "path": "vendor/video-shotcraft/runtime/template/public/audio/transition-snap.mp3",
+      "bytes": 19051,
+      "sha256": "9F7E4EDB094569F9CB40E8DBB987A5FC20926B30326A1A9D827236960980F070",
+      "sourceUrl": "https://assets.mixkit.co/active_storage/sfx/3115/3115-preview.mp3",
+      "sourceEvidence": "Exact URL in attribution table"
+    },
+    {
+      "path": "vendor/video-shotcraft/runtime/template/public/audio/transition-soft.mp3",
+      "bytes": 41082,
+      "sha256": "0E25921648C66E30924892EE17110AE621243DE770B2944496526845A15A9998",
+      "sourceUrl": "https://assets.mixkit.co/active_storage/sfx/2608/2608-preview.mp3",
+      "sourceEvidence": "Exact URL in attribution table"
+    },
+    {
+      "path": "vendor/video-shotcraft/runtime/template/public/audio/whoosh-big.mp3",
+      "bytes": 71724,
+      "sha256": "8AF9843A636D3B4961F0C8B3545A21E674BD43D59F97D5C38D3F9A3F04674FD2",
+      "sourceUrl": null,
+      "sourceEvidence": "Upstream attribution has no exact per-file origin"
+    },
+    {
+      "path": "vendor/video-shotcraft/runtime/template/public/audio/whoosh-fast.mp3",
+      "bytes": 57624,
+      "sha256": "B88FD5D484251930EFD6ECA78C4340339908EA29D1E69BD24FB5191A10DA4F78",
+      "sourceUrl": "https://assets.mixkit.co/active_storage/sfx/1490/1490-preview.mp3",
+      "sourceEvidence": "Exact URL in attribution table"
+    },
+    {
+      "path": "vendor/video-shotcraft/upstream/template/public/audio/click-camera.mp3",
+      "bytes": 14406,
+      "sha256": "042D01DB7A4A0C492C580C0D3D64460C0CEB8638F0C6419D0E4B7A9BA2AC8EED",
+      "sourceUrl": "https://assets.mixkit.co/active_storage/sfx/1133/1133-preview.mp3",
+      "sourceEvidence": "Exact URL in attribution table"
+    },
+    {
+      "path": "vendor/video-shotcraft/upstream/template/public/audio/impact-cine.mp3",
+      "bytes": 115904,
+      "sha256": "9854BFF8A78FCEBEF95350FF0EC72A41BA449AB372BBD601B55D84DE13BD626D",
+      "sourceUrl": "https://assets.mixkit.co/active_storage/sfx/1143/1143-preview.mp3",
+      "sourceEvidence": "Attribution narrative claims byte-identical to impact-deep-whoosh.mp3; this audit did not fetch remote bytes"
+    },
+    {
+      "path": "vendor/video-shotcraft/upstream/template/public/audio/keyboard.mp3",
+      "bytes": 513831,
+      "sha256": "152F78C3BFF50CF018654A66E5DE0260BDBAD45D87AF6051725FA479C517BDF9",
+      "sourceUrl": null,
+      "sourceEvidence": "Upstream attribution has no exact per-file origin"
+    },
+    {
+      "path": "vendor/video-shotcraft/upstream/template/public/audio/pop.mp3",
+      "bytes": 15239,
+      "sha256": "14AAD47518786EA2556B45F050FED2A301D521FF9DEDD46B73701B3CC3D54A2E",
+      "sourceUrl": null,
+      "sourceEvidence": "Upstream attribution has no exact per-file origin"
+    },
+    {
+      "path": "vendor/video-shotcraft/upstream/template/public/audio/riser-cine.mp3",
+      "bytes": 145112,
+      "sha256": "385340DF21A87DA878C23FA6BA1FDBE4059A4FD15D160BD45D20C9ECF7FAECFC",
+      "sourceUrl": null,
+      "sourceEvidence": "Upstream attribution has no exact per-file origin"
+    },
+    {
+      "path": "vendor/video-shotcraft/upstream/template/public/audio/sparkle.mp3",
+      "bytes": 143743,
+      "sha256": "C4EE1A64554BD413082173CD2045AACD5A65189A43C9D8F309530744E86098AD",
+      "sourceUrl": null,
+      "sourceEvidence": "Upstream attribution has no exact per-file origin"
+    },
+    {
+      "path": "vendor/video-shotcraft/upstream/template/public/audio/swoosh-quick.mp3",
+      "bytes": 27247,
+      "sha256": "5D8153579CFBD4EC23738494DFF8DEC95B3737981578222B793EFF9E3FDD4CA8",
+      "sourceUrl": "https://assets.mixkit.co/active_storage/sfx/166/166-preview.mp3",
+      "sourceEvidence": "Exact URL in attribution table"
+    },
+    {
+      "path": "vendor/video-shotcraft/upstream/template/public/audio/transition-snap.mp3",
+      "bytes": 19051,
+      "sha256": "9F7E4EDB094569F9CB40E8DBB987A5FC20926B30326A1A9D827236960980F070",
+      "sourceUrl": "https://assets.mixkit.co/active_storage/sfx/3115/3115-preview.mp3",
+      "sourceEvidence": "Exact URL in attribution table"
+    },
+    {
+      "path": "vendor/video-shotcraft/upstream/template/public/audio/transition-soft.mp3",
+      "bytes": 41082,
+      "sha256": "0E25921648C66E30924892EE17110AE621243DE770B2944496526845A15A9998",
+      "sourceUrl": "https://assets.mixkit.co/active_storage/sfx/2608/2608-preview.mp3",
+      "sourceEvidence": "Exact URL in attribution table"
+    },
+    {
+      "path": "vendor/video-shotcraft/upstream/template/public/audio/whoosh-big.mp3",
+      "bytes": 71724,
+      "sha256": "8AF9843A636D3B4961F0C8B3545A21E674BD43D59F97D5C38D3F9A3F04674FD2",
+      "sourceUrl": null,
+      "sourceEvidence": "Upstream attribution has no exact per-file origin"
+    },
+    {
+      "path": "vendor/video-shotcraft/upstream/template/public/audio/whoosh-fast.mp3",
+      "bytes": 57624,
+      "sha256": "B88FD5D484251930EFD6ECA78C4340339908EA29D1E69BD24FB5191A10DA4F78",
+      "sourceUrl": "https://assets.mixkit.co/active_storage/sfx/1490/1490-preview.mp3",
+      "sourceEvidence": "Exact URL in attribution table"
+    }
+  ],
+  "retainedSyntheticAudio": {
+    "paths": [
+      "vendor/remotionui/assets/demo-loop.wav",
+      "vendor/remotionui/upstream/apps/web/public/media/demo-loop.wav"
+    ],
+    "provenance": "Pinned RemotionUI upstream source; SOURCE_MANIFEST describes synthetic demo waveform; upstream MIT repository has no separate asset restriction found in inspected records",
+    "decision": "Retain with upstream provenance; replace with real source audio for production per existing contract"
+  },
+  "omittedWebsiteVideos": [
+    {
+      "path": "vendor/remocn/upstream/remocn-8ae853e4c08108105684d4b8cac7f22400840d2a/public/not-found-dark.mp4",
+      "installedSceneReferenceFound": false,
+      "requiredForInstalledSources": false
+    },
+    {
+      "path": "vendor/remocn/upstream/remocn-8ae853e4c08108105684d4b8cac7f22400840d2a/public/not-found-light.mp4",
+      "installedSceneReferenceFound": false,
+      "requiredForInstalledSources": false
+    },
+    {
+      "path": "vendor/remotionui/upstream/apps/web/public/kine-launch-film.mp4",
+      "installedSceneReferenceFound": false,
+      "requiredForInstalledSources": false
+    },
+    {
+      "path": "vendor/remotionui/upstream/apps/web/public/launch-film/demo-after.mp4",
+      "installedSceneReferenceFound": false,
+      "requiredForInstalledSources": false
+    },
+    {
+      "path": "vendor/remotionui/upstream/apps/web/public/showcase/remotionui-launch.mp4",
+      "installedSceneReferenceFound": false,
+      "requiredForInstalledSources": false
+    },
+    {
+      "path": "vendor/remotionui/upstream/apps/web/public/showcase/supabase-demo.mp4",
+      "installedSceneReferenceFound": false,
+      "requiredForInstalledSources": false
+    }
+  ],
+  "publicationAdapter": {
+    "files": [
+      "scripts/lib/source-inputs.ts",
+      "vendor/video-shotcraft/runtime/template/src/aifl/Main.tsx",
+      "vendor/video-shotcraft/bulk-runtime/template/src/aifl/Main.tsx"
+    ],
+    "behavior": "Muted films do not mount template SFX Audio. prepareSourceAssets skips only the unused Shotcraft template SFX folder for muted films and visual-only template subscenes; manifest records each skip. User-supplied audio is not skipped. Unmuted films still require their audio files.",
+    "unchanged": "Original voice mux, timing, cameras, geometry, transitions and upstream source text remain unchanged."
+  },
+  "optionalAudioRestoration": "Obtain your own appropriate license and provide local files; exact known source URLs and original SHA256 values are listed for verification. Items with no source URL have no verified acquisition location. Restoring media does not grant public redistribution rights.",
+  "runtimeClaim": "Host tests/typecheck/static bundle only; no new rendered-video acceptance is claimed."
+}

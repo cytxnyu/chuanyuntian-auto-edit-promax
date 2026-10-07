@@ -1,0 +1,250 @@
+{
+  "status": "passed",
+  "remotion": "4.0.507",
+  "internalSynthetic": true,
+  "results": [
+    {
+      "id": "remocn/release-teaser",
+      "revision": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+      "sourceFingerprint": "aae608ea652b8cb47ab4a693e26aec406ab037558a248e81730f6bcdbaa31b44",
+      "native": {
+        "fps": 59.94005994005994,
+        "frames": 960,
+        "width": 1920,
+        "height": 1080
+      },
+      "frames": [
+        172,
+        518,
+        825
+      ],
+      "hashes": [
+        "cab9aaa00e0c4015c9405efc214d9f8c2d6e337d7bfd25f6d10fa7a9de0f35b2",
+        "e05efa5d12a9f37480b33a4b26e21e614b368e9604249f30cee5fa557375f90f",
+        "afd986621f898e8f1de1de9ab8238cfc0d8507572540979d06ccafb480e2a209"
+      ],
+      "nativeEmbeddedParity": true,
+      "mainPipelineParity": true,
+      "repeatSeek": true,
+      "renderedFullTimeline": true,
+      "fullDecodeExit": 0,
+      "videoSha256": "685a6fb3bc57f548dca403e9eb8f559230a14575b35f3873664fa9578fc8afb9"
+    },
+    {
+      "id": "remocn/fomo-limit-orders",
+      "revision": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+      "sourceFingerprint": "aae608ea652b8cb47ab4a693e26aec406ab037558a248e81730f6bcdbaa31b44",
+      "native": {
+        "fps": 60,
+        "frames": 1108,
+        "width": 1920,
+        "height": 1080
+      },
+      "frames": [
+        199,
+        598,
+        952
+      ],
+      "hashes": [
+        "096bef2f5df341fd658e3a4d46547b453a9a22b709e46069b6e15fe6d925703e",
+        "c3c801969956f16da0aa27367efab5473c50f8be5c0848e652a4e22bd8b79fe7",
+        "04f8ebdfaebc1f819a56c43b61745b6f14e6bd911546204b7264d1cc1c8f4a9d"
+      ],
+      "nativeEmbeddedParity": true,
+      "mainPipelineParity": true,
+      "repeatSeek": true,
+      "renderedFullTimeline": true,
+      "fullDecodeExit": 0,
+      "videoSha256": "424471f04964e9a12743b515fda3176ba0d2f82121c98d42280e2505d8aadbfa"
+    },
+    {
+      "id": "remotionui/title-card",
+      "revision": "b7e0e6becc3d22b8b03dfef72c064f72ff9fad1f",
+      "sourceFingerprint": "05e4cb967cb484a077fad6005df6701b55d08f65448cfd63e5431003b03eacf8",
+      "native": {
+        "fps": 30,
+        "frames": 90,
+        "width": 960,
+        "height": 540
+      },
+      "frames": [
+        16,
+        48,
+        77
+      ],
+      "hashes": [
+        "d4b864497c9405c644a71338f00da3f1aa86a5ff12de4cc3d3a20e0d8c1da4b4",
+        "3e1e55201c3dcc145c23047d9b0176233043156269889dedda52144a0b2b8724",
+        "49d76bdf8a168ee88d818e6b56a575ff7a170a6a25992c21ac7c73a7fb7ee5bf"
+      ],
+      "nativeEmbeddedParity": true,
+      "mainPipelineParity": true,
+      "repeatSeek": true,
+      "renderedFullTimeline": true,
+      "fullDecodeExit": 0,
+      "videoSha256": "944d92e35d2cfb86ffbe86a9ae0cb2c82603d855f13d9209b55c3ca7add9917e"
+    },
+    {
+      "id": "remotionui/quote-card",
+      "revision": "b7e0e6becc3d22b8b03dfef72c064f72ff9fad1f",
+      "sourceFingerprint": "05e4cb967cb484a077fad6005df6701b55d08f65448cfd63e5431003b03eacf8",
+      "native": {
+        "fps": 30,
+        "frames": 113,
+        "width": 960,
+        "height": 540
+      },
+      "frames": [
+        20,
+        61,
+        97
+      ],
+      "hashes": [
+        "38d9d1a01f43056955fcf7cbb6be8bbb416336cb2d77f9666fcc2965edb85fd5",
+        "e91e7f98cbb15a8b6f5e2ae05e59d787e02af23bf570b563f9b22e9131f5d7ad",
+        "40bedaa3b7b6badecb80c0201ad2479398cee5795aea9701e60673bf37bf0c3f"
+      ],
+      "nativeEmbeddedParity": true,
+      "mainPipelineParity": true,
+      "repeatSeek": true,
+      "renderedFullTimeline": true,
+      "fullDecodeExit": 0,
+      "videoSha256": "bf347f0a2e78e80cf49799d39f119f25444a369910f7f471bab5d3f2a0ff5bd4"
+    },
+    {
+      "id": "remotionui/social-clip",
+      "revision": "b7e0e6becc3d22b8b03dfef72c064f72ff9fad1f",
+      "sourceFingerprint": "5068fea51326ae0bdda4e6cabe3156ab4b52108b4ecf89d3ff44a9d5c3893381",
+      "native": {
+        "fps": 30,
+        "frames": 216,
+        "width": 1080,
+        "height": 1920
+      },
+      "frames": [
+        38,
+        116,
+        185
+      ],
+      "hashes": [
+        "88a73db36cb31f0f9fa8616b631d638ace126d1a9c6315b93ffaa5dfcf37a9eb",
+        "1a1fdbefe1427a1a73cd350391c07c15e0b17a99bd4932effd839c1b6a1aef51",
+        "df270d1e4b68bd70bd19e3c3792dcc41602ab7281c4c0f5dd2a401befe764f29"
+      ],
+      "nativeEmbeddedParity": true,
+      "mainPipelineParity": true,
+      "repeatSeek": true,
+      "renderedFullTimeline": true,
+      "fullDecodeExit": 0,
+      "videoSha256": "cf34f3b275922552b3e8f4e2c33170551a45ff966b8f103b1d1a085401c7dc40"
+    },
+    {
+      "id": "video-shotcraft/basic-3d-scene",
+      "revision": "5ddbf521038b0a7accfb6dc1e0a9eb29c67277ab",
+      "sourceFingerprint": "480e05bd799a534e10e5541016b98e96ca8507a94dd3b0cf1603c49941bdf8ce",
+      "native": {
+        "fps": 30,
+        "frames": 180,
+        "width": 1920,
+        "height": 1080
+      },
+      "frames": [
+        32,
+        97,
+        154
+      ],
+      "hashes": [
+        "1a3abf5ee6887cf3b113592d25112ccc6676e98cdf3542d74f117ba284ad9661",
+        "aeb62dda9c45dafb47750853acf17a240884a00eea92060125a440cef51c730c",
+        "22aed562e1136edc9db25921131da0da01a7773237def18811edc7e0ecec29ae"
+      ],
+      "nativeEmbeddedParity": true,
+      "mainPipelineParity": true,
+      "repeatSeek": true,
+      "renderedFullTimeline": true,
+      "fullDecodeExit": 0,
+      "videoSha256": "014e37b8e11ead7f22512232440874e629fc1f26abe29b3a3be9daba6d6abeee"
+    },
+    {
+      "id": "video-shotcraft/terminal-3d",
+      "revision": "5ddbf521038b0a7accfb6dc1e0a9eb29c67277ab",
+      "sourceFingerprint": "480e05bd799a534e10e5541016b98e96ca8507a94dd3b0cf1603c49941bdf8ce",
+      "native": {
+        "fps": 30,
+        "frames": 180,
+        "width": 1920,
+        "height": 1080
+      },
+      "frames": [
+        32,
+        97,
+        154
+      ],
+      "hashes": [
+        "157541942a8de9cd09d8396349c482ec99131bf216e129e5243e29fd4dde1145",
+        "431c9351e671f9e88c4361d6dd361e56c5e84032ca03a7666f7ba8c500ade165",
+        "e1b2ba54855402a862628e63d0c8db27df1c242cf129e5bc5908d4c1dc348876"
+      ],
+      "nativeEmbeddedParity": true,
+      "mainPipelineParity": true,
+      "repeatSeek": true,
+      "renderedFullTimeline": true,
+      "fullDecodeExit": 0,
+      "videoSha256": "5dcdf0053f1d9ca2fcbd559d7b675dc6831e372dbaeaf8fe4b34fc6eb796fcbc"
+    },
+    {
+      "id": "video-shotcraft/ink-press",
+      "revision": "5ddbf521038b0a7accfb6dc1e0a9eb29c67277ab",
+      "sourceFingerprint": "20b3b6a111714f0113a945d48faeb13b04b5b0d04db9991fd876c54c717e1b22",
+      "native": {
+        "fps": 30,
+        "frames": 1085,
+        "width": 1920,
+        "height": 1080
+      },
+      "frames": [
+        195,
+        585,
+        933
+      ],
+      "hashes": [
+        "3fb9090f8c1e03bd17d177e42c65a4af9de2f01ffc74636c769f65f47869b9cc",
+        "a748db9bb6c811476394e9afea7c0ce512f6f4c391a8d0aa73cbc126c726b7e7",
+        "19a5c087e615774d0ce4c7ee00c8a4d82cd1a34ba594c54c968efeec50fe2253"
+      ],
+      "nativeEmbeddedParity": true,
+      "mainPipelineParity": true,
+      "repeatSeek": true,
+      "renderedFullTimeline": true,
+      "fullDecodeExit": 0,
+      "videoSha256": "74e26e9271d6ef4da6cdda38684a1fd307ab9448f60f2969f7f2aa69b9d4cf9e"
+    },
+    {
+      "id": "video-shotcraft/ink-press-outro",
+      "revision": "5ddbf521038b0a7accfb6dc1e0a9eb29c67277ab",
+      "sourceFingerprint": "20b3b6a111714f0113a945d48faeb13b04b5b0d04db9991fd876c54c717e1b22",
+      "native": {
+        "fps": 30,
+        "frames": 145,
+        "width": 1920,
+        "height": 1080
+      },
+      "frames": [
+        26,
+        78,
+        124
+      ],
+      "hashes": [
+        "918a7f14e32fdc23506db93b5985a6f632dc16ddb85824f8b8b48ff024a02bdb",
+        "adb813b6f158d60341c7decb4c96dcb0c7baaff83e1665795c1fee9d39e33fb0",
+        "0f5ea2abd5fcc94e388bc44d91cea8e9754a83cccb5a6544914e22ca4b67ee4d"
+      ],
+      "nativeEmbeddedParity": true,
+      "mainPipelineParity": true,
+      "repeatSeek": true,
+      "renderedFullTimeline": true,
+      "fullDecodeExit": 0,
+      "videoSha256": "07c133060d41d5a37dfeb54de8ab40b280291d7e6be98bfbdc84e08791d3dbe1"
+    }
+  ]
+}

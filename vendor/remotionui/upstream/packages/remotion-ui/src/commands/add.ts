@@ -1,0 +1,214 @@
+import { execFileSync } from "node:child_process";
+import path from "node:path";
+import fs from "fs-extra";
+import semver from "semver";
+import { patchRootTsx } from "../remotion/composition-patch.js";
+import { fetchRegistryItem } from "../registry/fetch-item.js";
+import {
+  getConfig,
+  isCompositionItem,
+  resolveInstallPath,
+} from "../utils/get-config.js";
+import {
+  detectPackageManager,
+  getInstallCommand,
+} from "../utils/get-package-manager.js";
+import { preflightAdd } from "../preflights/preflight-add.js";
+import { writeFile } from "../utils/index.js";
+import { printStarPrompt } from "../utils/star-prompt.js";
+import { RemotionUiError, toErrorJson } from "../utils/errors.js";
+import { getInstalledRemotionVersion } from "../utils/get-installed-remotion-version.js";
+
+export type AddOptions = {
+  cwd?: string;
+  registryUrl?: string;
+  preset?: string;
+  yes?: boolean;
+  showStarPrompt?: boolean;
+  json?: boolean;
+  /** Print nothing on stdout: for callers that own it (e.g. `import-ae --json`). */
+  silent?: boolean;
+};
+
+export async function addCommand(
+  components: string[],
+  options: AddOptions = {},
+): Promise<void> {
+  const json = options.json ?? false;
+  const silent = options.silent ?? false;
+  const quiet = json || silent;
+
+  try {
+    const names = components;
+
+    if (names.length === 0) {
+      throw new RemotionUiError(
+        "INVALID_ARGS",
+        "Please specify at least one component to add.",
+      );
+    }
+
+    const cwd = path.resolve(options.cwd ?? process.cwd());
+    await preflightAdd(cwd);
+    const config = await getConfig(cwd);
+    const installed = new Set<string>();
+    const dependencies = new Set<string>();
+    const skipped = new Set<string>();
+    const installedRemotionVersion = await getInstalledRemotionVersion(cwd);
+
+    for (const name of names) {
+      await installComponent(name, {
+        cwd,
+        config,
+        registryUrl: options.registryUrl,
+        preset: options.preset ?? config.preset,
+        installed,
+        dependencies,
+        skipped,
+        overwrite: options.yes ?? false,
+        json: quiet,
+        installedRemotionVersion,
+      });
+    }
+
+    if (dependencies.size > 0) {
+      const pm = await detectPackageManager(cwd);
+      const { command, args } = getInstallCommand(pm, [...dependencies]);
+      if (!quiet) {
+        console.log(`Installing dependencies: ${[...dependencies].join(", ")}`);
+      }
+      execFileSync(command, args, {
+        cwd,
+        stdio: quiet ? "pipe" : "inherit",
+      });
+    }
+
+    if (silent) {
+      // The caller reports.
+    } else if (json) {
+      console.log(
+        JSON.stringify({
+          ok: true,
+          installed: [...installed],
+          dependencies: [...dependencies],
+          skipped: [...skipped],
+        }),
+      );
+    } else {
+      if (skipped.size > 0) {
+        console.log(
+          `\n⚠ Skipped ${skipped.size} file(s) with local changes:\n` +
+            [...skipped].map((file) => `  - ${file}`).join("\n") +
+            `\nRun with --yes to overwrite, or use "remotion-ui diff" to review first.`,
+        );
+      }
+
+      console.log(`\nAdded ${names.length} component(s) successfully.`);
+
+      if (options.showStarPrompt !== false) {
+        printStarPrompt();
+      }
+    }
+  } catch (error) {
+    if (json && !silent) {
+      console.log(JSON.stringify(toErrorJson(error)));
+    }
+    throw error;
+  }
+}
+
+async function installComponent(
+  name: string,
+  ctx: {
+    cwd: string;
+    config: Awaited<ReturnType<typeof getConfig>>;
+    registryUrl?: string;
+    preset: string;
+    installed: Set<string>;
+    dependencies: Set<string>;
+    skipped: Set<string>;
+    overwrite: boolean;
+    json: boolean;
+    installedRemotionVersion?: string;
+  },
+): Promise<void> {
+  if (ctx.installed.has(name)) {
+    return;
+  }
+
+  const item = await fetchRegistryItem(name, {
+    registryUrl: ctx.registryUrl,
+    preset: ctx.preset,
+  });
+
+  warnOnCompatMismatch(item, ctx.installedRemotionVersion);
+
+  for (const dep of item.registryDependencies ?? []) {
+    await installComponent(dep, ctx);
+  }
+
+  for (const file of item.files) {
+    if (!file.content) {
+      throw new RemotionUiError(
+        "REGISTRY_ITEM_INVALID",
+        `Registry item "${name}" is missing content for ${file.path}`,
+      );
+    }
+
+    const targetPath = resolveInstallPath(ctx.cwd, ctx.config, file);
+    const relativePath = path.relative(ctx.cwd, targetPath);
+
+    if (!ctx.overwrite && (await fs.pathExists(targetPath))) {
+      const existing = await fs.readFile(targetPath, "utf-8");
+      if (existing !== file.content) {
+        ctx.skipped.add(relativePath);
+        continue;
+      }
+    }
+
+    await writeFile(targetPath, file.content);
+    if (!ctx.json) {
+      console.log(`  ✓ ${relativePath}`);
+    }
+  }
+
+  if (item.composition && isCompositionItem(item.files)) {
+    const rootPath = path.resolve(ctx.cwd, ctx.config.remotion.root);
+    await patchRootTsx(
+      rootPath,
+      {
+        ...item.composition,
+        importPath: item.composition.importPath ?? `@/compositions/${name}/index`,
+      },
+      // In JSON mode stdout carries one JSON document and nothing else.
+      ctx.json ? { log: () => {} } : undefined,
+    );
+  }
+
+  for (const dep of item.dependencies ?? []) {
+    ctx.dependencies.add(dep);
+  }
+
+  ctx.installed.add(name);
+}
+
+function warnOnCompatMismatch(
+  item: { name: string; compat?: { remotion?: string } },
+  installedRemotionVersion: string | undefined,
+): void {
+  const range = item.compat?.remotion;
+  if (!range || !installedRemotionVersion) {
+    return;
+  }
+
+  const coerced = semver.coerce(installedRemotionVersion);
+  if (!coerced) {
+    return;
+  }
+
+  if (!semver.satisfies(coerced, range)) {
+    console.warn(
+      `  ⚠ "${item.name}" expects remotion ${range}, but ${installedRemotionVersion} is installed.`,
+    );
+  }
+}

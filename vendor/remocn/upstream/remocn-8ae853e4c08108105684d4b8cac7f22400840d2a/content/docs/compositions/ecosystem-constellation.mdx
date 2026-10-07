@@ -1,0 +1,92 @@
+---
+title: Ecosystem Constellation
+description: A central product logo orbited by integration satellites with pulsing data lines
+component: ecosystem-constellation
+vibe: tech
+length: 240
+useWhen:
+  - "The story is \"we plug into everything\" — one hub product ringed by the tools it connects to."
+  - "You want recognizable integration marks on screen without shipping any logo assets: GitHub, Vercel, Stripe, Slack, Linear, Figma, Notion and Discord are inline SVGs in the component."
+  - "The shot has to hold for a while — satellites assemble once on a staggered spring, then orbit and fire their connection lines one at a time indefinitely."
+avoidWhen:
+  - "You need your own integration logos; the eight marks are hardcoded in the file, so swapping them means editing the copied component."
+  - "You just want a set of brand chips to arrive and hold with no orbit; `logo-enter` springs a stacked group in one-by-one."
+---
+
+<ComponentPreview name="ecosystem-constellation" />
+
+<InstallBlock name="ecosystem-constellation" />
+
+## Usage
+
+```tsx
+// src/Root.tsx
+import { Composition } from "remotion";
+import { EcosystemConstellation } from "@/components/remocn/ecosystem-constellation";
+
+const EcosystemConstellationScene = () => (
+  <EcosystemConstellation
+    satelliteCount={6}
+    centerLabel="V"
+    accentColor="#a855f7"
+  />
+);
+
+export const RemotionRoot = () => (
+  <Composition
+    id="EcosystemConstellation"
+    component={EcosystemConstellationScene}
+    durationInFrames={240}
+    fps={30}
+    width={1280}
+    height={720}
+  />
+);
+```
+
+### With Backdrop
+
+Renders its scene transparent — supply the background via `Backdrop`:
+
+```tsx
+import { Backdrop } from "@/components/remocn/backdrop";
+import { EcosystemConstellation } from "@/components/remocn/ecosystem-constellation";
+
+<Backdrop fill={{ type: "gradient", value: "radial-gradient(ellipse at center, #14101e 0%, #05030a 75%)" }}>
+  <EcosystemConstellation satelliteCount={6} centerLabel="V" accentColor="#a855f7" />
+</Backdrop>
+```
+
+<PropsTable title="Props"
+  rows={[
+    {
+      name: "satelliteCount",
+      type: "number",
+      default: "6",
+      description: "Number of orbiting integration satellites (clamped to 3..8)",
+    },
+    {
+      name: "centerLabel",
+      type: "string",
+      default: '"V"',
+      description: "Single character or short label rendered inside the central hub",
+    },
+    {
+      name: "accentColor",
+      type: "string",
+      default: '"#a855f7"',
+      description: "Color of the hub, glow, and connection lines",
+    },
+    {
+      name: "speed",
+      type: "number",
+      default: "1",
+      description: "Time multiplier applied as frame × speed. Above 1 the satellites assemble and orbit sooner",
+    },
+    {
+      name: "className",
+      type: "string",
+      description: "Optional className for the outer container",
+    },
+  ]}
+/>

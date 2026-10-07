@@ -1,0 +1,112 @@
+name: Publish CLI
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "npm publish --dry-run (no upload)"
+        required: false
+        default: false
+        type: boolean
+      publish_cli:
+        description: "Publish remotion-ui (the CLI)"
+        required: false
+        default: true
+        type: boolean
+      publish_mcp:
+        description: "Also publish remotion-ui-mcp"
+        required: false
+        default: true
+        type: boolean
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: npm-publish
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      NPM_CONFIG_PROVENANCE: true
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+
+      # Trusted publishing (OIDC) needs npm >= 11.5.1; Node 22 ships npm 10.x.
+      - name: Upgrade npm for trusted publishing
+        run: npm install -g npm@latest
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Preflight publish prep (without dry-run upload)
+        run: |
+          VERSION="$(node -p "require('./packages/remotion-ui/package.json').version")"
+          awk -v ver="$VERSION" '
+            /^## / { if ($2 == ver) found=1 }
+            END { exit found ? 0 : 1 }
+          ' CHANGELOG.md
+          pnpm registry:build
+          node -e "
+            const count = require('./apps/web/public/r/index.json').items.length;
+            if (count < 100) {
+              console.error('Registry item count too low:', count);
+              process.exit(1);
+            }
+            console.log('Registry items:', count);
+          "
+
+      - name: Build CLI
+        if: inputs.publish_cli
+        run: pnpm --filter remotion-ui build
+
+      - name: Test CLI
+        if: inputs.publish_cli
+        run: pnpm --filter remotion-ui test
+
+      - name: Publish remotion-ui (dry run)
+        if: ${{ inputs.publish_cli && inputs.dry_run }}
+        working-directory: packages/remotion-ui
+        run: npm publish --access public --dry-run
+
+      - name: Publish remotion-ui
+        if: ${{ inputs.publish_cli && !inputs.dry_run }}
+        working-directory: packages/remotion-ui
+        run: npm publish --access public
+
+      - name: Verify published CLI version
+        if: ${{ inputs.publish_cli && !inputs.dry_run }}
+        run: npx --yes remotion-ui@latest --version
+
+      - name: Verify published registry search
+        if: ${{ inputs.publish_cli && !inputs.dry_run }}
+        run: npx --yes remotion-ui@latest search -q caption
+
+      - name: Build MCP server
+        if: inputs.publish_mcp
+        run: pnpm --filter remotion-ui-mcp build
+
+      - name: Test MCP server
+        if: inputs.publish_mcp
+        run: pnpm --filter remotion-ui-mcp test
+
+      - name: Publish remotion-ui-mcp (dry run)
+        if: ${{ inputs.publish_mcp && inputs.dry_run }}
+        working-directory: packages/remotion-ui-mcp
+        run: npm publish --access public --dry-run
+
+      - name: Publish remotion-ui-mcp
+        if: ${{ inputs.publish_mcp && !inputs.dry_run }}
+        working-directory: packages/remotion-ui-mcp
+        run: npm publish --access public
+
+      - name: Verify published MCP server version
+        if: ${{ inputs.publish_mcp && !inputs.dry_run }}
+        run: npm view remotion-ui-mcp@latest version

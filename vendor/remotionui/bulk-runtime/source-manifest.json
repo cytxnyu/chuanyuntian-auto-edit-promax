@@ -1,0 +1,2333 @@
+{
+  "repository": "https://github.com/riaz37/remotion-ui",
+  "revision": "b7e0e6becc3d22b8b03dfef72c064f72ff9fad1f",
+  "license": "MIT",
+  "files": [
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/assets/.gitkeep",
+      "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runtime": "vendor/remotionui/bulk-runtime/assets/.gitkeep",
+      "runtimeSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/compositions/.gitkeep",
+      "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runtime": "vendor/remotionui/bulk-runtime/compositions/.gitkeep",
+      "runtimeSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/compositions/ai-composer-showcase/index.tsx",
+      "sourceSha256": "bf154cd5e498500aa8553bf0f0882812bcbac42567700c0ea1862991cae1136f",
+      "runtime": "vendor/remotionui/bulk-runtime/compositions/ai-composer-showcase/index.tsx",
+      "runtimeSha256": "43eeae009b39f9fc2d4bf8086221c01b456f65564ed45413b17f30b8e1850306",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged.",
+        "Namespaced pinned static public assets to avoid collisions with other providers."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/compositions/ai-generation-canvas/index.tsx",
+      "sourceSha256": "57dd0fdc8fe021d752e6723bc6479f7f50a3e7dce1bfaf9fe2082cc2c7275a3b",
+      "runtime": "vendor/remotionui/bulk-runtime/compositions/ai-generation-canvas/index.tsx",
+      "runtimeSha256": "3958bdb9d09f00de11abfa8e651972a7cbd3efd7da86fdc34bba450903c0d141",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/compositions/bento-pan/index.tsx",
+      "sourceSha256": "a0685f28926c81fd4eeb06a13def0933696b4ff70e5f711667275bdbc22066db",
+      "runtime": "vendor/remotionui/bulk-runtime/compositions/bento-pan/index.tsx",
+      "runtimeSha256": "ccc7f925e768d8c17dd1fdec199b612f3e3e9e0cc5b6dea08d5411a0f07e7c19",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/compositions/browser-flow/index.tsx",
+      "sourceSha256": "a2eb5c3a5c2d3991ffd259a1d77d0ce9b1f32b9712b30ffdaa889d9e3cb1a4b0",
+      "runtime": "vendor/remotionui/bulk-runtime/compositions/browser-flow/index.tsx",
+      "runtimeSha256": "191e7468d257460a578810d71dd31bc85dd3ae59ea181d3c8de0e7930c2be112",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/compositions/creator-reel/index.tsx",
+      "sourceSha256": "9f298433fb6ef8431ed558c6e0f6b2d3ee387d405eb39047bf98070bada095fc",
+      "runtime": "vendor/remotionui/bulk-runtime/compositions/creator-reel/index.tsx",
+      "runtimeSha256": "e938e68692bb9679e53ff592e7a2c9f53faa773030aec5ee561634d93d6c058f",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/compositions/dashboard-populate/index.tsx",
+      "sourceSha256": "2aa23e09e382c6c9c7e66e8bbcbdd0c7e677bf8d5205a08d1d4022b16ba4ef72",
+      "runtime": "vendor/remotionui/bulk-runtime/compositions/dashboard-populate/index.tsx",
+      "runtimeSha256": "0098e065bb334529b2eb9135e380e2c773d56ac66eb9ba1dc3772022ea7e8fad",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/compositions/data-story/index.tsx",
+      "sourceSha256": "923bebffe8d34921bfb61330744651034bfcc90ce9e0a18f7ad467f1852a5023",
+      "runtime": "vendor/remotionui/bulk-runtime/compositions/data-story/index.tsx",
+      "runtimeSha256": "38eedf8f8b01a8eecb25fc56befd551d58e00a7d3fa746e1e5523bc5978779f3",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/compositions/deploy-reveal/index.tsx",
+      "sourceSha256": "5b65696114f043ad43ae9e7ad9ac3956a02cebec942f44dc908e92c54ffa0e95",
+      "runtime": "vendor/remotionui/bulk-runtime/compositions/deploy-reveal/index.tsx",
+      "runtimeSha256": "3450fe77a677097a9368d27208f49ca86b22cce8bf07a0c04ea2f42ea832156e",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/compositions/ecosystem-orbit/index.tsx",
+      "sourceSha256": "c2816bc5f97a24b97d4a300643b5eeac43ad54d4b29415d6ecab1fe31e326c8a",
+      "runtime": "vendor/remotionui/bulk-runtime/compositions/ecosystem-orbit/index.tsx",
+      "runtimeSha256": "ff9c9833886f6546b9f0e76b5aa8ebb0f84549ee09f1244d3782cbe16ee885f9",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/compositions/hero-device-assemble/index.tsx",
+      "sourceSha256": "19011014e7c069bc8edcafc8a915d21209347fcb75f99819050d77bd428f7746",
+      "runtime": "vendor/remotionui/bulk-runtime/compositions/hero-device-assemble/index.tsx",
+      "runtimeSha256": "3dace990cff89e2cb23f9e638747cb4a2a4a701512fe26dd4ee172f0b8f62397",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/compositions/hero-loop/index.tsx",
+      "sourceSha256": "8da24d978f95c73725376c2370c2db40ae5fb7bdc0f656a99a7bd14d86a6ad7b",
+      "runtime": "vendor/remotionui/bulk-runtime/compositions/hero-loop/index.tsx",
+      "runtimeSha256": "db02db22b46d5671a6e0458afe5d04e80b78c99051a3cb4729719ed62c9dc981",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/compositions/image-expand/index.tsx",
+      "sourceSha256": "011f7c09b4654bce4f8e28e2f972034213d8c2edc85c271a5b946ec7d36e523e",
+      "runtime": "vendor/remotionui/bulk-runtime/compositions/image-expand/index.tsx",
+      "runtimeSha256": "0a68e189bb22a75447cfd9f665dadb792ae8809808646860574116b5064e8344",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/compositions/intro/index.tsx",
+      "sourceSha256": "84b5aad71e39f256e0f3d25566f88e789e70c479978c116f8fbfff16f8e63ca4",
+      "runtime": "vendor/remotionui/bulk-runtime/compositions/intro/index.tsx",
+      "runtimeSha256": "d046695ddb8c80c2205f4ae2b1ea593c8ae439c13e2d5645c8dd4757581da13f",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/compositions/landing-code-showcase/index.tsx",
+      "sourceSha256": "4148cc61ebfa4896085b15f996840561715630271682e0b664de4dfbad48dc67",
+      "runtime": "vendor/remotionui/bulk-runtime/compositions/landing-code-showcase/index.tsx",
+      "runtimeSha256": "f772e592c462c600b3508ae4e5189b42b387d8d6f5c388c7dbac24474c75ef98",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/compositions/live-code-split/index.tsx",
+      "sourceSha256": "9e46fde76d9fa1201428ee899e9679ea7c3a346a874aec802440ef484c80c2b2",
+      "runtime": "vendor/remotionui/bulk-runtime/compositions/live-code-split/index.tsx",
+      "runtimeSha256": "0dd45491d6bc9f6f66d750e7fd47ca1d9fcba98112ec13e80fdd8c7eb8deefce",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/compositions/podcast-clip/index.tsx",
+      "sourceSha256": "a3cdf3ecb2cec99120b0d178bc7a7a8bf78606575b3ac02261724ab352a08486",
+      "runtime": "vendor/remotionui/bulk-runtime/compositions/podcast-clip/index.tsx",
+      "runtimeSha256": "c062b492b46cb8cdf8930be9f567d419d1e01bc3bc6fb00fd5ffe35f3d671a01",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/compositions/pricing-focus/index.tsx",
+      "sourceSha256": "fac0d259236eacc5614be79e85f5b67aa0507ab2b8592ab54b3635e7419aa2a4",
+      "runtime": "vendor/remotionui/bulk-runtime/compositions/pricing-focus/index.tsx",
+      "runtimeSha256": "9f0aed348c36b32f730d762f68365b2cdaa48cbd857a5f400d57b92af95c4c13",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/compositions/showcase/index.tsx",
+      "sourceSha256": "a096011eae06c38e157ab469201ba65decff5ca7dfc16f0cc6315f50754b92d8",
+      "runtime": "vendor/remotionui/bulk-runtime/compositions/showcase/index.tsx",
+      "runtimeSha256": "5b04a204c3267acc39fce8c45dc0f0910bf74c471c7d9211974f007c6fb8c506",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/compositions/social-clip/index.tsx",
+      "sourceSha256": "b342611c438424145abd6bf4683e2615f75181ba3ff233cca8f0bc7082029074",
+      "runtime": "vendor/remotionui/bulk-runtime/compositions/social-clip/index.tsx",
+      "runtimeSha256": "8f54d76e594b73dffed86f8ae36238ba85f597b483dc481563907e20208d8112",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/compositions/tool-menu-slide/index.tsx",
+      "sourceSha256": "bd89678b5bd59ccf1f85661978ab1e09b673a3264e0909b9b281287874c66dc2",
+      "runtime": "vendor/remotionui/bulk-runtime/compositions/tool-menu-slide/index.tsx",
+      "runtimeSha256": "55fefaa2845e3f733b50f18fd7ae4c2e560bfeeb290b66033c3a6bdd2e59b758",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/compositions/tutorial-clip/index.tsx",
+      "sourceSha256": "db8ee735c45354b768e6de7c834b178061d47d59eece5ab5fd3da1bfb9632f10",
+      "runtime": "vendor/remotionui/bulk-runtime/compositions/tutorial-clip/index.tsx",
+      "runtimeSha256": "ddcb3c0527416c597ab6468e9f6a517e26ad0dd6ecf706d48d90cea26b735a75",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/hooks/.gitkeep",
+      "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runtime": "vendor/remotionui/bulk-runtime/hooks/.gitkeep",
+      "runtimeSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/hooks/use-stagger.ts",
+      "sourceSha256": "c56c7b76d27544ed0402ac5af2429111ee62812fe46b3198658ae069001956ee",
+      "runtime": "vendor/remotionui/bulk-runtime/hooks/use-stagger.ts",
+      "runtimeSha256": "6f41afc1e48a327371fc25e32166bd409dbc183cdd3f3d9935a613059f1ebed8",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/internal/.gitkeep",
+      "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runtime": "vendor/remotionui/bulk-runtime/internal/.gitkeep",
+      "runtimeSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/lib/.gitkeep",
+      "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runtime": "vendor/remotionui/bulk-runtime/lib/.gitkeep",
+      "runtimeSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/lib/ae-import.tsx",
+      "sourceSha256": "cc011238ca4cb969a0f84be3e117f5c2a22f926fe22be2607c265c45809ae384",
+      "runtime": "vendor/remotionui/bulk-runtime/lib/ae-import.tsx",
+      "runtimeSha256": "cc011238ca4cb969a0f84be3e117f5c2a22f926fe22be2607c265c45809ae384",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/lib/ae-motion.ts",
+      "sourceSha256": "a36d5962e6b589668c95084c715e00c8f7e87fd4d9edc1b6b2a597e2c312ce9b",
+      "runtime": "vendor/remotionui/bulk-runtime/lib/ae-motion.ts",
+      "runtimeSha256": "a36d5962e6b589668c95084c715e00c8f7e87fd4d9edc1b6b2a597e2c312ce9b",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/lib/ai-composer-utils.tsx",
+      "sourceSha256": "dd4ad6b6d68c9cb5dc8cb9bb5cf84ca3a739094759f0711381fc7f6f61f8ac81",
+      "runtime": "vendor/remotionui/bulk-runtime/lib/ai-composer-utils.tsx",
+      "runtimeSha256": "dd4ad6b6d68c9cb5dc8cb9bb5cf84ca3a739094759f0711381fc7f6f61f8ac81",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/lib/audio-viz-utils.ts",
+      "sourceSha256": "604a4470d8c660f98993a21d7a7d1b8e02808bad19ae1298ec5d6a4baa6aa994",
+      "runtime": "vendor/remotionui/bulk-runtime/lib/audio-viz-utils.ts",
+      "runtimeSha256": "604a4470d8c660f98993a21d7a7d1b8e02808bad19ae1298ec5d6a4baa6aa994",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/lib/bezier-path.ts",
+      "sourceSha256": "859f340a7a8c5137e18bc727f9205b8e3f361cfdcf8c7bedecbd4a5c0fcfa6bb",
+      "runtime": "vendor/remotionui/bulk-runtime/lib/bezier-path.ts",
+      "runtimeSha256": "859f340a7a8c5137e18bc727f9205b8e3f361cfdcf8c7bedecbd4a5c0fcfa6bb",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/lib/caption-utils.ts",
+      "sourceSha256": "97083fc79339d3700c6309b01152a3801e00ac09f0843e9e1d0c6abc95bd11b5",
+      "runtime": "vendor/remotionui/bulk-runtime/lib/caption-utils.ts",
+      "runtimeSha256": "97083fc79339d3700c6309b01152a3801e00ac09f0843e9e1d0c6abc95bd11b5",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/lib/chart-utils.ts",
+      "sourceSha256": "9edebbb19ad20f344adb5f67f6e51f254b4aadf4dfed9f38dd299bdd76e46564",
+      "runtime": "vendor/remotionui/bulk-runtime/lib/chart-utils.ts",
+      "runtimeSha256": "9edebbb19ad20f344adb5f67f6e51f254b4aadf4dfed9f38dd299bdd76e46564",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/lib/code-syntax.tsx",
+      "sourceSha256": "498e9b91906fd47d844ed0f90a220d944e2bd876f9b2328f55dc356d7cfcd49c",
+      "runtime": "vendor/remotionui/bulk-runtime/lib/code-syntax.tsx",
+      "runtimeSha256": "498e9b91906fd47d844ed0f90a220d944e2bd876f9b2328f55dc356d7cfcd49c",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/lib/curve-fit.ts",
+      "sourceSha256": "1f221425deb68860d86265e5b6a33f5d8f7613c98b22380d0cd5a1ec49bf7d47",
+      "runtime": "vendor/remotionui/bulk-runtime/lib/curve-fit.ts",
+      "runtimeSha256": "1f221425deb68860d86265e5b6a33f5d8f7613c98b22380d0cd5a1ec49bf7d47",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/lib/displacement-presentation.tsx",
+      "sourceSha256": "a5582e52dacf7d0a3350094ca55fee9a1093ab60e4372286e059a926556d8258",
+      "runtime": "vendor/remotionui/bulk-runtime/lib/displacement-presentation.tsx",
+      "runtimeSha256": "a5582e52dacf7d0a3350094ca55fee9a1093ab60e4372286e059a926556d8258",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/lib/displacement-transition.ts",
+      "sourceSha256": "e7c3b513d3fd000dcbd6dda78430cfebd09c43ef82985388ac31a212dd8a079f",
+      "runtime": "vendor/remotionui/bulk-runtime/lib/displacement-transition.ts",
+      "runtimeSha256": "e7c3b513d3fd000dcbd6dda78430cfebd09c43ef82985388ac31a212dd8a079f",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/lib/follow.ts",
+      "sourceSha256": "8086463b58ffd0991dc37a85ffbbaa4841a9aa886031a9fbf3e5ba62d44a25da",
+      "runtime": "vendor/remotionui/bulk-runtime/lib/follow.ts",
+      "runtimeSha256": "8086463b58ffd0991dc37a85ffbbaa4841a9aa886031a9fbf3e5ba62d44a25da",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/lib/glyph-layout.ts",
+      "sourceSha256": "ecdd08410c518a20192d81117b9479e3d85d7440e71c4eeeedb5388748520f20",
+      "runtime": "vendor/remotionui/bulk-runtime/lib/glyph-layout.ts",
+      "runtimeSha256": "ecdd08410c518a20192d81117b9479e3d85d7440e71c4eeeedb5388748520f20",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/lib/gpu.ts",
+      "sourceSha256": "9aab9793e4b91a9af0b75a5bf1950ce964104951db1c99f486bc9837fb0bbcbf",
+      "runtime": "vendor/remotionui/bulk-runtime/lib/gpu.ts",
+      "runtimeSha256": "9aab9793e4b91a9af0b75a5bf1950ce964104951db1c99f486bc9837fb0bbcbf",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/lib/layout.ts",
+      "sourceSha256": "b6ff0e11d3efaa6b1fe7f56ad0f26878be48b550e27f64cbbd9df6bf7d7c23db",
+      "runtime": "vendor/remotionui/bulk-runtime/lib/layout.ts",
+      "runtimeSha256": "b6ff0e11d3efaa6b1fe7f56ad0f26878be48b550e27f64cbbd9df6bf7d7c23db",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/lib/lottie-geometry.ts",
+      "sourceSha256": "f802b1c13a1c29211897b12e3f378b648ba133d47a7931703f54738b56fb154c",
+      "runtime": "vendor/remotionui/bulk-runtime/lib/lottie-geometry.ts",
+      "runtimeSha256": "f802b1c13a1c29211897b12e3f378b648ba133d47a7931703f54738b56fb154c",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/lib/lottie-offset.ts",
+      "sourceSha256": "f57dea8cd0452a62e6e461bb52ea9f52c657c1e0da94273e1c8c84d7bf82fa56",
+      "runtime": "vendor/remotionui/bulk-runtime/lib/lottie-offset.ts",
+      "runtimeSha256": "f57dea8cd0452a62e6e461bb52ea9f52c657c1e0da94273e1c8c84d7bf82fa56",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/lib/lottie-paint.ts",
+      "sourceSha256": "6767f8e7609d40b462b0a7bf71072351818ba088d243881eb03c3db008be7df4",
+      "runtime": "vendor/remotionui/bulk-runtime/lib/lottie-paint.ts",
+      "runtimeSha256": "6767f8e7609d40b462b0a7bf71072351818ba088d243881eb03c3db008be7df4",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/lib/lottie-shapes.ts",
+      "sourceSha256": "323e78a43ad4a59bc6bdf5e9f59984120b3549b154e68ee912856d61bdeaed93",
+      "runtime": "vendor/remotionui/bulk-runtime/lib/lottie-shapes.ts",
+      "runtimeSha256": "323e78a43ad4a59bc6bdf5e9f59984120b3549b154e68ee912856d61bdeaed93",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/lib/map-utils.ts",
+      "sourceSha256": "21de51bca877e33ca8a5f2d5eaf95f95c4ab3a3cc9bf0c1cae0d6cbd00d3f125",
+      "runtime": "vendor/remotionui/bulk-runtime/lib/map-utils.ts",
+      "runtimeSha256": "21de51bca877e33ca8a5f2d5eaf95f95c4ab3a3cc9bf0c1cae0d6cbd00d3f125",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/lib/media-utils.ts",
+      "sourceSha256": "134ca5fe63d039af50ad10ad34865317699801057ad83d6024493477b7bca45a",
+      "runtime": "vendor/remotionui/bulk-runtime/lib/media-utils.ts",
+      "runtimeSha256": "134ca5fe63d039af50ad10ad34865317699801057ad83d6024493477b7bca45a",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/lib/mograph.ts",
+      "sourceSha256": "858251277065f47a317deea27a789da9b2b233a9c410d59a714b2647354437ec",
+      "runtime": "vendor/remotionui/bulk-runtime/lib/mograph.ts",
+      "runtimeSha256": "858251277065f47a317deea27a789da9b2b233a9c410d59a714b2647354437ec",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/lib/motion-primitive.ts",
+      "sourceSha256": "818599814c85fad343f7b26b1e409e12d7bc3bfc5ce1f161b92022d9c40054a6",
+      "runtime": "vendor/remotionui/bulk-runtime/lib/motion-primitive.ts",
+      "runtimeSha256": "818599814c85fad343f7b26b1e409e12d7bc3bfc5ce1f161b92022d9c40054a6",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/lib/motion-tokens.ts",
+      "sourceSha256": "19555333ac18d1ece8b32f8dc157c61e8664197fe2d20103741f0cad9cc1973d",
+      "runtime": "vendor/remotionui/bulk-runtime/lib/motion-tokens.ts",
+      "runtimeSha256": "19555333ac18d1ece8b32f8dc157c61e8664197fe2d20103741f0cad9cc1973d",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/lib/motion-wrapper.tsx",
+      "sourceSha256": "fe78b2b03d8f2e3e4bdcf649caa5c8abf9f8b0cbd062dafaf6a25f1e00a02299",
+      "runtime": "vendor/remotionui/bulk-runtime/lib/motion-wrapper.tsx",
+      "runtimeSha256": "fe78b2b03d8f2e3e4bdcf649caa5c8abf9f8b0cbd062dafaf6a25f1e00a02299",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/lib/paper-shader.tsx",
+      "sourceSha256": "8c952ef990b2c87b332761e302c9627f174781df478c2f01c1975e06d497c4e8",
+      "runtime": "vendor/remotionui/bulk-runtime/lib/paper-shader.tsx",
+      "runtimeSha256": "8c952ef990b2c87b332761e302c9627f174781df478c2f01c1975e06d497c4e8",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/lib/path-morph.ts",
+      "sourceSha256": "cce3e9cf2dfda560d166041f58cdcafbba93cd17a6b8f443b74b26cdd29b8b3d",
+      "runtime": "vendor/remotionui/bulk-runtime/lib/path-morph.ts",
+      "runtimeSha256": "cce3e9cf2dfda560d166041f58cdcafbba93cd17a6b8f443b74b26cdd29b8b3d",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/lib/path-utils.ts",
+      "sourceSha256": "511a0a7c068da7056a97cdbc3f59569f2f3e7b5417850a506668cb9e16b6b10e",
+      "runtime": "vendor/remotionui/bulk-runtime/lib/path-utils.ts",
+      "runtimeSha256": "511a0a7c068da7056a97cdbc3f59569f2f3e7b5417850a506668cb9e16b6b10e",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/lib/pen-plot.ts",
+      "sourceSha256": "f7da42a2aabfb696e7a905d381f5be653d81449ce5f0b029adb4c96139bfc2a2",
+      "runtime": "vendor/remotionui/bulk-runtime/lib/pen-plot.ts",
+      "runtimeSha256": "f7da42a2aabfb696e7a905d381f5be653d81449ce5f0b029adb4c96139bfc2a2",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/lib/rig.ts",
+      "sourceSha256": "95da28e4e7ee030ff094f25903c585fb8e26a8c0f532553b51a64f07210de088",
+      "runtime": "vendor/remotionui/bulk-runtime/lib/rig.ts",
+      "runtimeSha256": "95da28e4e7ee030ff094f25903c585fb8e26a8c0f532553b51a64f07210de088",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/lib/sample-media.ts",
+      "sourceSha256": "6bd84ce3366f9e7822cc14b71e72df14bcc4dddadffe52821d596376db1f5789",
+      "runtime": "vendor/remotionui/bulk-runtime/lib/sample-media.ts",
+      "runtimeSha256": "b0b40b318061b07986d3fed965ca43610237123cbdc56e3ad026b2a853f51a35",
+      "adaptations": [
+        "Upstream demo waveform URL resolves to the identical pinned local media file."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/lib/shape-ops.ts",
+      "sourceSha256": "acc2738f1eac17ca379f62ae05c4feb4fc9f6928026fb6469e4831eb94d9fdfa",
+      "runtime": "vendor/remotionui/bulk-runtime/lib/shape-ops.ts",
+      "runtimeSha256": "acc2738f1eac17ca379f62ae05c4feb4fc9f6928026fb6469e4831eb94d9fdfa",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/lib/slit-geometry.ts",
+      "sourceSha256": "198627c4eb94816bad64ea9e87ed1849892d12fce542fdc0d9621ab3e8bc6e04",
+      "runtime": "vendor/remotionui/bulk-runtime/lib/slit-geometry.ts",
+      "runtimeSha256": "198627c4eb94816bad64ea9e87ed1849892d12fce542fdc0d9621ab3e8bc6e04",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/lib/springs.ts",
+      "sourceSha256": "3ce3730eac4deff575398fb22b231c4d26805f223d4539f61f8c1abc1f0a7e87",
+      "runtime": "vendor/remotionui/bulk-runtime/lib/springs.ts",
+      "runtimeSha256": "3ce3730eac4deff575398fb22b231c4d26805f223d4539f61f8c1abc1f0a7e87",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/lib/text-emphasis.ts",
+      "sourceSha256": "e977cf66d8111c1cd500ea0a726e0a7a9a3f218e264827059e72d94966664d57",
+      "runtime": "vendor/remotionui/bulk-runtime/lib/text-emphasis.ts",
+      "runtimeSha256": "e977cf66d8111c1cd500ea0a726e0a7a9a3f218e264827059e72d94966664d57",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/lib/text-fit-utils.ts",
+      "sourceSha256": "863677e3538050c3bb3c1222b3422ec6f2ca91ae415830dc67ab4fdecb3df704",
+      "runtime": "vendor/remotionui/bulk-runtime/lib/text-fit-utils.ts",
+      "runtimeSha256": "863677e3538050c3bb3c1222b3422ec6f2ca91ae415830dc67ab4fdecb3df704",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/lib/text-selectors.ts",
+      "sourceSha256": "124bf048c3efa943cd3220b777008c901cb1b123cdb3a9eca11de2b43290d838",
+      "runtime": "vendor/remotionui/bulk-runtime/lib/text-selectors.ts",
+      "runtimeSha256": "124bf048c3efa943cd3220b777008c901cb1b123cdb3a9eca11de2b43290d838",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/lib/text-split.ts",
+      "sourceSha256": "aa0d3c684c8b1620111793628a42844679d5586393b26f3ec6abd00b6b6ebd24",
+      "runtime": "vendor/remotionui/bulk-runtime/lib/text-split.ts",
+      "runtimeSha256": "aa0d3c684c8b1620111793628a42844679d5586393b26f3ec6abd00b6b6ebd24",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/lib/timing.ts",
+      "sourceSha256": "44a429f1b845023217cf643cfcd23965f89ef43f66e6d376a8368b81282e5ebb",
+      "runtime": "vendor/remotionui/bulk-runtime/lib/timing.ts",
+      "runtimeSha256": "44a429f1b845023217cf643cfcd23965f89ef43f66e6d376a8368b81282e5ebb",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/lib/transition-timing.ts",
+      "sourceSha256": "ea6e0553607d7572f92d41d387ac25401f61370d819b0ed628cc74c5067c7d71",
+      "runtime": "vendor/remotionui/bulk-runtime/lib/transition-timing.ts",
+      "runtimeSha256": "ea6e0553607d7572f92d41d387ac25401f61370d819b0ed628cc74c5067c7d71",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/.gitkeep",
+      "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/.gitkeep",
+      "runtimeSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/animated-noise-grain.tsx",
+      "sourceSha256": "745c480d827efff33524b759d7409c04c37927f07bd7e531f92282808cc0b7ea",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/animated-noise-grain.tsx",
+      "runtimeSha256": "745c480d827efff33524b759d7409c04c37927f07bd7e531f92282808cc0b7ea",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/arrow-annotate.tsx",
+      "sourceSha256": "4ff0f2b2315aef4207397b8b49e87d9302f22c554f8b1c12aa7da5d15916ddee",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/arrow-annotate.tsx",
+      "runtimeSha256": "591c7a08b26ec26e7c3f2787ecfd96d7d104a7dae919ba2b42cfcd837cb8fe29",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/audio-pulse.tsx",
+      "sourceSha256": "dba2122b7ba7804515b9c7f484299b38132045d1e1039c1d64592a8b34874684",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/audio-pulse.tsx",
+      "runtimeSha256": "a176ee7e262e6063e3be0fdc4729e3338a201956693e2de53f50849bf0aa52d7",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/audio-reactive-scale.tsx",
+      "sourceSha256": "3350b8efcbf50a6d89f200d514fa16114b56626becebee2cd57589dc2dc1f0f9",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/audio-reactive-scale.tsx",
+      "runtimeSha256": "cae2385706a9842185b10cf1b48c258a9aefd8e9015b69ac00fac45818e88230",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/audio-scrubber.tsx",
+      "sourceSha256": "61aa2b35af344f7c3595bf5ccac0fbeb267381334d14e99649d16642f70b6047",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/audio-scrubber.tsx",
+      "runtimeSha256": "61aa2b35af344f7c3595bf5ccac0fbeb267381334d14e99649d16642f70b6047",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/audiogram-bars.tsx",
+      "sourceSha256": "99f31bc6e21c7a9cafb2cb490f239216a4a568d83e057b3077e939be139238e0",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/audiogram-bars.tsx",
+      "runtimeSha256": "3039a018073173c50f95e625fba5f8858d3ebc6805b46cc8d2373195055e00a6",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/aurora-bg.tsx",
+      "sourceSha256": "93679245fdae9776d3002b3f3cbac8065da87d9414050ac0e1203a025538d816",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/aurora-bg.tsx",
+      "runtimeSha256": "93679245fdae9776d3002b3f3cbac8065da87d9414050ac0e1203a025538d816",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/badge-stamp.tsx",
+      "sourceSha256": "ab772df7844d3506ae9dab0297e717591fb6e7c7f1486d3bf05e8c61fd690907",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/badge-stamp.tsx",
+      "runtimeSha256": "f55ce2edbcd1da3e794a0a56575b50d4128453f7810b74c1cba57856708a4e21",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/bar-chart-race.tsx",
+      "sourceSha256": "268700c7f332073f5e6b37a7a49d68ba8d3696d2be52f2e7687835fb4f9cdb54",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/bar-chart-race.tsx",
+      "runtimeSha256": "4c69c6e41e52f1218bf34fbee96670ddf19f5e2917768cdf21155027e1fa4309",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/beat-pulse-grid.tsx",
+      "sourceSha256": "5db828ebd1c1198ecf4aaf6ea50e99fbf3b02632449495fa7d3b76a0d4123b44",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/beat-pulse-grid.tsx",
+      "runtimeSha256": "5db7cac127da99bf182fe6b40abf3b93688f0bce96570a31fe666f4ca2d3dbd2",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/blob-morph.tsx",
+      "sourceSha256": "274ef3c8b6d300c8263a700ae29922ccb35b14204da6a9180e980298b387b352",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/blob-morph.tsx",
+      "runtimeSha256": "8ee5d9a8d4ae67d9399d8cf84b8e1f23db52d2f2e4178745cd58fceb1b5d0972",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/blur-focus-in.tsx",
+      "sourceSha256": "87b903772e43bca7c0b18e2bd400a2a194f00eb47738792945ba09a00fabc555",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/blur-focus-in.tsx",
+      "runtimeSha256": "981376c1387412a2deae8d5c20bde989ea8448e975efd49935f786e6734ef787",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/blur-in.tsx",
+      "sourceSha256": "ccbaf34c2d4748d29aefe245d666271c16f0a570d4b0602ae842d4e9ae5d53b1",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/blur-in.tsx",
+      "runtimeSha256": "b9a9b7536c2b265462067f956e3e2e470468a5a36f4e2f3864ba9eb2352ae4bb",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/blur-reveal.tsx",
+      "sourceSha256": "4a9dd9a023c0e380297b6c1ad64ee1e63812495d31ffec8a037d9bc4525743c7",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/blur-reveal.tsx",
+      "runtimeSha256": "2fcc733584f8f8b03fdee065b39050db0cb12a2216dc65270021f2f8f6b770fe",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/bubble-chart-pack.tsx",
+      "sourceSha256": "c179bb1f7d94d44b7c25f901258e1afdff4e7fa5576f744bdca038617aebc089",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/bubble-chart-pack.tsx",
+      "runtimeSha256": "5dae42240f2e0c53a0edd51fa115c517bc2c11e9dc9a73d9d7346562b0729ad3",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/candlestick-chart.tsx",
+      "sourceSha256": "5befb47be9c73b32fcfd01f7a75e7dfec30824511ce8bb64b49aa49947718d5a",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/candlestick-chart.tsx",
+      "runtimeSha256": "9a672ded3574f5dcfc6ec7984a0a287bdd295ca0cde2e66758d7e86978e85ec9",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/caption-emoji-beat.tsx",
+      "sourceSha256": "d71c99259a622db6705e82afda6f6d68070f606ef1904e398df4c65c491ad61e",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/caption-emoji-beat.tsx",
+      "runtimeSha256": "9018ce3ff7beec6807ff7b7c6731dd18cc8c3730f24436be147adc28665caadb",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/caption-highlight.tsx",
+      "sourceSha256": "fa214223dc4d4dd491b79ab2f7900bdabab38a057f27237e1c9d72ebb6527a0a",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/caption-highlight.tsx",
+      "runtimeSha256": "1ab6544444a1e0fde6d0c199c335fb86af4cb5d7228659bb75dde253a0ed123a",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/caustics-bg.tsx",
+      "sourceSha256": "944202b8f8be49233ae993fe4b25f2d6adce075fbc7e95aaf8143e928e40fbbf",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/caustics-bg.tsx",
+      "runtimeSha256": "944202b8f8be49233ae993fe4b25f2d6adce075fbc7e95aaf8143e928e40fbbf",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/chromatic-aberration-wipe.tsx",
+      "sourceSha256": "67a681608229811591f518cc4f0a99e3bb6fc42704b1f95ca4a36a33429a9fd4",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/chromatic-aberration-wipe.tsx",
+      "runtimeSha256": "c99e7cba060183007c80754e1bbd2488809450d87f1fc546198d8b6e4a9291e5",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/comparison-bars.tsx",
+      "sourceSha256": "f65fa370d521f5d955482a33fb60ad56ecf3fe84633d1393cb9ad7dae274d6cf",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/comparison-bars.tsx",
+      "runtimeSha256": "6c92d22da879ff1c040713fb87058013f5dcd81fee67f596d3e15769d33adae1",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/confetti-burst.tsx",
+      "sourceSha256": "8c5e26a86edf71327269ac4230de246c01646b7d985fa21205cfbfd6624d71e9",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/confetti-burst.tsx",
+      "runtimeSha256": "772622e9894290ae44e236bf31c3005c0297ec7732c66c0dfd847d9255706978",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/connector-lines.tsx",
+      "sourceSha256": "870e6fb250ea81a8c92d098d540d30058673e4ed777c1f3b6f229af49136f70e",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/connector-lines.tsx",
+      "runtimeSha256": "17485d99bcf7c450c8709d310ecd6c642dc258071f2b48ae65102e706702a427",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/counter.tsx",
+      "sourceSha256": "e28076efca235bced15f28400c043885bbda8bc3767c8beb0f8d7e6bd853d26b",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/counter.tsx",
+      "runtimeSha256": "7ed52f94e15f2573cba0f389a86e11a45153ea1fd44880ec73a61845f74015ea",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/cursor-path.tsx",
+      "sourceSha256": "32261a9c49716e5d2f65f3d983b2d8deb933222df2c39c3e969d2683b27cb904",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/cursor-path.tsx",
+      "runtimeSha256": "9518ea0336fe2529c1b9d3e2bfc0c4adce670e79cf5b771013473506ea114641",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/dashed-path-travel.tsx",
+      "sourceSha256": "814fbe5446bad2ddd71eb949788c8a52a33301ecab634023cd69ca69e729d282",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/dashed-path-travel.tsx",
+      "runtimeSha256": "db9ef962ec9c4557e967a07f9d1fa76331030f5d6db2b6ee85cd938da8cc7e02",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/depth-of-field-blur.tsx",
+      "sourceSha256": "2853f9585c5b0acf8c07ed8fe8a76edb262386004f1194c4425e0809a32dd55b",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/depth-of-field-blur.tsx",
+      "runtimeSha256": "79ec0cbb695affaf34cbd5aae0b7e8d2ef133e4d8f98df1ed93bfc39208ec503",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/directional-wipe.tsx",
+      "sourceSha256": "585595d2a9a127dbc77ba3a4d0fd0144fee70885adc84a2cf7a1912e94f8cf9a",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/directional-wipe.tsx",
+      "runtimeSha256": "99bd0436efed91b61c8980a104847b603e9cf9e61d284f1ee42eaadf3aa4c29b",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/dither-field-bg.tsx",
+      "sourceSha256": "2f1093b3255515613a9236457be49d6c718489fd17b4f748b66339673c471193",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/dither-field-bg.tsx",
+      "runtimeSha256": "a4ad543fb4bb26cfbc48590662965096e0e2b4220299af45b0f0b54d0b5c9d6e",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/donut-chart.tsx",
+      "sourceSha256": "0c63174f59a67b8804098272b1f3ddc00914f2d28fed7927686d9a93be75e098",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/donut-chart.tsx",
+      "runtimeSha256": "3ac2dcecf3d7ff2a4ffca20dd0f861ff6cde4487a4450eaf3977a5891a0da602",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/dynamic-grid.tsx",
+      "sourceSha256": "24eba449308e710ef375f8ab7b01a771b301a6451eac6bb9a3bd05f594afae39",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/dynamic-grid.tsx",
+      "runtimeSha256": "97fd9c12093748ab03e10df0d3ce6138d427ad8a78579b7816cbb2a1552c5160",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/effector-field.tsx",
+      "sourceSha256": "9ccb04d19ffdaa344077de907219b7c029748d8d08711f160adfba559032c060",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/effector-field.tsx",
+      "runtimeSha256": "619a81a85796eeae11f7d35fe4cc1f8b799412cb1ef0c15ea1be55e129d13f4f",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/fade-in.tsx",
+      "sourceSha256": "1a46ab870f5ae3cb80500bc1503d36277c735e4940966f327fdd4489e0ce9956",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/fade-in.tsx",
+      "runtimeSha256": "bf22c8072c26b11a2cc321282d9ed6a83a0c2664ab4f31b2abfe01704c3e27c1",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/fade-out.tsx",
+      "sourceSha256": "122f0c5e42871dc4bf9e330cf7b7e86fff41a642180f8ea4153afb41f2045e97",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/fade-out.tsx",
+      "runtimeSha256": "48e636461f455506357dfe9f3d59a5c8b6bb601c68f40f8f0eee7431db486efd",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/follow-through.tsx",
+      "sourceSha256": "f65575ef35921c2390c9c7352961f5c0389abe33dc8512186d475f874d462d6b",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/follow-through.tsx",
+      "runtimeSha256": "95c376272eb3235b650f9d61eadf8020f1005adbb34f2544bdb8593b43934e27",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/frosted-glass-wipe.tsx",
+      "sourceSha256": "e042b5a7efd5b51149ed487759df1d0d68e7bf0ae52d088f9543d03f63048b11",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/frosted-glass-wipe.tsx",
+      "runtimeSha256": "3b72dd119276da4579a1387a3d9a8ad40dc0b9ebb073cc054523f587d828af3d",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/funnel-chart.tsx",
+      "sourceSha256": "913e1025041db3b35b9062f1ca64ab430f39aa9f8ee26fd571c7149cd17c7b44",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/funnel-chart.tsx",
+      "runtimeSha256": "a70f975b2f8b7d6bcdebe507ec0f211f4322df625637f88e2c77ccde8e3afd7e",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/gantt-timeline.tsx",
+      "sourceSha256": "6016d1dc235c2ad63b711891a71736185f679de5f8065c27a92debdb774e3298",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/gantt-timeline.tsx",
+      "runtimeSha256": "b38814e856216c84a05e698a8cb98a50bfb610893729ccb2341e5c54cc20173e",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/gauge-dial.tsx",
+      "sourceSha256": "8e836eea637e40257099135f21775fe2f829d8ffa08ff0906e50094b4eb0eb1d",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/gauge-dial.tsx",
+      "runtimeSha256": "1a8e9551f011fc040dfc0af6929b3665d3d7347556ba58f3f9e275f2f99a8f20",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/globe-arc.tsx",
+      "sourceSha256": "2cc606ded3c7fcc982239feb52fa111d5bd7f638c7bb484c27ba2f7b53a7c580",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/globe-arc.tsx",
+      "runtimeSha256": "32281811062e94c5c0049ff0bf8c00169c0a3b7c59ad6f81747b0e420df03efb",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/glow-pulse.tsx",
+      "sourceSha256": "5b16532b4cd7fe02b858bb437b70a363babbbb89b60d054cf92b4c17b465bd5d",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/glow-pulse.tsx",
+      "runtimeSha256": "5b16532b4cd7fe02b858bb437b70a363babbbb89b60d054cf92b4c17b465bd5d",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/grain-gradient-bg.tsx",
+      "sourceSha256": "f7a40a70f1f1f4c2aec3e0e71460f7b6250935c7b9c1278ce0904e769cebb652",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/grain-gradient-bg.tsx",
+      "runtimeSha256": "583ee902002b0d0aea1d6cbdae287cb348dd691c55e22933546ef9e36143a0cb",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/grid-pixelate-wipe.tsx",
+      "sourceSha256": "21b93a030e8194bee02c85e5aaf0a390c60bd243061d33c42ef0e9b3587106c8",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/grid-pixelate-wipe.tsx",
+      "runtimeSha256": "cc83c41929054e004fad283f56ea3c9db6ac84402d4aa7c7b7c55e9be3f8c895",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/handwriting-text.tsx",
+      "sourceSha256": "7537b507de202d80acfd85f0e80ee9adf69b72cded4093a44cc0b09e8f63eb86",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/handwriting-text.tsx",
+      "runtimeSha256": "ddb69f4371ea6845c7150e8dd43258fc447465871d03ae82c6a5b11bd05d7bec",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/heatmap-grid.tsx",
+      "sourceSha256": "2bf253aa6520b190107aba1f31b00718dc46bb05cfa1f6f0229ab439c2a46c5b",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/heatmap-grid.tsx",
+      "runtimeSha256": "f44432ca5e728ebc0481d632dbb5cad16340c51d222cdd6352cac4eff48b2eba",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/ik-rig.tsx",
+      "sourceSha256": "e8c9df94f67fdd36ecf6b9ee937d7bbdc336666b61aa40c0c007fb8af1fdf1ca",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/ik-rig.tsx",
+      "runtimeSha256": "1755bb5d1c58bab47be7cef05b40d7608c1ed3407d9ef6ad7be3f295a95679ce",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/infinite-marquee.tsx",
+      "sourceSha256": "d501da14d13370c55b86e5849c156ff6e79f6ea58edafff456c68ac5c1add6a9",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/infinite-marquee.tsx",
+      "runtimeSha256": "b2af06c338234de80883e9fd60b18cad4778b8e853cdf6d62fee9b7668e30dd1",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/karaoke-captions.tsx",
+      "sourceSha256": "1066b7219a79a9f55d12fffe1f1b59fbc5bbef9c09dff3a2a12d90fbae5707f2",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/karaoke-captions.tsx",
+      "runtimeSha256": "2b5aab30f5463fc5f71cee0b5728b9ef9817b279b906f02af08bdaa3c0854186",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/light-rays.tsx",
+      "sourceSha256": "7e80290fbfe421129e5a8969b8955991a62ca71739f4372943ab17d27eb3761a",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/light-rays.tsx",
+      "runtimeSha256": "d253c9b2107285969156c80b826ae93f829a8d2e3043382173435afb63471934",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/light-sweep-text.tsx",
+      "sourceSha256": "bdf0e82fb5399dbff227c3d64fa451b7af21bd8064b562f297663f54546e54e0",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/light-sweep-text.tsx",
+      "runtimeSha256": "d3a5eac948710978541257c98dfac118b50f569e061ad66a5f6739307006d779",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/light-tunnel-bg.tsx",
+      "sourceSha256": "4200c58f0ae18a1d45f84786f3dc71217fee03d46cea141bbba33cfb2f866982",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/light-tunnel-bg.tsx",
+      "runtimeSha256": "c86b0dab32e3091dffd661993b56f72658a307707d3f4a8165d28fe4fbf005ca",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/line-chart-draw.tsx",
+      "sourceSha256": "77b35f6589705af08cbfe00276ac202cde4d823ebff4eb6878b107c95b0ee1ca",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/line-chart-draw.tsx",
+      "runtimeSha256": "f7d58e3625d8cd65f722400c8fce2c5a83ea22d98d364b612dd12b1910778d86",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/liquid-text-morph.tsx",
+      "sourceSha256": "ade9440a1fc6ee3c451af175da5152bcb85ac6348e54e33c9e98996f7adc8d17",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/liquid-text-morph.tsx",
+      "runtimeSha256": "0c1f3d6899712ae0e3f924c83600ebfc9d71d3feefcab77c4d3ed74f1c82bec9",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/map-canvas.tsx",
+      "sourceSha256": "1d3e80a7f9c61c781de25f52f781fefc7dec6af45dd6513861e5feb9ed2f6de5",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/map-canvas.tsx",
+      "runtimeSha256": "ac210c0d68e2040da253495ae2b9b9e20022709fc60dfcc794d258f7582282fa",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/map-heat-overlay.tsx",
+      "sourceSha256": "cba0f12447b27109340ab7a09208948d571ccba145d643b1a41391e6997e057b",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/map-heat-overlay.tsx",
+      "runtimeSha256": "35188b7c01e769fe03a76c86176cd1ac6eed1bc405fc1fb11d4fdf303dd88bcf",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/map-markers.tsx",
+      "sourceSha256": "7d1da0ac2f813c5433dec2eaa132945c993c0c99772862545362d1664abf0f28",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/map-markers.tsx",
+      "runtimeSha256": "669f6763cf0c66b2a71ed7138d9e496f8774e3457df60451228675a015b6e23a",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/map-route.tsx",
+      "sourceSha256": "b55e7d50a860da0d272980e0f4b8b8ce8349cc846b92c7314c7889ed7367f341",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/map-route.tsx",
+      "runtimeSha256": "3bc15872cb4ba4afeac41ae63dc6bb705db1b439818d414d70f5375194d7ab2a",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/marker-highlight.tsx",
+      "sourceSha256": "4c6507051c70daf52b117e41cd0d61011d3e8ad6e7e0279e8513f034ed74318b",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/marker-highlight.tsx",
+      "runtimeSha256": "66bac69bb5eea8c4ae74eef5c1388a1d49c2610b65adf76b842475933509f93f",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/masked-slide-reveal.tsx",
+      "sourceSha256": "771922418d06ff4d35a14437b66f34a38b3dac6a68aedb1df0688c379e9ae3bc",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/masked-slide-reveal.tsx",
+      "runtimeSha256": "a72eb3d9738fa791e7cecf9e947e02bed09dda28a7ab918d12a58f854079152e",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/matrix-decode.tsx",
+      "sourceSha256": "b40639449ea5f6414403a5f4a3f0e125369a1a481069ce3d4e993cb0ef9de5ec",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/matrix-decode.tsx",
+      "runtimeSha256": "7129c11b45ae8e9e17745e75c8ad7bf8b4270b48d1c0377279019543e014e189",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/mesh-gradient-bg.tsx",
+      "sourceSha256": "e22dddbfa9ea44cd8da4a3f80e060973a551302908810e01f6910846f4b8b6bd",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/mesh-gradient-bg.tsx",
+      "runtimeSha256": "f9accac73c05693f014d8fc39d3aef5d4d46928fe7342308c263ee9b16c07a9e",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/motion-trail.tsx",
+      "sourceSha256": "0b937541159172206442dddcf6e4ff0448be8d5cd81d7e3fb6a3017c8cbf7831",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/motion-trail.tsx",
+      "runtimeSha256": "0b937541159172206442dddcf6e4ff0448be8d5cd81d7e3fb6a3017c8cbf7831",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/multi-device-lineup.tsx",
+      "sourceSha256": "ba3ce9d01200fc27feb75311744d9cab5c383892871d37c931e5e36b0ef978a7",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/multi-device-lineup.tsx",
+      "runtimeSha256": "cd3237c30462a751634123c54555157785b0054683ef4f0da7bc791454fedd25",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/neon-flicker-text.tsx",
+      "sourceSha256": "1aca1935589ef26eda2d136655045640548ca544975f8aad201c47e67acd50fd",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/neon-flicker-text.tsx",
+      "runtimeSha256": "287550619e12a7270f8c7cd40d612a36404d0bfb4786ec730a3cd948cce87550",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/orbit-motion.tsx",
+      "sourceSha256": "feae8063e4b27db0b5a176a64b492b53eb71b7855052323c5d6f51615c7fbab9",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/orbit-motion.tsx",
+      "runtimeSha256": "feae8063e4b27db0b5a176a64b492b53eb71b7855052323c5d6f51615c7fbab9",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/parallax-layers.tsx",
+      "sourceSha256": "69406b6c57d518c24a977bcc9be00e86030f897961a0696aa62b6ea012f88368",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/parallax-layers.tsx",
+      "runtimeSha256": "47197688c8a294c587b3730e473d21187f5827cff11cf48b9bf580ad36e86d17",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/particle-field.tsx",
+      "sourceSha256": "ba0828ff71b0c95afe13979e49a30b2a4ae81ae58d4eb635855528a770c3beea",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/particle-field.tsx",
+      "runtimeSha256": "ba0828ff71b0c95afe13979e49a30b2a4ae81ae58d4eb635855528a770c3beea",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/path-draw.tsx",
+      "sourceSha256": "1e40d93636e77efcf3bd972c963445e1eeda34d47dc6dcf2ee9269975380929d",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/path-draw.tsx",
+      "runtimeSha256": "745bcf5bdcb23a497648ce91ddc425c2f4ee7428d7da8eea25cb0b23a9bdf593",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/perspective-marquee.tsx",
+      "sourceSha256": "a27cbe78098c84f25861786b675ed820f4b9f803f57bf4f38f6072f728e20f43",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/perspective-marquee.tsx",
+      "runtimeSha256": "acb90093fe58d3bc98a8d94dbf93639027584eaebbdac012066b748d89f4a1f1",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/pie-slice-reveal.tsx",
+      "sourceSha256": "3a3d8d7a60b1c24c0d89b9da8c24c36735702294fd846e5000decbc4bf91147b",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/pie-slice-reveal.tsx",
+      "runtimeSha256": "af828daf81f29a8d8ae4bf8cc9d18075a89ddb0d19e4cc181aade6699c942b15",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/progress-bar.tsx",
+      "sourceSha256": "fdc73c56ea6d17c6948293fcb8975c6567aa1fb508f3a359f18bc88560b27c7b",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/progress-bar.tsx",
+      "runtimeSha256": "f4353af0c8e076272f2a7d60d010337bb2b170a514f1402cb10d32d25f200cfe",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/radar-chart.tsx",
+      "sourceSha256": "08ac007e10efc5bb9f201deaef513df5d29259e871201ac7e0d46dffa7b26920",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/radar-chart.tsx",
+      "runtimeSha256": "1edd3e0b2102facfa05958aa52a2a090b264debb6db963a1e5b32d0707ed2a89",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/rgb-glitch-text.tsx",
+      "sourceSha256": "7a42e072fe3e5c91298e6aa41fe8c6536b2618e0feae9c46898cea93bfe3cd85",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/rgb-glitch-text.tsx",
+      "runtimeSha256": "b3bab69892d859cafe3275dd25ab5b15e48e0c3cb0fbb376b91c3b1228ed622b",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/rotate-in.tsx",
+      "sourceSha256": "f68f0dd9b87b1bfdc482124dabe0b85bf9089f0192bf21ac77bbe1b0ad480bff",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/rotate-in.tsx",
+      "runtimeSha256": "cf825eb255f79fd2a5301032cdfa249f09c59622490037bc8be40756f5db1db3",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/scale-in.tsx",
+      "sourceSha256": "c13e64c35babc1c60049f571330fa9acc37702d682fa88b10f2afe9e0b19cd32",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/scale-in.tsx",
+      "runtimeSha256": "94c6ddd7ca58b89c4650db1a20093b266d8db0b6549a2555dc896c7f0a1648e1",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/scanline-crt.tsx",
+      "sourceSha256": "39d20b4c0b3a84aef20dd42de9b9a57b13b4b5488f24b114195ad3a648a67c84",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/scanline-crt.tsx",
+      "runtimeSha256": "39d20b4c0b3a84aef20dd42de9b9a57b13b4b5488f24b114195ad3a648a67c84",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/scatter-plot-pop.tsx",
+      "sourceSha256": "f52fdb4dc79957e80e33e6d98e80d7f3bbc55b2faff5c332075fce61e6bf1cf9",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/scatter-plot-pop.tsx",
+      "runtimeSha256": "957bb7f0ffd4eeb913e691d470a5a49d0aa5a09ae8123c50b4909f7382b56199",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/scramble-text.tsx",
+      "sourceSha256": "c2b88a2509160664041dbd6f5e31c57ee1ea8cb424b17646535e09f98e5d72bb",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/scramble-text.tsx",
+      "runtimeSha256": "f2137ad25af3ebccf32ee173e7f91ae9a538a9d16f6d2167e13b4d7c61b6ce8f",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/shake-emphasis.tsx",
+      "sourceSha256": "d4d5d56cc2f35f9f6cb2601eb9620b1528f2f8112bffb8a545a9e9a09cc66a5d",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/shake-emphasis.tsx",
+      "runtimeSha256": "f531282be634b7186c332131a59c2b648b789b49fe83046198d51f7713ab920f",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/shape-layer.tsx",
+      "sourceSha256": "b07a85aabb2f85287ba2bb8f45db096f8fd44cb0b2820cfbb5c9f08050290439",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/shape-layer.tsx",
+      "runtimeSha256": "9691701c870c2b1bb493ef48576fbf6dfe73e97cbd8a0cb85bcab1f6048465a9",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/shape-morph.tsx",
+      "sourceSha256": "630b81711b5f84993b57c1df5b0a7251b097b81ee257e09924d046f75963d70c",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/shape-morph.tsx",
+      "runtimeSha256": "77923f502fd64a86f1500fae3462da2f3eb6c8155cdd555bedea0a683cf8ee17",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/simulated-cursor.tsx",
+      "sourceSha256": "2b17b0cd6d953cf3d8c6562be9f444524067d2fb7b1daf64e2f36719815f7d3c",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/simulated-cursor.tsx",
+      "runtimeSha256": "8742c184210bdfde6e9aa6724821341e319c3c65da5be0249db79566df11751f",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/skew-in.tsx",
+      "sourceSha256": "4657f193bd965aa1c278f84a01f15bce3a44dcbc47a7586723c4d69847131d81",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/skew-in.tsx",
+      "runtimeSha256": "dcd40e2897e0f4f0e21316f01d7b34577e760ac0aeb3259a17c82038dbea1327",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/slide-left.tsx",
+      "sourceSha256": "5e1186f586d05546b12b7f32fe760914fb02140ce0115598a44118e803ccda49",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/slide-left.tsx",
+      "runtimeSha256": "cde953436a183c86ccb1e0815954a76a20f24f8765fe7e5dd02637cae55f9b74",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/slide-up.tsx",
+      "sourceSha256": "f76595df69a0e841e7d01db6588e2a0e296e3c41f2c47afcac065667d0972b44",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/slide-up.tsx",
+      "runtimeSha256": "f4058f69516205af0b7bcd969ed7257b1ef153c02297400989bba37eb7ca5a96",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/slit-scan.tsx",
+      "sourceSha256": "9ab16ca873463417b7346e638affc4d060ea1f4933c1b57ec70eacbbefb64f52",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/slit-scan.tsx",
+      "runtimeSha256": "fd4d072724637c387ea18447929fae3b1c6cfdc8eed4a627defc2d3dbc06edae",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/slot-roll.tsx",
+      "sourceSha256": "194b99e62f08b6d6dad8667e7389b5fe492a348baca865a6f7290ad5b560de8d",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/slot-roll.tsx",
+      "runtimeSha256": "ca28e08951a1a0f57750faa4b18f9bfa6d329073db9065eb7a9481f6d272ded1",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/sparkline-row.tsx",
+      "sourceSha256": "b5600c8bcfb19988d4e073580a99843bbfe42747294602a3d84844364c3bebf4",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/sparkline-row.tsx",
+      "runtimeSha256": "a119e436f5664aa3b986d0b0d9fb3c297bee9a148515c66ff8915f2f7b12e543",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/spatial-push.tsx",
+      "sourceSha256": "b922c251106ab041306438fc418a902c0585a8c7a62bf49f6412b285cc1d2589",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/spatial-push.tsx",
+      "runtimeSha256": "a204c68cff53b8a7badc2e2ad4ff90420a41d58eca53767a7e56e2c0cd71ad0d",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/speaker-label-captions.tsx",
+      "sourceSha256": "a4ae1070abc59989ea53bac03c96912803ea86667f2fa3d4457522a08891278d",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/speaker-label-captions.tsx",
+      "runtimeSha256": "3ef74c0c152a309c507448bab23375fb5d8a9d48fb5d310af649a885d3194723",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/split-text-chars.tsx",
+      "sourceSha256": "71128f69688f9c1d67de51a688952602881c93f3cd53e25bb07e3d40631ba987",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/split-text-chars.tsx",
+      "runtimeSha256": "695057b630966078bb0ebbe6af454c6b84ff4c3c6327cc1f593dbdde3e82b906",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/spring-in.tsx",
+      "sourceSha256": "c154ad99c135ad56ad1d341dedd58cf5c1d653ef82e12c2448d2d5892e7bc12c",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/spring-in.tsx",
+      "runtimeSha256": "c01081e92db33801ff9ca0806293c0b5f03a67bc8cbf41ee444b9066b6ae94c1",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/squash-stretch.tsx",
+      "sourceSha256": "523e4e29a61ddeee88cdc849fbffd20b1e19013bd84c2b6992220227be5a0035",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/squash-stretch.tsx",
+      "runtimeSha256": "4c7c43a7ddc89a28d763f80c2814ca2da38c7c04b6c38ce0710df37496731cfa",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/srt-caption-track.tsx",
+      "sourceSha256": "522f6b5873a213c3222a01df79302964d1afd5845f2e60b35bd8088e03c7d494",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/srt-caption-track.tsx",
+      "runtimeSha256": "ee22f35cb37179af4bfa824f220fd5a26ee25c3668e0e755f6dd9e91d8dc82be",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/stacked-area-chart.tsx",
+      "sourceSha256": "18653733ed0df18d1f97ae651b55504784b20fe7116a5971b1974f690dafd748",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/stacked-area-chart.tsx",
+      "runtimeSha256": "b421e96629ee0f0aac3891672072eb117ba5d768e6b69b1971431a79b83fb6ce",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/stagger-children.tsx",
+      "sourceSha256": "6b7903aae73ac73e0d43dd440ad9e335c35a12f46db68fba18cbb7a29c5d378b",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/stagger-children.tsx",
+      "runtimeSha256": "a3d9014515b74c22b7449672125e9ad5671ad0b80b39ba95c16807909558e867",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/staggered-fade-up.tsx",
+      "sourceSha256": "0484d279ff97eb0f8542bb73130f8b7ae2d9dd32fbd53fc38dbfffb825bbbfed",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/staggered-fade-up.tsx",
+      "runtimeSha256": "1482cdfe65bc5170504d6dabd7785ac3e899c97b9bb22cc7c45ac685ebfa203f",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/strikethrough-replace.tsx",
+      "sourceSha256": "0bfe76996f619df29112d9a9317b268e4359cc713051687f078e06d082f8f0d3",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/strikethrough-replace.tsx",
+      "runtimeSha256": "21c9fae080c54d0e3229078ace26a512f44e5efcb66420cb43f1779296160d2c",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/stroke-to-fill-text.tsx",
+      "sourceSha256": "d53ab0173c880128e2a7ced066da5d41db05d57971bae2adf4b905ff6f97c816",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/stroke-to-fill-text.tsx",
+      "runtimeSha256": "ef6b6db18a94341b8a6605e61666df993d1342758c90ecc660b364e41574ad14",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/subtitle-translate.tsx",
+      "sourceSha256": "f4dab274b41703dd8e8c86894ddac3be7268798c2937318a0b594745731d76a0",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/subtitle-translate.tsx",
+      "runtimeSha256": "5f688fdbdd14be64802f7878bb7b286fb143d9255a161318efd2354a964b54d1",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/svg-mask-reveal.tsx",
+      "sourceSha256": "646d4699c5d4b82cdae3b4f9cc0d9ff87b130296886fda86ac323d12a495d305",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/svg-mask-reveal.tsx",
+      "runtimeSha256": "b0a6e59c8095ea9f32784de212a0dd4c6321b1f7b6935993ebd080dd31b516c8",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/text-animator.tsx",
+      "sourceSha256": "fd38bd4ee6397dff1010faa12feb09b00b559cff9670ac04d82a5d52f934c585",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/text-animator.tsx",
+      "runtimeSha256": "dc96fea7314e5056b9933e4f3480bdff39519bdb038e5a4b648eafcb32be4d84",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/text-mask-video.tsx",
+      "sourceSha256": "509b4acf10658b03748d64a42cf532e03f73acaebeb35d19eb747d36e682ce95",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/text-mask-video.tsx",
+      "runtimeSha256": "9d5ae10a8c39341cdb656006bc1309affd38c31f8cb0477013d09ca3391ac346",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/text-reveal-shader.tsx",
+      "sourceSha256": "14cfe92a6b2a56f1fdd8cae1ac6a075beb0ce53d606e55a9fbd36a8389a35dc4",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/text-reveal-shader.tsx",
+      "runtimeSha256": "7829993c7c611b9eaf45c91406c7d5acd4700245f05df725ec57564fe30d3ec8",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/topographic-lines-bg.tsx",
+      "sourceSha256": "bfeba3e415ce0c9ac1aca285238874ff84fdfd7cd4a5e5c842ac6de746c1502e",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/topographic-lines-bg.tsx",
+      "runtimeSha256": "bfeba3e415ce0c9ac1aca285238874ff84fdfd7cd4a5e5c842ac6de746c1502e",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/track-matte.tsx",
+      "sourceSha256": "f0df1dc0b766662dba6e6e7ab4564d85c9a3167b778ad28a276025369174c73f",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/track-matte.tsx",
+      "runtimeSha256": "f0df1dc0b766662dba6e6e7ab4564d85c9a3167b778ad28a276025369174c73f",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/tracking-in.tsx",
+      "sourceSha256": "607f158f9116fa03ec1735b6ba31b707c6d979503b764174285da595b10d5271",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/tracking-in.tsx",
+      "runtimeSha256": "a790db9a08f8195bf4ed3662288c891c6dbcc55ca472a0f2b14750acab5b4faf",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/transcript-scroll.tsx",
+      "sourceSha256": "31857189d211d50ece827fd46244f4555cbd558a39031f2d664c1a2c66b9d6af",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/transcript-scroll.tsx",
+      "runtimeSha256": "cbc83ca63048990f828aefa9f340b03a5437e9ffdec578ecea65a65a13efa3c7",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/transition-blinds.tsx",
+      "sourceSha256": "22145f48f81e4cc94904eb48dce8f51ff9a3ceefb88f77720d75235d459ba81b",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/transition-blinds.tsx",
+      "runtimeSha256": "5516a42286f0edd13062e21d6a3f6fb97c99821f5b047007929aa6f5cace019c",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/transition-card-flip.tsx",
+      "sourceSha256": "1d4552b086c69deb175f8c1deac8689dec521ed8253564d8bb12d408d07cb3e6",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/transition-card-flip.tsx",
+      "runtimeSha256": "5ee3c1794f7983241c03934975df5a5932b5fcaad7774c8168efbc2bf4d98a2c",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/transition-circle-reveal.tsx",
+      "sourceSha256": "14dce8b96d3672c2527be35d16abaed046ce5531c84263cf308998ebde2c7125",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/transition-circle-reveal.tsx",
+      "runtimeSha256": "b9291a29ca973fbe83473ea81c7d03b084de96f146077e6da1aea55742f97cd4",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/transition-clock-wipe.tsx",
+      "sourceSha256": "2f2bf62243e1b702ae1b76098528cde39077e6d1b1b3b768c8f2f31790c6de1d",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/transition-clock-wipe.tsx",
+      "runtimeSha256": "478d86f8b3f793f7170afd659885f64bd4d6c7089236afb4f938f373263e9a08",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/transition-fade.tsx",
+      "sourceSha256": "7961c4a1c02b22223d359cff96e208222991ace3d3c5884d525b349281ec7103",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/transition-fade.tsx",
+      "runtimeSha256": "acbc32764ce41be19843d0e7da0fe7c7bc87b09ec435034cbc962ebc17e2abbc",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/transition-light-leak.tsx",
+      "sourceSha256": "51ceecc9b7bcb4fbe26287abf5de9f9fe6b4aad011f6a0ca2dc5b64817d9c0c8",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/transition-light-leak.tsx",
+      "runtimeSha256": "2432d9ff24e56765f359136c1a436ea8f5b8c058056ca0d20bc07fc113c6ee1c",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/transition-liquid-warp.tsx",
+      "sourceSha256": "0d048d3f37a6a6ee527dbd84dffa56df7ba33c60190e07c634f95062cf700d53",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/transition-liquid-warp.tsx",
+      "runtimeSha256": "0d754ad0d928324564a85c40b59e07cefc879c41b9c392e260811a608cd6772a",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/transition-morph-shape.tsx",
+      "sourceSha256": "ce21cca6f379ae8d83447f4b9c06be0640692f56274b334a14dc0ae52c1f8d32",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/transition-morph-shape.tsx",
+      "runtimeSha256": "e352ca190ff1e3dc9eb45e75d9ffffc4e4f3849d771e5b487f0ca6b2aedb71f4",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/transition-slide.tsx",
+      "sourceSha256": "6a24130b41d9ec5c07f7b47e339d87ffa72f811555b35501c1ab3f17cda84142",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/transition-slide.tsx",
+      "runtimeSha256": "8cdc8dd85e216e21102a866469e4f299416e9b21a4d1d4c59d01b897534070ad",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/transition-whip-pan.tsx",
+      "sourceSha256": "dc02060035f01a90dffc982c623294f28d84ee17deb76973212f461ec3eae5ef",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/transition-whip-pan.tsx",
+      "runtimeSha256": "3c8e135ef240a6985cc9019aac860aa11af2b0546ae66b839e32e6fdb583e0c4",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/transition-wipe.tsx",
+      "sourceSha256": "925c833e37fd6eec738ce5da440c6d440899a8960bb75246151821a80f33a7ee",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/transition-wipe.tsx",
+      "runtimeSha256": "94d9f6d56141829a55e713f2fd869c245034dd6b70637a67681ed0e0068ff3f6",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/treemap-blocks.tsx",
+      "sourceSha256": "a7c90921b51b17a9059acba6c15e071cf1278240a88cab46fa1d37e8f2fb4b19",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/treemap-blocks.tsx",
+      "runtimeSha256": "aba601a7dd26e3d771ddbe57f82a9ed5456a17c823ac884bcbbeec8bb23b857e",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/typewriter.tsx",
+      "sourceSha256": "bddcd2606522098bf5f89afad8d7926999ded17d0a83eb3d6698b535b958035e",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/typewriter.tsx",
+      "runtimeSha256": "9f3e1f2fff807f12d4bff4776a27dcf91ef13edc879af81970cc6fc784c8d03c",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/variable-font-morph.tsx",
+      "sourceSha256": "889942c4ee5d1feec3b4d46a6b4690d0ed54a8e77d41a97c013627abcf97a4ed",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/variable-font-morph.tsx",
+      "runtimeSha256": "f4dd9d4c31400b498e9628a7ca9813cabf927146b31eeab040a43c40b61da5c9",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/voice-note-bubble.tsx",
+      "sourceSha256": "f5f317c2e5002eb3ba72d044cee60c1885d33bb675c433358fb5acb8b1323a0f",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/voice-note-bubble.tsx",
+      "runtimeSha256": "f5f317c2e5002eb3ba72d044cee60c1885d33bb675c433358fb5acb8b1323a0f",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/vu-meter.tsx",
+      "sourceSha256": "970b1b81ad0f2394addf37b2c63b97921012eb3bd276ea2d153673334b476c1f",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/vu-meter.tsx",
+      "runtimeSha256": "c12523fb3677c932d88ed9fae574fadb770e9a06a8247433458a0f760aeaa8d5",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/warp-bands-bg.tsx",
+      "sourceSha256": "4b96bad4c7d3ec62681e449eb74118f978b2a64be67fab7fb14b34e74ac761d0",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/warp-bands-bg.tsx",
+      "runtimeSha256": "a43f76f98476fb0107b185fd1489d61026416ddb104a19f579d97cc1e6e920fd",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/waterfall-chart.tsx",
+      "sourceSha256": "5afaed618e0329e7e80186f7cda144ebc89d1e73028ae83e9876c2e356003b6a",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/waterfall-chart.tsx",
+      "runtimeSha256": "2bb746c652bac6df8fac750afddf5c6e5c90bc993b98cdf808f04affc51a005a",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/wave-text.tsx",
+      "sourceSha256": "711472418495de9f237c3ab127e5e15348589799acba9e9acd047a30e6730ba8",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/wave-text.tsx",
+      "runtimeSha256": "5d4b8ce30eaec1fbc3d1c401b01be62c5deea09dec402da9f05a522bc036acd0",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/waveform-bars-radial.tsx",
+      "sourceSha256": "2a66520bf7123834a472fccf86706acbd9c61f8e20e269c7ce6206a9cd4050c5",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/waveform-bars-radial.tsx",
+      "runtimeSha256": "01d1f23a6f26b4f9da93bd1b627c53c32a9f43cad073204297e3e267a6db4b48",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/waveform-line.tsx",
+      "sourceSha256": "56be826d610668f9896d14fc1542a202004c9623e6d92cb83b482ffd85ebf23c",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/waveform-line.tsx",
+      "runtimeSha256": "56be826d610668f9896d14fc1542a202004c9623e6d92cb83b482ffd85ebf23c",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/word-pop-captions.tsx",
+      "sourceSha256": "148d4eb4a5edd7aec9d4c079f2ec9eb4b00e4cd727fd4dac4fcab2035d78598a",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/word-pop-captions.tsx",
+      "runtimeSha256": "2c575a357ffcf78a9cfbeb7bbdda2286ebc901634c0b1df339e9a9f806a61012",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/primitives/zoom-through.tsx",
+      "sourceSha256": "c0ceb76ce65e4a8b3fd34b2a8f90f81086d1a7cd85a7306c20027648f814c03b",
+      "runtime": "vendor/remotionui/bulk-runtime/primitives/zoom-through.tsx",
+      "runtimeSha256": "c8cba55123bb6a18105b73c7c35a957f001f830429f06ca0369a2c2ec74999aa",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/registry.ts",
+      "sourceSha256": "55a533bfb50cfc38ac6e33fde7a7be6f05653f2b8a7fdde7045b11554cd59078",
+      "runtime": "vendor/remotionui/bulk-runtime/registry.ts",
+      "runtimeSha256": "55a533bfb50cfc38ac6e33fde7a7be6f05653f2b8a7fdde7045b11554cd59078",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/.gitkeep",
+      "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/.gitkeep",
+      "runtimeSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/animated-bar-chart/index.tsx",
+      "sourceSha256": "8901e0d4e1f5e403b8bbd723a05da7da57e9bbf81e3ceadb16a4856fcd41c91e",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/animated-bar-chart/index.tsx",
+      "runtimeSha256": "7aab5577fc681823caeee20019fa60cdff31c4158ce9ce4791572a68216b201a",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/audiogram-scene/index.tsx",
+      "sourceSha256": "a7903112030dfbf26c2bdecbdee95a3ab3140c931a0e9c57ffefdd8a03ec2d73",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/audiogram-scene/index.tsx",
+      "runtimeSha256": "5f20b52e610be3f0af78c2b6702e767fc2fa01361d9da533fde2ca0f68f132e6",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/auto-fit-title/index.tsx",
+      "sourceSha256": "abe204d772f4a3057c962b93f972b31a18f4e8b24d5385f2313832eced00138f",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/auto-fit-title/index.tsx",
+      "runtimeSha256": "18bbf2d875f520e10c448d4e1b8b3e32e32e9604b0cdeb83923a51e745705316",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/b-roll-stack/index.tsx",
+      "sourceSha256": "80d0ad27b1dd1e428008f9909416db41e623ce9fd173749ee712a5234ce4634b",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/b-roll-stack/index.tsx",
+      "runtimeSha256": "f060de6723fdd462592e72a0536695b6167cc7f4cab13540752472a09d6039e9",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/calendar-month-fill/index.tsx",
+      "sourceSha256": "912b95d708dd9534ba38ad78c17c78135534b7d21a1b1ed82258af6c1c2f5b2e",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/calendar-month-fill/index.tsx",
+      "runtimeSha256": "1f6a2d1ae30d8b8e1160fa725587b48498aee06624e9a4960c2620c64b88bfc2",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/callout-spotlight/index.tsx",
+      "sourceSha256": "0d4184729a22fafb400d039763a8e66119eda00bd366d4a8ab101a71ba49fe8c",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/callout-spotlight/index.tsx",
+      "runtimeSha256": "7849b5dac0a861da38abcad7d4d0b8aa3cdc6053ce8713de8fbdb5c408224d82",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/caption-bumper/index.tsx",
+      "sourceSha256": "ca0a806d5a58f4126f106d4ea033e8e59b8d3b75e53cf8f0451095defb85a924",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/caption-bumper/index.tsx",
+      "runtimeSha256": "94f3fae2088050db53c0dc99359e30ea72ce5ebb0ecf3c233c1d1ed1cfa2378d",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/caption-scene/index.tsx",
+      "sourceSha256": "510eb239acca840c3f44d077f351ec29ab600762ac31255063ae65b3c7261f79",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/caption-scene/index.tsx",
+      "runtimeSha256": "2e1ded810ece65e3b6724ac3d74b6437426aae670e41333ea8e51d6962405df6",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/card-stack-3d/index.tsx",
+      "sourceSha256": "1bfdead1962647763c595fd518efcdc3d43ca4947395ce9fa5340febe0a0f933",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/card-stack-3d/index.tsx",
+      "runtimeSha256": "1bfdead1962647763c595fd518efcdc3d43ca4947395ce9fa5340febe0a0f933",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/changelog-entry/index.tsx",
+      "sourceSha256": "949e5856672621ad9a6a244263a00feaf324009648df96c680020b9395dc551a",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/changelog-entry/index.tsx",
+      "runtimeSha256": "12477b31d1d77108af2e2ab6b9cb8b3ec64c9271b9444aab6054b99cdb4d068a",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/chat-gpt/index.tsx",
+      "sourceSha256": "06fb74660d1c69b507c09f6ff380fa28b79bef4ab8244b8b255873acbcc77b1e",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/chat-gpt/index.tsx",
+      "runtimeSha256": "565f92d04967464069a589d83085d50cee2726a1e0de0466e2a528f7c73125f6",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/chat-to-preview/index.tsx",
+      "sourceSha256": "6f1facee6dd8566efc33c8a496f7b2a0a8b6efa8fcb962630c399b7b0060cad0",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/chat-to-preview/index.tsx",
+      "runtimeSha256": "873de73d0c337ca7a9693601db9ab43be3db3861c2c907952468930c73437889",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/claude-chat/index.tsx",
+      "sourceSha256": "800dd38f9e3dcdcd4861bf828ec7daff47d07112104e3bbb52c921e5f126a1ea",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/claude-chat/index.tsx",
+      "runtimeSha256": "1d1592a4a040feb23056cea011adc87d1cfb802b755f3365318922eac11d4948",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/claude-code/index.tsx",
+      "sourceSha256": "9eafe1581e9051d817e5b66215171f068d05a11673ee67fc9051ad8d8057fbeb",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/claude-code/index.tsx",
+      "runtimeSha256": "b6cb57f9b0d9a0044b67206f6a2e4e6b01236ed1c43034a5bfe4fb8d703c609e",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/code-accordion/index.tsx",
+      "sourceSha256": "81d32b46361ac5ab698debbee62471a9655a84b827ef5b3b723dcead1dfbcd30",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/code-accordion/index.tsx",
+      "runtimeSha256": "4df8fe736c1f20faa820af626a83155336c6facb3baf4a19c6269bc0abc2e3cd",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/code-diff-wipe/index.tsx",
+      "sourceSha256": "a0ac87f7809220920679239beeed28a3348524465ff70b59a6e12f9e4d636127",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/code-diff-wipe/index.tsx",
+      "runtimeSha256": "ea6af6d69fdc9834fd14a2266a3db8c0d5d8ebbdfd6dcbce4e04e98150f12117",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/code-reveal/index.tsx",
+      "sourceSha256": "c3fa4aa96d05ef3d3e503675475609e76aaea6b2e2aab015a60164a8789eac9b",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/code-reveal/index.tsx",
+      "runtimeSha256": "1e53d8367ffc6daf6878a91242196e4792fdddb8eb31b362f3702aede8685855",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/comment-callout/index.tsx",
+      "sourceSha256": "0e96f107f1003a36c902c2e9e940e1916f2e7d9a8cc57e8477fe0f7c66ea0e86",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/comment-callout/index.tsx",
+      "runtimeSha256": "9d64a9475b3a5147daa3d352d217fbe55faf598d5adac5c45f2862b3d90bc3c1",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/commit-graph/index.tsx",
+      "sourceSha256": "102edf7c8a2d7fecb82a2847ccce7af2c83aa6f612ebd5f99c3d2a9228ca26e8",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/commit-graph/index.tsx",
+      "runtimeSha256": "702dedabe1fccdf9bcd4d40c2d63c572635d84ba1d389d34d5a8e0863ddbbd93",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/comparison-table/index.tsx",
+      "sourceSha256": "675bf01739651ff2bf8f8f8d19fe223199a9645f45398555787f9d1809e30f0b",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/comparison-table/index.tsx",
+      "runtimeSha256": "82f31b6fcab2fcdf71885478ea8f4e4dd39631af8dece66691d5c46c59d9d636",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/countdown-timer/index.tsx",
+      "sourceSha256": "c80ac55be11a56f1e2ff442beab8ed211ad31e8b8fcc4bb3b4840d5050fce1a5",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/countdown-timer/index.tsx",
+      "runtimeSha256": "4e69f2908e242051e3e56dfe5a767723a9e5e871cd8777bcb65261e1d33d4f9e",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/data-flow-pipes/index.tsx",
+      "sourceSha256": "92e98bb874025cf0b38650deaf49bef9dfc5b20d9846c48d53771bae20c84925",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/data-flow-pipes/index.tsx",
+      "runtimeSha256": "a19f723fe6958d3bee2785051c645968cc2cf8a29687ceadbbc51b4807fa8466",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/device-mockup-3d/index.tsx",
+      "sourceSha256": "996a940b446535dff9a09b09029c06b9a7c552a1440be4e8e21154f4a1b2611a",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/device-mockup-3d/index.tsx",
+      "runtimeSha256": "996a940b446535dff9a09b09029c06b9a7c552a1440be4e8e21154f4a1b2611a",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/device-mockup-zoom/index.tsx",
+      "sourceSha256": "655d6ca6eb151f6e01cb419984200d10670cf50a0e2ecc6cee683ca9a6fbae3c",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/device-mockup-zoom/index.tsx",
+      "runtimeSha256": "84ca54d4b989982e1c3a072cce28100f1d8a609e853e50ff84bf26310569c9ff",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/drag-drop-flow/index.tsx",
+      "sourceSha256": "4bf294b105f8bbe291636932067483d8e14e7b9fa93f9b1d94fb8e0cf645c67b",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/drag-drop-flow/index.tsx",
+      "runtimeSha256": "798724c33c09a155d5eb71aae87b96ef9634470181ea92af61411002d1c599d7",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/end-card/index.tsx",
+      "sourceSha256": "64483f84882ebd00bf2eaaf6f9661795696ba7ef0c0ae79f915c2abf4893450a",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/end-card/index.tsx",
+      "runtimeSha256": "97fe62ecd96e71343e59f91df0d8ea012db27b449dad3f6d99dda818d7c49e11",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/faq-accordion/index.tsx",
+      "sourceSha256": "068f9d2aba7dc1b3f37a330fba0376f3c2d54cf08c2ae2c136399d452f9286c2",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/faq-accordion/index.tsx",
+      "runtimeSha256": "009c43dc346453dd8b16d8130ab86c71c5916fa8367a04189343ade5781c4909",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/feature-list/index.tsx",
+      "sourceSha256": "5e0441b90bb3f4be39e7073500770815c0f873d86ad60e0dab9352792f8a185f",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/feature-list/index.tsx",
+      "runtimeSha256": "2c2dbefc04b27246f2907ff33cd3a5f927124bbcf9381e2084ce8f9770d315a2",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/file-tree-reveal/index.tsx",
+      "sourceSha256": "10b0a297b93eb8804ecbf9b9e9c20185f7e8a82e5b3561124158d23ddbb8e390",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/file-tree-reveal/index.tsx",
+      "runtimeSha256": "c901bb30cfd6eb2d5013699a040f58b0863e10cab90bd511cac23935cf77ea75",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/form-fill-sequence/index.tsx",
+      "sourceSha256": "29da77f36154eeb76bb2545366ec8123eecde261bcceeb5e5519f5bea76c2c2e",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/form-fill-sequence/index.tsx",
+      "runtimeSha256": "072cede8b7c0a3d29f480dba2b730a7e462459f4ba529f94789df9e42c13fe2b",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/globe-points-3d/index.tsx",
+      "sourceSha256": "c9e6d8cfad26c7be542534f186e4bbe694e5677700e47636e2a51951f36ff8a5",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/globe-points-3d/index.tsx",
+      "runtimeSha256": "075b0705cfb31181d14c58dc5248345c1ed5b2a144c8450256ea65eb46fbdad1",
+      "adaptations": [
+        "Namespaced pinned static public assets to avoid collisions with other providers."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/hook-card/index.tsx",
+      "sourceSha256": "e22976f016580612731fc93734154486f13a3f5e234ea16ded235b8a41b680e5",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/hook-card/index.tsx",
+      "runtimeSha256": "ba4d13236762c6610656cf0fb6fe7e1af2c645a606278232f03087da55ae8cec",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/kanban-move/index.tsx",
+      "sourceSha256": "6aa49a836b59a5315a032be9b41d0e9629a4dc806ffabbf78ba9415150d635c1",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/kanban-move/index.tsx",
+      "runtimeSha256": "cdc3e91be49fa4b814e05ea1c9be5d983fa5cec1ca434ab5e0862ebe10f05f75",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/logo-reveal/index.tsx",
+      "sourceSha256": "f32aeb28b7238851487ba51973513d1529e002940c70bd32ef6eee031953fd69",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/logo-reveal/index.tsx",
+      "runtimeSha256": "4c2512318c9341b92ab9795eaa5ee09f2cd8cdc5ef4f4be5991303df390ef495",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/logo-wall/index.tsx",
+      "sourceSha256": "c677765e75aa3a0514e3965fdca665be59894c7b81aeab202a07f5c80f241605",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/logo-wall/index.tsx",
+      "runtimeSha256": "e95951c6f850717d3bbe25e6e72afc64b37a35c7ca7e5d1d870b76ab8ed8c81a",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/lower-third/index.tsx",
+      "sourceSha256": "4bbaf731e3568033b2fafe140105161f9bb340bf34977c868582200d6338ec13",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/lower-third/index.tsx",
+      "runtimeSha256": "850c5e350f66547f38d77bafa7d217e8e98b995e0124d8987d37a06e63a34e09",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/map-flight/index.tsx",
+      "sourceSha256": "c54c5f01351dda4fc008c96b20aeb44ea61ab882d14e51b2b21967817b3bb77a",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/map-flight/index.tsx",
+      "runtimeSha256": "28801ba84ce0fc1923b81456ea1a2f930c3a359e5accb0643f11d54c1a59dab3",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/media-frame/index.tsx",
+      "sourceSha256": "b2113b6f13462421d2a01856c53c56c504ef084a7f1f6b49cc4f63c9675000e7",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/media-frame/index.tsx",
+      "runtimeSha256": "5238d831aa70576780d2981a68fd0c2dde4251a06491ec75d762e7dbf66b0c33",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/media-sequence/index.tsx",
+      "sourceSha256": "13e0a0be0f6177a1140a0ffbd41c051ea2ce9678ec12c8542dc0c14158e35c95",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/media-sequence/index.tsx",
+      "runtimeSha256": "4420fd3c88fa50331423f8b584bc023cca32151aed285b421bdf609f996623d8",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/metric-ticker/index.tsx",
+      "sourceSha256": "ef3f914b0972453644bae5323d35c4467ba4cab2c533471955c7894f9b59fbb5",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/metric-ticker/index.tsx",
+      "runtimeSha256": "6e1ca66a8dba45de45f27d1d02510da9aeda6f36e066d8bcc95c392416abeb07",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/news-ticker-bar/index.tsx",
+      "sourceSha256": "2c0dc403e9a4330364180d7dee40e61890ab1c77a2b7535d953ac41b09d572b0",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/news-ticker-bar/index.tsx",
+      "runtimeSha256": "1216d7c736998f11b3bca8243cc285b97ac612208328143d758ed5941c2a232d",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/notification-stack/index.tsx",
+      "sourceSha256": "3bc2db4b61e7c4cb82ec224ebae23cae2f321e5345e72420f82d917f69cc2d38",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/notification-stack/index.tsx",
+      "runtimeSha256": "2d8cb78e166f9bad70129d2e490430607b9fea8626ebe230ec266bbd8496eacd",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/opencode/index.tsx",
+      "sourceSha256": "8f8676a2985c82370598b811bbc94fb877884bc92c0aa35c7b26592ed126ffcc",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/opencode/index.tsx",
+      "runtimeSha256": "21fa11ef3576b4631ad637337e7882d4cae261c22d2ebb4500f3f2fd2b3e277c",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/org-chart-build/index.tsx",
+      "sourceSha256": "b042694c997eabb9f1145649f750f3bd93bdd181ef5faaf098318615d91ab5e1",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/org-chart-build/index.tsx",
+      "runtimeSha256": "2d7716555546b0d2afff0ae506b99db5c65e7b978b48685f6a7c4b576965b5b6",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/poll-overlay/index.tsx",
+      "sourceSha256": "3bbfd28ac13210b32990cb619b95ae73c2e6b61d192f086882d155d9e730a05a",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/poll-overlay/index.tsx",
+      "runtimeSha256": "6a2518d3ae7e52de4472dd94d5840ddc2a733b660ee4dfab5161b4d1d1740e0e",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/pricing-card/index.tsx",
+      "sourceSha256": "600f0b2ae864c930976d0e3352a0628f28b9560630ea31da42e189cec13adc81",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/pricing-card/index.tsx",
+      "runtimeSha256": "b996d8270c01eb3b61b1e2833bc4aee7cb6dd10949b070e77eb24134b53ef825",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/product-turntable-3d/index.tsx",
+      "sourceSha256": "42f15171d549c480a3c500d128e1690f405cf6093333113177517bf1a5d082ae",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/product-turntable-3d/index.tsx",
+      "runtimeSha256": "42f15171d549c480a3c500d128e1690f405cf6093333113177517bf1a5d082ae",
+      "adaptations": []
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/quiz-question/index.tsx",
+      "sourceSha256": "b53ee1c85d1020ef849e027fd32e78e1ca01466700757fa33f94f51bd0282959",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/quiz-question/index.tsx",
+      "runtimeSha256": "93a3b6035e3d5c1d7745053ee7af6ebe87be51ba3a55fb19044def547d677998",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/quote-card/index.tsx",
+      "sourceSha256": "de6cbd529c8ad062b65e5e92cc09bdceb734aab9036cddb1ec12a05140e03410",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/quote-card/index.tsx",
+      "runtimeSha256": "b0e9fdf74cf9fd983b12f5cae9f946fbd57fd5254a12b84bde75c1ab375c4feb",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/reaction-burst/index.tsx",
+      "sourceSha256": "0cc947e06bdb923267e5a945b752fd91e31da35a8326ca4f4a8c0b3d589c36d1",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/reaction-burst/index.tsx",
+      "runtimeSha256": "e0cd9950c52637fd4364686cd72453a81c353e488813ed5ed8b8bef51fdcb8de",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/roadmap-lanes/index.tsx",
+      "sourceSha256": "753e4512e76aa4e2deaf836a575b2bb2f91592c32705bdaca74bfdb9f1d7d643",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/roadmap-lanes/index.tsx",
+      "runtimeSha256": "07c4c94a6dd0e6db0dfab346ebec6f8e0704f98c3c1be08bb36bfc5f6c520c75",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/search-results-populate/index.tsx",
+      "sourceSha256": "ced6cd1e67caf7fbc71c0a6b2f02b2dbc9525502e75af769ee482111d47f6cfb",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/search-results-populate/index.tsx",
+      "runtimeSha256": "1e69a253e315eca8cb7072cfba803d922200489b618641f4e1cab28c0e2c96b5",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/split-screen/index.tsx",
+      "sourceSha256": "ffa714a95af91791ead542eeda632edd01413e2356a72b657fb27d7ebd29f949",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/split-screen/index.tsx",
+      "runtimeSha256": "f8d2e9e75b63b11f76f863555022fc8050dcea3c384730d8953e1a52fba091c6",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/sports-scorebug/index.tsx",
+      "sourceSha256": "bf810698a5ec69a285c2f3a83f69ff6d063045392d8f92f52f8c0bc98bf2dd59",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/sports-scorebug/index.tsx",
+      "runtimeSha256": "67d9a976a5ed6db1c429c8b1f7c09d697ba3a90110d5dbff60f1810adbeb7d83",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/stat-card/index.tsx",
+      "sourceSha256": "f72983ccde60cc6736cdb322a3d0808ce2cd32532a1a9ffb1e701ed2cb61ed51",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/stat-card/index.tsx",
+      "runtimeSha256": "86aa4e8b019762ebc3bbc270856ba60c7df3c5c22c058501fdfaa004c2c3598c",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/tab-switch-panel/index.tsx",
+      "sourceSha256": "ce094f87b2b37f97a2991d9f9d7528511533f1581e51ea6ad92f23c9eb334648",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/tab-switch-panel/index.tsx",
+      "runtimeSha256": "a308ccf5edd383c638aec55a11ab972654554eb8835c43070329dd9b85d91569",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/talking-head-layout/index.tsx",
+      "sourceSha256": "479554545f9dac1e58101016d04ff5d2dce1134e88a6a43826a6ba1071835cf0",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/talking-head-layout/index.tsx",
+      "runtimeSha256": "8ca04830bd94cff6f2ba18213fcce7ebf681437a0902962c1ebde4ac03c5f0f4",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/team-grid/index.tsx",
+      "sourceSha256": "a62ad7f9265e3efa0a79c21eab9757a7210eb6d8afef5117cca247a30b83f7cf",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/team-grid/index.tsx",
+      "runtimeSha256": "492ba168a38cc48bda1daf56f1c8bea71a1461df4dfab57c2fc38a72f1fdebf2",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/terminal-simulator/index.tsx",
+      "sourceSha256": "755456abb517274d20d0e3069e1fdd7624be9da689ef090b53aad5af2620d86b",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/terminal-simulator/index.tsx",
+      "runtimeSha256": "a819fd8ca9e481a311afce30d201fbda5d283bcfcf32e9b5e2a73b4f80027119",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/text-extrude-3d/index.tsx",
+      "sourceSha256": "4a41a3e4e345d7b33d526998644f481dd6cb027be0b7c24aaf7fa98c44ed37c5",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/text-extrude-3d/index.tsx",
+      "runtimeSha256": "0419290986dcc1308b608e19f308cef8416d96b6566411c14ff0cae107ab19fe",
+      "adaptations": [
+        "Namespaced pinned static public assets to avoid collisions with other providers."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/timeline-steps/index.tsx",
+      "sourceSha256": "c308c9ed0207c946406631fe5e79fd671cc15919e9386c587cdf708cdfc83e60",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/timeline-steps/index.tsx",
+      "runtimeSha256": "7548ee526bd1ab9b089d77ec949025f65eeff79c8c2ae3aa61e365b2cc34c296",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/title-card/index.tsx",
+      "sourceSha256": "ae34d15a08c99c417c45bfa2b74a90df27f2c05e86ebc8e98e78e3ff29e5544a",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/title-card/index.tsx",
+      "runtimeSha256": "517eb60b3d3e789c5a311d2f1c16a3b2570657eaf27df738da820eb8258ab028",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/v0/index.tsx",
+      "sourceSha256": "395dfdcc42edb3437607a147e8efea04234e3f4626752051bdac9d3558ff39a5",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/v0/index.tsx",
+      "runtimeSha256": "6df1c301d188ccd03c835da195fc3b3a53871c43f401f89fe9191d594cf07740",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/weather-card/index.tsx",
+      "sourceSha256": "cf9505024b5ef4d01248aaf83792dde178ca458537d2256587a3c0029cd175ac",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/weather-card/index.tsx",
+      "runtimeSha256": "a916247b0a7d09d32968b5798b8cc3050d3f4fc5f699ced389ab7e7473f76afe",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    },
+    {
+      "source": "vendor/remotionui/upstream/apps/web/registry/bases/default/scenes/zoom-pan-frame/index.tsx",
+      "sourceSha256": "9ef1aa80d2e83f1ab26e71fb66e1cae63876ad15891b97dc74f003b1591115cf",
+      "runtime": "vendor/remotionui/bulk-runtime/scenes/zoom-pan-frame/index.tsx",
+      "runtimeSha256": "5208a365a24701949af3cc8e48ca4f54325e27c86df510c614b6c3c5ae8e0338",
+      "adaptations": [
+        "Registry alias resolved to a relative copied-source import.",
+        "Inter network loader replaced by the existing pinned local font host; scene design is unchanged."
+      ]
+    }
+  ]
+}

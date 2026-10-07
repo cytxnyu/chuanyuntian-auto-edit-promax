@@ -1,0 +1,147 @@
+---
+title: Displacement
+description: Shear the frame into a grid of offset colour-fringed tiles under film grain and let them settle back on the next scene
+component: displacement
+vibe: tech
+length: 18
+useWhen:
+  - "A cut in a tech or interface demo should read as the picture being knocked out of register rather than blended."
+  - "The rhythm is fast — the whole frame displaces at once, so this lands in well under a second."
+  - "The scenes are structured and graphic, so tiles sliding out of alignment are legible as displacement."
+avoidWhen:
+  - "You want the tearing concentrated in horizontal bands with a hard cut — use `glitch-cut`."
+  - "The moment should feel calm or premium — this is a deliberate malfunction; use `zoom-blur`."
+---
+
+<ComponentPreview name="displacement" />
+
+<CanvasTransitionNote />
+
+<InstallBlock name="displacement" />
+
+## Usage
+
+`displacement()` is a Remotion transition presentation. Pass it to a
+`TransitionSeries.Transition` between two sequences. The frame divides into a
+grid of cells and every one of them shears out of place at once, each on its own
+beat: the picture inside a cell slides away from where it belongs, its colour
+channels separate along the direction of travel, and film grain settles over the
+distortion. At the peak the cells hand over, then slide back into register on the
+next scene.
+
+```tsx
+import { TransitionSeries, linearTiming } from "@remotion/transitions";
+import { displacement } from "@/components/remocn/displacement";
+
+export const MyVideo = () => (
+  <TransitionSeries>
+    <TransitionSeries.Sequence durationInFrames={45}>
+      <SceneA />
+    </TransitionSeries.Sequence>
+    <TransitionSeries.Transition
+      timing={linearTiming({ durationInFrames: 18 })}
+      presentation={displacement()}
+    />
+    <TransitionSeries.Sequence durationInFrames={45}>
+      <SceneB />
+    </TransitionSeries.Sequence>
+  </TransitionSeries>
+);
+```
+
+## Why this one needs the canvas
+
+Each cell samples its scene at a coordinate pushed away from the pixel being
+written, by its own seeded direction and distance — so a cell shows a piece of
+the picture that belongs somewhere else, and the misalignment between
+neighbouring cells is the whole effect. On top of that the red and blue channels
+are sampled at two further offsets along the direction of travel, so a displaced
+tile fringes exactly the way a channel that has slipped does.
+
+A mask cannot move image data. Nothing here is a fade, a tint, or a shaped
+reveal.
+
+## The whole frame at once
+
+There is no band travelling across the picture. Every cell displaces
+simultaneously, spread only by `stagger`, and every cell recovers. That is
+deliberate: a boundary sweeping over one scene to reveal another is a wipe, and
+a wipe does not need pixels — it would make the html-in-canvas dependency
+decorative.
+
+## The entrance mirrors the exit
+
+The same cell carries both scenes. It shears out holding the outgoing frame and
+returns holding the incoming one, and the hand-over sits at the peak of the
+shear, where the frame is furthest out of register and least readable. Played
+backwards the transition is the same displacement carrying the other scene.
+
+Both ends are exact: the shear follows a half-sine over each cell's own phase,
+so it is zero at both ends and every cell sits in register on an undistorted
+frame.
+
+## Determinism
+
+Each cell's direction, distance, phase and grain are seeded from its grid
+coordinate and evaluated as closed-form functions of the transition's progress —
+the grain advances on a clock derived from progress rather than from wall time,
+so there is nothing carried between frames. The same frame renders identically in
+every chunk of a parallel render.
+
+## Fallback
+
+Where html-in-canvas is unavailable the two scenes cross with a short lateral
+jolt in opposite directions. It keeps the knocked-out-of-register feeling and the
+timing; the per-cell shear needs the scenes' pixels, so none of the props apply
+there.
+
+## Props
+
+`displacement(props)` accepts:
+
+<PropsTable
+  rows={[
+    {
+      name: "grid",
+      type: "number",
+      default: "60",
+      description:
+        "Cells spanning the width of the frame. The default is a fine mesh; drop it toward 10 to shear the picture into large slabs instead.",
+    },
+    {
+      name: "cellAspect",
+      type: "number",
+      default: "1",
+      description:
+        "Width-to-height ratio of one cell. Values above 1 give wide, letterbox cells that read as scanline tearing; below 1 gives tall columns.",
+    },
+    {
+      name: "shift",
+      type: "number",
+      default: "1",
+      description:
+        "How far a cell travels at the peak of the shear, measured in cells — 1 is roughly its own width, so changing `grid` does not change how violent the effect looks. 0 leaves the grid in register so only the grain remains.",
+    },
+    {
+      name: "aberration",
+      type: "number",
+      default: "1",
+      description:
+        "Colour separation on a displaced cell, measured along its direction of travel. 0 keeps the tiles clean.",
+    },
+    {
+      name: "grain",
+      type: "number",
+      default: "0.5",
+      description:
+        "Opacity of the film grain over displaced cells. It rises and falls with the shear, so a settled frame is always clean.",
+    },
+    {
+      name: "stagger",
+      type: "number",
+      default: "0.45",
+      description:
+        "How far apart cells start their shear, as a share of the transition. 0 displaces the whole grid as one plane; high values leave a long tail of cells still out of register.",
+    },
+  ]}
+/>

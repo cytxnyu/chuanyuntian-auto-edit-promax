@@ -1,0 +1,56 @@
+import { type ComponentConfig, FPS, H, W } from "@/lib/customizer-config";
+
+export const confettiConfig: ComponentConfig = {
+  componentName: "Confetti",
+  importPath: "@/components/remocn/confetti",
+  controls: {
+    particleCount: {
+      type: "number",
+      min: 10,
+      max: 400,
+      step: 10,
+      default: 140,
+      description: "Particles",
+      hiddenFromList: false,
+    },
+    power: {
+      type: "number",
+      min: 4,
+      max: 40,
+      step: 1,
+      default: 17,
+      description: "Power",
+      hiddenFromList: false,
+    },
+    gravity: {
+      type: "number",
+      min: 0,
+      max: 1.5,
+      step: 0.05,
+      default: 0.45,
+      description: "Gravity",
+      hiddenFromList: false,
+    },
+    size: {
+      type: "number",
+      min: 4,
+      max: 30,
+      step: 1,
+      default: 13,
+      description: "Size",
+      hiddenFromList: false,
+    },
+    seed: {
+      type: "number",
+      min: 1,
+      step: 1,
+      default: 1,
+      description: "Seed",
+      hiddenFromList: false,
+    },
+  },
+  durationInFrames: 90,
+  fps: FPS,
+  compositionWidth: W,
+  compositionHeight: H,
+};

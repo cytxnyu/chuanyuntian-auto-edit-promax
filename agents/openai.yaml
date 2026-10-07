@@ -1,0 +1,4 @@
+interface:
+  display_name: "自动剪辑promax"
+  short_description: "直接调用三库原版动画，AI编排与薄适配，保留连续原声及方案、预览、渲染确认"
+  default_prompt: "用 $auto-edit-promax 处理我的视频和 SRT，优先原版完整场景，按台词编排并做必要薄适配，保留原声，先给 Gate A 方案。"

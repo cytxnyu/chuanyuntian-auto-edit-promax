@@ -1,0 +1,147 @@
+---
+title: Particle Dissolve
+description: Grind the frame into drifting grey dust and let the next scene coalesce back out of it
+component: particle-dissolve
+vibe: tech
+length: 36
+useWhen:
+  - "A scene change should read as the picture breaking down into matter and reassembling, not as one image fading through another."
+  - "The moment can afford well over a second; the dust needs time to form, drift, and gather."
+  - "The outgoing scene has bright content worth watching disintegrate — highlights throw their dust furthest, so text and logos come apart first."
+avoidWhen:
+  - "You only need texture over a plain crossfade — use `grain-dissolve`."
+  - "You want an organic flowing break-up rather than a granular one — use `perlin-dissolve`."
+---
+
+<ComponentPreview name="particle-dissolve" />
+
+<CanvasTransitionNote />
+
+<InstallBlock name="particle-dissolve" />
+
+## Usage
+
+`particleDissolve()` is a Remotion transition presentation. Pass it to a
+`TransitionSeries.Transition` between two sequences. The frame is ground into
+fine dust: each speck wanders away from the pixel it came from, colour drains
+out of it as it goes, and the specks shimmer while they hang in the air. Then
+the motion reverses — the dust gathers, colour returns, and it settles into the
+next scene.
+
+```tsx
+import { TransitionSeries, linearTiming } from "@remotion/transitions";
+import { particleDissolve } from "@/components/remocn/particle-dissolve";
+
+export const MyVideo = () => (
+  <TransitionSeries>
+    <TransitionSeries.Sequence durationInFrames={60}>
+      <SceneA />
+    </TransitionSeries.Sequence>
+    <TransitionSeries.Transition
+      timing={linearTiming({ durationInFrames: 36 })}
+      presentation={particleDissolve()}
+    />
+    <TransitionSeries.Sequence durationInFrames={60}>
+      <SceneB />
+    </TransitionSeries.Sequence>
+  </TransitionSeries>
+);
+```
+
+## Why this one needs the canvas
+
+- **Bright content throws its dust furthest.** How far a speck wanders is set by
+  the luminance of the pixel it came from, so highlights and text disintegrate
+  before flat background does. The scatter field is a function of the picture.
+- **Every speck carries a real fragment.** It samples the scene at the
+  coordinate it drifted in from, not an average of what sits beneath it.
+- **The dust separates colour.** Red and blue are sampled at slightly different
+  offsets while a speck is airborne, so the grain fringes as it flies and
+  resolves clean as it lands.
+- **Motes catch the light.** Each speck has its own size and its own brightness,
+  twinkling on its own phase, and the material thins between them. This is what
+  makes the effect work on flat areas: displacing a uniform colour returns the
+  same colour, so without light of their own the specks would be invisible
+  everywhere except over content, and only the text would appear to dissolve.
+
+None of that survives a mask: a CSS version could only fade a grid of squares
+tinted by whatever is underneath them.
+
+## The entrance mirrors the exit
+
+There is one continuous arc per speck rather than two effects bolted together:
+dust rises to a peak and falls away again, and the scene swap happens at the
+peak where the frame is least legible. Played backwards it reads as the same
+effect applied to the other scene — the incoming frame is assembled out of the
+same dust that the outgoing one became.
+
+`direction` sets the order the arc sweeps in. `"reveal"` starts at the centre
+and travels outward, so the next scene surfaces in the middle and grows;
+an axis sweeps the dust across the frame instead.
+
+## Determinism
+
+Each speck's heading, wander distance, shimmer phase, and stagger are seeded
+from its cell coordinate and evaluated as closed-form functions of the
+transition's progress — no per-frame simulation, no wall-clock time, nothing
+carried between frames. The same frame renders identically in every chunk of a
+parallel render.
+
+## Fallback
+
+Where html-in-canvas is unavailable the presentation renders a desaturating
+blur crossfade — the picture loses colour and definition on the way out and
+recovers both on the way in, which is the shape of the effect without the
+grain. The dust needs the outgoing scene's pixels, so none of the props apply
+there.
+
+## Props
+
+`particleDissolve(props)` accepts:
+
+<PropsTable
+  rows={[
+    {
+      name: "particleSize",
+      type: "number",
+      default: "4",
+      description:
+        "Grain size in pixels, measured against the composition height. Small values give true dust; above roughly 10 the frame reads as breaking into tiles instead.",
+    },
+    {
+      name: "scatter",
+      type: "number",
+      default: "0.08",
+      description:
+        "How far a speck can wander from home, as a fraction of the frame, before luminance scaling. Higher values throw the picture further apart at the peak.",
+    },
+    {
+      name: "shimmer",
+      type: "number",
+      default: "0.6",
+      description:
+        "How much the specks jitter and catch the light while airborne. This is what carries the effect over flat areas of the frame, where displacement alone shows nothing — turn it down over busy footage, up over plain backgrounds. 0 leaves a still, dark scatter.",
+    },
+    {
+      name: "aberration",
+      type: "number",
+      default: "0.5",
+      description:
+        "Colour separation on a speck in flight. 0 keeps the grain neutral; higher values fringe it red and blue at the peak of the dissolve.",
+    },
+    {
+      name: "direction",
+      type: '"reveal" | "up" | "down" | "left" | "right"',
+      default: '"reveal"',
+      description:
+        "The order the dissolve sweeps in. \"reveal\" runs outward from the centre; an axis sweeps the arc across the frame from that edge.",
+    },
+    {
+      name: "stagger",
+      type: "number",
+      default: "0.55",
+      description:
+        "How far apart specks start their arc, as a share of the transition. 0 dissolves the whole frame as one plane; high values leave a long tail of stragglers still airborne.",
+    },
+  ]}
+/>

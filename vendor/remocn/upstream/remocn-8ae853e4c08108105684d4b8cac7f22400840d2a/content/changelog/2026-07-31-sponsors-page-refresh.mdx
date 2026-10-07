@@ -1,0 +1,22 @@
+---
+title: Sponsors page refresh
+date: 2026-07-31
+---
+
+The page that asks for support should show the project at its best, so the sponsors page was rebuilt around the same craft bar as the components it funds. It now stands on the landing's live NeuroNoise backdrop, the tiers carry their colours, and the wall of love ranks sponsors visually — the higher the tier, the more presence the logo gets.
+
+### Improvements
+
+- The hero sits on the landing-style backdrop — dotted grid plus the live NeuroNoise shader — and leads with a "Become a sponsor" call to action; the live-traffic dashboard link moved to a secondary button.
+- Tier cards carry a quiet colour system: a per-tier accent hairline along the top edge, a lavender-tinted surface on the Featured tier, and the cursor spotlight now tracks correctly on every card instead of only the first one. The hover lift no longer jitters when the cursor rests near the card's bottom edge.
+- The wall of love rewards the tier: Legendary sponsors get a wide full-colour row, Featured logos render in colour, Partners stay muted and reveal their colour on hover, Builders stay compact.
+- Cards across the site — sponsors, landing partners, testimonials, showcases, docs galleries — moved from solid borders to layered elevation shadows driven by shared tokens; dark mode collapses each stack to a single white ring. Card hover and focus feedback that was previously dead CSS now works everywhere.
+- The billing toggle announces its state to screen readers, keeps a full-size touch target, and its label colour eases in step with the sliding thumb.
+- Below-the-fold sections render statically instead of fading in on scroll; the hero intro plays once per session, and `prefers-reduced-motion` now genuinely disables entrance animations and freezes the NeuroNoise shader.
+- Raster sponsor avatars carry the standard 1px inset outline, and all external sponsor logos are self-hosted.
+
+### Fixes
+
+- Fabricated bold and italic faces are disabled site-wide (`font-synthesis: none`), so a missing font weight surfaces as a visible regression instead of a synthetic imitation.
+- Section eyebrows follow their documented style — small, mono, muted — matching the hero, and lead paragraphs wrap with `text-pretty` instead of burning width on balanced lines.
+- Sponsor display names use a real muted-foreground token instead of a class that resolved to nothing, so their hover state is visible again.

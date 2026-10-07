@@ -1,0 +1,44 @@
+{
+  "provider": "video-shotcraft",
+  "revision": "5ddbf521038b0a7accfb6dc1e0a9eb29c67277ab",
+  "scope": "Only bulk-runtime, own provider, own scripts and own catalog changed",
+  "preservedOriginalEntries": 4,
+  "scannedDemoExports": 217,
+  "registeredBulkExports": 231,
+  "compileReadyNewEntries": 230,
+  "compileReadyKinds": {
+    "template": 8,
+    "scene": 219,
+    "component": 3
+  },
+  "helpersNotCountedAsScenes": 2,
+  "missingDependencies": [],
+  "missingAssetEntries": [
+    {
+      "id": "video-shotcraft/bulk/ui-entrance/clipcard-looping/clipcardlooping/clipcardlooping",
+      "requiredAssets": [
+        {
+          "target": "sources/video-shotcraft/bulk/demos/clips/clipcard-demo.mp4",
+          "reason": "Original demo requires user-supplied footage; no paired video in the upstream cache"
+        }
+      ]
+    }
+  ],
+  "fixedOriginalDurationEntries": 102,
+  "recommendedWindowEntries": 129,
+  "compileErrors": [],
+  "compileErrorEntries": [],
+  "checks": [
+    {
+      "command": "node --import tsx scripts/sources/shotcraft-bulk-build.mjs",
+      "input": "Pinned original demo/template exports; isolated shotcraft-bulk-typecheck.json",
+      "tier": "bulk-static",
+      "exitStatus": 0,
+      "result": "All generated exports typecheck without diagnostics"
+    }
+  ],
+  "renderVerified": false,
+  "fullRenderCount": 0,
+  "namespaceChangedFiles": 24,
+  "sourceFiles": 322
+}

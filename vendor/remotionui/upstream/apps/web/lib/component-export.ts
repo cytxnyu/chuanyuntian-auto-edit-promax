@@ -1,0 +1,345 @@
+import fs from "node:fs";
+import path from "node:path";
+import { previewMeta } from "./preview-config";
+
+export type ExportSource = {
+  importPath: string;
+  exportName: string;
+};
+
+export type ComponentExportConfig = {
+  slug: string;
+  compositionId: string;
+  source: ExportSource;
+  durationInFrames: number;
+  fps: number;
+  width: number;
+  height: number;
+  renderFlags: string[];
+};
+
+export const EXPORT_DEFAULTS = {
+  durationInFrames: 90,
+  fps: 30,
+  width: 1920,
+  height: 1080,
+  renderFlags: [] as string[],
+} as const;
+
+/** Components that acquire a WebGL context need the ANGLE backend to render headlessly. */
+export const GL_RENDER_FLAGS = ["--gl=angle", "--concurrency=1"] as const;
+
+/** Per-component overrides when defaults or auto-discovery are not enough. */
+export const EXPORT_OVERRIDES: Record<
+  string,
+  Partial<
+    Omit<ComponentExportConfig, "slug" | "compositionId" | "source"> & {
+      source?: ExportSource;
+      preferRegistry?: boolean;
+    }
+  >
+> = {
+  "map-canvas": { renderFlags: [...GL_RENDER_FLAGS] },
+  "map-flight": { renderFlags: [...GL_RENDER_FLAGS] },
+  "map-markers": { renderFlags: [...GL_RENDER_FLAGS] },
+  "map-route": { renderFlags: [...GL_RENDER_FLAGS] },
+  "transition-light-leak": { renderFlags: [...GL_RENDER_FLAGS] },
+  // Paper shader fields each take a WebGL2 context of their own.
+  "dither-field-bg": { renderFlags: [...GL_RENDER_FLAGS] },
+  "warp-bands-bg": { renderFlags: [...GL_RENDER_FLAGS] },
+  "grain-gradient-bg": { renderFlags: [...GL_RENDER_FLAGS] },
+  // First-party GLSL through lib/gpu.ts, same WebGL2 requirement.
+  "light-tunnel-bg": { renderFlags: [...GL_RENDER_FLAGS] },
+  "text-reveal-shader": { renderFlags: [...GL_RENDER_FLAGS] },
+  // The digit in the slug defeats preview auto-discovery: `DeviceMockup3DPreview`
+  // kebab-cases to `device-mockup3-d`, so the wrapper is named here.
+  "device-mockup-3d": {
+    renderFlags: [...GL_RENDER_FLAGS],
+    source: {
+      importPath: "@/components/previews/device-mockup-3d",
+      exportName: "DeviceMockup3DPreview",
+    },
+  },
+  // Same digit trap as above, and the scaffold names these wrappers `…3dPreview`
+  // with a lowercase d, so neither casing round-trips through auto-discovery.
+  "product-turntable-3d": {
+    renderFlags: [...GL_RENDER_FLAGS],
+    source: {
+      importPath: "@/components/previews/product-turntable-3d",
+      exportName: "ProductTurntable3dPreview",
+    },
+  },
+  "text-extrude-3d": {
+    renderFlags: [...GL_RENDER_FLAGS],
+    source: {
+      importPath: "@/components/previews/text-extrude-3d",
+      exportName: "TextExtrude3dPreview",
+    },
+  },
+  "card-stack-3d": {
+    renderFlags: [...GL_RENDER_FLAGS],
+    source: {
+      importPath: "@/components/previews/card-stack-3d",
+      exportName: "CardStack3dPreview",
+    },
+  },
+  "globe-points-3d": {
+    renderFlags: [...GL_RENDER_FLAGS],
+    source: {
+      importPath: "@/components/previews/globe-points-3d",
+      exportName: "GlobePoints3dPreview",
+    },
+  },
+  v0: {
+    source: {
+      importPath: "@/components/previews/ai-composer-previews",
+      exportName: "V0ComposerPreview",
+    },
+  },
+  "chat-gpt": {
+    source: {
+      importPath: "@/components/previews/ai-composer-previews",
+      exportName: "ChatGptPreview",
+    },
+  },
+  // These transitions ship under a bare slug but their preview wrappers carry
+  // the `Transition` prefix, so auto-discovery cannot match them.
+  "directional-wipe": {
+    source: {
+      importPath: "@/components/previews/transition-directional-wipe",
+      exportName: "TransitionDirectionalWipePreview",
+    },
+  },
+  "spatial-push": {
+    source: {
+      importPath: "@/components/previews/transition-spatial-push",
+      exportName: "TransitionSpatialPushPreview",
+    },
+  },
+  "chromatic-aberration-wipe": {
+    source: {
+      importPath: "@/components/previews/transition-chromatic-aberration-wipe",
+      exportName: "TransitionChromaticAberrationWipePreview",
+    },
+  },
+  "zoom-through": {
+    source: {
+      importPath: "@/components/previews/transition-zoom-through",
+      exportName: "TransitionZoomThroughPreview",
+    },
+  },
+  "blur-reveal": {
+    source: {
+      importPath: "@/components/previews/transition-blur-reveal",
+      exportName: "TransitionBlurRevealPreview",
+    },
+  },
+  "grid-pixelate-wipe": {
+    source: {
+      importPath: "@/components/previews/transition-grid-pixelate-wipe",
+      exportName: "TransitionGridPixelateWipePreview",
+    },
+  },
+  "frosted-glass-wipe": {
+    source: {
+      importPath: "@/components/previews/transition-frosted-glass-wipe",
+      exportName: "TransitionFrostedGlassWipePreview",
+    },
+  },
+};
+
+type RegistryItem = {
+  name: string;
+  type: string;
+  files: Array<{ path: string }>;
+};
+
+function kebabToPascal(slug: string) {
+  return slug
+    .split("-")
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join("");
+}
+
+function previewNameToSlug(exportName: string) {
+  const base = exportName.replace(/Preview$/, "");
+  return base
+    .replace(/([a-z0-9])([A-Z])/g, "$1-$2")
+    .replace(/([A-Z])([A-Z][a-z])/g, "$1-$2")
+    .toLowerCase();
+}
+
+/**
+ * Transition items export a factory function rather than a component, so a
+ * registry source is not always readable as one. Callers fall back to the
+ * preview wrapper when this returns null.
+ *
+ * Only PascalCase exports are considered. A registry file may export config
+ * constants (`LIQUID_WARP_DEFAULTS`, `SHAPE_OVERSHOOT`) above the component,
+ * and taking the first export blindly makes those the composition id, which
+ * Remotion then rejects, because an id cannot contain an underscore.
+ */
+function readNamedExport(filePath: string) {
+  const content = fs.readFileSync(filePath, "utf8");
+  const matches = content.matchAll(/export const (\w+)(?::[^=]+)?\s*=/g);
+  for (const [, exportName] of matches) {
+    if (/^[A-Z][a-zA-Z0-9]*$/.test(exportName) && /[a-z]/.test(exportName)) {
+      return exportName;
+    }
+  }
+  return null;
+}
+
+function registryImportPath(registryFile: string) {
+  const withoutPrefix = registryFile.replace(/^registry\/bases\/default\//, "");
+  const withoutIndex = withoutPrefix
+    .replace(/\/index\.tsx$/, "")
+    .replace(/\.tsx$/, "");
+  const [category, name] = withoutIndex.split("/");
+
+  if (!category || !name) {
+    throw new Error(`Unsupported registry path: ${registryFile}`);
+  }
+
+  if (category === "primitives") {
+    return `@/remotion/primitives/${name}`;
+  }
+  if (category === "scenes") {
+    return `@/remotion/scenes/${name}`;
+  }
+  if (category === "compositions") {
+    return `@/compositions/${name}`;
+  }
+  throw new Error(`Unsupported registry path: ${registryFile}`);
+}
+
+function buildPreviewIndex(previewsDir: string) {
+  const index = new Map<string, ExportSource>();
+
+  for (const fileName of fs.readdirSync(previewsDir)) {
+    if (!fileName.endsWith(".tsx")) {
+      continue;
+    }
+
+    const filePath = path.join(previewsDir, fileName);
+    const content = fs.readFileSync(filePath, "utf8");
+    const importPath = `@/components/previews/${fileName.replace(/\.tsx$/, "")}`;
+    const exports = [...content.matchAll(/export const (\w+)(?::[^=]+)?\s*=/g)];
+
+    for (const [, exportName] of exports) {
+      if (!exportName.endsWith("Preview")) {
+        continue;
+      }
+      const slug = previewNameToSlug(exportName);
+      const existing = index.get(slug);
+      if (existing) {
+        // Two files exporting the same preview name means one silently shadows
+        // the other here while the site imports whichever it names directly,
+        // the export harness then renders a component nobody sees.
+        throw new Error(
+          `Duplicate preview for "${slug}": ${existing.importPath} and ${importPath} both export ${exportName}.`,
+        );
+      }
+      index.set(slug, { importPath, exportName });
+    }
+  }
+
+  return index;
+}
+
+function isRenderableItem(item: RegistryItem) {
+  if (item.type === "registry:lib" || item.type === "registry:hook") {
+    return false;
+  }
+  const filePath = item.files[0]?.path ?? "";
+  return (
+    filePath.includes("/primitives/") ||
+    filePath.includes("/scenes/") ||
+    filePath.includes("/compositions/")
+  );
+}
+
+export function listExportableSlugs(registryItems: RegistryItem[]) {
+  return registryItems.filter(isRenderableItem).map((item) => item.name).sort();
+}
+
+export function resolveExportConfig(
+  appRoot: string,
+  slug: string,
+  options: {
+    durationInFrames?: number;
+    fps?: number;
+    width?: number;
+    height?: number;
+    out?: string;
+    usePreview?: boolean;
+  } = {},
+): ComponentExportConfig {
+  const registry = JSON.parse(
+    fs.readFileSync(path.join(appRoot, "registry.json"), "utf8"),
+  ) as { items: RegistryItem[] };
+
+  const item = registry.items.find((entry) => entry.name === slug);
+  if (!item) {
+    throw new Error(`Unknown registry item: ${slug}`);
+  }
+  if (!isRenderableItem(item)) {
+    throw new Error(`"${slug}" is not a renderable component (lib/hook/utility).`);
+  }
+
+  const registryFile = item.files[0].path;
+  const registrySourcePath = path.join(appRoot, registryFile);
+  const exportName = readNamedExport(registrySourcePath);
+  const registrySource: ExportSource | undefined = exportName
+    ? { importPath: registryImportPath(registryFile), exportName }
+    : undefined;
+
+  const previewIndex = buildPreviewIndex(path.join(appRoot, "components/previews"));
+  const previewSource = previewIndex.get(slug);
+  const overrides = EXPORT_OVERRIDES[slug] ?? {};
+
+  const preferRegistry = overrides.preferRegistry ?? false;
+  const usePreview =
+    options.usePreview ??
+    (!preferRegistry && Boolean(previewSource));
+
+  const source = overrides.source ?? (usePreview ? previewSource : registrySource);
+  if (!source) {
+    throw new Error(
+      `No renderable component found for "${slug}". Add a preview wrapper in components/previews, or an EXPORT_OVERRIDES entry pointing at one.`,
+    );
+  }
+
+  const compositionId = exportName ?? source.exportName;
+
+  // A preview wrapper is laid out against the docs player's composition, so
+  // rendering it at the raw export defaults would crop or shrink the subject.
+  // Render it at the docs framing and upscale, so the file matches the page.
+  const rendersPreview = source !== registrySource;
+  const base = rendersPreview
+    ? { ...EXPORT_DEFAULTS, ...previewMeta(slug) }
+    : EXPORT_DEFAULTS;
+  const scaleFlags = rendersPreview ? ["--scale=2"] : [];
+
+  return {
+    slug,
+    compositionId,
+    source,
+    durationInFrames:
+      options.durationInFrames ??
+      overrides.durationInFrames ??
+      base.durationInFrames,
+    fps: options.fps ?? overrides.fps ?? base.fps,
+    width: options.width ?? overrides.width ?? base.width,
+    height: options.height ?? overrides.height ?? base.height,
+    renderFlags: [...(overrides.renderFlags ?? EXPORT_DEFAULTS.renderFlags), ...scaleFlags],
+  };
+}
+
+export function defaultOutputPath(slug: string) {
+  return path.join("public", "showcases", `${slug}.mp4`);
+}
+
+export function compositionIdFromSlug(slug: string) {
+  return kebabToPascal(slug);
+}
